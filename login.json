@@ -1,0 +1,146 @@
+[
+    {
+      "id": "Boygl34",
+      "Ten": "Trực",
+      "useName": "Võ Chính Trực",
+      "PhanQuyen": "admin",
+      "BoPhan": "Dịch Vụ",
+      "Password": "khongbiet"
+    },
+    {
+      "id": "TVT_TOANNV",
+      "Ten": "Toàn",
+      "useName": "Nguyễn Văn Toàn",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_QUIPHAM",
+      "Ten": "Quí",
+      "useName": "Phạm Kim Quí",
+      "PhanQuyen": "AdminHen",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_LETAN",
+      "Ten": "Lễ Tân",
+      "useName": "Lễ Tân Dịch Vụ",
+      "PhanQuyen": "LeTan",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_KIENPHAN",
+      "Ten": "Kiên",
+      "useName": "Phan Trung Kiên",
+      "PhanQuyen": "DieuPhoi",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_TAIDO",
+      "Ten": "Tài",
+      "useName": "Đỗ Văn Tài",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_RONND",
+      "Ten": "Rôn",
+      "useName": "Nguyễn Đức Rôn",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_LOCVH",
+      "Ten": "Lộc",
+      "useName": "Vũ Hoàng Lộc",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_VINHPQ",
+      "Ten": "Vinh",
+      "useName": "Phạm Quốc Vinh",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_SANGTP",
+      "Ten": "Sang",
+      "useName": "Trần Phước Sang",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_MANNV",
+      "Ten": "Mẫn",
+      "useName": "Nguyễn Văn Mẫn",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_TRIENGNH",
+      "Ten": "Rôn",
+      "useName": "Nguyễn Huy Triêng",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_HIEPNN",
+      "Ten": "Hiệp",
+      "useName": "Nguyễn Ngọc Hiệp",
+      "PhanQuyen": "CoVandichvu",
+      "BoPhan": "Dịch Vụ",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_THUBT",
+      "Ten": "Thu",
+      "useName": "Bùi Thị Thu",
+      "PhanQuyen": "CS",
+      "BoPhan": "CS",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_MENDT",
+      "Ten": "Mến",
+      "useName": "Đỗ Thị Hồng Mến",
+      "PhanQuyen": "CS",
+      "BoPhan": "CS",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_PHUONGLT",
+      "Ten": "Phương",
+      "useName": "Lâm Thị Phương",
+      "PhanQuyen": "CS",
+      "BoPhan": "CS",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_CAMBT",
+      "Ten": "Cẩm",
+      "useName": "Bùi Thị Hồng Cẩm",
+      "PhanQuyen": "CS",
+      "BoPhan": "CS",
+      "Password": "123456"
+    },
+    {
+      "id": "TVT_ANHNV",
+      "Ten": "V ANH",
+      "useName": "Nguyễn Vân Anh",
+      "PhanQuyen": "CS",
+      "BoPhan": "CS",
+      "Password": "123456"
+    }
+  ]
