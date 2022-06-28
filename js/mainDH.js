@@ -5,7 +5,7 @@
  var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
 getData(urlTX)
  setInterval(function (){getData(urlTX)},60000);
-  DanhSachCoVan();
+  //DanhSachCoVan();
  function getData(url){
    fetch(url)
    .then(response => response.json())
