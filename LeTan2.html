@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<title>TVT</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="apple-mobile-web-app-capable" content="yes" /> 
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+<link rel="stylesheet" type="text/css"	href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" href="css/style.css">
+<style>
+    input:invalid {
+    border-color: red;
+  }
+  input:valid {
+    background: lightgreen;
+  }
+  select:valid {
+    background: lightgreen;
+  }
+    select:invalid {
+    border-color: red;
+  }
+  
+  .btn-group-xs > .btn, .btn-xs {
+    padding: .25rem .4rem;
+    font-size: .875rem;
+    line-height: .5;
+    border-radius: .2rem;
+  }
+  
+   #dataTable td:nth-child(10) {
+         font-size: 0.5px;
+    }
+    #dataTable td:nth-child(1) {
+         font-size: 25px;
+    }
+    table.dataTable thead {background-color:#1155cc;
+    font-size: 8px;}
+  
+    table.dataTableHen thead {background-color:#1155cc;
+    font-size: 10px;}
+    .DangTiepNhan{
+     color: #00ff00;
+  }  
+     .SapTiepNhan{
+      color: #ff6d01;
+     }
+      .ChoTiepNhan{
+      color: #3deedf;
+     }
+    .mystyle {
+    width: 100%;
+  }
+  
+    #dataTableHen {
+         font-size:15.5px;
+    }
+    #dataTable td {
+      height: 50px;
+       vertical-align: middle;
+         font-size:15.5px;
+    }
+    
+     #dataTableHen td:nth-child(7) {
+        width: 35%;
+        font-size:8.5px;
+    }
+    #dataTableHen td:nth-child(2) {
+         font-size:25.5px;
+    }
+    
+    #dataTableHen td:nth-child(8) {
+         font-size:0.5px;
+    }
+    
+  
+   #dataTableHen td {
+    height: 50px;
+    vertical-align: middle;
+    text-align: left;
+    color: #00ff00;
+  }
+  </style>
+<style>
+    
+body {font-family: "Roboto", sans-serif}
+.w3-bar-block .w3-bar-item {
+  padding: 16px;
+  font-weight: bold;
+}
+</style>
+<body>
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-animate-left w3-card" style="z-index:3;width:150px;" id="mySidebar">
+  <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="main.html">Toyota TVT</a>
+  <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+  <a class="w3-bar-item w3-button w3-teal" href="LeTan2.html" id="name">Home</a>
+  <a class="w3-bar-item w3-button"  href="Body2.html">Đồng Sơn</a>
+  <a class="w3-bar-item w3-button" href="CoVan2.html">Cố Vấn</a>
+  <a class="w3-bar-item w3-button" href="DatHen2.html">Đặt Hẹn</a>
+  <a class="w3-bar-item w3-button" href="EMSCC.html">EM GJ</a>
+  
+  <div>
+    <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Tính Năng <i class="fa fa-caret-down"></i></a>
+    <div id="demo" class="w3-hide">
+      <a class="w3-bar-item w3-button" href="#">Link</a>
+      <a class="w3-bar-item w3-button" href="#">Link</a>
+      <a class="w3-bar-item w3-button" href="#">Link</a>
+    </div>
+  </div>
+</nav>
+<div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+<div class="w3-main" style="margin-left:150px;">
+<div id="myTop" class="w3-container w3-top w3-theme w3-large">
+  <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+  <span id="myIntro" class="w3-hide">Dịch Vụ Toyota Vũng Tàu</span></p>
+</div>
+
+<header class="w3-container w3-theme" style="padding:13px 32px">
+  <h1 class="w3-xlarge">Lễ Tân</h1>
+</header>
+<div class="w3-container" id = "TrangDangNhap"style="padding:13px">
+<!-- TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION ABOVE -->
+
+     <div class="row">
+        <div class="col-lg-3" id="fonmid" >
+         <!-- ## The html code of the form goes here -->
+<!-- ## This is included in the Index.html page using "include('Form')" function -->
+
+<form id="myForm" class="p-2 border border-light rounded bg-light" autocomplete="off"> <!-- Call JavaScript function "handleFormSubmit" -->
+    <div id="mesenge"><div class='alert alert-success'>Welcome!!</div></div>
+    <input id="ThongTin" class="col-12" style="font-size:1.575em;font-weight:bold;text-align:center;vertical-align: middle" disabled>
+    <input type="text" id="MaSo" name="MaSo" value=""style="display:none" >
+<div class="form-row">
+	  <div class="form-group col-9">
+		<label for="BienSo" >Biển Số</label>
+		<input type="text" class="form-control" id="BienSoXe" name="BienSo" onchange="changvalue()" placeholder="Biển Số" list="BienSoList" required style="font-size:2.575em;font-weight:bold;" onkeyup="this.value = suabienso(this.value)">
+	</div>
+   <div class="form-group col-3">
+     	<br>	<br>
+     <input class="btn btn-secondary" type="reset" value="Reset" onclick=" NutNhan.innerHTML =''">
+   </div>
+   </div>
+  <div class="form-row"> 
+		<div class="form-group col-md-9">
+			<label for="TenKH">Tên KH</label>
+      <input type="text" class="form-control"  required id="TenKH" >
+		</div>
+    <div class="form-group col-md-3">
+		<label for="SoThe">Số Thẻ</label>
+      <input type="text" class="form-control" required id="SoThe" >
+		</div>
+	</div>
+  <div class="form-row"> 
+		<div class="form-group col-md-6">
+			<label for="GioHen">Ngày Giờ Hẹn</label>
+      <input type="text" class="form-control" id="GioHen" disabled>
+		</div>
+    <div class="form-group col-md-6">
+		<label for="TrangThaiHen">Trạng Thái Hẹn</label>
+      <input type="text" class="form-control" id="TrangThaiHen"disabled>
+		</div>
+	</div>
+  <div class="form-row" > 
+    <div class="form-group col-md-6">
+		<label for="exampleFormControlSelect1">Loại Hình GJ </label>
+      <select  class="form-control"  id="LoaiHinh"  required name="LoaiHinh" >
+          '<option value=""></option>'
+          '<option value="EM">EM</option>'
+          '<option value="EM60">EM60</option>'
+          '<option value="SCC">SCC</option>'
+          '<option value="Báo Giá SCC">Báo Giá SCC</option>'
+          '<option value="FIR">FIR</option>'
+        </select>
+		</div>
+		<div class="form-group col-md-6">
+			<label for="exampleFormControlSelect1">Loại Hình BP </label>
+      <select  class="form-control"  id="LoaiHinhBP" required name="LoaiHinhBP" >
+          '<option value=""></option>'
+          <option value="Đồng Sơn">Đồng Sơn</option>'
+          '<option value="Báo Giá BH">Báo Giá BH</option>'
+          '<option value="FIR">FIR</option>'
+        </select>
+		</div>
+	</div>
+  <div class="form-row"> 
+    <div class="form-group col-md-6">
+		<label for="CoVan">Cố Vấn</label>
+      <select  class="form-control"  id="CoVanDichVu"  required name="CoVan" >
+          '<option value=""></option>'
+      </select>
+		</div>
+  </div>
+<div class="form-row">   
+	<div class="form-group col-md-12">
+    <label for="NoiDungCV">Nội Dung Công Việc</label>
+    <textarea class="form-control" id="NoiDungCV" rows="2" colum="12" disabled></textarea>
+  </div>	
+	</div>
+<div class="form-row">
+	<div id="NutNhan">
+	</div>&emsp;
+
+  
+  
+ </div>
+ <datalist id="BienSoList">
+   <option></option>
+ </datalist>
+</form>
+        </div>
+        <div class="col-lg-9" id = "tableid">
+         
+<div id="dataTable" class="table-responsive">
+    <table id="data-table" onclick = "clickTableTiepNhan()"class=" table table-dark  table-sm table-hover  row-border"style="font-weight:bold;text-align:center;vertical-align: middle ;width:100%;background-color:black">
+                  <!-- TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION ABOVE -->
+          <thead>
+                            <tr style="font-size:8px">
+                              <th style=" width: 15%;">Biển Số</th>
+                              <th style=" width: 5%;">Số Thẻ</th>
+                              <th style=" width: 10%;">Tên KH</th>
+                              <th style=" width: 5%;">Giờ H</th>
+                              <th  style=" width: 5%;"  >LH GJ</th>
+                              <th  style=" width: 5%;"  >LH BP</th>
+                              <th  style=" width: 5%;"  >Cố Vấn</th>
+                              <th  style=" width: 5%;"  >Trạng Thái</th>
+                              <th style=" width: 5%;" >TG</th>
+                              <th style=" width: 1%;" ></th>
+                            </tr>
+                          </thead>
+                          <tbody id="table-body-Tim-xe" style="font-size:14px"  >
+                          </tbody>
+              </table>
+  </div>
+  <br>
+  <h4> Thông Tin Xe Hẹn</h4>
+  <div id="dataTableHen" class="table-responsive">
+    <table id="data-table-hen" onclick = "clickTableTiepNhanHen()"class=" table table-dark  table-sm table-hover  row-border"style="font-weight:bold;text-align:center-left;vertical-align: middle ;width:100%;background-color:black">
+                  <!-- TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION ABOVE -->
+        <thead>
+                            <tr style="font-size:8px">
+                              <th style=" width: 5%;">Giờ Hẹn</th>
+                              <th style=" width: 15%;">Biển Số</th>
+                              <th style=" width: 10%;">Tên KH</th>
+                              <th  style=" width: 5%;"  >Cố Vấn</th>
+                              <th  style=" width: 5%;"  >LH GJ</th>
+                              <th  style=" width: 5%;"  >LH BP</th>
+                              <th  >Nội Dung</th>
+                              <th style=" width: 1%;" >ms</th>
+                            </tr>
+                          </thead>
+                          <tbody id="table-body-hen" style="font-size:12px"  >
+                          </tbody>
+        </table>
+  </div>
+
+        </div>
+    </div>    
+
+
+
+	
+
+
+
+
+
+</div>
+
+<footer class="w3-container w3-theme" style="padding:32px">
+  <p>Footer information goes here</p>
+</footer>
+     
+</div>
+    
+	<script src="js/background.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/mainLT.js"></script>
+  
+<script>
+checkdangnhap()
+
+function checkdangnhap() {
+  var urluser = "https://big-road-newsstand.glitch.me/User/"
+  var password = localStorage.getItem("Password")
+  var use =localStorage.getItem("id")
+  document.getElementById("TrangDangNhap").hidden=true  
+  if(password&&use){
+    fetch(urluser+use)
+    .then(response => response.json())
+    .then(data =>{
+    if(password==data.Password){
+      if(data.PhanQuyen!=="LeTan"&&data.PhanQuyen!=="admin"){$('#fonmid').hide();}
+      document.getElementById("TrangDangNhap").hidden=false
+      document.getElementById("name").innerHTML =  localStorage.getItem("userName")}else{ 
+        document.getElementById("TrangDangNhap").hidden=true  
+      }
+  })
+  }
+}
+
+
+   
+// Open and close the sidebar on medium and small screens
+function w3_open() {
+  document.getElementById("mySidebar").style.display = "block";
+  document.getElementById("myOverlay").style.display = "block";
+}
+
+function w3_close() {
+  document.getElementById("mySidebar").style.display = "none";
+  document.getElementById("myOverlay").style.display = "none";
+}
+
+// Change style of top container on scroll
+window.onscroll = function() {myFunction()};
+function myFunction() {
+  if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+    document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+    document.getElementById("myIntro").classList.add("w3-show-inline-block");
+  } else {
+    document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+    document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+  }
+}
+
+// Accordions
+function myAccordion(id) {
+  var x = document.getElementById(id);
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+    x.previousElementSibling.className += " w3-theme";
+  } else { 
+    x.className = x.className.replace("w3-show", "");
+    x.previousElementSibling.className = 
+    x.previousElementSibling.className.replace(" w3-theme", "");
+  }
+}
+</script>
+     
+</body>
+</html> 

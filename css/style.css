@@ -1,0 +1,142 @@
+
+.vis-today{
+background-color:  #363945;
+border-color: red;
+color: white;
+}
+
+   .vis-item.green {
+ background-color: greenyellow;
+ border-color: green;
+}
+ .vis-item.orange {
+ background-color: gold;
+ border-color: orange;
+}
+   .DangSuaChua{
+  color: #00ff00;
+}  
+  .DungCongViec{
+   color: #ff4d4d;
+  }
+  DangTiepNhan{
+   color: #00bfff;
+  }
+  ChuanBiTiep{
+   color: #bf00ff;
+  }
+  .special {
+ font-weight: bold !important;
+ color: #fff !important;
+ background: #bc0000 !important;
+ text-transform: uppercase;
+}
+
+   .note1{  color: red;}
+   .note2{  color: #bf00ff;}
+
+
+
+  
+   .items-panel {
+       display: flex;
+       justify-content: space-around;
+       
+   }
+
+   .vis-labelset .vis-label {
+   position: relative;
+   left: 0;
+   top: 0;
+   width: 100%;
+   color: white;
+   box-sizing: border-box;
+}
+   .vis-timeline {
+     border: 2px solid black;
+     font-family:  purisa, 'comic sans', cursive;
+     font-size: 10pt;
+     background-color:  #363945;
+     font-weight: bold;
+     color :white;
+   }
+   .vis-item {
+     border-color: #F991A3;
+     font-family: Arial, sans-serif;
+     background-color: pink;
+     font-size: 10pt;
+     box-shadow: 5px 5px 20px rgba(128,128,128, 0.5);
+   }
+.vis-item.green.vis-selected  {
+         background-color: #9e9b78;
+         border-color: #9d9b95;
+         z-index: 2;
+         }
+.vis-item.orange.vis-selected  {
+         background-color: #9e9b78;
+         border-color: #9d9b95;
+         z-index: 2;
+         }
+  
+.vis-selected  {
+ background-color: red;
+ border-color: green;
+ font-weight: bold;
+  color: white;
+}
+   .vis-item.green {
+ background-color: greenyellow;
+ border-color: green;
+ font-weight: bold;
+  color: black;
+}
+.vis-item.red {
+background-color: red;
+ border-color: darkred;
+ color: white;
+ }
+.vis-item.magenta {
+ background-color: magenta;
+ border-color: purple;
+ color: white;
+}
+
+ .vis-item.orange {
+ background-color: #ffd966;
+ border-color: orange;
+ color: black;
+ font-weight: bold;
+}
+input:invalid {
+ border-color: red;
+}
+input:valid {
+ background: lightgreen;
+}
+select:valid {
+ background: lightgreen;
+}
+ select:invalid {
+ border-color: red;
+}
+textarea:valid {
+ background: lightgreen;
+}
+ textarea:invalid {
+ border-color: red;
+}
+.DaGiao {
+ float: left;
+ width: 30px;
+ height: 30px;
+ margin: 1px;
+ border: 3px solid #73AD21;
+}  
+ .vis-time-axis .vis-text {
+   position: absolute;
+   color: white;
+   padding: 3px;
+   overflow: hidden;
+   box-sizing: border-box;
+   white-space: nowrap;
+}
