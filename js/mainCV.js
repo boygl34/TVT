@@ -217,14 +217,26 @@ function dataTableTiepNhan(){
           TDRaKhoicong: TimesClick(),
           TrangThaiXuong: "09 Đã Giao Xe"
         }
-  
-  var MaSo = $('#MaSo').val()
-  postData(json3,urlTX+"/"+checkID(MaSo),"PATCH")
-  var ojb =  useCaher
-    for(var a in ojb){
-    if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
-    postData(json2,urlDG,"POST")
-    deleteData(urlTX+"/"+json2.id )
+          var MaSo = $('#MaSo').val()
+        fetch(urlTX+"/"+checkID(MaSo), {
+          method: "PATCH", // or 'PUT'
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(json3),
+          })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+          getData(urlTX)
+          $("#message").html("<div class='alert alert-success'>Thành Công</div>")
+          document.getElementById("NutNhan").innerHTML = ""
+          document.getElementById("myForm").reset() 
+          postData(data,urlDG,"POST")
+          deleteData(urlTX+"/"+data.id )
+          })
+          .catch((error) => {
+          console.error('Error:', error);
+          });
+ 
   }
 
 

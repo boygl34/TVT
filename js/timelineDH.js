@@ -141,6 +141,7 @@ function loadData () {//Load du lieu cho time line co
   }
 
   function datadathen(r){
+    try{
     var start =DoiNgayDangKy(r.ThoiGianHen)
     var edit  = false;
     var mau1 = "green";
@@ -183,5 +184,8 @@ function loadData () {//Load du lieu cho time line co
             content: Kytu +r.BienSoXe +"<br>"+r.CoVanDichVu+"<br>"+PhanLoai
             });    
           } 
+        }catch(error) {
+          alert("Lỗi : "+error)
+        }
 }
 

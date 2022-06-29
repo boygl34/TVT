@@ -1,21 +1,13 @@
-DELETE  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/195
+DELETE  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/198
 ###
 PATCH  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/167
 {
   "MaSo":"TVT20220629_72A-325.22"
   }
 ###
-POST https://fluffy-iris-selenium.glitch.me/XeDaGiao
 
-{"NhomCV":{["Toàn","Tài","Rôn","Mẫn","Sang","Vinh","Triêng","Lộc","Sang"]}}
-####
+GET  https://fluffy-iris-selenium.glitch.me/XeTrongXuong?MaSo=
 
-GET  https://fluffy-iris-selenium.glitch.me/User
-####
 
-POST https://fluffy-iris-selenium.glitch.me/User
-  {
-    "user":"Boygl34",
-    "useName":"Võ Chính Trực",
-    "PhanQuyen":"admin",
-    "BoPhan":"Dịch Vụ"}
+###
+GET  https://fluffy-iris-selenium.glitch.me/XeDaGiao
