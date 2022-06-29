@@ -1,7 +1,9 @@
-DELETE  https://fluffy-iris-selenium.glitch.me/XeDaGiao/10
+DELETE  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/169
 ###
-POST  https://script.google.com/macros/s/AKfycbyLjKopyyQbvogd9WNWVIVJYYnGxrQNwQ-coP1cTVT1vXPzf-VNlXV8nhUHzogBm09m/exec
-
+PATCH  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/167
+{
+  "MaSo":"TVT20220629_72A-325.22"
+  }
 ###
 POST https://fluffy-iris-selenium.glitch.me/XeDaGiao
 
