@@ -75,7 +75,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
         if(r.KhachRuaXe=="Rửa Xe"){
           items.add({
             className: mau,
-            id:  r.BienSoXe_+"RuaXe"  ,
+            id:  r.BienSoXe+"_RuaXe"  ,
             group: "Rửa Xe",
             start: end,
             end: endRX,
