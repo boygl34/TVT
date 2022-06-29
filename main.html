@@ -258,6 +258,42 @@ section .noi-dung .form .icon-dang-nhap li{
 
 
 <script>
+
+
+var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
+var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
+
+function DoiNgayDangKy(ngayhen){
+  var aa
+  if(ngayhen){
+    var Thang =ngayhen.slice(3,5)
+    var Ngay = ngayhen.slice(0,2)
+    var Nam = ngayhen.slice(6,10)
+    var Gio = ngayhen.slice(11,13)
+    var Phut = ngayhen.slice(14,16)
+    var ThoiGianMoi = Nam+"-"+Thang+"-"+Ngay+"T"+Gio+":"+Phut+":00Z"
+     var aa= new Date(ThoiGianMoi)
+     aa= new Date(aa-7*60*60*1000)}
+     return aa ;
+    }
+getData(urlTX)
+function getData(url){
+  fetch(url)
+  .then(response => response.json())
+  .then(data =>{
+    useCaher=data
+    data.forEach(r => {
+      if( r.ThoiGianHen){r.ThoiGianHen = DoiNgayDangKy(r.ThoiGianHen)}
+      if( r.TDBDTiepKhach){r.TDBDTiepKhach = DoiNgayDangKy(r.TDBDTiepKhach)}
+      if(r.TDGapLeTan){r.TDGapLeTan = DoiNgayDangKy(r.TDGapLeTan)}
+    });
+    console.log(data)
+  } );
+}
+
+
+
+
   
   checkdangnhap()
 

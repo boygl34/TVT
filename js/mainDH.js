@@ -169,7 +169,7 @@ function DanhSachCoVan2() {
           if(thoigiandathen>30&&thoigiandathen<=120){ khachhen = "Hẹn Vãn Lai"}
           if($('#LoaiHinhSuaChua').val()=="SCC"){$('#ThoiGianHen').val(TimesClick(DoiNgayDangKy($('#ThoiGianHen').val()).setMinutes(0) ))}
           var json2 = {
-                       MaSo:$('#MaSo').val(),
+                       MaSo:MaSohen,
                        BienSoXe: $('#BienSoXe').val(),
                        TenKH: $('#TenKH').val(),
                        SoDT: $('#SoDT').val(),
