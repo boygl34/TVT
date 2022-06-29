@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  
+	<base target="_top">
+	<!--INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES-->
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+
+  
+  <style>
+
+    
+    .DangRuaXe{
+   color: #00ff00;
+}  
+   .ChoRuaXe{
+    color: #ff6d01;
+   }
+    #tablehen   td {
+   font-size: 30px;
+  vertical-align: middle;
+  text-align: left  ;
+   border: 1px solid black;
+  border-bottom: 1px solid blue;
+  margin: auto;
+}
+   #tablehen td:nth-child(8) {
+        width: 1%;
+        font-size: 1px;
+    } 
+     #tablehen td:nth-child(5) {
+        width: 7%;
+        font-size: 14px;
+    } 
+    #tablehen td:nth-child(4) {
+        width: 7%;
+        font-size: 14px;
+    } 
+    #tablehen td:nth-child(3) {
+        width: 4%;
+        font-size: 14px;
+    } 
+  #tablehen td:nth-child(2) {
+        
+        font-size: 50px;
+    } 
+  table.dataTable thead {background-color:#1155cc;
+  font-size: 18px;}
+  
+  
+  </style>
+</head>
+
+<body style="background-color:black;">
+  
+   
+    <div id = "tablehen">
+      <h1 style="font-weight:bold;text-align:center;color:white;" id = "tieude">THÔNG TIN RỬA XE  </h1>
+			<table id="data-table"  onclick = "clickTableTiepNhan()" class=" table table-dark  table-sm table-hover  row-border"style="text-align:left;vertical-align: middle;font-weight:bold;width:98%;background-color:black">
+			 <thead>
+                <tr >
+                  <th style=" width: 15%;">But</th>
+                  <th style=" width:15%;">Biển Số</th>
+                  <th style=" width: 4%;">Cố Vấn</th>
+                  <th style=" width: 4%;">Khách Đợi</th>
+                  <th style=" width: 7%;">T Thái</th>
+                  <th style=" width: 5%;">Giờ KT</th>
+                  <th style=" width: 5%;">Giờ Giao</th>
+                  <th ></th>
+                 
+                </tr>
+              </thead>
+              <tbody id="table-body-RuaXe"   >
+              </tbody>
+            </table>
+			</table>
+    </div>    
+
+    <script>
+        var useCaher
+ var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
+ var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
+getData(urlTX)
+ setInterval(function (){getData(urlTX)},60000);
+  //DanhSachCoVan();
+ function getData(url){
+   fetch(url)
+   .then(response => response.json())
+   .then(data =>{
+     useCaher=data
+     showData ()
+   } );
+ }
+
+
+ function postData(data,url,methor){
+     fetch(url, {
+     method: methor, // or 'PUT'
+     headers: {'Content-Type': 'application/json'},
+     body: JSON.stringify(data),
+     })
+     .then(response => response.json())
+     .then(data => {
+     getData(urlTX)
+     })
+     .catch((error) => {
+     console.error('Error:', error);
+     });
+ }
+
+
+ function deleteData(url){
+   fetch(url, {
+   method: "DELETE", // or 'PUT'
+   headers: {'Content-Type': 'application/json'},
+   })
+   .then(response => response.json())
+   .then(data => {
+   getData(urlTX)
+   })
+   .catch((error) => {
+   console.error('Error:', error);
+   });
+}
+
+
+
+function checkID(MaSo){
+ var ojb =  useCaher
+ for(var a in ojb){
+   if(ojb[a].MaSo == MaSo){return ojb[a].id }
+}
+}
+       
+       function showData(use){
+         var dataArray =  useCaher
+         var dataArray0= dataArray.filter(function(r){return r.KhachRuaXe==="Rửa Xe"})
+         var dataArray0= dataArray0.filter(function(r){return r.TrangThaiXuong!=="08 Chờ Giao Xe"})
+         dataArray0.sort(function(a, b) {return (a.TrangThaiXuong.toLowerCase() < b.TrangThaiXuong.toLowerCase() ? 1 : -1);})
+         console.log(dataArray0)
+          var tbodyTim = document.getElementById('table-body-RuaXe')
+          tbodyTim.innerHTML=""
+              dataArray0.forEach(function(r){
+       
+                 var row = document.createElement("tr"); 
+                 var tbodyTim = document.getElementById('table-body-RuaXe')
+       
+                 var ColNutNhan = document.createElement("td");
+                 ColNutNhan.innerHTML = ""
+                  if(r.TrangThaiXuong=="06 Chờ Rửa Xe"){ColNutNhan.innerHTML="<button type='button' class='btn btn-danger btn-xs deleteBtn' onclick='HuyRuaXe(this);'>Delete!</button>&ensp;<button type='button' class='btn btn-success btn-xs deleteBtn' onclick='BatDauRuaXe(this);'>Start!</button>";
+                  row.setAttribute('class', 'ChoRuaXe')}
+                  if(r.TrangThaiXuong=="07 Đang Rửa Xe"){ColNutNhan.innerHTML="<button type='button' class='btn btn-danger btn-xs deleteBtn' onclick='HuyRuaXe(this);'>Delete!</button>&ensp;<button type='button' class='btn btn-warning btn-xs deleteBtn' onclick='KetThucRuaXe(this);'>End!</button>";
+                  row.setAttribute('class', 'DangRuaXe')}
+       
+                     
+                     row.appendChild(ColNutNhan);
+                 var ColBienSo = document.createElement("td");
+                     ColBienSo.innerHTML = r.BienSoXe
+                     row.appendChild(ColBienSo);
+                 var ColCoVan = document.createElement("td");
+                     ColCoVan.innerHTML = r.CoVanDichVu
+                     row.appendChild(ColCoVan);  
+                 var ColKhachDoi= document.createElement("td");
+                     if(r.KhachHangDoi=="Khách Đợi"){
+                     ColKhachDoi.innerHTML = r.KhachHangDoi}else{ColKhachDoi.innerHTML=""}
+                     row.appendChild(ColKhachDoi); 
+                 var ColTrangThai= document.createElement("td");
+                     ColTrangThai.innerHTML = r.TrangThaiXuong
+                     
+                     row.appendChild(ColTrangThai);  
+                 var ColKTSC= document.createElement("td");
+                 if(r.TimeEndGJ){
+                     ColKTSC.innerHTML = Doingay(DoiNgayDangKy(r.TimeEndGJ))}
+                     row.appendChild(ColKTSC);  
+                 var ColGiaoXe= document.createElement("td");
+                     ColGiaoXe.innerHTML = Doingay(DoiNgayDangKy(r.TDHenGiaoXe))
+                     row.appendChild(ColGiaoXe);
+                 var ColMS= document.createElement("td");
+                     ColMS.innerHTML = r.MaSo
+                     row.appendChild(ColMS);                     
+               tbodyTim.appendChild(row)  
+               $("#tieude").html("THÔNG TIN RỬA XE "+new Date().toLocaleTimeString().slice(0,5))
+             })
+           ;} 
+       
+
+       function DoiNgayDangKy(ngayhen){
+            var aa
+            if(ngayhen){
+                var Thang =ngayhen.slice(3,5)
+                var Ngay = ngayhen.slice(0,2)
+                var Nam = ngayhen.slice(6,10)
+                var Gio = ngayhen.slice(11,13)
+                var Phut = ngayhen.slice(14,16)
+                var ThoiGianMoi = Nam+"-"+Thang+"-"+Ngay+"T"+Gio+":"+Phut+":00Z"
+                var aa= new Date(ThoiGianMoi)
+                aa= new Date(aa-7*60*60*1000)}
+                return aa ;
+    }
+       
+         function BatDauRuaXe(el) {
+             var recordId = el.parentNode.parentNode.cells[7].innerHTML;
+             var json2 = {
+                   TimeStartWash: TimesClick(),
+                   TrangThaiXuong: "07 Đang Rửa Xe",
+                 }
+             el.parentNode.parentNode.cells[0].innerHTML="<div class='alert alert-warning'>Đang Bắt Đầu</div>"
+             postData(json2,urlTX+"/"+checkID(recordId),"PATCH")
+         }
+         function KetThucRuaXe(el) {
+          var recordId = el.parentNode.parentNode.cells[7].innerHTML;
+             var json2 = {
+                   TimeEndWash: TimesClick(),
+                   TrangThaiXuong: "08 Chờ Giao Xe",
+                 }
+             el.parentNode.parentNode.cells[0].innerHTML="<div class='alert alert-warning'>Đang Kết Thúc</div>"
+             postData(json2,urlTX+"/"+checkID(recordId),"PATCH")
+         }
+         function HuyRuaXe(el) {
+           var result = confirm("Bạn Muốn Hủy Rửa Xe ? "+  el.parentNode.parentNode.cells[1].innerHTML);
+           if (result) {
+             var recordId = el.parentNode.parentNode.cells[7].innerHTML;
+             var json2 = {
+                   TimeEndWash: TimesClick(),
+                   TrangThaiXuong: "08 Chờ Giao Xe",
+                 }
+               
+             el.parentNode.parentNode.cells[0].innerHTML="<div class='alert alert-warning'>Đang Hủy</div>"
+             postData(json2,urlTX+"/"+checkID(recordId),"PATCH")
+           }
+         }
+       function Doingay(use){
+       use=new Date(use)
+       var Thang =use.getMonth()+1
+       var Ngay = use.getDate()
+       var Nam = use.getFullYear()
+       var Gio = use.getHours()
+       var Phut = use.getMinutes()
+       if (Thang<10){Thang="0"+Thang}
+       if (Ngay<10){Ngay="0"+Ngay}
+       if (Gio<10){Gio="0"+Gio}
+       if (Phut<10){Phut="0"+Phut}
+       var ThoiGian = Ngay+"/"+Thang+" "+Gio+":"+Phut
+       
+       return ThoiGian}
+       function TimesClick(data){
+         if(data){var  use=new Date(data);}else{var  use=new Date()}
+           var useinfo = {}
+           var Thang =use.getMonth()+1;
+           var Ngay = use.getDate();
+           var Nam = use.getFullYear();var Gio = use.getHours();
+           var Phut = use.getMinutes();
+           if (Thang<10){Thang="0"+Thang};
+           if (Ngay<10){Ngay="0"+Ngay};
+           if (Gio<10){Gio="0"+Gio};
+            if (Phut<10){Phut="0"+Phut}
+       return Ngay+"/"+Thang+"/"+Nam+" "+Gio+":"+Phut+":00"
+       }
+       
+       </script>
+     
+     
+     
+
+</body>
+
+</html>
