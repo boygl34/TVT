@@ -478,10 +478,10 @@ function showData(use){
        return aa ;
       }
 var recognition = new webkitSpeechRecognition();
-    recognition.continuous = false;
-    recognition.lang = 'vi-VN';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
+    recognition.continuous = true;
+   // recognition.lang = 'vi-VN';
+    //recognition.interimResults = false;
+   // recognition.maxAlternatives = 1;
 
 
 	function start(){
