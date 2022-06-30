@@ -1,0 +1,117 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>JavaScript example</title>
+		<meta charSet="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+		<style media="only screen">
+            html, body {
+                height: 100%;
+                width: 100%;
+                margin: 0;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            html {
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 0;
+                overflow: auto;
+            }
+
+            body {
+                padding: 1rem;
+                overflow: auto;
+            }
+        </style>
+	</head>
+	<body>
+		<div id="myGrid" style="height: 100%" class="ag-theme-alpine-dark">
+		</div>
+		<script>var __basePath = './';</script>
+		<script src="https://unpkg.com/ag-grid-enterprise@27.3.0/dist/ag-grid-enterprise.min.js">
+		</script>
+		<script >
+            const gridOptions = {
+  columnDefs: [
+    { field: 'BienSoXe', minWidth: 120 },
+    { field: 'CoVanDichVu', minWidth: 100 },
+    { field: 'TrangThaiXuong' },
+    { field: 'TenKH', minWidth: 200 },
+    { field: 'ThoiGianHen' },
+    { field: 'TrangThaiHen' },
+    { field: 'EmailHen' },
+  ],
+
+  defaultColDef: {
+sortable: true,
+    flex: 1,
+    minWidth: 100,
+  },
+
+  // use the server-side row model instead of the default 'client-side'
+  rowModelType: 'serverSide',
+};
+
+// setup the grid after the page has finished loading
+document.addEventListener('DOMContentLoaded', function () {
+  var gridDiv = document.querySelector('#myGrid');
+  new agGrid.Grid(gridDiv, gridOptions);
+
+  fetch('https://fluffy-iris-selenium.glitch.me/XeTrongXuong')
+    .then((response) => response.json())
+    .then(function (data) {
+      // setup the fake server with entire dataset
+      var fakeServer = createFakeServer(data);
+
+      // create datasource with a reference to the fake server
+      var datasource = createServerSideDatasource(fakeServer);
+
+      // register the datasource with the grid
+      gridOptions.api.setServerSideDatasource(datasource);
+    });
+});
+
+function createServerSideDatasource(server) {
+  return {
+    getRows: (params) => {
+      console.log('[Datasource] - rows requested by grid: ', params.request);
+
+      // get data for request from our fake server
+      var response = server.getData(params.request);
+
+      // simulating real server call with a 500ms delay
+      setTimeout(function () {
+        if (response.success) {
+          // supply rows for requested block to grid
+          params.success({ rowData: response.rows });
+        } else {
+          params.fail();
+        }
+      }, 500);
+    },
+  };
+}
+
+function createFakeServer(allData) {
+  return {
+    getData : (request) => {
+      // take a copy of the data to return to the client
+      var requestedRows = allData.slice();
+
+      return {
+        success: true,
+        rows: requestedRows,
+      };
+    },
+  };
+}
+
+		</script>
+	</body>
+</html>
