@@ -78,7 +78,7 @@
           changvalue()
            DanhSachCoVan()
             changvalue()
-          if(localStorage.getItem("userName")===$('#NguoiDatHen').val()||$('#Email').val()==emailnhanvienhen){
+          if(localStorage.getItem("userName")===$('#NguoiDatHen').val()||localStorage.getItem("userName")==emailnhanvienhen){
           if($("#TrangThaiXuong").val()=="00 Có Hẹn"){
           $("#buttonDK").html("<button  type='button' class='btn btn-primary me-2' onclick='CapNhatHen()'>Cập Nhật!</button>")}else{$("#buttonDK").html("")}
           $("#CuocGoi").html("<a href='tel:+84"+$('#SoDT').val()+"' class='col-sm-7'>Click để Gọi</a>")
