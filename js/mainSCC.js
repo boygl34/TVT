@@ -477,35 +477,42 @@ function showData(use){
        aa= new Date(aa-7*60*60*1000)}
        return aa ;
       }
-var recognition = new webkitSpeechRecognition();
-    recognition.continuous = true;
-   // recognition.lang = 'vi-VN';
-    //recognition.interimResults = false;
-   // recognition.maxAlternatives = 1;
+      const SpeechRecognition = window.SpeechRecognition || webkitSpeechRecognition;
 
+ var recognition = new SpeechRecognition();
+recognition.onaudioend = function() {
+  
+      console.log('Audio capturing ended');
+    }
+      recognition.continuous = false;
+      recognition.lang = 'vi-VN';
+      recognition.interimResults = true;
+      //recognition.maxAlternatives = 1;
 
 	function start(){
+    document.getElementById('textbienso').innerHTML="";
 		recognition.onresult = function(event) { 
-
-			
-			for(var i=0; i<event.results.length; i++){
-                var value =  event.results[i][0].transcript;
+                var value =  event.results[0][0].transcript;
+           
+                document.getElementById('bStart').innerHTML="Stop"
+                 document.getElementById('textbienso').innerHTML=suabiensospeech(value)
                 for(i in useCaher){
                    var a = suabiensospeech(useCaher[i].BienSoXe).indexOf(suabiensospeech(value))
                   if(a>0){
-                    document.getElementById('FormSCC').reset()
-         $('#ModalSCC').modal('show')
-          document.getElementById("BienSoXe").value=useCaher[i].BienSoXe
-          changvalue()
-          timeSuaChua()
-                    
+                      document.getElementById('FormSCC').reset()
+                      $('#ModalSCC').modal('show')
+                      document.getElementById("BienSoXe").value=useCaher[i].BienSoXe
+                      changvalue()
+                      timeSuaChua()
+                      recognition.stop() 
                   }
-                }
-                recognition.stop() 
-			} 
-		}
+                } recognition.stop()
+              }
 		recognition.start();
 	}
+  
+
+
   function suabiensospeech(myValue) {
     var myValue2 = myValue.toUpperCase()
     myValue = myValue2.replaceAll (" ","")
