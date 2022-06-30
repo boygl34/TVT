@@ -1,52 +1,20 @@
     var container = document.getElementById('mytimeline');
     var container2 = document.getElementById('mytimeline2');
-    var container3 = document.getElementById('mytimeline3');
-    var container4 = document.getElementById('mytimeline4');
-    var container5 = document.getElementById('mytimeline5');
-    var container6 = document.getElementById('mytimeline6');
     var groups = new vis.DataSet();
-    
     var items = new vis.DataSet();
     var newitems = new vis.DataSet();
-    
     for(a in NhomDH){groups.add({id: NhomDH[a],content: NhomDH[a]})}
     var option2={
-        clickToUse:true,
-        zoomable:false, 
-        start:(new Date(1000 * 60 * 60 * 24 + (new Date()).valueOf())).setHours(6),
-        end: (new Date(1000 * 60 * 60 * 24 + (new Date()).valueOf())).setHours(17),
-      }
-    var option3={
-        clickToUse:true,
-        zoomable:false, 
-        start:(new Date(1000 * 60 * 60 * 24*2 + (new Date()).valueOf())).setHours(6),
-        end: (new Date(1000 * 60 * 60 * 24*2 + (new Date()).valueOf())).setHours(17),
-      }
-    var option4={
-        clickToUse:true,
-        zoomable:false, 
-        start:(new Date(1000 * 60 * 60 * 24*3 + (new Date()).valueOf())).setHours(6),
-        end: (new Date(1000 * 60 * 60 * 24*3 + (new Date()).valueOf())).setHours(17),
-      }
-    var option5={
-        clickToUse:true,
-        zoomable:false, 
-        start:(new Date(1000 * 60 * 60 * 24*4 + (new Date()).valueOf())).setHours(6),
-        end: (new Date(1000 * 60 * 60 * 24*4 + (new Date()).valueOf())).setHours(17),
-      }
-    var option6={
-        clickToUse:true,
-        zoomable:false, 
-        start:(new Date(1000 * 60 * 60 * 24*5 + (new Date()).valueOf())).setHours(6),
-        end: (new Date(1000 * 60 * 60 * 24*5+ (new Date()).valueOf())).setHours(17),
+      start:(new Date( (new Date()).valueOf())).setHours(12),
+      end: (new Date( (new Date()).valueOf())).setHours(17),
       }
     var options = {         
         hiddenDates: [{ start: '2017-03-05 00:00:00',end: '2017-03-06 00:00:00',repeat: 'weekly'},
                       { start: '2017-03-04 17:00:00',end: '2017-03-05 08:00:00',repeat: 'daily'},
                       { start: '2017-03-04 12:00:00',end: '2017-03-04 13:00:00',repeat: 'daily'}], 
         editable: true,
-        autoResize:false,
-        //zoomable:false, 
+        autoResize:true,
+        zoomable:false, 
         onAdd: function (item, callback) {
           $("#CoVanDichVu").html("")
           getData(urlTX)
@@ -101,31 +69,21 @@
         },
         margin: {
           item: 0,  // distance between items
-          axis: 2 ,  // distance between items and the time axis
+          axis: 2,  // distance between items and the time axis
         },
         start:(new Date( (new Date()).valueOf())).setHours(6),
-        end: (new Date( (new Date()).valueOf())).setHours(17),
+        end: (new Date( (new Date()).valueOf())).setHours(12),
         timeAxis: {scale: 'minute', step: 30},
         orientation: 'top',
         };
     var timeline = new vis.Timeline(container, items,groups, options);
     var timeline2 = new vis.Timeline(container2, items,groups, options);
-    var timeline3 = new vis.Timeline(container3, items,groups, options);
-    var timeline4 = new vis.Timeline(container4, items,groups, options);
-    var timeline5 = new vis.Timeline(container5, items,groups, options);
-    var timeline6 = new vis.Timeline(container6, items,groups, options);
     timeline2.setOptions(option2);
-    timeline3.setOptions(option3)
-    timeline4.setOptions(option4)
-    timeline5.setOptions(option5)
-    timeline6.setOptions(option6)
+    
 function redraw(){
   timeline.redraw()
   timeline2.redraw()
-  timeline3.redraw()
-  timeline4.redraw()
-  timeline5.redraw()
-  timeline6.redraw()
+  
    
 }
 
@@ -188,4 +146,15 @@ function loadData () {//Load du lieu cho time line co
           alert("Lỗi : "+error)
         }
 }
-
+function changdate(value){
+var option2={
+  start:(new Date( (new Date(value)).valueOf())).setHours(12),
+  end: (new Date( (new Date(value)).valueOf())).setHours(17),
+  }
+  var option1={
+    start:(new Date( (new Date(value)).valueOf())).setHours(8),
+    end: (new Date( (new Date(value)).valueOf())).setHours(12),
+    }
+    timeline2.setOptions(option2);
+    timeline.setOptions(option1);
+}
