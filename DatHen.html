@@ -43,7 +43,7 @@ body {font-family: "Roboto", sans-serif}
 <div class="w3-main" style="margin-left:150px;">
 <div id="myTop" class="w3-container w3-top w3-theme w3-small">
   <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-large" onclick="w3_open()"></i>
-  <span id="myIntro" class="w3-hide">Dịch Vụ Toyota Vũng Tàu</span></p><input  type="date" onchange="changdate(this.value)">
+  <span id="myIntro" class="w3-hide">Dịch Vụ Toyota Vũng Tàu</span></p><input id="datefield" type="date" onchange="changdate(this.value)">
 </div>
 <header class="w3-container w3-theme" style="padding:10px 20px">
   <h1 class="w3-xlarge">Đặt Hẹn </h1>
@@ -249,6 +249,21 @@ function myAccordion(id) {
     x.previousElementSibling.className.replace(" w3-theme", "");
   }
 }
+
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("datefield").setAttribute("min", today);
+
 </script>
      
 </body>
