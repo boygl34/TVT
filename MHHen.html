@@ -92,45 +92,8 @@ getData(urlTX)
                       { start: '2017-03-04 17:00:00',end: '2017-03-05 08:00:00',repeat: 'daily'},
                       { start: '2017-03-04 12:00:00',end: '2017-03-04 13:00:00',repeat: 'daily'}], 
         editable: true,
-        autoResize:false,
+        autoResize:true,
         //zoomable:false, 
-        onAdd: function (item, callback) {
-          $("#CoVanDichVu").html("")
-          getData(urlTX)
-          if(item.start.getMinutes()>=0&&item.start.getMinutes()<30){item.start.setMinutes(0)}else{item.start.setMinutes(30)}
-          //if(item.group=="SCC"){item.start.setMinutes(0)}
-          document.getElementById('FormSCC').reset()
-          $('#ModalSCC').modal('show')
-          document.getElementById('NguoiDatHen').disabled=true;
-          $("#ThoiGianHen").val(TimesClick(item.start))
-          DanhSachCoVan2()
-          $("#buttonDK").html("<button  type='button' class='btn btn-primary me-2' onclick='DangKyHen()'>Đăng Ký!</button>")
-        },
-        onMove: function (item, callback) {
-          let text = "Thay Đổi Giờ Hen "+item.id;
-          if (confirm(text) == true) { ;
-          if(item.start.getMinutes()>=0&&item.start.getMinutes()<30){item.start.setMinutes(0)}else{item.start.setMinutes(30)}
-          if(item.group=="SCC"){item.start.setMinutes(0)}
-          if((new Date().getTime()>item.start.getTime())){alert("Sai thời Gian");loadData();return false}
-          CapNhatHenKeo(item.id,TimesClick(item.start))} else {loadData()}
-        },
-        onUpdate: function (item, callback) {
-          getData(urlTX)
-          $("#CoVanDichVu").html("")
-          $('#ModalSCC').modal('show');
-          document.getElementById('FormSCC').reset()
-          document.getElementById('NguoiDatHen').disabled=false;
-          if(localStorage.getItem("userName")==emailnhanvienhen){document.getElementById('TrangThaiHen').disabled=false}
-          $('#MaSo').val(item.id);
-          changvalue()
-           DanhSachCoVan()
-            changvalue()
-          if(localStorage.getItem("userName")===$('#NguoiDatHen').val()||localStorage.getItem("userName")==emailnhanvienhen){
-          if($("#TrangThaiXuong").val()=="00 Có Hẹn"){
-          $("#buttonDK").html("<button  type='button' class='btn btn-primary me-2' onclick='CapNhatHen()'>Cập Nhật!</button>")}else{$("#buttonDK").html("")}
-          $("#CuocGoi").html("<a href='tel:+84"+$('#SoDT').val()+"' class='col-sm-7'>Click để Gọi</a>")
-          }else{$("#buttonDK").html("")}
-        },
         stack: true,
         verticalScroll: true,
         zoomKey: 'ctrlKey',
