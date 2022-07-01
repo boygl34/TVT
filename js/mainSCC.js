@@ -508,7 +508,7 @@ recognition.onaudioend = function() {
                       recognition.stop() 
                   }
                 } recognition.stop()
-                alert("Không Thấy Biển Số")
+               
               }
 		recognition.start();
 	}
