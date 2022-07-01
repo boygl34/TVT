@@ -195,9 +195,9 @@ function getValueALL(){
            // tieude.innerHTML = "Cố Vấn "+ Doingay()
     var dataArray =  useCaher
     var dataArray0= dataArray.filter(function(r){return ((r.TrangThaiXuong==="02 Chờ Tiếp Nhận"||r.TrangThaiXuong==="02 Chuẩn Bị Tiếp"||r.TrangThaiXuong==="03 Đang Tiếp Nhận"))})
-  
-   dataArray0=  dataArray0.sort(function(a, b) {return (a.TDGapLeTan.toLowerCase() < b.TDGapLeTan.toLowerCase() ? 1 : -1);})
-    dataArray0= dataArray0.sort(function(a, b) {return (a.TrangThaiXuong.toLowerCase() < b.TrangThaiXuong.toLowerCase() ? 1 : -1);})
+    
+   dataArray0=  dataArray0.sort(function(a, b) {return (new Date(DoiNgayDangKy(a.ThoiGianHen)).valueOf()> new Date(DoiNgayDangKy(b.ThoiGianHen)).valueOf() ? 1 : -1);}) 
+    dataArray0= dataArray0.sort(function(a, b) {return (a.TrangThaiXuong.toLowerCase() > b.TrangThaiXuong.toLowerCase() ? 1 : -1);})
     var tbodyTim = document.getElementById('table-body-Tim-xe')
      tbodyTim.innerHTML=""
   
