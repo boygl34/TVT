@@ -235,10 +235,12 @@ function dataTableTiepNhan(){
             url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
             method: "GET",
             mode: 'no-cors',
+            credentials: 'omit', 
+            referrerPolicy: 'no-referrer',
             dataType: "json",
             data: data
         });
-        
+
           postData(data,urlDG,"POST")
           deleteData(urlTX+"/"+data.id )
           })
@@ -281,28 +283,48 @@ function dataTableTiepNhan(){
   
     
   function changvalue(){
-      var ojb =  useCaher 
-      for(var a in ojb){
-      document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="DangKyXeDongSon()" >Đăng Ký DS</button>'
-          if(ojb[a].BienSoXe == $("#BienSoXe").val()){
-      if(ojb[a].MaSo){	document.getElementById("MaSo").value = ojb[a].MaSo}
-      if(ojb[a].LoaiHinhSuaChua){document.getElementById("LoaiHinh").value = ojb[a].LoaiHinhSuaChua}                
-      if(ojb[a].LoaiHinhDongSon){document.getElementById("LoaiHinhBP").value = ojb[a].LoaiHinhDongSon}
-      if(ojb[a].KhachHangDoi){document.getElementById("KhachDoi").value = ojb[a].KhachHangDoi }  
-      if(ojb[a].KhachRuaXe){document.getElementById("KhachRX").value = ojb[a].KhachRuaXe } 
-      if(ojb[a].GhiChu){alert(ojb[a].GhiChu)}
-      if(ojb[a].TDHenGiaoXe){document.getElementById("NgayGiaoXe").value = TimesClick(DoiNgayDangKy( ojb[a].TDHenGiaoXe))} 
-      if( ojb[a].TrangThaiXuong =="02 Chờ Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
-      if( ojb[a].TrangThaiXuong =="02 Chuẩn Bị Tiếp"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
-      if( ojb[a].TrangThaiXuong =="03 Đang Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="KetThucTiepNhan()" >Kết Thúc Tiếp Nhận</button>'}
-      if( ojb[a].TrangThaiXuong =="08 Chờ Giao Xe"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button>'}
-      if( ojb[a].TrangThaiXuong =="04 Đã Tiếp Nhận"||ojb[a].TrangThaiXuong =="05 Dừng Công Việc"||ojb[a].TrangThaiXuong =="05 Đang Sửa Chữa"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
-      if( ojb[a].TrangThaiXuong =="00 Có Hẹn"){document.getElementById("NutNhan").innerHTML = ""}
-    if( ojb[a].LoaiHinhDongSon =="Báo Giá BH"&&ojb[a].TrangThaiXuong =="04 Đã Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button> <button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
-    if( ojb[a].LoaiHinhSuaChua =="Báo Giá SCC"&&ojb[a].TrangThaiXuong =="04 Đã Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button> <button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
-        return
-          }
-      }
+    fetch(urlTX+"?BienSoXe="+$("#BienSoXe").val())
+    .then(response => response.json())
+    .then(data =>{
+      data= data[0]
+      if(data.MaSo){	document.getElementById("MaSo").value = data.MaSo}
+      if(data.LoaiHinhSuaChua){document.getElementById("LoaiHinh").value = data.LoaiHinhSuaChua}                
+      if(data.LoaiHinhDongSon){document.getElementById("LoaiHinhBP").value =data.LoaiHinhDongSon}
+      if(data.KhachHangDoi){document.getElementById("KhachDoi").value =data.KhachHangDoi }  
+      if(data.KhachRuaXe){document.getElementById("KhachRX").value = data.KhachRuaXe } 
+      if(data.GhiChu){alert(data.GhiChu)}
+      if(data.TDHenGiaoXe){document.getElementById("NgayGiaoXe").value = TimesClick(DoiNgayDangKy( data.TDHenGiaoXe))} 
+      if( data.TrangThaiXuong =="02 Chờ Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
+      if( data.TrangThaiXuong =="02 Chuẩn Bị Tiếp"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
+      if(data.TrangThaiXuong =="03 Đang Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="KetThucTiepNhan()" >Kết Thúc Tiếp Nhận</button>'}
+      if( data.TrangThaiXuong =="08 Chờ Giao Xe"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button>'}
+      if( data.TrangThaiXuong =="04 Đã Tiếp Nhận"||data.TrangThaiXuong =="05 Dừng Công Việc"||data.TrangThaiXuong =="05 Đang Sửa Chữa"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
+      if( data.TrangThaiXuong =="00 Có Hẹn"){document.getElementById("NutNhan").innerHTML = ""}
+    if( data.LoaiHinhDongSon =="Báo Giá BH"&&data.TrangThaiXuong =="04 Đã Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button> <button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
+    if( data.LoaiHinhSuaChua =="Báo Giá SCC"&&data.TrangThaiXuong =="04 Đã Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button> <button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}  
+    } );
+    //   var ojb =  useCaher 
+    //   for(var a in ojb){
+    //   document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="DangKyXeDongSon()" >Đăng Ký DS</button>'
+    //       if(ojb[a].BienSoXe == $("#BienSoXe").val()){
+    //   if(ojb[a].MaSo){	document.getElementById("MaSo").value = ojb[a].MaSo}
+    //   if(ojb[a].LoaiHinhSuaChua){document.getElementById("LoaiHinh").value = ojb[a].LoaiHinhSuaChua}                
+    //   if(ojb[a].LoaiHinhDongSon){document.getElementById("LoaiHinhBP").value = ojb[a].LoaiHinhDongSon}
+    //   if(ojb[a].KhachHangDoi){document.getElementById("KhachDoi").value = ojb[a].KhachHangDoi }  
+    //   if(ojb[a].KhachRuaXe){document.getElementById("KhachRX").value = ojb[a].KhachRuaXe } 
+    //   if(ojb[a].GhiChu){alert(ojb[a].GhiChu)}
+    //   if(ojb[a].TDHenGiaoXe){document.getElementById("NgayGiaoXe").value = TimesClick(DoiNgayDangKy( ojb[a].TDHenGiaoXe))} 
+    //   if( ojb[a].TrangThaiXuong =="02 Chờ Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
+    //   if( ojb[a].TrangThaiXuong =="02 Chuẩn Bị Tiếp"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
+    //   if( ojb[a].TrangThaiXuong =="03 Đang Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="KetThucTiepNhan()" >Kết Thúc Tiếp Nhận</button>'}
+    //   if( ojb[a].TrangThaiXuong =="08 Chờ Giao Xe"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button>'}
+    //   if( ojb[a].TrangThaiXuong =="04 Đã Tiếp Nhận"||ojb[a].TrangThaiXuong =="05 Dừng Công Việc"||ojb[a].TrangThaiXuong =="05 Đang Sửa Chữa"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
+    //   if( ojb[a].TrangThaiXuong =="00 Có Hẹn"){document.getElementById("NutNhan").innerHTML = ""}
+    // if( ojb[a].LoaiHinhDongSon =="Báo Giá BH"&&ojb[a].TrangThaiXuong =="04 Đã Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button> <button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
+    // if( ojb[a].LoaiHinhSuaChua =="Báo Giá SCC"&&ojb[a].TrangThaiXuong =="04 Đã Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button> <button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
+    //     return
+    //       }
+    //   }
   }
 
 
