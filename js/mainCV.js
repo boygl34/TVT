@@ -230,6 +230,15 @@ function dataTableTiepNhan(){
           $("#message").html("<div class='alert alert-success'>Thành Công</div>")
           document.getElementById("NutNhan").innerHTML = ""
           document.getElementById("myForm").reset() 
+ 
+          $.ajax({
+            url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
+            method: "GET",
+            mode: 'no-cors',
+            dataType: "json",
+            data: data
+        });
+        
           postData(data,urlDG,"POST")
           deleteData(urlTX+"/"+data.id )
           })
@@ -238,8 +247,6 @@ function dataTableTiepNhan(){
           });
  
   }
-
-
 
 
 

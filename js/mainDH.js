@@ -245,6 +245,13 @@ function DanhSachCoVan2() {
      for(var a in ojb){
      if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
    if($('#TrangThaiHen').val()=="Hủy Hẹn"){
+    $.ajax({
+      url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
+      method: "GET",
+      mode: 'no-cors',
+      dataType: "json",
+      data: json2
+  });
      console.log(json2)
      postData(json2,urlDG,"POST")
      deleteData(urlTX+"/"+json2.id )
