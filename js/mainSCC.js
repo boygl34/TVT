@@ -1,5 +1,5 @@
 
-var useCaher,useCaher2={}
+var useCaher,useCaher2
 var emailnhanvienhen = "quipham@toyotavungtau.com";
 var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
 var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
@@ -72,9 +72,10 @@ function showData(use){
   dataArray=  dataArray.concat(dataArray2);
   }
   
-    
+    useCaher2 = dataArray
      var tbodyTim = document.getElementById('table-body-Tim-xe')
      tbodyTim.innerHTML=""
+
          dataArray.forEach(function(r){
             var row = document.createElement("tr"); 
             var tbodyTim = document.getElementById('table-body-Tim-xe')
@@ -495,18 +496,19 @@ recognition.onaudioend = function() {
                 var value =  event.results[0][0].transcript;
            
                 document.getElementById('bStart').innerHTML="Stop"
-                 document.getElementById('textbienso').innerHTML=suabiensospeech(value)
-                for(i in useCaher){
-                   var a = suabiensospeech(useCaher[i].BienSoXe).indexOf(suabiensospeech(value))
+                 //document.getElementById('textbienso').innerHTML=suabiensospeech(value)
+                for(i in useCaher2){
+                   var a = suabiensospeech(useCaher2[i].BienSoXe).indexOf(suabiensospeech(value))
                   if(a>0){
                       document.getElementById('FormSCC').reset()
                       $('#ModalSCC').modal('show')
-                      document.getElementById("BienSoXe").value=useCaher[i].BienSoXe
+                      document.getElementById("BienSoXe").value=useCaher2[i].BienSoXe
                       changvalue()
                       timeSuaChua()
                       recognition.stop() 
                   }
                 } recognition.stop()
+                alert("Không Thấy Biển Số")
               }
 		recognition.start();
 	}
