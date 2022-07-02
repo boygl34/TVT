@@ -33,7 +33,12 @@ body {font-family: "Roboto", sans-serif}
   <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Tính Năng <i class="fa fa-caret-down"></i></a>
     <div id="demo" class="w3-hide">
-      <a class="w3-bar-item w3-button" href="#">Link</a>
+      <div class="form-group ">
+        <label for="KhoangSuaChua">Xe Chưa XN</label>
+        <select required class="form-control"  id="XeChuaXN" onchange=" timxehen(this.value)" >
+            '<option ></option>'
+        </select> 
+      </div> 
       <a class="w3-bar-item w3-button" href="#">Link</a>
       <a class="w3-bar-item w3-button" href="#">Link</a>
     </div>

@@ -12,6 +12,7 @@ getData(urlTX)
    .then(data =>{
      useCaher=data
       loadData ()
+      XeChuaTiepNhan()
    } );
  }
 
@@ -77,8 +78,32 @@ function DanhSachCoVan2() {
      }
      }
    }
- 
- 
+   function XeChuaTiepNhan() { 
+    var dataArrayhen = useCaher.filter(function (r){
+      return r.TrangThaiXuong=="00 Có Hẹn"&& r.TrangThaiHen==""})
+console.log(dataArrayhen)
+     var list = document.getElementById('XeChuaXN'); 
+     $("#XeChuaXN").html("")
+     var option = document.createElement("option");
+      option.value = "";
+       option.text = "";
+       list.appendChild(option)
+     for (var i = 0; i < dataArrayhen.length; i++) {
+      values=dataArrayhen[i]
+       var option = document.createElement("option");
+       option.value = values.BienSoXe;
+       option.text = values.BienSoXe;
+       list.appendChild(option);
+     }
+   }
+  function timxehen(BienSoXe){
+    var ojb =  useCaher
+    var ids 
+      for(var a in ojb){
+      if(ojb[a].BienSoXe == BienSoXe){ids = ojb[a].MaSo}}
+
+    timeline.setSelection(ids, {focus: true})
+  }
 
    function DanhSachCoVan() { 
      $("#CoVanDichVu").html("")
