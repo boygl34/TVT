@@ -80,8 +80,9 @@ function DanhSachCoVan2() {
    }
    function XeChuaTiepNhan() { 
     var dataArrayhen = useCaher.filter(function (r){
-      return r.TrangThaiXuong=="00 Có Hẹn"&& r.TrangThaiHen==""})
+      return r.TrangThaiXuong=="00 Có Hẹn"&& (r.TrangThaiHen==null||r.TrangThaiHen=="")})
 console.log(dataArrayhen)
+dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(a.ThoiGianHen)).valueOf()> new Date(DoiNgayDangKy(b.ThoiGianHen)).valueOf() ? 1 : -1);})
      var list = document.getElementById('XeChuaXN'); 
      $("#XeChuaXN").html("")
      var option = document.createElement("option");
