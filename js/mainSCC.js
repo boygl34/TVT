@@ -119,12 +119,12 @@ function showData(use){
                 if(r.TDHenGiaoXe){
                 ColGioGiao.innerHTML = Math.round((( new Date(DoiNgayDangKy(r.TDHenGiaoXe))-timeNow)/(60*60*1000))*10)/10
                 row.appendChild(ColGioGiao)}
-                if (r.TrangThaiXuong =='02 Chờ Tiếp Nhận'||r.TrangThaiXuong =='02 Chuẩn Bị Tiếp') { 
+                if (r.TrangThaiXuong =='02 Chờ Tiếp Nhận'||r.TrangThaiXuong =='02 Chuẩn Bị Tiếp'||r.TrangThaiXuong =='03 Đang Tiếp Nhận') { 
                   if(r.TrangThaiHen=="Đúng Giờ"){
-                    ColTrangThai.innerHTML = ColTrangThai.innerHTML+"[D]"
+                    ColTrangThai.innerHTML = ColTrangThai.innerHTML+" [D]"
                     row.setAttribute('class', 'DungGio')}
                   if(r.TrangThaiHen=="Đến Sớm"){
-                    ColTrangThai.innerHTML = ColTrangThai.innerHTML+"[S]"
+                    ColTrangThai.innerHTML = ColTrangThai.innerHTML+" [S]"
                     row.setAttribute('class', 'DenSom')}
                   }    
             
