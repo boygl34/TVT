@@ -15,6 +15,7 @@ function getData(url){
   .then(data =>{
     useCaher=data
     dataTableTiepNhan()
+    loadDataCV ()
   } );
 }
 
