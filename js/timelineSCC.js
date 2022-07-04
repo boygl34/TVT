@@ -10,6 +10,19 @@ var options = {
     let text = "Thay Đổi kế hoạch xe "+item.content;
     if (confirm(text) == true) { capnhatthoigian(item)} else {loadData()};},
 
+    onUpdate: function (item) {
+      var BienSo = item.content.slice(0,item.content.indexOf(" "))
+      $("#buttonSCC").html('')
+      document.getElementById('FormSCC').reset()
+     $('#ModalSCC').modal('show')
+      document.getElementById("BienSoXe").value=BienSo
+      changvalue()
+      timeSuaChua()
+      
+      
+  },
+
+   
     stack: true,
     start: new Date(),
     end: new Date(1000 * 60 * 60 * 24 + (new Date()).valueOf()),
