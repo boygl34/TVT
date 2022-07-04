@@ -69,7 +69,7 @@ if(r.KhachRuaXe=="Rửa Xe"){
       group: "Rửa Xe",
       start: new Date(DoiNgayDangKy(r.TimeEndGJ)),
       end: new Date(1000 * 60 * 14 + (new Date(DoiNgayDangKy(r.TimeEndGJ))).valueOf()),
-      content: r.BienSoXe +"<br>"+r.CoVanDichVu,
+      content: r.BienSoXe +" "+r.CoVanDichVu,
     });
        
    } 
