@@ -416,7 +416,7 @@ function showData(use){
       if(ojb[a].TimeEndGJ){document.getElementById("GioKetThucSC").value =TimesClick(DoiNgayDangKy(ojb[a].TimeEndGJ))}
       if(ojb[a].KyThuatVien1){document.getElementById("KyThuatVien1").value =ojb[a].KyThuatVien1}
       if(ojb[a].KyThuatVien2){document.getElementById("KyThuatVien2").value =ojb[a].KyThuatVien2}
-      if(ojb[a].KhachRuaXe){document.getElementById("KhachRuaXe").value =ojb[a].KhachRuaXe}
+      if(ojb[a].KhachRuaXe){document.getElementById("KhachRX").value =ojb[a].KhachRuaXe}
       if(ojb[a].TrangThaiSCC=="Đang SC"){ $("#buttonSCC").html('<button  type="button" class="btn btn-danger me-2" onclick="DungCongViecGJ()">Dừng CV!</button>&nbsp &nbsp <button  type="button" class="btn btn-primary me-2" onclick="KetThuc()">Kết Thúc!</button>')
          return    }else{ $("#buttonSCC").html('<button  type="button" class="btn btn-success me-2" onclick="BatDauSC()">Bắt Đầu!</button>&nbsp &nbsp <button  type="button" class="btn btn-primary me-2" onclick="KeHoach()">Kế Hoạch!</button>');        return}
         return
