@@ -217,7 +217,7 @@ function showData(use){
   }
   function KetThuc(){
         var TThaiXuong
-        if(document.getElementById("KhachRuaXe").value=="Rửa Xe"){TThaiXuong="06 Chờ Rửa Xe"}else{TThaiXuong="08 Chờ Giao Xe"}
+        if(document.getElementById("KhachRX").value=="Rửa Xe"){TThaiXuong="06 Chờ Rửa Xe"}else{TThaiXuong="08 Chờ Giao Xe"}
             var json2 = {
                 TimeEndGJ: TimesClick(),
                 TrangThaiSCC:"Đã SC",
