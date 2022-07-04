@@ -81,7 +81,6 @@ function DanhSachCoVan2() {
    function XeChuaTiepNhan() { 
     var dataArrayhen = useCaher.filter(function (r){
       return r.TrangThaiXuong=="00 Có Hẹn"&& (r.TrangThaiHen==null||r.TrangThaiHen=="")})
-console.log(dataArrayhen)
 dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(a.ThoiGianHen)).valueOf()> new Date(DoiNgayDangKy(b.ThoiGianHen)).valueOf() ? 1 : -1);})
      var list = document.getElementById('XeChuaXN'); 
      $("#XeChuaXN").html("")
@@ -157,7 +156,7 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
       var dataArrayhen = dataArray1.filter(function (r){
         if(r.LoaiHinhSuaChua=="EM60"){r.LoaiHinhSuaChua="EM"}
         if(r.LoaiHinhSuaChua=="FIR"){r.LoaiHinhSuaChua="SCC"}
-        return r.TrangThaiXuong=="00 Có Hẹn"&&r.LoaiHinhSuaChua==LoaiHinhSCC&&(new Date(r.ThoiGianHen).valueOf()==giodathen.valueOf())})
+        return r.TrangThaiXuong=="00 Có Hẹn"&&r.LoaiHinhSuaChua==LoaiHinhSCC&&(new Date(DoiNgayDangKy(r.ThoiGianHen)).valueOf()==giodathen.valueOf())})
       var soluong = dataArrayhen.length
       if(LoaiHinhSCC=="EM"&&soluong>=3){$('#LoaiHinhSuaChua').val(""); alert("Quá Số lượng đặt hẹn cho xe EM. Tối đa 3 xe") }
        if(LoaiHinhSCC=="SCC"&&soluong>=2){$('#LoaiHinhSuaChua').val(""); alert("Quá Số lượng đặt hẹn cho xe SCC. Tối đa 2 xe") }
@@ -171,7 +170,7 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
     var giodathen = new Date(DoiNgayDangKy($("#ThoiGianHen").val()))
       var dataArray1 =  useCaher;
       var dataArrayhen = dataArray1.filter(function (r){
-        return r.TrangThaiXuong=="00 Có Hẹn"&&r.LoaiHinhDongSon==LoaiHinhDS&&(new Date(r.ThoiGianHen).valueOf()==giodathen.valueOf())})
+        return r.TrangThaiXuong=="00 Có Hẹn"&&r.LoaiHinhDongSon==LoaiHinhDS&&(new Date(DoiNgayDangKy(r.ThoiGianHen)).valueOf()==giodathen.valueOf())})
       var soluongDS = dataArrayhen.length
       if(soluongDS>=1){$('#LoaiHinhDongSon').val(""); alert("Quá Số lượng đặt hẹn cho xe "+LoaiHinhDS+ ". Tối đa 1 xe") }
    return soluongDS
@@ -211,7 +210,8 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
                        NguoiDatHen: localStorage.getItem("userName"),
                        TDXacNhanHen:TimesClick()
                      }
-                        
+      if($('#LoaiHinhSuaChua').val()=="EM"||$('#LoaiHinhSuaChua').val()=="EM60"){json2["KhoangSuaChua"]= "EM 0"+(checkloaihinhGJ()+1)}
+      if($('#LoaiHinhSuaChua').val()=="SCC"||$('#LoaiHinhSuaChua').val()=="FIR"){json2["KhoangSuaChua"]= "SCC 0"+(checkloaihinhGJ()+5)}                  
  $("#mesenge").html('<div class="alert alert-warning" role="alert">Đang Đăng Ký! '+khachhen+'</div>')
  postData(json2,urlTX,"POST")
  }

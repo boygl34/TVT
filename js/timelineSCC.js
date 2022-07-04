@@ -96,6 +96,21 @@ var timeline = new vis.Timeline(container, items,groups, options);
             });
 
         } 
+        if(r.ThoiGianHen&&r.TimeStartGJ==null){
+          var start =DoiNgayDangKy(r.ThoiGianHen)
+          var end
+          if(r.LoaiHinhSuaChua=="EM"||r.LoaiHinhSuaChua=="EM60"){  end=  new Date(1000 * 60 * 29 + (new Date(start)).valueOf())}
+          if(r.LoaiHinhSuaChua=="SCC"||r.LoaiHinhSuaChua=="FIR"){  end=  new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
+          items.add({
+            className: "orange",
+            id:  r.BienSoXe+"_Hen"  ,
+            group: r.KhoangSuaChua,
+            start:  start ,
+            end: end,
+            content: "[H] "+r.BienSoXe +" "+r.CoVanDichVu
+            });
+
+        } 
 
 }
 }

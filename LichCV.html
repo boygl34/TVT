@@ -218,8 +218,29 @@ section .noi-dung .form .icon-dang-nhap li{
 
 <header class="w3-container w3-theme" style="padding:13px 32px">
   <h1 class="w3-xlarge">Lịch CV</h1>
+  <div class=" form-row">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="check-hen"checked onchange="loadData ()">
+      <label class="form-check-label" for="flexCheckDefault">Xe Hẹn</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="check-giao" onchange="loadData ()" >
+      <label class="form-check-label" for="flexCheckChecked">Xe Giao</label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="check-nhan" onchange="loadData ()">
+      <label class="form-check-label" for="flexCheckChecked">Xe Tiếp Nhận</label>
+    </div>
+
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="check-dagiao" onchange="loadData2 ()">
+      <label class="form-check-label" for="flexCheckChecked">Xe Đã Giao</label>
+    </div>
+  </div>
 </header>
 <div class="w3-container" id="TrangDangNhap" style="padding:13px">
+  
+
 <div  id="mytimeline"></div>
  
    
@@ -335,10 +356,13 @@ var timeline = new vis.Timeline(container, itemscv,groups, options);
 }
 function loadData2 () {
         var dataArray0 =   useCaher2
+         if(document.getElementById("check-dagiao").checked){
+        itemscv.clear();
+        loadData ()
         for (var a=0;a<dataArray0.length;a++){
-            
+         
             datalichcovan(dataArray0[a])
-}
+}}
 }
 function datalichcovan(r){
      var titeltrangthai = "",hen=""
@@ -346,6 +370,7 @@ function datalichcovan(r){
      if(r.LoaiHinhSuaChua){titeltrangthai= titeltrangthai+" " +r.LoaiHinhSuaChua }
      if(r.LoaiHinhDongSon){titeltrangthai= titeltrangthai+" " +r.LoaiHinhDongSon }
      if(r.NoiDungHen){titeltrangthai=titeltrangthai+ "<br>"+r.NoiDungHen }
+if(document.getElementById("check-hen").checked){
      if(r.ThoiGianHen&&r.BienSoXe){
       itemscv.add({
                 
@@ -357,6 +382,8 @@ function datalichcovan(r){
                 title:titeltrangthai,
               });
      }
+}
+if(document.getElementById("check-giao").checked){
      if(r.TDHenGiaoXe){
       itemscv.add({
                
@@ -366,7 +393,8 @@ function datalichcovan(r){
                 content: "GX "+hen+r.BienSoXe ,
                 title:titeltrangthai,
               });
-    } 
+    } }
+    if(document.getElementById("check-nhan").checked){   
     if(r.TDGapLeTan){
       itemscv.add({
                 
@@ -378,6 +406,7 @@ function datalichcovan(r){
                 title:titeltrangthai,
               });
     }
+  }
   }
 
 
