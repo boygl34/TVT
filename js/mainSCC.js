@@ -191,6 +191,14 @@ function showData(use){
     postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
  
   }
+
+  function RuaXechange(){
+    var json2 = {
+      KhachRuaXe: $('#KhachRX').val()
+      }
+    postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+ 
+  }
   function KTV1change(){
     var json2 = {
         KyThuatVien1: $('#KyThuatVien1').val()
