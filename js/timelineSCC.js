@@ -109,7 +109,8 @@ var timeline = new vis.Timeline(container, items,groups, options);
             group: r.KhoangSuaChua,
             start:  start ,
             end: end,
-            content: r.BienSoXe +" [H]"
+            content: r.BienSoXe +" [H]",
+            title:r.BienSoXe+"<br>"+r.NoiDungHen+"<br>"+r.NguoiDatHen,
             });
           }
         } 
