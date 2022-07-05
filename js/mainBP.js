@@ -743,7 +743,7 @@ function StartDong(){
         for(var a in dataArray1){
         var r=dataArray1[a]
         if(r.TrangThaiDongSon!=="Dừng SC"){
-          if((new Date(r.TimeEndBody)).valueOf()>time.valueOf()){time=new Date(r.TimeEndBody);
+          if((new Date(DoiNgayDangKy(r.TimeEndBody))).valueOf()>time.valueOf()){time=new Date(DoiNgayDangKy(r.TimeEndBody));
           }}
       }
       nexttime = time;
@@ -758,7 +758,7 @@ function StartDong(){
         var nexttime
           for(var a in dataArray1){
           var r=dataArray1[a]
-            if((new Date(r.TimeEndBody)).valueOf()>time.valueOf()){time=new Date(r.TimeEndBody);
+            if((new Date(DoiNgayDangKy(r.TimeEndBody))).valueOf()>time.valueOf()){time=new Date(DoiNgayDangKy(r.TimeEndBody));
             }
         }
       nexttime = time;
@@ -773,7 +773,7 @@ function StartDong(){
    var nexttime
      for(var a in dataArray1){
      var r=dataArray1[a]
-      if((new Date(r.TimeEndNen)).valueOf()>time.valueOf()){time=new Date(r.TimeEndNen);
+      if((new Date(DoiNgayDangKy(r.TimeEndNen))).valueOf()>time.valueOf()){time=new Date(DoiNgayDangKy(r.TimeEndNen));
       }
    }
  nexttime = time;
@@ -789,7 +789,7 @@ function StartDong(){
    var nexttime
      for(var a in dataArray1){
      var r=dataArray1[a]
-      if((new Date(r.TimeEndPaint)).valueOf()>time.valueOf()){time=new Date(r.TimeEndPaint);
+      if((new Date(DoiNgayDangKy(r.TimeEndPaint))).valueOf()>time.valueOf()){time=new Date(DoiNgayDangKy(r.TimeEndPaint));
       }
    }
  nexttime = time;
@@ -804,7 +804,7 @@ function StartDong(){
    var nexttime
      for(var a in dataArray1){
      var r=dataArray1[a]
-      if((new Date(r.TimeEndLap)).valueOf()>time.valueOf()){time=new Date(r.TimeEndLap);
+      if((new Date(DoiNgayDangKy(r.TimeEndLap))).valueOf()>time.valueOf()){time=new Date(DoiNgayDangKy(r.TimeEndLap));
       }
    }
  nexttime = time;

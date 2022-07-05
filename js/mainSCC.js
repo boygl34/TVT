@@ -273,21 +273,37 @@ function showData(use){
   
   function KeHoach(){
     if(document.getElementById("KyThuatVien1").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert"> Chưa Có Tên KTV!</div>');return false}
-    if(document.getElementById("GioKetThucSC").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert">Chưa Có Thời Gian Sữa Chữa!</div>'); return false}
      if(document.getElementById("KhoangSuaChua").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert"> Chưa Có Khoang Làm Việc!</div>');return false}
-        var json2 = {
-          TimeStartGJ: $('#GioBatDauSCC').val(),
+        
+     
+     var json2 = {
+          TimeStartGJ: TimesClick(getNexttime($('#KhoangSuaChua').val())),
           TrangThaiSCC:"Chờ SC",
           KhoangSuaChua: $('#KhoangSuaChua').val() ,
-          TimeEndGJ: $('#GioKetThucSC').val(),
+          TimeEndGJ: TimesClick(new Date(1000 * 60 * 45 + (new Date(getNexttime($('#KhoangSuaChua').val()))).valueOf())),
           KyThuatVien1  :$('#KyThuatVien1').val() ,
           KyThuatVien2  :$('#KyThuatVien2').val() ,
           NhomKTV:$('#NhomKTV').val(),
         }
-
+  console.log()
   $("#mesenge").html('<div class="alert alert-warning" role="alert">Đang Cập Nhật!</div>')
   postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
     
+  }
+
+  function getNexttime(KhoangSC){
+    var dataArray0 =   useCaher
+    var dataArray1= dataArray0.filter(function(r){return (r.KhoangSuaChua===KhoangSC)})
+    var time=new Date()
+    var nexttime
+      for(var a in dataArray1){
+      var r=dataArray1[a]
+      if(r.TrangThaiSCC!=="Dừng SC"){
+        if((new Date(DoiNgayDangKy(r.TimeEndGJ))).valueOf()>time.valueOf()){time=new Date(DoiNgayDangKy(r.TimeEndGJ));
+        }}
+    }
+    nexttime = time;
+  return new Date(1000 * 60 * 2 + (new Date(nexttime)).valueOf())
   }
   function CapNhatGioSC(){
     if(document.getElementById("GioKetThucSC").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert">Chưa Có Thời Gian Sữa Chữa!</div>'); return false}
