@@ -23,16 +23,17 @@ var options = {
   },
 
    
-    stack: true,
+   
+    orientation: 'top',
     start: new Date(),
     end: new Date(1000 * 60 * 60 * 24 + (new Date()).valueOf()),
     editable: true,
-    orientation: 'top',
+   
     margin: {
-      item: 0,  // distance between items
+      item: 1,  // distance between items
       axis: 1 ,  // distance between items and the time axis
-      }
-
+      },
+ stack: true,
     };
 
     var groups = new vis.DataSet();
@@ -66,7 +67,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
         var start = new Date(DoiNgayDangKy(r.TimeStartGJ));
         var end = new Date(DoiNgayDangKy(r.TimeEndGJ));
         var endRX = new Date(DoiNgayDangKy(r.TimeEndGJ).valueOf()+20*60*1000)
-        if(hoanthanh&&r.TrangThaiSCC=="Đã SC"){
+        if(hoanthanh&&r.TrangThaiSCC=="Đã SC"&&r.TimeStartGJ){
           items.add({
             className: mau,
             id:  r.MaSo  ,
@@ -76,7 +77,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
             content: r.BienSoXe +" "+r.KyThuatVien1
             })
         }
-        if(r.TrangThaiSCC!="Đã SC"){
+        if(r.TrangThaiSCC!="Đã SC"&&r.TimeStartGJ){
         items.add({
         className: mau,
         id:  r.MaSo  ,
@@ -96,26 +97,29 @@ var timeline = new vis.Timeline(container, items,groups, options);
             });
 
         } 
-        if(r.ThoiGianHen&&r.TimeStartGJ==null){
+        if(r.ThoiGianHen){
+          if(r.TimeStartGJ){}else{
           var start =DoiNgayDangKy(r.ThoiGianHen)
           var end
           if(r.LoaiHinhSuaChua=="EM"||r.LoaiHinhSuaChua=="EM60"){  end=  new Date(1000 * 60 * 29 + (new Date(start)).valueOf())}
           if(r.LoaiHinhSuaChua=="SCC"||r.LoaiHinhSuaChua=="FIR"){  end=  new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
           items.add({
-            className: "orange",
+            className: "blue",
             id:  r.BienSoXe+"_Hen"  ,
             group: r.KhoangSuaChua,
             start:  start ,
             end: end,
-            content: "[H] "+r.BienSoXe +" "+r.CoVanDichVu
+            content: r.BienSoXe +" [H]"
             });
-
+          }
         } 
-
+        timeline.redraw()
 }
 }
 
-
+function redraw(){
+  timeline.redraw()
+}
 function capnhatthoigian(item){
   	var ojb =  useCaher
     var MaSonew
