@@ -357,7 +357,7 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
       var dienthoai = "<a href='tel:"+$("#SoDT").val()+"' class='col-sm-7'>Click để Gọi</a>"
       var ThoiGianDen = DoiNgayDangKy($("#ThoiGianHen").val())
           ThoiGianDen = new Date(ThoiGianDen-15*60*1000)
-      var sms = "<a href='sms:"+$("#SoDT").val()+";?&body=Toyota Vũng Tàu xin xác nhận cuộc hẹn \n"+$("#BienSoXe").val()+" .Nội Dung: "+$("#NoiDungHen").val()+". Vào Lúc : "+Doingay2(ThoiGianDen)+".Quý Khách vui lòng đến ĐÚNG GIỜ để làm thủ tục.Xin cảm ơn!!' class='col-sm-7'>Click để Nhắn Tin</a>"
+      var sms = "<a href='sms:"+$("#SoDT").val()+"?body=Toyota Vũng Tàu xin xác nhận cuộc hẹn \n"+$("#BienSoXe").val()+" .Nội Dung: "+$("#NoiDungHen").val()+". Vào Lúc : "+Doingay2(ThoiGianDen)+".Quý Khách vui lòng đến ĐÚNG GIỜ để làm thủ tục.Xin cảm ơn!!' class='col-sm-7'>Click để Nhắn Tin</a>"
       
       var EMail = '<a href="mailto:'+$("#NguoiDatHen").val()+'?&subject=Thông báo xác nhận hẹn '+$("#BienSoXe").val()+' &body=Xác Nhận hẹn xe '+$("#BienSoXe").val()+' .Nội Dung :'+ $("#NoiDungHen").val()+'  .Vào Lúc:'+Doingay2(ThoiGianDen)+'.Thanks!!"> Emailr</a>'
      // <a href=”sms://+15552345678, +15552345679;?&amp;body=Hello%20World”>Gửi SMS</a>
