@@ -24,9 +24,10 @@
           $('#ModalSCC').modal('show')
           document.getElementById('NguoiDatHen').disabled=true;
           $("#ThoiGianHen").val(TimesClick(item.start))
+          document.getElementById('ThoiGianHen').disabled=true;
           DanhSachCoVan2()
           $("#buttonDK").html("<button  type='button' class='btn btn-primary me-2' onclick='DangKyHen()'>Đăng Ký!</button>")
-        },
+          $("#buttonSCC").html("")},
         onMove: function (item, callback) {
           let text = "Thay Đổi Giờ Hen "+item.id;
           if (confirm(text) == true) { ;
@@ -41,6 +42,7 @@
           $('#ModalSCC').modal('show');
           document.getElementById('FormSCC').reset()
           document.getElementById('NguoiDatHen').disabled=false;
+          document.getElementById('ThoiGianHen').disabled=false;
           if(localStorage.getItem("userName")==emailnhanvienhen){document.getElementById('TrangThaiHen').disabled=false}
           $('#MaSo').val(item.id);
           changvalue()
@@ -48,9 +50,12 @@
             changvalue()
           if(localStorage.getItem("userName")===$('#NguoiDatHen').val()||localStorage.getItem("userName")==emailnhanvienhen){
           if($("#TrangThaiXuong").val()=="00 Có Hẹn"){
-          $("#buttonDK").html("<button  type='button' class='btn btn-primary me-2' onclick='CapNhatHen()'>Cập Nhật!</button>")}else{$("#buttonDK").html("")}
+            $("#buttonSCC").html("<button  type='button' class='btn btn-danger me-2' onclick='HuyHen()'>Hủy Hẹn!</button>")
+          $("#buttonDK").html("<button  type='button' class='btn btn-primary me-2' onclick='CapNhatHen()'>Cập Nhật!</button>")}else{$("#buttonSCC").html("");$("#buttonDK").html("")}
           $("#CuocGoi").html("<a href='tel:+84"+$('#SoDT').val()+"' class='col-sm-7'>Click để Gọi</a>")
-          }else{$("#buttonDK").html("")}
+          }else{$("#buttonDK").html("");
+          document.getElementById('TrangThaiHen').disabled=true
+        }
         },
         stack: true,
         verticalScroll: true,

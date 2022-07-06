@@ -266,26 +266,52 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
 
  function XacNhanHen(){
    var MaSo = $('#MaSo').val()
-   var ojb =  useCaher
-   var json2 
-     for(var a in ojb){
-     if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
-   if($('#TrangThaiHen').val()=="Hủy Hẹn"){
-    $.ajax({
-      url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
-      method: "GET",
-      mode: 'no-cors',
-      dataType: "json",
-      data: json2
-  });
-     console.log(json2)
-     postData(json2,urlDG,"POST")
-     deleteData(urlTX+"/"+json2.id )
- }else{
-    json2 = { TrangThaiHen: $('#TrangThaiHen').val(),
+
+    var json2 = { TrangThaiHen: $('#TrangThaiHen').val(),
               TDXacNhanHen:TimesClick()}
  postData(json2,urlTX+"/"+checkID(MaSo),"PATCH")
  }
+ 
+ function HuyHen(){
+  let text = "Hủy Hẹn Xe";  
+  if (confirm(text) == true) { 
+     var MaSo = $('#MaSo').val()
+     
+           try{
+            json3 = { TrangThaiHen: "Hủy Hẹn",
+            TDXacNhanHen:TimesClick()};
+           
+            fetch(urlTX+"/"+checkID(MaSo), {
+              method: "PATCH", // or 'PUT'
+              headers: {'Content-Type': 'application/json'},
+              body: JSON.stringify(json3),
+              }).then(response => response.json())
+                .then(data => {
+                        $.ajax({
+                            url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
+                            method: "GET",
+                            mode: 'no-cors',
+                            credentials: 'omit', 
+                            referrerPolicy: 'no-referrer',
+                            dataType: "json",
+                            data: data
+                      }) .then(getData(urlTX))
+                         .then(function(){ var ojb =  useCaher;
+                                var json2 
+                                for(var a in ojb){
+                                if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
+                                console.log(json2.id)
+                                postData(json2,urlDG,"POST")
+                                deleteData(urlTX+"/"+json2.id )
+                                })
+            
+                });
+           }catch{
+            alert("Lỗi")
+           }
+
+  }
+
  }
  
 
