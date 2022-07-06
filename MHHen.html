@@ -27,31 +27,40 @@
     </div>    
 
     <script>
-        var useCaher,useCaher2
+        var useCaher,useCaher2,useCaher3
  var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
  var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
  var urlhen = "https://fluffy-iris-selenium.glitch.me/XeDaGiao?KhachHangHen=Khách Hẹn"
+ var urlhenvl = "https://fluffy-iris-selenium.glitch.me/XeDaGiao?KhachHangHen=Hẹn Vãn Lai"
 getData(urlTX)
 getData2(urlhen)
- setInterval(function (){getData(urlTX);getData2(urlhen);loadData()},10000);
+getData3(urlhenvl)
+ setInterval(function (){getData(urlTX);getData2(urlhen);getData3(urlhenvl);loadData()},30000);
   //DanhSachCoVan();
  function getData(url){
    fetch(url)
    .then(response => response.json())
    .then(data =>{
      useCaher=data
- 
-     $("#tieude").html("THÔNG TIN KHÁCH HẸN "+new Date().toLocaleTimeString().slice(0,5))
-   } );
+   })
+    
  }
 function getData2(url){
    fetch(url)
    .then(response => response.json())
    .then(data =>{
      useCaher2=data
-     $("#tieude").html("THÔNG TIN KHÁCH HẸN "+new Date().toLocaleTimeString().slice(0,5))
+  } )
+ }
+ function getData3(url){
+   fetch(url)
+   .then(response => response.json())
+   .then(data =>{
+     useCaher3=data
+     
    } );
  }
+
 
  var emailnhanvienhen = "Phạm Kim Quí";
  var NhomDH=["EM","SCC","Đồng Sơn","Báo Giá BH"]
@@ -150,6 +159,8 @@ function redraw(){
 
 function loadData () {//Load du lieu cho time line co
   useCaher = useCaher.concat(useCaher2)
+  useCaher = useCaher.concat(useCaher3)
+ 
     var dataArray1 =  useCaher
      items.clear();
      var dataArrayhen = dataArray1.filter(function (r){return r.ThoiGianHen&&r.TrangThaiHen!="Hủy Hẹn"})
@@ -157,6 +168,7 @@ function loadData () {//Load du lieu cho time line co
       datadathen(r)
     })
      redraw()
+     $("#tieude").html("THÔNG TIN KHÁCH HẸN "+new Date().toLocaleTimeString().slice(0,5))
     console.log("Cập Nhật")
   }
 
