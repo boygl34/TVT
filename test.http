@@ -1,12 +1,14 @@
 DELETE  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/240
 ###
+DELETE  https://fluffy-iris-selenium.glitch.me/XeDaGiao/640
+###
 PATCH  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/167
 {
   "MaSo":"TVT20220629_72A-325.22"
   }
 ###
 
-GET  https://fluffy-iris-selenium.glitch.me/XeTrongXuong?MaSo=
+GET  https://fluffy-iris-selenium.glitch.me/
 
 
 ###
