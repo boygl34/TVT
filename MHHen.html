@@ -27,10 +27,12 @@
     </div>    
 
     <script>
-        var useCaher
+        var useCaher,useCaher2
  var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
  var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
+ var urlhen = "https://fluffy-iris-selenium.glitch.me/XeDaGiao?KhachHangHen=Khách Hẹn"
 getData(urlTX)
+getData2(urlhen)
  setInterval(function (){getData(urlTX)},10000);
   //DanhSachCoVan();
  function getData(url){
@@ -42,7 +44,16 @@ getData(urlTX)
      $("#tieude").html("THÔNG TIN KHÁCH HẸN "+new Date().toLocaleTimeString().slice(0,5))
    } );
  }
-
+function getData2(url){
+   fetch(url)
+   .then(response => response.json())
+   .then(data =>{
+     useCaher2=data
+     
+     loadData ()
+     $("#tieude").html("THÔNG TIN KHÁCH HẸN "+new Date().toLocaleTimeString().slice(0,5))
+   } );
+ }
 
  var emailnhanvienhen = "Phạm Kim Quí";
  var NhomDH=["EM","SCC","Đồng Sơn","Báo Giá BH"]
@@ -140,9 +151,10 @@ function redraw(){
 }
 
 function loadData () {//Load du lieu cho time line co
+  useCaher = useCaher.concat(useCaher2)
     var dataArray1 =  useCaher
      items.clear();
-     var dataArrayhen = dataArray1.filter(function (r){return r.ThoiGianHen})
+     var dataArrayhen = dataArray1.filter(function (r){return r.ThoiGianHen&&r.TrangThaiHen!="Hủy Hẹn"})
      jQuery.each( dataArrayhen, function(dataArrayhen, r) {
       datadathen(r)
     })
@@ -175,7 +187,6 @@ function loadData () {//Load du lieu cho time line co
       items.add({
             className: mau1,
             editable: edit,
-            id:  r.MaSo,
             group: r.LoaiHinhDongSon,
             start: start,
             end: new Date(1000 * 60 * 29 + (new Date(start)).valueOf()),
@@ -185,7 +196,6 @@ function loadData () {//Load du lieu cho time line co
     }else if(r.LoaiHinhSuaChua){
     items.add({
             className: mau1,
-            id: r.MaSo,
             group: r.LoaiHinhSuaChua,
             start: start,
             editable: edit,
