@@ -33,14 +33,14 @@
  var urlhen = "https://fluffy-iris-selenium.glitch.me/XeDaGiao?KhachHangHen=Khách Hẹn"
 getData(urlTX)
 getData2(urlhen)
- setInterval(function (){getData(urlTX);getData2(urlhen)},10000);
+ setInterval(function (){getData(urlTX);getData2(urlhen);loadData()},10000);
   //DanhSachCoVan();
  function getData(url){
    fetch(url)
    .then(response => response.json())
    .then(data =>{
      useCaher=data
-     loadData ()
+ 
      $("#tieude").html("THÔNG TIN KHÁCH HẸN "+new Date().toLocaleTimeString().slice(0,5))
    } );
  }
