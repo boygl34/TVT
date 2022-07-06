@@ -211,7 +211,7 @@ section .noi-dung .form .icon-dang-nhap li{
   
 </header>
 <div class="w3-container" style="padding:13px">
-<div id="BaoCao">
+<div id="BaoCao" hidden>
   <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTs4_i1zL1Cj-K2ygdVWTScRzqZs_9ZvsxUAeHwl-YcfLW7ErToqoZ3zr39zpjBT-R9kSf0YMUtWeeJ/pubhtml?gid=526093834&amp;single=true&amp;widget=true&amp;headers=false" style="width: 100%;height: 500px;"></iframe>
   </div>
   <section id="TrangDangNhap">
@@ -396,9 +396,11 @@ function DangNhap(){
         localStorage.setItem("BoPhan",data.BoPhan)
         alert("Đang nhập thành công")
         document.getElementById("TrangDangNhap").hidden=true
+        document.getElementById("BaoCao").hidden=false
         document.getElementById("name").innerHTML = "WellCome!! "+ localStorage.getItem("userName")}
      else{
         document.getElementById("TrangDangNhap").hidden=false
+        document.getElementById("BaoCao").hidden=true
         alert("Sai pass")}
   })
   .catch((error) => {
