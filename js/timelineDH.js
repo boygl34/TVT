@@ -36,7 +36,7 @@
           CapNhatHenKeo(item.id,TimesClick(item.start))} else {loadData()}
         },
         onUpdate: function (item, callback) {
-          getData(urlTX)
+         // getData(urlTX)
           $("#CoVanDichVu").html("")
           $('#ModalSCC').modal('show');
           document.getElementById('FormSCC').reset()
