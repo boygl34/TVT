@@ -8,11 +8,11 @@ PATCH  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/167
   }
 ###
 
-GET  https://fluffy-iris-selenium.glitch.me/
+GET  https://fluffy-iris-selenium.glitch.me/XeTrongXuong?KhachHangHen=Khách Hẹn
 
 
 ###
-GET  https://fluffy-iris-selenium.glitch.me/XeTrongXuong?BienSoXe=72A-446.12
+GET  https://fluffy-iris-selenium.glitch.me/XeTrongXuong?BienSoXe=""
 
 ### 
 POST  https://fluffy-iris-selenium.glitch.me/XeDaGiao
