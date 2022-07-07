@@ -120,6 +120,8 @@ function loadData () {//Load du lieu cho time line co
     if(r.LoaiHinhSuaChua=="FIR"){r.LoaiHinhSuaChua="SCC"}
     if(r.LoaiHinhSuaChua=="EM60"){r.LoaiHinhSuaChua="EM"}
     if(r.LoaiHinhSuaChua=="SCC"){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
+    if((r.NoiDungHen.toUpperCase()).indexOf("BD CẤP LỚN")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
+    if((r.NoiDungHen.toUpperCase()).indexOf("LEXUS")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
     if(r.KhachHangHen=="Hẹn Vãn Lai"&&r.TrangThaiXuong=="00 Có Hẹn"){PhanLoai="[VL] "+Doingay(DoiNgayDangKy( r.TDXacNhanHen))}
     if(r.KhachHangHen=="Hẹn Vãn Lai"&&r.TrangThaiXuong!="00 Có Hẹn"){PhanLoai="[VL] "+r.TrangThaiHen}
     if(r.KhachHangHen=="Khách Hẹn"&&r.TrangThaiXuong!="00 Có Hẹn"){PhanLoai="[H] "+r.TrangThaiHen}
