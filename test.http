@@ -8,7 +8,7 @@ PATCH  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/167
   }
 ###
 
-GET  https://fluffy-iris-selenium.glitch.me/XeTrongXuong?KhachHangHen=Khách Hẹn
+GET  https://fluffy-iris-selenium.glitch.me/XeDaGiao?id_gte=414&id_lte=714
 
 
 ###
