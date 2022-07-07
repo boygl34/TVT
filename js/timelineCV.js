@@ -58,20 +58,20 @@ function loadDataCV () {
       content: r.BienSoXe ,
     });}
 
-
-if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"){
-  var classname2 ="green"
-  if(r.TrangThaiXuong=="07 Đang Rửa Xe"){classname2="red"}
-      itemsCV.add({
-      id:  r.BienSoXe+"RuaXe",
-      className: classname2,
-      group: "Rửa Xe",
-      start: new Date(DoiNgayDangKy(r.TimeEndGJ)),
+    if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"&&r.TimeEndGJ){
+      var classname2 ="orange"
+if(r.TrangThaiXuong=="07 Đang Rửa Xe"){classname2="green"}
+itemsCV.add({
+        className: classname2,
+        id:  r.BienSoXe+"_RuaXe"  ,
+        group: "Rửa Xe",
+        start: new Date(DoiNgayDangKy(r.TimeEndGJ)),
       end: new Date(1000 * 60 * 14 + (new Date(DoiNgayDangKy(r.TimeEndGJ))).valueOf()),
-      content: r.BienSoXe +" "+r.CoVanDichVu,
-    });
-       
-   } 
+        content: r.BienSoXe +" "+r.CoVanDichVu
+        });
+
+    }
+
 
   }  
     
