@@ -32,34 +32,34 @@
  var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
  var urlhen = "https://fluffy-iris-selenium.glitch.me/XeDaGiao?KhachHangHen=Khách Hẹn"
  var urlhenvl = "https://fluffy-iris-selenium.glitch.me/XeDaGiao?KhachHangHen=Hẹn Vãn Lai"
-getData(urlTX)
-getData2(urlhen)
-getData3(urlhenvl)
- setInterval(function (){getData(urlTX);getData2(urlhen);getData3(urlhenvl);loadData()},30000);
+
+ laydulieu()
+function laydulieu(){ 
+      $.ajax({
+      url:urlTX,
+      type:'GET',
+      success: function(data){
+          data.sort((a,b) => b.id - a.id)
+          watcherId = data[0].id ;
+          useCaher=data;
+          $.ajax({
+            url:urlDG+"?id_gte="+(watcherId-400)+"&id_lte="+(watcherId),
+            type:'GET',
+              success: function(data2){
+              useCaher2=data2;
+              loadData()
+            }
+          })
+          }
+      });
+}
+// getData(urlTX)
+// getData2(urlhen)
+  setInterval(laydulieu,30000);
   //DanhSachCoVan();
- function getData(url){
-   fetch(url)
-   .then(response => response.json())
-   .then(data =>{
-     useCaher=data
-   })
-    
- }
-function getData2(url){
-   fetch(url)
-   .then(response => response.json())
-   .then(data =>{
-     useCaher2=data
-  } )
- }
- function getData3(url){
-   fetch(url)
-   .then(response => response.json())
-   .then(data =>{
-     useCaher3=data
-     
-   } );
- }
+
+
+
 
 
  var emailnhanvienhen = "Phạm Kim Quí";
@@ -159,7 +159,6 @@ function redraw(){
 
 function loadData () {//Load du lieu cho time line co
   useCaher = useCaher.concat(useCaher2)
-  useCaher = useCaher.concat(useCaher3)
  
     var dataArray1 =  useCaher
      items.clear();
