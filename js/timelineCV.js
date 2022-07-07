@@ -59,9 +59,8 @@ function loadDataCV () {
     });}
 
 
-if(r.KhachRuaXe=="Rửa Xe"){
+if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"){
   var classname2 ="green"
-  if(r.TrangThaiXuong=="08 Chờ Giao Xe"){classname2=""}
   if(r.TrangThaiXuong=="07 Đang Rửa Xe"){classname2="red"}
       itemsCV.add({
       id:  r.BienSoXe+"RuaXe",

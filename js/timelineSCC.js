@@ -66,7 +66,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
         if(r.TrangThaiSCC=="Đã SC"){mau="magenta"}
         var start = new Date(DoiNgayDangKy(r.TimeStartGJ));
         var end = new Date(DoiNgayDangKy(r.TimeEndGJ));
-        var endRX = new Date(DoiNgayDangKy(r.TimeEndGJ).valueOf()+20*60*1000)
+        var endRX = new Date(DoiNgayDangKy(r.TimeEndGJ).valueOf()+15*60*1000)
         if(hoanthanh&&r.TrangThaiSCC=="Đã SC"&&r.TimeStartGJ){
           items.add({
             className: mau,
@@ -86,9 +86,11 @@ var timeline = new vis.Timeline(container, items,groups, options);
         end: end,
         content: r.BienSoXe +" "+r.KyThuatVien1
         });   }
-        if(r.KhachRuaXe=="Rửa Xe"){
+        if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"){
+          var classname2 ="orange"
+  if(r.TrangThaiXuong=="07 Đang Rửa Xe"){classname2="red"}
           items.add({
-            className: mau,
+            className: classname2,
             id:  r.BienSoXe+"_RuaXe"  ,
             group: "Rửa Xe",
             start: end,
