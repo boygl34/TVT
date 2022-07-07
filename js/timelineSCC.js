@@ -86,9 +86,9 @@ var timeline = new vis.Timeline(container, items,groups, options);
         end: end,
         content: r.BienSoXe +" "+r.KyThuatVien1
         });   }
-        if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"){
+        if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"&&r.TimeEndGJ){
           var classname2 ="orange"
-  if(r.TrangThaiXuong=="07 Đang Rửa Xe"){classname2="red"}
+  if(r.TrangThaiXuong=="07 Đang Rửa Xe"){classname2="green"}
           items.add({
             className: classname2,
             id:  r.BienSoXe+"_RuaXe"  ,
