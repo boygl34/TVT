@@ -105,8 +105,11 @@ var timeline = new vis.Timeline(container, items,groups, options);
           var end
           if(r.LoaiHinhSuaChua=="EM"||r.LoaiHinhSuaChua=="EM60"){  end=  new Date(1000 * 60 * 29 + (new Date(start)).valueOf())}
           if(r.LoaiHinhSuaChua=="SCC"||r.LoaiHinhSuaChua=="FIR"){  end=  new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
+          
+          var classnamehen ="blue"
+            if(r.TDGapLeTan){classnamehen="orange"}
           items.add({
-            className: "blue",
+            className: classnamehen,
             id:  r.BienSoXe+"_Hen"  ,
             group: r.KhoangSuaChua,
             start:  start ,
