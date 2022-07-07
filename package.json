@@ -1,0 +1,19 @@
+{
+  "name": "tvt",
+  "version": "1.0.0",
+  "description": "Truc",
+  "main": "main.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boygl34/TVT.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boygl34/TVT/issues"
+  },
+  "homepage": "https://github.com/boygl34/TVT#readme"
+}
