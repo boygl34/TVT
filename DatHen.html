@@ -51,11 +51,9 @@ body {font-family: "Roboto", sans-serif}
   <span id="myIntro" class="w3-hide">Dịch Vụ Toyota Vũng Tàu</span></p>
 </div>
 <header class="w3-container w3-theme " style="padding:10px 20px;text-align:center">
-  <div class="row">
-  <div class="col-4"><i class="fa fa-backward fa-2x " aria-hidden="true" onclick="backwardtime()"></i></div>
- <input class="col-4" id="datefield"  type="date" onchange="changdate(this.value)">
- <div class="col-4"><i class="fa fa-forward fa-2x" aria-hidden="true" onclick="forwardtime()"></i></div>
-</div>
+<button class="prev-day btn btn-outline-secondary"><i class="fa fa-backward fa-2x" aria-hidden='true' onclick="backwardtime()"></i></button>
+<input type='date' id="datefield" onchange="changdate(this.value)" >
+<button class='next-day btn btn-outline-secondary' ><i class='fa fa-forward fa-2x' aria-hidden='true' onclick="forwardtime()"></i></button>
 </header>
 <div class="w3-container"id="TrangDangNhap" style="padding:20px;height: 500px;">
 
