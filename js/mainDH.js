@@ -345,8 +345,10 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
      var ojb =  useCaher
      for(var a in ojb){
      $("#mesenge").html("<div class='alert alert-success'>Hello!!</div>")
-     if(ojb[a].BienSoXe == $("#BienSoXe").val()&&ojb[a].TrangThaiXuong == "00 Có Hẹn"){ alert("Xe Đã Có Hẹn");
+     if(ojb[a].BienSoXe == $("#BienSoXe").val()&&ojb[a].TrangThaiXuong == "00 Có Hẹn"){
+      alert("Xe Đã Có Hẹn");
      $("#buttonDK").html("")
+     timeline.setSelection(ojb[a].MaSo, {focus: true})
      return false }
  
  }
