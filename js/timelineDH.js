@@ -120,7 +120,8 @@ function loadData () {//Load du lieu cho time line co
     if(r.LoaiHinhSuaChua=="FIR"){r.LoaiHinhSuaChua="SCC"}
     if(r.LoaiHinhSuaChua=="EM60"){r.LoaiHinhSuaChua="EM"}
     if(r.LoaiHinhSuaChua=="SCC"){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
-    if((r.NoiDungHen.toUpperCase()).indexOf("BD CẤP LỚN")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
+    if((r.NoiDungHen.toUpperCase()).indexOf("BD40K")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
+    if((r.NoiDungHen.toUpperCase()).indexOf("BD80K")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
     if((r.NoiDungHen.toUpperCase()).indexOf("LEXUS")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
     if(r.KhachHangHen=="Hẹn Vãn Lai"&&r.TrangThaiXuong=="00 Có Hẹn"){PhanLoai="[VL] "+Doingay(DoiNgayDangKy( r.TDXacNhanHen))}
     if(r.KhachHangHen=="Hẹn Vãn Lai"&&r.TrangThaiXuong!="00 Có Hẹn"){PhanLoai="[VL] "+r.TrangThaiHen}
@@ -164,4 +165,56 @@ var option2={
     }
     timeline2.setOptions(option2);
     timeline.setOptions(option1);
+}
+function backwardtime(){
+  Ngay = document.getElementById("datefield").value
+  var today = new Date(new Date(Ngay).valueOf()-24*60*60*1000);
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+   if(dd<10){
+          dd='0'+dd
+      } 
+      if(mm<10){
+          mm='0'+mm
+      } 
+  today = yyyy+'-'+mm+'-'+dd;
+  var option2={
+    start:(new Date( (new Date(today)).valueOf())).setHours(12),
+    end: (new Date( (new Date(today)).valueOf())).setHours(17),
+    }
+    var option1={
+      start:(new Date( (new Date(today)).valueOf())).setHours(8),
+      end: (new Date( (new Date(today)).valueOf())).setHours(12),
+      }
+      timeline2.setOptions(option2);
+      timeline.setOptions(option1);
+      document.getElementById("datefield").value=today
+
+}
+function forwardtime(){
+  Ngay = document.getElementById("datefield").value
+  var today = new Date(new Date(Ngay).valueOf()+24*60*60*1000);
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+   if(dd<10){
+          dd='0'+dd
+      } 
+      if(mm<10){
+          mm='0'+mm
+      } 
+  today = yyyy+'-'+mm+'-'+dd;
+  var option2={
+    start:(new Date( (new Date(today)).valueOf())).setHours(12),
+    end: (new Date( (new Date(today)).valueOf())).setHours(17),
+    }
+    var option1={
+      start:(new Date( (new Date(today)).valueOf())).setHours(8),
+      end: (new Date( (new Date(today)).valueOf())).setHours(12),
+      }
+      timeline2.setOptions(option2);
+      timeline.setOptions(option1);
+      document.getElementById("datefield").value=today
+
 }
