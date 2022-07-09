@@ -180,23 +180,45 @@ body {font-family: "Roboto", sans-serif}
             </div>
             <div class="form-row">
             <div class="form-group col-md-6">
-              
-            <label  for="KhachRX" >Rửa Xe</label>
-            <select  class="form-control" id = "KhachRX" required>
-            <option value="Không Rửa">Không Rửa</option>
-            <option value="Rửa Xe">Rửa Xe</option>
+              <button type="button" class="btn btn-primary" id = "KhachRX"  value="Rửa Xe" onclick="KhachRua()">Rửa Xe</button> 
             
-            </select>
             </div>	
             <div class="form-group col-md-6">
-            <label for="KhachDoi">Khách Đợi</label>
-            <select  class="form-control" id = "KhachDoi"required >
-            <option value="Khách Đợi">Khách Đợi</option>
-            <option value="Không Đợi">Không Đợi</option>
-            </select>
+              <button type="button" class="btn btn-primary" id = "KhachDoi"  value="Khách Đợi" onclick="Khachdoi()">Khách Đợi</button>
             </div>
             </div>  
-            
+            <script>
+               function Khachdoi(){
+                var buttonkd = document.getElementById("KhachDoi")
+                if(buttonkd.value=="Khách Đợi"){
+                  buttonkd.value = "Không Đợi";
+                  buttonkd.innerHTML = "Không Đợi";
+                  buttonkd.removeAttribute("class","btn-primary");
+                  buttonkd.setAttribute("class"," btn btn-success")
+                }
+                else{
+                  buttonkd.value = "Khách Đợi";
+                  buttonkd.innerHTML = "Khách Đợi";
+                  buttonkd.removeAttribute("class","btn-success");
+                  buttonkd.setAttribute("class","btn btn-primary")}
+               }
+               function KhachRua(){
+                var buttonkd = document.getElementById("KhachRX")
+                if(buttonkd.value=="Rửa Xe"){
+                  buttonkd.value = "Không Rửa";
+                  buttonkd.innerHTML = "Không Rửa";
+                  buttonkd.removeAttribute("class","btn-primary");
+                  buttonkd.setAttribute("class"," btn btn-success")
+                }
+                else{
+                  buttonkd.value = "Rửa Xe";
+                  buttonkd.innerHTML = "Rửa Xe";
+                  buttonkd.removeAttribute("class","btn-success");
+                  buttonkd.setAttribute("class","btn btn-primary")}
+               }
+ 
+
+            </script>
             <div class="form-row"> 
             <div class="form-group col-md-6">
             <label for="exampleFormControlSelect1">Loại Hình GJ </label>

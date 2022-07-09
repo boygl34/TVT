@@ -291,8 +291,35 @@ function dataTableTiepNhan(){
       if(data.MaSo){	document.getElementById("MaSo").value = data.MaSo}
       if(data.LoaiHinhSuaChua){document.getElementById("LoaiHinh").value = data.LoaiHinhSuaChua}                
       if(data.LoaiHinhDongSon){document.getElementById("LoaiHinhBP").value =data.LoaiHinhDongSon}
-      if(data.KhachHangDoi){document.getElementById("KhachDoi").value =data.KhachHangDoi }  
-      if(data.KhachRuaXe){document.getElementById("KhachRX").value = data.KhachRuaXe } 
+      if(data.KhachHangDoi){
+        var buttonkd = document.getElementById("KhachDoi")
+                if(data.KhachHangDoi=="Khách Đợi"){
+                  buttonkd.value = "Không Đợi";
+                  buttonkd.innerHTML = "Không Đợi";
+                  buttonkd.removeAttribute("class","btn-primary");
+                  buttonkd.setAttribute("class"," btn btn-success")
+                }
+                else{
+                  buttonkd.value = "Khách Đợi";
+                  buttonkd.innerHTML = "Khách Đợi";
+                  buttonkd.removeAttribute("class","btn-success");
+                  buttonkd.setAttribute("class","btn btn-primary")}
+         }  
+      if(data.KhachRuaXe){
+        var buttonkd = document.getElementById("KhachRX")
+                if(data.KhachRuaXe=="Rửa Xe"){
+                  buttonkd.value = "Không Rửa";
+                  buttonkd.innerHTML = "Không Rửa";
+                  buttonkd.removeAttribute("class","btn-primary");
+                  buttonkd.setAttribute("class"," btn btn-success")
+                }
+                else{
+                  buttonkd.value = "Không Rửa";
+                  buttonkd.innerHTML = "Không Rửa";
+                  buttonkd.removeAttribute("class","btn-success");
+                  buttonkd.setAttribute("class","btn btn-primary")}
+        
+        } 
       if(data.GhiChu){alert(data.GhiChu)}
       if(data.TDHenGiaoXe){document.getElementById("NgayGiaoXe").value = TimesClick(DoiNgayDangKy( data.TDHenGiaoXe))} 
       if( data.TrangThaiXuong =="02 Chờ Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
@@ -339,6 +366,16 @@ function dataTableTiepNhan(){
          $("#message").html("<div class='alert alert-success'>Hello!!</div>")
          document.getElementById("NutNhan").innerHTML = ""
          $("#BienSoXe").val(this.cells[0].innerHTML) ;
+         var buttonkd = document.getElementById("KhachDoi")
+           buttonkd.value = "Khách Đợi";
+           buttonkd.innerHTML = "Khách Đợi";
+           buttonkd.removeAttribute("class","btn-success");
+           buttonkd.setAttribute("class"," btn btn-primary");
+           var buttonkd = document.getElementById("KhachRX")
+             buttonkd.value = "Rửa Xe";
+             buttonkd.innerHTML = "Rửa Xe";
+             buttonkd.removeAttribute("class","btn-success");
+             buttonkd.setAttribute("class","btn btn-primary")
         changvalue();
         return false
       }}
