@@ -294,30 +294,30 @@ function dataTableTiepNhan(){
       if(data.KhachHangDoi){
         var buttonkd = document.getElementById("KhachDoi")
                 if(data.KhachHangDoi=="Khách Đợi"){
-                  buttonkd.value = "Không Đợi";
-                  buttonkd.innerHTML = "Không Đợi";
+                  buttonkd.value = "Khách Đợi";
+                  buttonkd.innerHTML = "Khách Đợi";
                   buttonkd.removeAttribute("class","btn-primary");
                   buttonkd.setAttribute("class"," btn btn-success")
                 }
                 else{
-                  buttonkd.value = "Khách Đợi";
-                  buttonkd.innerHTML = "Khách Đợi";
+                  buttonkd.value = "Không Đợi";
+                  buttonkd.innerHTML = "Không Đợi";
                   buttonkd.removeAttribute("class","btn-success");
                   buttonkd.setAttribute("class","btn btn-primary")}
          }  
       if(data.KhachRuaXe){
         var buttonkd = document.getElementById("KhachRX")
                 if(data.KhachRuaXe=="Rửa Xe"){
-                  buttonkd.value = "Không Rửa";
-                  buttonkd.innerHTML = "Không Rửa";
+                  buttonkd.value = "Rửa Xe";
+                  buttonkd.innerHTML = "Rửa Xe";
                   buttonkd.removeAttribute("class","btn-primary");
                   buttonkd.setAttribute("class"," btn btn-success")
                 }
                 else{
                   buttonkd.value = "Không Rửa";
                   buttonkd.innerHTML = "Không Rửa";
-                  buttonkd.removeAttribute("class","btn-success");
-                  buttonkd.setAttribute("class","btn btn-primary")}
+                  buttonkd.removeAttribute("class","btn-primary");
+                  buttonkd.setAttribute("class","btn btn-success")}
         
         } 
       if(data.GhiChu){alert(data.GhiChu)}
