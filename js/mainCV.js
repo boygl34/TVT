@@ -121,7 +121,13 @@ function dataTableTiepNhan(){
             ColGH.textContent =Doingay(DoiNgayDangKy(r.ThoiGianHen))
             }else{ ColGH.textContent = ""}
             if(r.TrangThaiXuong=="02 Chờ Tiếp Nhận"){ColTime.innerHTML=Math.round((new Date()- new Date(DoiNgayDangKy(r.TDGapLeTan)) )/(60*60*1000)*10)/10 +" h"}
-           if(r.TrangThaiXuong=="05 Đang Sửa Chữa"||r.TrangThaiXuong=="04 Đã Tiếp Nhận"||r.TrangThaiXuong=="08 Chờ Giao Xe"){ColTime.innerHTML=Doingay(DoiNgayDangKy(r.TDHenGiaoXe) )}
+            if(r.TrangThaiXuong=="02 Chuẩn Bị Tiếp"){ColTime.innerHTML=Math.round((new Date()- new Date(DoiNgayDangKy(r.TDGapLeTan)) )/(60*60*1000)*10)/10 +" h"}
+            if(r.TrangThaiXuong=="03 Đang Tiếp Nhận"){
+              var time = Math.round((new Date()- new Date(DoiNgayDangKy(r.TDGapLeTan)) )/(60*1000)*1)/1
+              ColTime.innerHTML=time +" h"
+            if(time>30){canhBao("Tiếp Nhận","Bạn Tiếp nhận xe "+r.BienSoXe+" quá lâu "+time+"Phút")}
+            }
+            if(r.TrangThaiXuong=="05 Đang Sửa Chữa"||r.TrangThaiXuong=="04 Đã Tiếp Nhận"||r.TrangThaiXuong=="08 Chờ Giao Xe"){ColTime.innerHTML=Doingay(DoiNgayDangKy(r.TDHenGiaoXe) )}
             row.appendChild(ColBS);
             if(CoVan==""){row.appendChild(ColCV);}else{row.appendChild(ColTKH); }
             row.appendChild(ColCD); 
@@ -133,6 +139,7 @@ function dataTableTiepNhan(){
             row.appendChild(ColGH);
             row.appendChild(ColTime);
             tbodyTim.appendChild(row)
+            
             sortTable1()
         })
   }
@@ -379,4 +386,13 @@ function dataTableTiepNhan(){
         changvalue();
         return false
       }}
+    }
+
+    function canhBao(tieude,noidung){
+      var alert = '<div class="alert alert-warning alert-dismissible fade show" role="alert">'+
+      '<strong>'+tieude+'!</strong>'+noidung+
+      '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+      '<span aria-hidden="true">&times;</span>'+
+      '</button></div>'
+     $("#alert").html($("#alert").html()+alert)
     }
