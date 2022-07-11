@@ -108,9 +108,10 @@ getData(urlTX)
           if(r.TimeEndGJ){
               ColKTSC.innerHTML = Doingay(DoiNgayDangKy(r.TimeEndGJ))}
               row.appendChild(ColKTSC);  
+          if(r.TDHenGiaoXe){   
           var ColGiaoXe= document.createElement("td");
               ColGiaoXe.innerHTML = Doingay(DoiNgayDangKy(r.TDHenGiaoXe))
-              row.appendChild(ColGiaoXe);
+              row.appendChild(ColGiaoXe);}
           var ColTrangThai= document.createElement("td");
           if(r.TrangThaiXuong=="08 Chờ Giao Xe"){ColTrangThai.innerHTML = "Hoàn Thành";row.setAttribute('class', 'ChoGiaoXe')}
           if(r.TrangThaiXuong=="07 Đang Rửa Xe"){ColTrangThai.innerHTML = "Đang RX";row.setAttribute('class', 'DangRuaXe')} 
