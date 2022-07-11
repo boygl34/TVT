@@ -132,7 +132,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
             var dataArray0 =   useCaher
             var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn")})
             var dataArray2= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC")})
-            dataArray2 = dataArray2.sort(function(r){return r.TDKetThucTiepKhach})
+            dataArray2 = dataArray2.sort(function(a, b) {return (DoiNgayDangKy(a.TDKetThucTiepKhach).valueOf() > DoiNgayDangKy(b.TDKetThucTiepKhach).valueOf() ? 1 : -1);})
             var NgayHoanThanh=new Date().setHours(8)
             var hoanthanh = document.getElementById("checkbox-3").checked
             dataArray2.forEach(function(r){
