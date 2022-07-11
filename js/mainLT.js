@@ -114,6 +114,14 @@ function getValueALL(){
         }
      postData(use,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
   }
+  function DangTiepNhan(){
+    $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Chuyển Trạng Thái</div>")
+    var use={
+       TrangThaiXuong:"03 Đang Tiếp Nhận",
+       TDBDTiepKhach:TimesClick()
+       }
+    postData(use,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+ }
   function HuyDK(){
      $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Hủy</div>")
      var MaSo = $('#MaSo').val()
@@ -290,7 +298,7 @@ function getValueALL(){
       for(var i = 1; i < table.rows.length; i++){table.rows[i].onclick = function(){
       var BienSoXe = this.cells[0].innerHTML;
       $("#mesenge").html("<div class='alert alert-success'>Hello!!</div>")
-       NutNhan.innerHTML =""
+       NutNhan.innerHTML ="";NutNhan2.innerHTML =""
         document.getElementById("myForm").reset();
       document.getElementById("MaSo").value = this.cells[9].innerHTML;
       if(BienSoXe.indexOf(" ")!=(-1)){
@@ -304,11 +312,13 @@ function getValueALL(){
       document.getElementById("CoVanDichVu").value = this.cells[6].innerHTML;
       changvalue()
       if(this.cells[7].innerHTML=="Chờ Tiếp Nhận"){
-      NutNhan.innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>&emsp;<button type="button" class="btn btn-primary" onclick="ChuanBi()" >Chuẩn Bị Tiếp</button>&emsp;<button type="button" class="btn btn-danger" onclick="HuyDK()" >Hủy TN</button>'
-      }
+      NutNhan.innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>&emsp;<button type="button" class="btn btn-primary" onclick="ChuanBi()" >Chuẩn Bị Tiếp</button>'
+      NutNhan2.innerHTML = '<button type="button" class="btn btn-success" onclick="DangTiepNhan()" >Bắt Đầu Tiếp Khách</button>&emsp;<button type="button" class="btn btn-danger" onclick="HuyDK()" >Hủy TN</button>'
+    }
       if(this.cells[7].innerHTML=="Chuẩn Bị Tiếp"){
-      NutNhan.innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>&emsp;<button type="button" class="btn btn-primary" onclick="ChoTiepNhan()" >Chờ Tiếp Nhận</button>&emsp; <button type="button" class="btn btn-danger" onclick="HuyDK()" >Hủy TN</button>'
-      }
+      NutNhan.innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>&emsp;<button type="button" class="btn btn-primary" onclick="ChoTiepNhan()" >Chờ Tiếp Nhận</button>'
+      NutNhan2.innerHTML = '<button type="button" class="btn btn-success" onclick="DangTiepNhan()" >Bắt Đầu Tiếp Khách</button>&emsp;<button type="button" class="btn btn-danger" onclick="HuyDK()" >Hủy TN</button>'
+    }
       }}
       }
   function clickTableTiepNhanHen(){
