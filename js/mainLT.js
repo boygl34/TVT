@@ -137,7 +137,9 @@ function getValueALL(){
         data: json2
     });
        console.log(json2)
-       postData(json2,urlDG,"POST")
+       var data2=json2
+        delete data2.id
+       postData(data2,urlDG,"POST")
        deleteData(urlTX+"/"+json2.id )
   }
   function CapNhat(){

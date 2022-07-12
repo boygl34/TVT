@@ -300,8 +300,9 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
                                 var json2 
                                 for(var a in ojb){
                                 if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
-                                console.log(json2.id)
-                                postData(json2,urlDG,"POST")
+                                var data2 = json2
+                                delete data2.id
+                                postData(data2,urlDG,"POST")
                                 deleteData(urlTX+"/"+json2.id )
                                 })
             

@@ -238,24 +238,25 @@ function dataTableTiepNhan(){
           })
           .then(response => response.json())
           .then(data => {
-            console.log(data)
-          getData(urlTX)
-          $("#message").html("<div class='alert alert-success'>Thành Công</div>")
-          document.getElementById("NutNhan").innerHTML = ""
-          document.getElementById("myForm").reset() 
- 
-          $.ajax({
-            url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
-            method: "GET",
-            mode: 'no-cors',
-            credentials: 'omit', 
-            referrerPolicy: 'no-referrer',
-            dataType: "json",
-            data: data
-        });
+                  getData(urlTX)
+                  $("#message").html("<div class='alert alert-success'>Thành Công</div>")
+                  document.getElementById("NutNhan").innerHTML = ""
+                  document.getElementById("myForm").reset() 
 
-          postData(data,urlDG,"POST")
-          deleteData(urlTX+"/"+data.id )
+                  $.ajax({
+                  url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
+                  method: "GET",
+                  mode: 'no-cors',
+                  credentials: 'omit', 
+                  referrerPolicy: 'no-referrer',
+                  dataType: "json",
+                  data: data
+                  });
+
+                  var data2= data
+                  delete data2.id
+                  postData(data2,urlDG,"POST")
+                 deleteData(urlTX+"/"+checkID(data.MaSo) )
           })
           .catch((error) => {
           console.error('Error:', error);
