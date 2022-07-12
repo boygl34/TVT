@@ -123,24 +123,28 @@ function getValueALL(){
     postData(use,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
  }
   function HuyDK(){
-     $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Hủy</div>")
-     var MaSo = $('#MaSo').val()
-     var ojb =  useCaher
-     var json2 
-       for(var a in ojb){
-       if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
-       $.ajax({
+    try{
+        $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Hủy</div>")
+        var MaSo = $('#MaSo').val()
+        var ojb =  useCaher
+        var json2 
+        for(var a in ojb){
+        if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
+        $.ajax({
         url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
         method: "GET",
         mode: 'no-cors',
         dataType: "json",
         data: json2
-    });
-       console.log(json2)
-       var data2=json2
+        });
+        console.log(json2)
+        var data2=json2
         delete data2.id
-       postData(data2,urlDG,"POST")
-       deleteData(urlTX+"/"+json2.id )
+        postData(data2,urlDG,"POST")
+        deleteData(urlTX+"/"+json2.id )
+  } catch(error) {
+    alert("Lỗi : "+error)
+  }
   }
   function CapNhat(){
      $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Cập Nhật</div>")

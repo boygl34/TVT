@@ -225,6 +225,7 @@ function dataTableTiepNhan(){
 
   
   function GiaoXe(use){
+    try{
      $("#message").html("<div class='alert alert-success'>Đang Cập Nhật</div>")
      var json3 = {
           TDRaKhoicong: TimesClick(),
@@ -261,7 +262,9 @@ function dataTableTiepNhan(){
           .catch((error) => {
           console.error('Error:', error);
           });
- 
+ }catch(error) {
+  alert("Lỗi : "+error)
+}
   }
 
 

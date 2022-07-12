@@ -307,9 +307,9 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
                                 })
             
                 });
-           }catch{
-            alert("Lỗi")
-           }
+           }catch(error) {
+            alert("Lỗi : "+error)
+          }
 
   }
 
