@@ -148,4 +148,12 @@ function DoiNgayDangKy(ngayhen){
                         end: new Date(datehen).setHours(17),
                       }
                       timeline.setOptions(optionngay);
-                    }                       
+                    }      
+                    
+function canhBaoThanhCong(tieude,noidung){
+  var alert = ' <div class="alert alert-success" role="alert" data-delay="10000">'+
+                  ' <h4 class="alert-heading">Thành Công!</h4>'+
+                  '<p>Đăng Ký Thành công biến số xe</p>'+
+                  '</div>'+
+$("#alert").html($("#alert").html()+alert)
+}
