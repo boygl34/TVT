@@ -27,7 +27,7 @@ getData(urlTX)
      .then(data => {
      getData(urlTX)
      setTimeout(function(){$('#ModalSCC').modal('hide')},1000)
-     
+
      })
      .catch((error) => {
      console.error('Error:', error);
@@ -189,7 +189,7 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
  try{ 
   if(changvalueBS()!==false){
     
-    $("#buttonDK").html("<button  type='button' class='btn btn-primary me-2' disable >Đang Đăng Ký!</button>")
+    $("#buttonDK").html("<button  type='button' class='btn btn-warning me-2' disable >Đang Đăng Ký!</button>")
   var MaSohen = TaoMaSo($('#ThoiGianHen').val())+$('#BienSoXe').val()
           var thoigiandung  = DoiNgayDangKy(document.getElementById("ThoiGianHen").value)
           var khachhen = "Khách Hẹn"
