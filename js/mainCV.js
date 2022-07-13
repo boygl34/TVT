@@ -341,7 +341,8 @@ function dataTableTiepNhan(){
       if( data.TrangThaiXuong =="02 Chờ Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
       if( data.TrangThaiXuong =="02 Chuẩn Bị Tiếp"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="TiepNhan()" >Tiếp Nhận</button>'}
       if(data.TrangThaiXuong =="03 Đang Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="KetThucTiepNhan()" >Kết Thúc Tiếp Nhận</button>'}
-      if( data.TrangThaiXuong =="08 Chờ Giao Xe"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button>'}
+      if( data.TrangThaiXuong =="08 Chờ Giao Xe"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button><button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
+      if( data.TrangThaiXuong =="06 Chờ Rửa Xe"||data.TrangThaiXuong =="07 Đang Rửa Xe"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
       if( data.TrangThaiXuong =="04 Đã Tiếp Nhận"||data.TrangThaiXuong =="05 Dừng Công Việc"||data.TrangThaiXuong =="05 Đang Sửa Chữa"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
       if( data.TrangThaiXuong =="00 Có Hẹn"){document.getElementById("NutNhan").innerHTML = ""}
     if( data.LoaiHinhDongSon =="Báo Giá BH"&&data.TrangThaiXuong =="04 Đã Tiếp Nhận"){document.getElementById("NutNhan").innerHTML = '<button type="button" class="btn btn-primary" onclick="GiaoXe()" >Giao Xe</button> <button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>'}
