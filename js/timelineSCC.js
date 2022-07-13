@@ -99,7 +99,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
             });
 
         } 
-        if(r.ThoiGianHen){
+        if(r.ThoiGianHen&& document.getElementById("checkbox-hen").checked){
           if(r.TimeStartGJ){}else{
           var start =DoiNgayDangKy(r.ThoiGianHen)
           var end
