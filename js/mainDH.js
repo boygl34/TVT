@@ -185,7 +185,8 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
    if($('#ThoiGianHen').val()==""){alert("Không Thể Đặt Hẹn, Thiếu Thông Tin");return false}
    if($('#CoVanDichVu').val()==""){alert("Không Thể Đặt Hẹn, Thiếu Thông Tin");return false}
   if($('#LoaiHinhDongSon').val()==""&&$('#LoaiHinhSuaChua').val()==""){alert("Không Thể Đặt Hẹn, Thiếu Thông Tin");return false}
-         var MaSohen = TaoMaSo($('#ThoiGianHen').val())+$('#BienSoXe').val()
+  if(changvalueBS()!==false){
+  var MaSohen = TaoMaSo($('#ThoiGianHen').val())+$('#BienSoXe').val()
           var thoigiandung  = DoiNgayDangKy(document.getElementById("ThoiGianHen").value)
           var khachhen = "Khách Hẹn"
           var giohientai = new Date()
@@ -214,9 +215,9 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
       if($('#LoaiHinhSuaChua').val()=="SCC"||$('#LoaiHinhSuaChua').val()=="FIR"){json2["KhoangSuaChua"]= "SCC 0"+(checkloaihinhGJ()+5)}                  
  $("#mesenge").html('<div class="alert alert-warning" role="alert">Đang Đăng Ký! '+khachhen+'</div>')
  postData(json2,urlTX,"POST")
- }
+ }else{alert("Xe Đã Có Hẹn")}
  
- 
+}
 
 
  function CapNhatHen(){
