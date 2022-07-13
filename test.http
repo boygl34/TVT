@@ -1,4 +1,4 @@
-DELETE  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/943
+DELETE  https://fluffy-iris-selenium.glitch.me/XeTrongXuong/1157
 ###
 DELETE  https://fluffy-iris-selenium.glitch.me/XeDaGiao/640
 ###
@@ -12,12 +12,12 @@ GET  https://fluffy-iris-selenium.glitch.me/XeDaGiao?id_gte=414&id_lte=714
 
 
 ###
-GET  https://fluffy-iris-selenium.glitch.me/XeTrongXuong?TrangThaiXuong=09 Đã Giao Xe
+GET  https://fluffy-iris-selenium.glitch.me/XeTrongXuong?BienSoXe=72A-508.27
 
 ### 
 POST  https://fluffy-iris-selenium.glitch.me/XeDaGiao
 ###
-GET  https://fluffy-iris-selenium.glitch.me/XeDaGiao?BienSoXe=72C-188.83
+GET  https://fluffy-iris-selenium.glitch.me/XeDaGiao?BienSoXe=72A-417.21
 
 
 
