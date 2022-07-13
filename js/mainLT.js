@@ -325,6 +325,10 @@ function getValueALL(){
       NutNhan.innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>&emsp;<button type="button" class="btn btn-primary" onclick="ChoTiepNhan()" >Chờ Tiếp Nhận</button>'
       NutNhan2.innerHTML = '<button type="button" class="btn btn-success" onclick="DangTiepNhan()" >Bắt Đầu Tiếp Khách</button>&emsp;<button type="button" class="btn btn-danger" onclick="HuyDK()" >Hủy TN</button>'
     }
+    if(this.cells[7].innerHTML=="Đang Tiếp Nhận"){
+      NutNhan.innerHTML = '<button type="button" class="btn btn-primary" onclick="CapNhat()" >Cập Nhật</button>&emsp;<button type="button" class="btn btn-primary" onclick="ChoTiepNhan()" >Chờ Tiếp Nhận</button>'
+      NutNhan2.innerHTML = ""
+    }
       }}
       }
   function clickTableTiepNhanHen(){
