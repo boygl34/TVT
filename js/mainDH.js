@@ -27,6 +27,7 @@ getData(urlTX)
      .then(data => {
      getData(urlTX)
      setTimeout(function(){$('#ModalSCC').modal('hide')},1000)
+     
      })
      .catch((error) => {
      console.error('Error:', error);
@@ -185,7 +186,10 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
    if($('#ThoiGianHen').val()==""){alert("Không Thể Đặt Hẹn, Thiếu Thông Tin");return false}
    if($('#CoVanDichVu').val()==""){alert("Không Thể Đặt Hẹn, Thiếu Thông Tin");return false}
   if($('#LoaiHinhDongSon').val()==""&&$('#LoaiHinhSuaChua').val()==""){alert("Không Thể Đặt Hẹn, Thiếu Thông Tin");return false}
+ try{ 
   if(changvalueBS()!==false){
+    
+    $("#buttonDK").html("<button  type='button' class='btn btn-primary me-2' disable >Đang Đăng Ký!</button>")
   var MaSohen = TaoMaSo($('#ThoiGianHen').val())+$('#BienSoXe').val()
           var thoigiandung  = DoiNgayDangKy(document.getElementById("ThoiGianHen").value)
           var khachhen = "Khách Hẹn"
@@ -216,7 +220,13 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
  $("#mesenge").html('<div class="alert alert-warning" role="alert">Đang Đăng Ký! '+khachhen+'</div>')
  postData(json2,urlTX,"POST")
  }else{alert("Xe Đã Có Hẹn")}
- 
+}
+catch(error) {
+  $("#buttonDK").html("<button  type='button' class='btn btn-danger me-2' disable >Không Thành Công!</button>")
+}
+//finally{$("#buttonDK").html("<button  type='button' class='btn btn-success me-2' disable >Đăng Ký Thành Công!</button>")}
+  
+
 }
 
 
@@ -296,17 +306,12 @@ dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(
                             referrerPolicy: 'no-referrer',
                             dataType: "json",
                             data: data
-                      }) .then(getData(urlTX))
-                         .then(function(){ var ojb =  useCaher;
-                                var json2 
-                                for(var a in ojb){
-                                if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
-                                var data2 = json2
-                                delete data2.id
-                                postData(data2,urlDG,"POST")
-                                deleteData(urlTX+"/"+json2.id )
-                                })
-            
+                      }) 
+
+                      var data2= data
+                      delete data2.id
+                      postData(data2,urlDG,"POST")
+                     deleteData(urlTX+"/"+checkID(data.MaSo) )
                 });
            }catch(error) {
             alert("Lỗi : "+error)
