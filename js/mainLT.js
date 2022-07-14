@@ -93,8 +93,8 @@ function getValueALL(){
     if($("#LoaiHinh").val()==""&&$("#LoaiHinhBP").val()==""){$("#mesenge").html("<div class='alert alert-danger'>Chưa Loại Hình</div>");return false}
     if($("#CoVan").val()==""){$("#mesenge").html("<div class='alert alert-danger'>Chưa Chọn Cố Vấn</div>");return false}
     $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Đăng Ký</div>")
-   if(checkID($(MaSo).val())){ 
-    postData(getValueALL(),urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+   if(checkID($("#MaSo").val())){ 
+    postData(getValueALL(),urlTX+"/"+checkID($("#MaSo").val()),"PATCH")
    }else{postData(getValueALL(),urlTX,"POST")}
    
     
@@ -104,7 +104,7 @@ function getValueALL(){
      var use={
         TrangThaiXuong:"02 Chuẩn Bị Tiếp"
         }
-     postData(use,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+     postData(use,urlTX+"/"+checkID($("#MaSo").val()),"PATCH")
      
   }
   function ChoTiepNhan(){
@@ -112,7 +112,7 @@ function getValueALL(){
      var use={
         TrangThaiXuong:"02 Chờ Tiếp Nhận"
         }
-     postData(use,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+     postData(use,urlTX+"/"+checkID($("#MaSo").val()),"PATCH")
   }
   function DangTiepNhan(){
     $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Chuyển Trạng Thái</div>")
@@ -120,31 +120,44 @@ function getValueALL(){
        TrangThaiXuong:"03 Đang Tiếp Nhận",
        TDBDTiepKhach:TimesClick()
        }
-    postData(use,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+    postData(use,urlTX+"/"+checkID($("#MaSo").val()),"PATCH")
  }
   function HuyDK(){
-    try{
-        $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Hủy</div>")
-        var MaSo = $('#MaSo').val()
-        var ojb =  useCaher
-        var json2 
-        for(var a in ojb){
-        if(ojb[a].MaSo == MaSo){json2 = ojb[a]}}
-        $.ajax({
-        url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
-        method: "GET",
-        mode: 'no-cors',
-        dataType: "json",
-        data: json2
-        });
-        console.log(json2)
-        var data2=json2
-        delete data2.id
-        postData(data2,urlDG,"POST")
-        deleteData(urlTX+"/"+json2.id )
-  } catch(error) {
-    alert("Lỗi : "+error)
-  }
+    let text = "Hủy Tiếp Nhận";  
+    if (confirm(text) == true) { 
+       var MaSo = $('#MaSo').val()
+       
+             try{
+              json3 = { TrangThaiXuong: "02 Hủy Tiếp Nhận"
+              };
+             
+              fetch(urlTX+"/"+checkID(MaSo), {
+                method: "PATCH", // or 'PUT'
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(json3),
+                }).then(response => response.json())
+                  .then(data => {
+                          $.ajax({
+                              url: "https://script.google.com/macros/s/AKfycbxIfaWmzDpVW3erjRGP6y-da5aEOKaG5tKrQYz-wrqSpHKqPU0zNqsc_BUxZ-bhEnKL/exec",
+                              method: "GET",
+                              mode: 'no-cors',
+                              credentials: 'omit', 
+                              referrerPolicy: 'no-referrer',
+                              dataType: "json",
+                              data: data
+                        }) 
+  
+                        var data2= data
+                        delete data2.id
+                        postData(data2,urlDG,"POST")
+                       deleteData(urlTX+"/"+checkID(data.MaSo) )
+                  });
+             }catch(error) {
+              alert("Lỗi : "+error)
+            }
+  
+    }
+  
   }
   function CapNhat(){
      $("#mesenge").html("<div class='alert alert-success'><div class='spinner-border text-success' role='status'><span class='sr-only'>Loading...</span></div>Đang Cập Nhật</div>")
