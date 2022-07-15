@@ -9,7 +9,8 @@
       end: (new Date( (new Date()).valueOf())).setHours(17),
       }
     var options = {         
-        hiddenDates: [{ start: '2017-03-05 00:00:00',end: '2017-03-06 00:00:00',repeat: 'weekly'},
+        hiddenDates: [
+          //{ start: '2017-03-05 00:00:00',end: '2017-03-06 00:00:00',repeat: 'weekly'},
                       { start: '2017-03-04 17:00:00',end: '2017-03-05 08:00:00',repeat: 'daily'},
                       { start: '2017-03-04 12:00:00',end: '2017-03-04 13:00:00',repeat: 'daily'}], 
         editable: true,
