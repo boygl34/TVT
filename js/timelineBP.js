@@ -189,8 +189,8 @@ var timeline = new vis.Timeline(container, items,groups, options);
                     if(r.HTLap=="Okie"){ mau3="orange";edit4=false;group="groupHT"}else{edit4=edit0;group="groupDS"}
                     if(r.HTPass=="Okie"){ mau5="orange";edit5=false;group="groupHT"}else{edit5=edit0;group="groupDS"}
                     if(r.TimeStartBody&&r.TimeEndBody){
-                        if((new Date(DoiNgayDangKy(r.TimeStartBody))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndBody))).valueOf()>timeNow.valueOf()){mau1="green"}
-                        if((new Date(DoiNgayDangKy(r.TimeEndBody))).valueOf()<timeNow.valueOf()){mau1="orange"}
+                        //if((new Date(DoiNgayDangKy(r.TimeStartBody))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndBody))).valueOf()>timeNow.valueOf()){mau1="green"}
+                        //if((new Date(DoiNgayDangKy(r.TimeEndBody))).valueOf()<timeNow.valueOf()){mau1="orange"}
                         
                       if(hoanthanh&&r.HTDong=="Okie"){
                         items.add({
@@ -221,8 +221,8 @@ var timeline = new vis.Timeline(container, items,groups, options);
 
                     }  
                     if(r.TimeStartLap&&r.TimeEndLap){
-                        if((new Date(DoiNgayDangKy(r.TimeStartLap))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndLap))).valueOf()>timeNow.valueOf()){mau2="green"}
-                        if((new Date(r.TimeEndLap)).valueOf()<timeNow.valueOf()){mau2="orange"}
+                        //if((new Date(DoiNgayDangKy(r.TimeStartLap))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndLap))).valueOf()>timeNow.valueOf()){mau2="green"}
+                        //if((new Date(r.TimeEndLap)).valueOf()<timeNow.valueOf()){mau2="orange"}
                         if(hoanthanh&&r.HTLap=="Okie"){
                         items.add({
                             className: mau2,
@@ -251,8 +251,8 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             }); }
                     } 
                     if(r.TimeStartNen&&r.TimeEndNen){
-                        if((new Date(DoiNgayDangKy(r.TimeStartNen))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndNen))).valueOf()>timeNow.valueOf()){mau3="green"}
-                        if((new Date(r.TimeEndNen)).valueOf()<timeNow.valueOf()){mau3="orange"}
+                       // if((new Date(DoiNgayDangKy(r.TimeStartNen))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndNen))).valueOf()>timeNow.valueOf()){mau3="green"}
+                       // if((new Date(r.TimeEndNen)).valueOf()<timeNow.valueOf()){mau3="orange"}
                         if(hoanthanh&&r.HTNen=="Okie"){
                         items.add({
                             className: mau3,
@@ -282,8 +282,8 @@ var timeline = new vis.Timeline(container, items,groups, options);
 
                     }
                     if(r.TimeStartPaint&&r.TimeEndPaint){
-                        if((new Date(DoiNgayDangKy(r.TimeStartPaint))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndPaint))).valueOf()>timeNow.valueOf()){mau4="green"}
-                        if((new Date(r.TimeEndPaint)).valueOf()<timeNow.valueOf()){mau4="orange"}
+                        //if((new Date(DoiNgayDangKy(r.TimeStartPaint))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndPaint))).valueOf()>timeNow.valueOf()){mau4="green"}
+                        //if((new Date(r.TimeEndPaint)).valueOf()<timeNow.valueOf()){mau4="orange"}
                         if(hoanthanh&&r.HTSon=="Okie"){
                         items.add({
                             className: mau4,
@@ -312,8 +312,8 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             });}
                     }
                     if(r.TimeStartPass&&r.TimeEndPass){  
-                        if((new Date(DoiNgayDangKy(r.TimeStartPass))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndPass))).valueOf()>timeNow.valueOf()){mau5="green"}
-                        if((new Date(DoiNgayDangKy(r.TimeEndPass))).valueOf()<timeNow.valueOf()){mau5="orange"}
+                        //if((new Date(DoiNgayDangKy(r.TimeStartPass))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndPass))).valueOf()>timeNow.valueOf()){mau5="green"}
+                        //if((new Date(DoiNgayDangKy(r.TimeEndPass))).valueOf()<timeNow.valueOf()){mau5="orange"}
                         if(hoanthanh&&r.HTPass=="Okie"){
                         items.add({
                             className: mau5,
