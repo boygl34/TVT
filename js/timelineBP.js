@@ -56,7 +56,7 @@ var options = {
                         changvalue()
                         document.getElementById("CongDoanDongSon").value=CongDoan
                         ChangCongDoan(CongDoan)
-                        var ojb =  useCaher.Object 
+                        var ojb =  useCaher
                         for(var a in ojb){
                         if(ojb[a].BienSoXe == BienSoXe.value){
                         CongDoanDongSon(CongDoan,ojb[a].TrangThaiDongSon)

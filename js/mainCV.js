@@ -283,10 +283,17 @@ function dataTableTiepNhan(){
           KhachRuaXe  :$('#KhachRX').val() ,
           TDHenGiaoXe :$('#NgayGiaoXe').val(),
         }
-        if($('#LoaiHinh').val()){json2["TrangThaiSCC"]="Chờ SC"}else{json2["TrangThaiSCC"]=""}
-        if($('#LoaiHinhBP').val()){json2["CongDoanDongSon"]="Chờ SC";
-        json2["TrangThaiDongSon"]="Chờ SC";}else{json2["CongDoanDongSon"]="";
-        json2["TrangThaiDongSon"]=""}
+        var ojb =  useCaher 
+      for(var a in ojb){
+        if(ojb[a].BienSoXe == $("#BienSoXe").val()){
+           if(ojb.LoaiHinhSuaChua){}else{if($('#LoaiHinh').val()){json2["TrangThaiSCC"]="Chờ SC"}else{json2["TrangThaiSCC"]=""}}
+          if(ojb.LoaiHinhDongSon){}else{if($('#LoaiHinhBP').val()){json2["CongDoanDongSon"]="Chờ SC";
+          json2["TrangThaiDongSon"]="Chờ SC";}else{json2["CongDoanDongSon"]="";
+           json2["TrangThaiDongSon"]=""}}
+        }
+
+      }
+        
   if($('#LoaiHinhBP').val()=="Đồng Sơn"){json2["TDKetThucTiepKhach"]=TimesClick()}
   postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
     
