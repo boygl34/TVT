@@ -364,7 +364,7 @@ function checkdangnhap() {
       document.getElementById("TrangDangNhap").hidden=true
       document.getElementById("BaoCao").hidden=false
       document.getElementById("name").innerHTML = "WellCome!! "+ localStorage.getItem("userName")
-    
+      checkPhanQuyen()
     }else{  
       document.getElementById("TrangDangNhap").hidden=false
       document.getElementById("BaoCao").hidden=true
@@ -398,7 +398,9 @@ function DangNhap(){
         alert("Đang nhập thành công")
         document.getElementById("TrangDangNhap").hidden=true
         document.getElementById("BaoCao").hidden=false
-        document.getElementById("name").innerHTML = "WellCome!! "+ localStorage.getItem("userName")}
+        document.getElementById("name").innerHTML = "WellCome!! "+ localStorage.getItem("userName")
+        checkPhanQuyen()
+      }
      else{
         document.getElementById("TrangDangNhap").hidden=false
         document.getElementById("BaoCao").hidden=true
@@ -408,7 +410,11 @@ function DangNhap(){
     alert(error)
     });
   }
-
+function checkPhanQuyen(){
+  var PhanQuyen =  localStorage.getItem("PhanQuyen");
+  if(PhanQuyen=="KTVBP"){ document.getElementById("mySidebar").innerHTML =  '<a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'}
+  //if(PhanQuyen=="KTVBP"){ document.getElementById("mySidebar").innerHTML =  '<a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'}
+}
 
 // Open and close the sidebar on medium and small screens
 function w3_open() {
