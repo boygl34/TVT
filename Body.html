@@ -125,7 +125,7 @@ select:valid {
                 <label class="custom-control-label" for="checkbox-3"style="color:white">Đã HT</label>
               </div></li>
               <h2 id="tieude"class="head col-5" style="color:#0072B5"></h2>
-               <button type="button"id="bnt-DangKyshow" style="float: right" class="btn btn-success" onclick="DangKyTienDo()">Đăng Ký</button>  
+               <button type="button"id="bnt-DangKyshow" style="float: right" class="btn btn-success" >Đăng Ký</button>  
               <input type="text" class="col-2" id="selection" list="BienSoXeList" placeholder="Seach!!" style="background-color:gray">
           </ul>
       </div>
@@ -321,18 +321,11 @@ select:valid {
                     
               </div>
           </form>
-            
-                  
-        </div>
-      </div>
-  </div>
+
+          
   
   
-	<script src="js/timelineBP.js"></script>
-	<script src="js/background.js"></script>
-	<script src="js/popper.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/mainBP.js"></script>
+	
 
 
 
@@ -344,9 +337,59 @@ select:valid {
 <footer class="w3-container w3-theme" style="padding:32px">
   <p>Footer information goes here</p>
 </footer>
-     
+    </div>
+</div>          
+        
+</div>
+</div>
+</div>     
+<div class="modal fade" id="ModalDangKy" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <form autocomplete="off" id="FormDK">
+             <div id="alertDK"><div class='alert alert-success'>Wellcome !!</div></div>
+                </div> 
+           <div class="form-row">
+               <div class=" form-group  col-6" >
+                  <label for="regular1" class="control-label">Biển Số Xe</label>
+                 <input type="text" class="form-control" id="BienSoDK" name="BienSo"  placeholder="Biển Số" list="BienSoList" required style="font-weight:bold;" onkeyup="this.value = suabienso(this.value)">
+                </div>
+                 <div class=" form-group  col-6" >
+                  <label for="regular1" class="control-label">Ngày Bắt Giao Xe</label>
+                  <input type="datetime-local" required class="form-control"id="NgayGiaXeDK"  >
+                </div>
+                 <div class=" form-group  col-6" >
+                  <label for="regular1" class="control-label">Cố Vấn</label>
+                  <select type="datetime-local" required class="form-control"id="CoVanDK"  >
+                   <option value ></option>
+                    </select>
+                </div> 
+                <div class=" form-group  col-6" >
+                  <label for="regular1" class="control-label">Nhóm Sơn</label>
+                  <select type="datetime-local" required class="form-control"id="NhomSonDK"  >
+                   <option ></option>'
+                    </select>
+                </div>
+            </div> 
+            <div class="col-6">
+            <button type="button"id="bnt-DangKy" style="float: right" class="btn btn-success" >Đăng Ký</button>  
+            </div>  
+        </div>    
+            </div>
+        </form>        
+      </div>
 
-
+<script src="js/timelineBP.js"></script>
+	<script src="js/background.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/mainBP.js"></script>
 <script>
       checkdangnhap()
 function checkdangnhap() {

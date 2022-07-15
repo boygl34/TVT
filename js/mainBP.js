@@ -952,9 +952,9 @@ var list = document.getElementById('KTVDS1');
       list.appendChild(option);
     }
 }
-
+CoVanDropDown()
 function CoVanDropDown(values) { 
-    values = NhomCV	
+    var values = NhomCV	
 var list = document.getElementById('CoVanFilter');   
     for (var i = 0; i < values.length; i++) {
       var option = document.createElement("option");
@@ -969,6 +969,18 @@ var list = document.getElementById('CoVanFilter');
       option2.text = values[i];
       list2.appendChild(option2);
     }
+}
+ nhonsonDropDown()
+function nhonsonDropDown(values) { 
+  var values = NhomSon	
+var list = document.getElementById('NhomSonDK');   
+  for (var i = 0; i < values.length; i++) {
+    var option = document.createElement("option");
+    option.value = values[i];
+    option.text = values[i];
+    list.appendChild(option);
+  }
+  
 }
 
 function KieuXeDropDown(values){
@@ -1083,3 +1095,93 @@ function myFunctionBienSo() {
     var NgayThang = Ngay+"/"+Thang+"/"+Nam
      return Ngay+"/"+Thang+" "+ Gio+":"+Phut ;
  }
+
+ var btn = document.getElementById("bnt-DangKy");
+
+var DSDK = document.getElementById("BienSoDK");
+
+DSDK.onchange =function(){
+   var ojb =  useCaher
+	for(var a in ojb){
+    if(ojb[a].BienSoXe == $('#BienSoDK').val()){
+    if( ojb[a].TDHenGiaoXe){document.getElementById("NgayGiaXeDK").value= TimesClick(ojb[a].TDHenGiaoXe)};
+    if( ojb[a].CoVanDichVu){document.getElementById("CoVanDK").value= ojb[a].CoVanDichVu;}
+    if(ojb[a].NhomSon){document.getElementById("NhomSonDK").value= ojb[a].NhomSon;}
+    }
+}
+
+}
+
+
+
+  btn.onclick = function() {
+    if(document.getElementById("BienSoDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Biển Số</div>');return false}
+    if(document.getElementById("NgayGiaXeDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Ngày Giao</div>');return false}
+    if(document.getElementById("CoVanDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Cố Vấn</div>');return false}
+   var ojb =  useCaher.Object 
+   var MaSoNew =TaoMaSo()+$('#BienSoDK').val()
+    for(var a in ojb){
+      if(ojb[a].BienSoXe == $('#BienSoDK').val()){
+      MaSoNew = ojb[a].MaSo
+      }
+    }
+   var json2 = {
+                  MaSo:MaSoNew,
+                  BienSoXe:$('#BienSoDK').val(),
+                  TrangThaiXuong: "04 Đã Tiếp Nhận",
+                  LoaiHinhDongSon: "Đồng Sơn" ,
+                  TrangThaiDongSon :"Chờ SC",
+                  CongDoanDongSon :"Chờ SC",
+                  CoVanDichVu :$('#CoVanDK').val(),
+                  TDKetThucTiepKhach:TimesClick(),
+                  TDHenGiaoXe : TimesClick(document.getElementById("NgayGiaXeDK").value),
+                  NhomSon:$('#NhomSonDK').val()
+                }
+  $("#alertDK").html("<div class='alert alert-warning '>Đang Đăng Ký</div>") 
+   document.getElementById("selection").value = $('#BienSoDK').val()
+
+  if(checkID()) {postData(json2,urlTX+"/"+checkID(MaSoNew),"PATCH") }else{postData(json2,urlTX,"POST")}
+
+}
+var btn2 = document.getElementById("bnt-DangKyshow");
+  btn2.onclick = function() {
+ $('#ModalDangKy').modal('show');
+ $('#FormDK').trigger("reset");
+}
+function TaoMaSo(){
+   var  use=new Date();
+    var useinfo = {}
+    var Thang =use.getMonth()+1;
+    var Ngay = use.getDate();
+    var Nam = use.getFullYear();var Gio = use.getHours();
+    var Phut = use.getMinutes();
+    if (Thang<10){Thang="0"+Thang};
+    if (Ngay<10){Ngay="0"+Ngay};
+    if (Gio<10){Gio="0"+Gio};
+     if (Phut<10){Phut="0"+Phut};useinfo.ThoiGian = Ngay+"/"+Thang+" "+Gio+":"+Phut;
+     var MaSo = "TVT"+Nam+Thang+Ngay+"_"
+     return MaSo;
+    }
+  function suabienso(myValue) {
+    var myValue2 = myValue.toUpperCase()
+    myValue = myValue.replace(" ","")
+      myValue = myValue.replace("-","")
+       myValue = myValue.replace(".","")
+        if(myValue.length >5){
+        myValue = myValue.replace("[h] ","")
+        myValue = myValue.replace("[H] ","")
+        myValue = myValue.replace("[L] ","")
+        var ins = myValue.indexOf('-')
+      var BiensoLD =  myValue.slice(2,4).toUpperCase()
+      if(ins=="-1"&&BiensoLD=="LD"){myValue = myValue.slice(0,4)+"-"+myValue.slice(4,myValue.length)}
+      if(ins=="-1"&&BiensoLD!="LD"){myValue = myValue.slice(0,3)+"-"+myValue.slice(3,myValue.length)}
+        var myValue1 = myValue.replace(myValue.charAt(myValue.indexOf('.')),'');  
+        var soxe = myValue1.slice(myValue1.indexOf('-')+1,myValue1.length);
+        var aa = myValue1.slice(myValue1.length - 2,myValue1.length);
+        if (soxe.length == 5 ){
+        var aaaa= soxe.charAt(0)+soxe.charAt(1)+soxe.charAt(2)+soxe.charAt(3)+soxe.charAt(4)
+        var bbbb = soxe.charAt(0)+soxe.charAt(1)+soxe.charAt(2)+'.'+soxe.charAt(3)+soxe.charAt(4)
+        var myValue2 = myValue1.toString(6).replace(aaaa,bbbb).toUpperCase()
+        }else{var myValue2 = myValue1.toUpperCase()}   }
+        return myValue2;
+  }
