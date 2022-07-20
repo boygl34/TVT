@@ -1118,7 +1118,7 @@ DSDK.onchange =function(){
     if(document.getElementById("BienSoDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Biển Số</div>');return false}
     if(document.getElementById("NgayGiaXeDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Ngày Giao</div>');return false}
     if(document.getElementById("CoVanDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Cố Vấn</div>');return false}
-   var ojb =  useCaher.Object 
+   var ojb =  useCaher
    var MaSoNew =TaoMaSo()+$('#BienSoDK').val()
     for(var a in ojb){
       if(ojb[a].BienSoXe == $('#BienSoDK').val()){
