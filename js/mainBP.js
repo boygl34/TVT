@@ -361,7 +361,9 @@ function ChangCongDoan(CongDoan){
 
 function StartDong(){
     if(document.getElementById("KTVDS1").value==""){$("#alert").html('<div class="alert alert-warning" role="alert" >Chưa Có Tên KTV</div>');return false}
- 
+ var timehientai = new Date().valueOf()
+ var timeKT= new Date(document.getElementById("NgayKTSC").value).valueOf()
+ if(timehientai>timeKT){$("#alert").html('<div class="alert alert-warning" role="alert" >Sai Gio Ket Thuc</div>');return false}
      var json2 = {
          KyThuatVienDong: $('#KTVDS1').val(),
          TrangThaiXuong: "05 Đang Sửa Chữa",
@@ -379,7 +381,10 @@ function StartDong(){
  }
  function StartNen(){
     if(document.getElementById("KTVDS1").value==""){$("#alert").html('<div class="alert alert-warning" role="alert" >Chưa Có Tên KTV</div>');return false}
-      var json2 = {
+    var timehientai = new Date().valueOf()
+ var timeKT= new Date(document.getElementById("NgayKTSC").value).valueOf()
+ if(timehientai>timeKT){$("#alert").html('<div class="alert alert-warning" role="alert" >Sai Gio Ket Thuc</div>');return false}  
+    var json2 = {
          KyThuatVienNen: $('#KTVDS1').val(),
          TrangThaiXuong: "05 Đang Sửa Chữa",
          TimeStartNen: TimesClick() ,
@@ -394,7 +399,9 @@ function StartDong(){
  }
  function StartSon(){
   if(document.getElementById("KTVDS1").value==""){$("#alert").html('<div class="alert alert-warning" role="alert" >Chưa Có Tên KTV</div>');return false}
- 
+  var timehientai = new Date().valueOf()
+  var timeKT= new Date(document.getElementById("NgayKTSC").value).valueOf()
+  if(timehientai>timeKT){$("#alert").html('<div class="alert alert-warning" role="alert" >Sai Gio Ket Thuc</div>');return false}
     if(document.getElementById("PhongSon").value==""){$("#alert").html('<div class="alert alert-warning" role="alert" >Chưa Có Phòng Sơn</div>');return false}
       var json2 = {
   
@@ -414,7 +421,9 @@ function StartDong(){
  function StartLap(){
  
     if(document.getElementById("KTVDS1").value==""){$("#alert").html('<div class="alert alert-warning" role="alert" >Chưa Có Tên KTV</div>');return false}
- 
+    var timehientai = new Date().valueOf()
+    var timeKT= new Date(document.getElementById("NgayKTSC").value).valueOf()
+    if(timehientai>timeKT){$("#alert").html('<div class="alert alert-warning" role="alert" >Sai Gio Ket Thuc</div>');return false}
    var json2 = {
          KyThuatVienLap: $('#KTVDS1').val(),
          TrangThaiXuong: "05 Đang Sửa Chữa",
@@ -432,7 +441,9 @@ function StartDong(){
  }
  function StartPass(){
    if(document.getElementById("KTVDS1").value==""){$("#alert").html('<div class="alert alert-warning" role="alert" >Chưa Có Tên KTV</div>');return false}
- 
+   var timehientai = new Date().valueOf()
+   var timeKT= new Date(document.getElementById("NgayKTSC").value).valueOf()
+   if(timehientai>timeKT){$("#alert").html('<div class="alert alert-warning" role="alert" >Sai Gio Ket Thuc</div>');return false}
    var json2 = {
          KyThuatVienPass: $('#KTVDS1').val(),
          TrangThaiXuong: "05 Đang Sửa Chữa",
