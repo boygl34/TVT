@@ -197,7 +197,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
 
                       if(hoanthanh&&r.HTDong=="Okie"){
                         items.add({
-                            className: mau1,
+                            className: "orange",
                             id:  r.BienSoXe+"_Dong"  ,
                             group: r.KyThuatVienDong,
                             start: new Date(DoiNgayDangKy(r.TimeStartBody)),
@@ -228,7 +228,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                         //if((new Date(r.TimeEndLap)).valueOf()<timeNow.valueOf()){mau2="orange"}
                         if(hoanthanh&&r.HTLap=="Okie"){
                         items.add({
-                            className: mau2,
+                            className: "orange",
                             id:  r.BienSoXe+"_Lap"  ,
                             group: r.KyThuatVienLap,
                             start: new Date(DoiNgayDangKy(r.TimeStartLap)),
@@ -258,7 +258,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                        // if((new Date(r.TimeEndNen)).valueOf()<timeNow.valueOf()){mau3="orange"}
                         if(hoanthanh&&r.HTNen=="Okie"){
                         items.add({
-                            className: mau3,
+                            className: "orange",
                             id:  r.BienSoXe+"_Nen"  ,
                             group: r.NhomSon,
                             start: new Date(DoiNgayDangKy(r.TimeStartNen)),
@@ -289,7 +289,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                         //if((new Date(r.TimeEndPaint)).valueOf()<timeNow.valueOf()){mau4="orange"}
                         if(hoanthanh&&r.HTSon=="Okie"){
                         items.add({
-                            className: mau4,
+                            className: "orange",
                             id:  r.BienSoXe+"_Paint"  ,
                             group: r.PhongSon,
                             start: new Date(DoiNgayDangKy(r.TimeStartPaint)),
@@ -319,7 +319,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                         //if((new Date(DoiNgayDangKy(r.TimeEndPass))).valueOf()<timeNow.valueOf()){mau5="orange"}
                         if(hoanthanh&&r.HTPass=="Okie"){
                         items.add({
-                            className: mau5,
+                            className: "orange",
                             id:  r.BienSoXe+"_Pass"  ,
                             group: "Pass",
                             start: new Date(DoiNgayDangKy(r.TimeStartPass)),
