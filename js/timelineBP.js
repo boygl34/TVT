@@ -128,6 +128,7 @@ $("#HideChoSC").dblclick(function(){
 var timeline = new vis.Timeline(container, items,groups, options);
 
  function loadData () {
+    
             items.clear();
             var dataArray0 =   useCaher
             var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn")})
@@ -135,6 +136,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
             dataArray2 = dataArray2.sort(function(r){return r.TDKetThucTiepKhach})
             var NgayHoanThanh=new Date().setHours(8)
             var hoanthanh = document.getElementById("checkbox-3").checked
+         try{   
             dataArray2.forEach(function(r){
                 if(r.HTDong==null&&r.HTLap==null&&r.HTSon==null&&r.HTNen==null&&r.HTPass==null){
                 let values = (NgayHoanThanh.valueOf()-new Date(DoiNgayDangKy(r.TDKetThucTiepKhach)).valueOf())/(new Date(DoiNgayDangKy(r.TDHenGiaoXe)))-new Date(DoiNgayDangKy(r.TDKetThucTiepKhach))
@@ -150,9 +152,9 @@ var timeline = new vis.Timeline(container, items,groups, options);
                 })
                 NgayHoanThanh =  new Date(NgayHoanThanh*1+30*60*1000)
                 if(NgayHoanThanh.getHours()>=17){ NgayHoanThanh=new Date().setHours(8)}}
-            })
+            })}catch(erros){alert("Loi "+erros)}
 
-            for (var a=0;a<dataArray1.length;a++){
+         try{   for (var a=0;a<dataArray1.length;a++){
                     r=dataArray1[a]
                     var mau,mau1,mau2,mau3,mau4,mau5,edit,edit1, edit2, edit3, edit4,edit5,group,  edit0= {
                     add: false,         // add new items by double tapping
@@ -161,37 +163,38 @@ var timeline = new vis.Timeline(container, items,groups, options);
                     remove: false,       // delete an item by tapping the delete button top right
                     overrideItems: true  // allow these options to override item.editable
                     }
-                    if(r.CongDoanDongSon=="Đồng"){ 
-                        if(r.TrangThaiDongSon=="Đang SC"){ mau1="green"}
-                        if(r.TrangThaiDongSon=="Dừng SC"){ mau1="red"}
-                    }else{mau1=mau}
-                        if(r.CongDoanDongSon=="Nền"){
-                        if(r.TrangThaiDongSon=="Đang SC"){ mau3="green"}
-                        if(r.TrangThaiDongSon=="Dừng SC"){ mau3="red"}
-                    }else{mau3=mau}
-                        if(r.CongDoanDongSon=="Sơn"){
-                        if(r.TrangThaiDongSon=="Đang SC"){ mau4="green"}
-                        if(r.TrangThaiDongSon=="Dừng SC"){ mau4="red"}
-                    }else{mau4=mau}
-                        if(r.CongDoanDongSon=="Lắp Ráp"){
-                        if(r.TrangThaiDongSon=="Đang SC"){ mau2="green"}
-                        if(r.TrangThaiDongSon=="Dừng SC"){ mau2="red"}
-                    }else{mau2=mau}
-                        if(r.CongDoanDongSon=="Pass"){
-                        if(r.TrangThaiDongSon=="Đang SC"){ mau5="green"}
-                        if(r.TrangThaiDongSon=="Dừng SC"){ mau5="red"}
-                    }else{mau5=mau}
+                    mau1=mau;mau2=mau;mau3=mau;mau4=mau;mau5=mau
                     timeNow=new Date()
                     var time = (timeNow- new Date(DoiNgayDangKy(r.TDKetThucTiepKhach)))/(new Date(DoiNgayDangKy(r.TDHenGiaoXe))- new Date(DoiNgayDangKy(r.TDKetThucTiepKhach)))*100
-                    if(r.HTDong=="Okie"){ mau1="orange";edit1=false;group="groupHT"}else{edit1=edit0;group="groupDS"}
-                    if(r.HTNen=="Okie"){ mau3="orange";edit2=false;group="groupHT"}else{edit2=edit0;group="groupDS"}
-                    if(r.HTSon=="Okie"){ mau4="orange";edit3=false;group="groupHT"}else{edit3=edit0;group="groupDS"}
-                    if(r.HTLap=="Okie"){ mau3="orange";edit4=false;group="groupHT"}else{edit4=edit0;group="groupDS"}
-                    if(r.HTPass=="Okie"){ mau5="orange";edit5=false;group="groupHT"}else{edit5=edit0;group="groupDS"}
+                    if(r.HTDong==="Okie"){ mau1="orange";edit1=false;group="groupHT"}else{edit1=edit0;group="groupDS"}
+                    if(r.HTNen==="Okie"){ mau3="orange";edit2=false;group="groupHT"}else{edit3=edit0;group="groupDS"}
+                    if(r.HTSon==="Okie"){ mau4="orange";edit3=false;group="groupHT"}else{edit4=edit0;group="groupDS"}
+                    if(r.HTLap==="Okie"){ mau2="orange";edit4=false;group="groupHT"}else{edit2=edit0;group="groupDS"}
+                    if(r.HTPass==="Okie"){ mau5="orange";edit5=false;group="groupHT"}else{edit5=edit0;group="groupDS"}
                     if(r.TimeStartBody&&r.TimeEndBody){
                         //if((new Date(DoiNgayDangKy(r.TimeStartBody))).valueOf()<timeNow.valueOf()&&(new Date(DoiNgayDangKy(r.TimeEndBody))).valueOf()>timeNow.valueOf()){mau1="green"}
                         //if((new Date(DoiNgayDangKy(r.TimeEndBody))).valueOf()<timeNow.valueOf()){mau1="orange"}
-                        
+                        if(r.CongDoanDongSon=="Đồng"){ 
+                            if(r.TrangThaiDongSon=="Đang SC"){ mau1="green"}
+                            if(r.TrangThaiDongSon=="Dừng SC"){ mau1="red"}
+                        }else{mau1=mau}
+                            if(r.CongDoanDongSon=="Nền"){
+                            if(r.TrangThaiDongSon=="Đang SC"){ mau3="green"}
+                            if(r.TrangThaiDongSon=="Dừng SC"){ mau3="red"}
+                        }else{mau3=mau}
+                            if(r.CongDoanDongSon=="Sơn"){
+                            if(r.TrangThaiDongSon=="Đang SC"){ mau4="green"}
+                            if(r.TrangThaiDongSon=="Dừng SC"){ mau4="red"}
+                        }else{mau4=mau}
+                            if(r.CongDoanDongSon=="Lắp Ráp"){
+                            if(r.TrangThaiDongSon=="Đang SC"){ mau2="green"}
+                            if(r.TrangThaiDongSon=="Dừng SC"){ mau2="red"}
+                        }else{mau2=mau}
+                            if(r.CongDoanDongSon=="Pass"){
+                            if(r.TrangThaiDongSon=="Đang SC"){ mau5="green"}
+                            if(r.TrangThaiDongSon=="Dừng SC"){ mau5="red"}
+                        }else{mau5=mau}  
+
                       if(hoanthanh&&r.HTDong=="Okie"){
                         items.add({
                             className: mau1,
@@ -343,6 +346,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                     }
             }
             //timeline.fit()
+}catch(erros2){alert("Loi "+erros2)}finally{return}
 }
 
 

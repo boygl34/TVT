@@ -87,8 +87,21 @@ function dataTableTimXe(){
    }
    dataArray.sort(function(a, b) {return (a.TrangThaiXuong.toLowerCase() > b.TrangThaiXuong.toLowerCase() ? 1 : -1);})
     var tbodyTim = document.getElementById('table-body-Tim-xe')
+     var BienSolisst = document.getElementById('BienSoXeList'); 
+     BienSolisst.innerHTML=""
     tbodyTim.innerHTML=""
+    var option = document.createElement("option");
+  
+    option.value ="";
+    option.text = "";
+    BienSolisst.appendChild(option);
       dataArray.forEach(function(r){
+       
+  var option = document.createElement("option");
+  
+      option.value =r.BienSoXe;
+      option.text = r.BienSoXe;
+      BienSolisst.appendChild(option);
           var tbodyTim = document.getElementById('table-body-Tim-xe')
           var row = document.createElement("tr"); 
           var ColRating = document.createElement("td");
