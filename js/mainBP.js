@@ -685,19 +685,19 @@ function StartDong(){
    var ThoiGianSC = $('#ThoiGSCD').val()
    var json2 = {}; 
    var timebatdaudong = getNexttimeDong($('#KTVDS1').val())
- if(timebatdaudong.getHours()>16){timebatdaudong = new Date(1000 * 60 * 60*24  + (new Date(timebatdaudong).valueOf())).setHours(8)}
+ if(timebatdaudong.getHours()>16){timebatdaudong = new Date(1000 * 60 * 60*24  + (new Date(timebatdaudong).valueOf()));timebatdaudong.setHours(8)}
    var timeketthucdong = new Date(1000 * 60 * 60*ThoiGianSC  + (new Date(timebatdaudong).valueOf()))
    var timebatdaunen =  new Date(1000 * 60 * 5  + (new Date(timeketthucdong).valueOf()))
-   if(timebatdaunen.getHours()>16){timebatdaunen = new Date(1000 * 60 * 60*24  + (new Date(timebatdaunen).valueOf())).setHours(8)}
+   if(timebatdaunen.getHours()>16){timebatdaunen = new Date(1000 * 60 * 60*24  + (new Date(timebatdaunen).valueOf()));timebatdaunen.setHours(8)}
    var timeketthucnen =  new Date(1000 * 60 * 60*ThoiGianSC  + (new Date(timebatdaunen).valueOf()))
    var timebatdauson =  new Date(1000 * 60 * 5  + (new Date(timeketthucnen).valueOf()))
-   if(timebatdauson.getHours()>16){timebatdauson = new Date(1000 * 60 * 60*24  + (new Date(timebatdauson).valueOf())).setHours(8)}
+   if(timebatdauson.getHours()>16){timebatdauson = new Date(1000 * 60 * 60*24  + (new Date(timebatdauson).valueOf()));timebatdauson.setHours(8)}
    var timeketthucson =  new Date(1000 * 60 * 60*ThoiGianSC  + (new Date(timebatdauson).valueOf()))
    var timebatdaulap =  new Date(1000 * 60 * 5  + (new Date(timeketthucson).valueOf()))
-   if(timebatdaulap.getHours()>16){timebatdaulap = new Date(1000 * 60 * 60*24  + (new Date(timebatdaulap).valueOf())).setHours(8)}
+   if(timebatdaulap.getHours()>16){timebatdaulap = new Date(1000 * 60 * 60*24  + (new Date(timebatdaulap).valueOf()));timebatdaulap.setHours(8)}
    var timeketthuclap =  new Date(1000 * 60 * 60*ThoiGianSC  + (new Date(timebatdaulap).valueOf()))
    var timebatdaupass =  new Date(1000 * 60 * 5  + (new Date(timeketthuclap).valueOf()))
-   if(timebatdaupass.getHours()>16){timebatdaupass = new Date(1000 * 60 * 60*24  + (new Date(timebatdaupass).valueOf())).setHours(8)}
+   if(timebatdaupass.getHours()>16){timebatdaupass = new Date(1000 * 60 * 60*24  + (new Date(timebatdaupass).valueOf()));timebatdaupass.setHours(8)}
    var timeketthucpass =  new Date(1000 * 60 * 60*ThoiGianSC  + (new Date(timebatdaupass).valueOf()))
  if($('#LoaiSC').val()=="DongSon"){
    if($('#PhongSon').val()==""){$("#alert").html('<div class="alert alert-warning" role="alert" >Chưa Có Phòng Sơn</div>');return false}

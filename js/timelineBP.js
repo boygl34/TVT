@@ -363,7 +363,8 @@ function capnhatthoigian(item){
             if(CongDoan=="Đồng"){
             if(r.TimeStartNen&&r.TimeEndNen&&r.HTNen=="KH"){
             var startnen = new Date(item.end );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndNen)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartNen)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartNen"]=TimesClick(startnen);
@@ -371,7 +372,8 @@ function capnhatthoigian(item){
             }
             if(r.TimeStartPaint&&r.TimeEndPaint&&r.HTSon=="KH"){
             var startnen = new Date(endnen );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndPaint)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartPaint)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartPaint"]=TimesClick(startnen);
@@ -379,7 +381,8 @@ function capnhatthoigian(item){
             }
             if(r.TimeStartLap&&r.TimeEndLap&&r.HTLap=="KH"){
             var startnen = new Date(endnen );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndLap)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartLap)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartLap"]=TimesClick(startnen);
@@ -387,7 +390,8 @@ function capnhatthoigian(item){
             }    
             if(r.TimeStartPass&&r.TimeEndPass&&r.HTPass=="KH"){
             var startnen = new Date(endnen );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndPass)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartPass)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartPass"]=TimesClick(startnen);
@@ -402,7 +406,8 @@ function capnhatthoigian(item){
             if(CongDoan=="Nền"){
             if(r.TimeStartPaint&&r.TimeEndPaint&&r.HTSon=="KH"){
             var startnen = new Date(item.end );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()))
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndPaint)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartPaint)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartPaint"]=TimesClick(startnen);
@@ -410,7 +415,8 @@ function capnhatthoigian(item){
             }
             if(r.TimeStartLap&&r.TimeEndLap&&r.HTLap=="KH"){
             var startnen = new Date(endnen );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndLap)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartLap)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartLap"]=TimesClick(startnen);
@@ -418,7 +424,8 @@ function capnhatthoigian(item){
             }    
             if(r.TimeStartPass&&r.TimeEndPass&&r.HTPass=="KH"){
             var startnen = new Date(endnen );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndPass)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartPass)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartPass"]=TimesClick(startnen);
@@ -432,7 +439,8 @@ function capnhatthoigian(item){
             if(CongDoan=="Sơn"){
             if(r.TimeStartLap&&r.TimeEndLap&&r.HTLap=="KH"){
             var startnen = new Date(item.end );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndLap)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartLap)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartLap"]=TimesClick(startnen);
@@ -440,7 +448,8 @@ function capnhatthoigian(item){
             }    
             if(r.TimeStartPass&&r.TimeEndPass&&r.HTPass=="KH"){
             var startnen = new Date(endnen );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndPass)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartPass)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartPass"]=TimesClick(startnen);
@@ -454,7 +463,8 @@ function capnhatthoigian(item){
             if(CongDoan=="Lắp Ráp"){
             if(r.TimeStartPass&&r.TimeEndPass&&r.HTPass=="KH"){
             var startnen = new Date(item.end );
-            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf())).setHours(8)    }
+            if(startnen.getHours()>16){ startnen = new Date(1000 * 60 * 60*24  + (new Date(startnen).valueOf()));
+                startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndPass)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartPass)).valueOf()
             var endnen = new Date(startnen*1+aa)
             json2["TimeStartPass"]=TimesClick(startnen);
