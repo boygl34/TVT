@@ -1139,6 +1139,8 @@ DSDK.onchange =function(){
 
 
   btn.onclick = function() {
+    try{
+      document.getElementById("bnt-DangKy").disabled=true
     if(document.getElementById("BienSoDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Biển Số</div>');return false}
     if(document.getElementById("NgayGiaXeDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Ngày Giao</div>');return false}
     if(document.getElementById("CoVanDK").value==""){$("#alertDK").html('<div class="alert alert-warning" role="alert" >Chưa Có Cố Vấn</div>');return false}
@@ -1162,13 +1164,21 @@ DSDK.onchange =function(){
                   NhomSon:$('#NhomSonDK').val()
                 }
   $("#alertDK").html("<div class='alert alert-warning '>Đang Đăng Ký</div>") 
+
    document.getElementById("selection").value = $('#BienSoDK').val()
 
   if(checkID()) {postData(json2,urlTX+"/"+checkID(MaSoNew),"PATCH") }else{postData(json2,urlTX,"POST")}
+              }catch(erros){ alert(erros)
 
+                 
+              }finally{
+                $("#alertDK").html("<div class='alert alert-success'>Dang Ky Thanh Cong</div>") 
+                setTimeout(function(){ $('#ModalDangKy').modal('hide')},2000)
+              }
 }
 var btn2 = document.getElementById("bnt-DangKyshow");
   btn2.onclick = function() {
+    document.getElementById("bnt-DangKy").disabled=false
  $('#ModalDangKy').modal('show');
  $('#FormDK').trigger("reset");
 }
