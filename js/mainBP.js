@@ -554,7 +554,7 @@ function StartDong(){
                    TrangThaiXuong: "05 Đang Sửa Chữa",
                    TimeEndPass: TimesClick() ,
                    CongDoanDongSon  :"Lắp Ráp" ,
-                    HTLap  :"Okie" ,
+                   HTPass  :"Okie" ,
                    TrangThaiDongSon :"Chờ SC",
                  }
                }  
