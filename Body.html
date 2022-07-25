@@ -92,9 +92,18 @@ select:valid {
   <div>
     <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Tính Năng <i class="fa fa-caret-down"></i></a>
     <div id="demo" class="w3-hide">
-      <a class="w3-bar-item w3-button" href="#">Link</a>
-      <a class="w3-bar-item w3-button" href="#">Link</a>
-      <a class="w3-bar-item w3-button" href="#">Link</a>
+      <a class="w3-bar-item w3-button" >
+      <button type="button"id="bnt-DangKyshow"  class="btn btn-success" >Đăng Ký</button> </a>
+      <a class="w3-bar-item w3-button" >
+        <select required class="form-control"  id="LOAIBANGTD" onchange=" BANGTIENDO(this.value)" >
+        <option value="Xưởng">Xưởng</option>'
+        <option value="Đồng">Đồng</option>'
+        <option value="Thiên">Thiên</option>'
+        <option value="Đình">Đình</option>'
+        <option value="Pass">Pass</option>'
+    </select> </a>
+      
+     
     </div>
   </div>
 </nav>
@@ -125,7 +134,7 @@ select:valid {
                 <label class="custom-control-label" for="checkbox-3"style="color:white">Đã HT</label>
               </div></li>
               <h2 id="tieude"class="head col-5" style="color:#0072B5"></h2>
-               <button type="button"id="bnt-DangKyshow" style="float: right" class="btn btn-success" >Đăng Ký</button>  
+                
               <input type="text" class="col-2" id="selection" list="BienSoXeList" placeholder="Seach!!" style="background-color:gray">
           </ul>
       </div>

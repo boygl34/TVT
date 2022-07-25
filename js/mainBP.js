@@ -12,6 +12,7 @@ function getData(url){
   .then(response => response.json())
   .then(data =>{
     useCaher=data
+    BANGTIENDO(localStorage.getItem("BangTD"))
     loadData ()
     dataTableTimXe()
   } );

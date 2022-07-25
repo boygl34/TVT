@@ -128,8 +128,7 @@ $("#HideChoSC").dblclick(function(){
 var timeline = new vis.Timeline(container, items,groups, options);
 
  function loadData () {
-    
-            items.clear();
+            items.clear()
             var dataArray0 =   useCaher
             var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn")})
             var dataArray2= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC")})
@@ -508,3 +507,86 @@ function capnhatthoigian(item){
             }
             } 
  };
+
+ function BANGTIENDO(BangTD){
+    localStorage.setItem("BangTD",BangTD)
+   BangTD = localStorage.getItem("BangTD")
+   $("#LOAIBANGTD").val(localStorage.getItem("BangTD"))
+   groups.clear()
+   
+   if(BangTD=="Xưởng"){
+        groups.add({
+        id: "Chờ SC",
+        content: "Chờ SC",
+        visible: false,
+        })
+        for(i in KTVDong){
+        groups.add({
+                    id: KTVDong[i],
+                    content: KTVDong[i]
+                })
+        }
+        for(a in NhomSon){
+        groups.add({
+                id: NhomSon[a],
+                content: "Nhóm "+NhomSon[a]
+            })
+        }  
+        for(b in PhongSon){
+        groups.add({
+                    id: PhongSon[b],
+                    content: PhongSon[b]
+                })
+        }  
+        groups.add({
+        id: "Pass",
+        content: "Pass",
+        })    
+    }
+
+    if(BangTD=="Đồng"){
+        for(i in KTVDong){
+            groups.add({
+                        id: KTVDong[i],
+                        content: KTVDong[i]
+                    })
+        }
+    }
+    if(BangTD=="Thiên"){
+       
+            groups.add({
+                        id: "Thiên",
+                        content: "Nhóm Thiên"
+                    })
+                    for(b in PhongSon){
+                        groups.add({
+                                    id: PhongSon[b],
+                                    content: PhongSon[b]
+                                })
+                        }  
+        
+    }
+    if(BangTD=="Đình"){
+       
+        groups.add({
+                    id: "Đình",
+                    content: "Nhóm Đình"
+                })
+                for(b in PhongSon){
+                    groups.add({
+                                id: PhongSon[b],
+                                content: PhongSon[b]
+                            })
+                    }  
+    
+}
+if(BangTD=="Pass"){
+       
+    groups.add({
+                id: "Pass",
+                content: "Pass"
+            })
+
+}
+loadData()
+ }
