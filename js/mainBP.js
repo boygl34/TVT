@@ -1167,7 +1167,7 @@ DSDK.onchange =function(){
 
    document.getElementById("selection").value = $('#BienSoDK').val()
 
-  if(checkID()) {postData(json2,urlTX+"/"+checkID(MaSoNew),"PATCH") }else{postData(json2,urlTX,"POST")}
+  if(checkID(MaSoNew)) {postData(json2,urlTX+"/"+checkID(MaSoNew),"PATCH") }else{postData(json2,urlTX,"POST")}
               }catch(erros){ alert(erros)
 
                  
