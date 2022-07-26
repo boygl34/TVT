@@ -13,9 +13,32 @@ function getData(url){
   .then(data =>{
     useCaher=data
     loadData ()
-    dataTableTimXe()
+    
+    //dataTableTimXe()
   } );
 }
+function ajaxRequest(params) {
+  var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
+  setInterval(function (){$.get(urlTX + '?' + $.param(params.data))
+    .then(function (res) {
+      var res= res.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn")})
+    params.success(res)
+    SetTrangThai()
+  })},5000);
+  
+}
+
+function SetTrangThai(){
+  var table = document.getElementById('table-TimXe');
+  for(var i = 1; i < table.rows.length; i++){
+    
+    if(table.rows[i].cells[4].innerHTML=="Đang SC"){table.rows[i].setAttribute("class","DangSuaChua")}
+    if(table.rows[i].cells[4].innerHTML=="Chờ SC"){table.rows[i].setAttribute("class","ChoSuaChua")}
+    if(table.rows[i].cells[4].innerHTML=="Dừng SC"){table.rows[i].setAttribute("class","DungSuaChua")}
+  }
+  }
+
+
 BANGTIENDO(localStorage.getItem("BangTD"))
 function postData(data,url,methor){
     fetch(url, {
@@ -984,13 +1007,13 @@ var list = document.getElementById('KTVDS1');
 CoVanDropDown()
 function CoVanDropDown(values) { 
     var values = NhomCV	
-var list = document.getElementById('CoVanFilter');   
-    for (var i = 0; i < values.length; i++) {
-      var option = document.createElement("option");
-      option.value = values[i];
-      option.text = values[i];
-      list.appendChild(option);
-    }
+// var list = document.getElementById('CoVanFilter');   
+//     for (var i = 0; i < values.length; i++) {
+//       var option = document.createElement("option");
+//       option.value = values[i];
+//       option.text = values[i];
+//       list.appendChild(option);
+//     }
     var list2 = document.getElementById('CoVanDK');   
     for (var i = 0; i < values.length; i++) {
       var option2 = document.createElement("option");

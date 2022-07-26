@@ -14,6 +14,9 @@
 <link rel="stylesheet" type="text/css"	href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
+<link href="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.css" rel="stylesheet">
+
+<script src="https://unpkg.com/bootstrap-table@1.20.2/dist/bootstrap-table.min.js"></script>
 <style>
 body {font-family: "Roboto", sans-serif}
 .w3-bar-block .w3-bar-item {
@@ -60,6 +63,10 @@ table.dataTable td{
 #table-TimXe .DungSuaChua{
    color: red;
 }
+table tbody {
+   color: white;
+}
+
 
       
 table thead {background-color:#1155cc;
@@ -140,39 +147,37 @@ select:valid {
       </div>
        <div class="tab-content">
           <div role="tabpanel" class="tab-pane " id="TienDo"> 
-            <table id="table-TimXe"  class="highlight" class=" table table-dark  table-sm table-hover  row-border"style="font-weight:bold ;width:100%;background-color:black" onclick = "clickTableTiepNhan()">
-                <thead>
-                  <tr>
-                    <th style=" width: 20%;">Biển Số</th>
-                    <th style=" width: 5%;"><select class="form" id="CoVanFilter" style="width:100%;background-color:#1155cc"onChange = "changeCoVan()">
-                      <option value >Cố Vấn</option>
-                      </select>
-                    </th>
-                    <th style=" width: 5%;"><select  id="NhomFilter" style="width:100%;background-color:#1155cc"onChange = "changeNhom()">
-                      <option value>Nhóm</option>
-                      <option value="Thành">Thành</option>
-                      <option value="Đình" >Đình</option>
-                      <option value="Thiên">Thiên</option>
-                      <option value="Đồng">Đồng</option>
-                      </select></th>
-                        <th  style=" width: 5%;"  >KTV</th>
-                         <th  style=" width: 5%;"  >TGTX</th>
-                          <th  style=" width: 5%;"  >HGX</th>
-                           <th  style=" width: 5%;"  >GKT</th>
-                    <th ><select id="GiaoXeTheoXe"  onchange="checkTimXe()"style=";width:100%;background-color:#1155cc">
-                          <option >Tiến Độ Công Đoạn</option>
-                          <option value="Oki">Tiến Độ Giao Xe</option>
-                      </select>
-                    </th>
-                    <th style=" width: 10%;" >Công Đoạn</th>
-                  </tr>
-                </thead>
-              <tbody id="table-body-Tim-xe"  >
-              </tbody>
-            </table>
+            <table
+  id="table-TimXe"
+  data-toggle="table"
+  data-ajax="ajaxRequest"
+  data-sortable="true"
+ 
+ondblclick="clickTableTiepNhan()"
+  
+  >
+  <thead>
+    <tr>
+      <th data-field="BienSoXe" data-sortable="true">Biển Số</th>
+      <th data-field="CoVanDichVu" data-sortable="true">Cố Vấn</th>
+      <th data-field="NhomSon" data-sortable="true">Nhóm Sơn</th>
+      <th data-field="CongDoanDongSon" data-sortable="true">Công Đoạn</th>
+      <th data-field="TrangThaiDongSon" data-sortable="true">Trạng Thái</th>
+      <th data-field="TDHenGiaoXe" data-sortable="true">Hẹn Giao</th>
+      <th data-field="TDKetThucSX" data-sortable="true">Kết Thúc</th>
+      <th data-field="KyThuatVienDong" data-sortable="true">KTV Đồng</th>
+      <th data-field="KyThuatVienNen" data-sortable="true">KTV Nền</th>
+      <th data-field="KyThuatVienSon" data-sortable="true">KTV Sơn</th>
+      <th data-field="KyThuatVienLap" data-sortable="true">KTV Lắp</th>
+      <th data-field="KyThuatVienPass" data-sortable="true">KTV Pass</th>
+
+       
+    </tr>
+  </thead>
+</table>
           </div>
            <div role="tabpanel" class="tab-pane active" id="Timeline">
-             <div  id="mytimeline"></div>
+             <div  id="mytimeline"  ></div>
           </div> 
             
        </div>
@@ -405,6 +410,12 @@ select:valid {
 	<script src="js/bootstrap.min.js"></script>
 	<script src="js/mainBP.js"></script>
 <script>
+   
+  
+
+
+
+
       checkdangnhap()
 function checkdangnhap() {
   var urluser = "https://big-road-newsstand.glitch.me/User/"
