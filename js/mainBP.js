@@ -1183,6 +1183,9 @@ DSDK.onchange =function(){
                 setTimeout(function(){ $('#ModalDangKy').modal('hide')},2000)
               }
 }
+
+
+
  function showDangKy() {
     document.getElementById("bnt-DangKy").disabled=false
  $('#ModalDangKy').modal('show');
