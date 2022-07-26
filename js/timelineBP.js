@@ -482,8 +482,8 @@ function capnhatthoigian(item){
                 startnen.setHours(8)    }
             var aa = new Date(DoiNgayDangKy(r.TimeEndPass)).valueOf()-new Date(DoiNgayDangKy(r.TimeStartPass)).valueOf()
             var endnen = new Date(startnen*1+aa)
-            json2["TimeStartPass"]=TimesClick(startnen);
-            json2["TimeEndPass"]=TimesClick(endnen)
+            //json2["TimeStartPass"]=TimesClick(startnen);
+            //json2["TimeEndPass"]=TimesClick(endnen)
             }
             json2["KyThuatVienLap"]=item.group;
             json2["TimeStartLap"]=TimesClick(item.start);
