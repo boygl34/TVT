@@ -589,5 +589,6 @@ if(BangTD=="Pass"){
             })
 
 }
+loadData()
 timeline.redraw()
  }
