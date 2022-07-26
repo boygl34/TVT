@@ -42,7 +42,14 @@ var options = {
                     //{start: '2017-03-05 00:00:00',end: '2017-03-06 00:00:00',repeat: 'weekly'},
                             { start: '2017-03-04 18:00:00',end: '2017-03-05 07:00:00',repeat: 'daily'}
                             ],
-                editable:true,
+                    editable:  {
+                                add: true,         // add new items by double tapping
+                                updateTime: true,  // drag items horizontally
+                                updateGroup: true, // drag items from one group to another
+                                remove: true,       // delete an item by tapping the delete button top right
+                                overrideItems: false  // allow these options to override item.editable
+                              } ,            
+                
                 autoResize:false,
                 onMove: function (item) {
                         let text = "Thay Đổi kế hoạch xe "+item.content.slice(0,item.content.indexOf("_"));  
@@ -64,8 +71,12 @@ var options = {
                         }
                         }  
                     },
-                onRemove:function(){},
-                onAdd:function(){},
+                onRemove:function(item){
+                    let text = "Bạn Muốn Xóa Chíp "+item.content.slice(item.content.indexOf("_")+1);  
+                    if (confirm(text) == true) { } else {loadData()};},
+                    
+                
+               // onAdd:function(){},
                 stack: true,
                 start:(new Date( (new Date()).valueOf())).setHours(6),
                                 end: (new Date( (new Date()).valueOf())).setHours(17),
@@ -160,7 +171,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                     add: false,         // add new items by double tapping
                     updateTime: true,  // drag items horizontally
                     updateGroup: true, // drag items from one group to another
-                    remove: false,       // delete an item by tapping the delete button top right
+                    remove: true,       // delete an item by tapping the delete button top right
                     overrideItems: true  // allow these options to override item.editable
                     }
                     mau1=mau;mau2=mau;mau3=mau;mau4=mau;mau5=mau

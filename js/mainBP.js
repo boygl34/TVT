@@ -1176,8 +1176,7 @@ DSDK.onchange =function(){
                 setTimeout(function(){ $('#ModalDangKy').modal('hide')},2000)
               }
 }
-var btn2 = document.getElementById("bnt-DangKyshow");
-  btn2.onclick = function() {
+ function showDangKy() {
     document.getElementById("bnt-DangKy").disabled=false
  $('#ModalDangKy').modal('show');
  $('#FormDK').trigger("reset");
