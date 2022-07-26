@@ -384,6 +384,7 @@ function StartDong(){
          TimeEndBody: TimesClick(document.getElementById("NgayKTSC").value),
          CongDoanDongSon  :"Đồng" ,
          BaiDauXe  :"KV Đồng" ,
+         HTDong  :"KH" ,
          TrangThaiDongSon :"Đang SC",
        }
 
@@ -404,6 +405,7 @@ function StartDong(){
          TimeEndNen: TimesClick(document.getElementById("NgayKTSC").value),
          CongDoanDongSon  :"Nền" ,
          BaiDauXe  :"KV Sơn" ,
+         HTNen  :"KH" ,
          TrangThaiDongSon :"Đang SC",
        }
    $("#alert").html("<div class='alert alert-warning'>Đang Cập Nhật 2</div>")
@@ -424,6 +426,7 @@ function StartDong(){
          TimeEndPaint: TimesClick(document.getElementById("NgayKTSC").value),
          CongDoanDongSon  :"Sơn" ,
          BaiDauXe  :$('#PhongSon').val() ,
+         HTSon  :"KH" ,
          TrangThaiDongSon :"Đang SC",
        }
      
@@ -444,6 +447,7 @@ function StartDong(){
          TimeEndLap: TimesClick(document.getElementById("NgayKTSC").value),
          CongDoanDongSon  :"Lắp Ráp" ,
          BaiDauXe  :"KV Đồng" ,
+         HTLap  :"KH" ,
          TrangThaiDongSon :"Đang SC",
        }
 
@@ -464,6 +468,7 @@ function StartDong(){
          TimeEndPass: TimesClick(document.getElementById("NgayKTSC").value),
          CongDoanDongSon  :"Pass" ,
          BaiDauXe  :"Pass" ,
+         HTPass  :"KH" ,
          TrangThaiDongSon :"Đang SC",
        }
 
