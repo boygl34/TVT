@@ -43,13 +43,7 @@ var options = {
                     //{start: '2017-03-05 00:00:00',end: '2017-03-06 00:00:00',repeat: 'weekly'},
                             { start: '2017-03-04 18:00:00',end: '2017-03-05 07:00:00',repeat: 'daily'}
                             ],
-                    editable:  {
-                                add: true,         // add new items by double tapping
-                                updateTime: true,  // drag items horizontally
-                                updateGroup: true, // drag items from one group to another
-                                remove: true,       // delete an item by tapping the delete button top right
-                                overrideItems: false  // allow these options to override item.editable
-                              } ,            
+                    editable:  true,            
                 
                 autoResize:false,
                 onMove: function (item) {
@@ -178,7 +172,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                     add: false,         // add new items by double tapping
                     updateTime: true,  // drag items horizontally
                     updateGroup: true, // drag items from one group to another
-                    remove: true,       // delete an item by tapping the delete button top right
+                    remove: false,       // delete an item by tapping the delete button top right
                     overrideItems: true  // allow these options to override item.editable
                     }
                     mau1=mau;mau2=mau;mau3=mau;mau4=mau;mau5=mau

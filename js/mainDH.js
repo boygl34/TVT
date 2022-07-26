@@ -357,6 +357,10 @@ catch(error) {
      $("#buttonDK").html("")
      timeline.setSelection(ojb[a].MaSo, {focus: true})
      return false }
+     if(ojb[a].BienSoXe == $("#BienSoXe").val()&&ojb[a].TrangThaiXuong !== "00 Có Hẹn"){
+      alert("Xe Còn Trong Xưởng. Vui lòng gặp cố Vấn "+ojb[a].CoVanDichVu+" cho xe ra cổng");
+     $("#buttonDK").html("")
+     return false }
  
  }
  }
