@@ -43,6 +43,7 @@ var options = {
                             { start: '2017-03-04 18:00:00',end: '2017-03-05 07:00:00',repeat: 'daily'}
                             ],
                 editable:true,
+                autoResize:false,
                 onMove: function (item) {
                         let text = "Thay Đổi kế hoạch xe "+item.content.slice(0,item.content.indexOf("_"));  
                         if (confirm(text) == true) { capnhatthoigian(item)} else {loadData()};},
@@ -130,7 +131,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
  function loadData () {
             items.clear()
             var dataArray0 =   useCaher
-            var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="08 Chờ Giao Xe")})
+            var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn")})
             var dataArray2= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC")})
             dataArray2 = dataArray2.sort(function(r){return r.TDKetThucTiepKhach})
             var NgayHoanThanh=new Date().setHours(8)
@@ -588,5 +589,5 @@ if(BangTD=="Pass"){
             })
 
 }
-loadData()
+timeline.redraw()
  }

@@ -6,13 +6,12 @@ var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
 setInterval(function (){getData(urlTX)},60000);
 getData(urlTX)
 
-
+ BANGTIENDO(localStorage.getItem("BangTD"))
 function getData(url){
   fetch(url)
   .then(response => response.json())
   .then(data =>{
     useCaher=data
-    BANGTIENDO(localStorage.getItem("BangTD"))
     loadData ()
     dataTableTimXe()
   } );
