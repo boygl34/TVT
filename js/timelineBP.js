@@ -145,6 +145,10 @@ var timeline = new vis.Timeline(container, items,groups, options);
             var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="08 Chờ Giao Xe")})
             var dataArray2= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC")})
             dataArray2 = dataArray2.sort(function(r){return r.TDKetThucTiepKhach})
+
+           if($('#selection').val()!=="") { dataArray1= dataArray0.filter(function(r){return (r.BienSoXe===$('#selection').val())});
+           console.log(dataArray1)
+        }
             var NgayHoanThanh=new Date().setHours(8)
             var hoanthanh = document.getElementById("checkbox-3").checked
          try{   
@@ -498,6 +502,7 @@ function capnhatthoigian(item){
 
  var selection = document.getElementById('selection');
  selection.onchange = function () {
+            loadData()
             var BienSo = selection.value
             var ids = [BienSo+"_Dong",BienSo+"_Nen",BienSo+"_Paint",BienSo+"_Pass",BienSo+"_Lap"]
             timeline.setSelection(ids, {focus: true});
