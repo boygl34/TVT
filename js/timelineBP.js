@@ -10,6 +10,7 @@ var PhongSon=["Phòng Sơn 1","Phòng Sơn 2","Phòng Sơn 3"]
 var NhomSon=["Đình","Thiên"]
 var NhomCV=["Toàn","Tài","Rôn","Mẫn","Sang","Vinh","Triêng","Lộc","Sang"]
 var KTVDongSon=["Châu","Trường","Phúc","Trương","Quang","Định","Đình","Thành","Lưu","Thiên","Dũng","Lực","Tú"]
+var chieudaichip
 groups.add({
     id: "Chờ SC",
     content: "Chờ SC",
@@ -62,6 +63,8 @@ var options = {
                         $('#ModalDongSon').modal('show')
                         document.getElementById("BienSoXe").value=BienSo
                         changvalue()
+                        chieudaichip=item.end-item.start
+                        console.log(chieudaichip)
                         document.getElementById("CongDoanDongSon").value=CongDoan
                         ChangCongDoan(CongDoan)
                         var ojb =  useCaher
@@ -220,7 +223,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             editable: edit1,
                             value:time,
                             subgroup: group,
-                            title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
+                            //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
                             content: r.BienSoXe +"_Đồng",
                         });}
                         if(r.HTDong!=="Okie"){
@@ -233,7 +236,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 editable: edit1,
                                 value:time,
                                 subgroup: group,
-                                title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
+                                //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
                                 content: r.BienSoXe +"_Đồng",
                             });} 
 
@@ -247,7 +250,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             id:  r.BienSoXe+"_Lap"  ,
                             group: r.KyThuatVienLap,
                             start: new Date(DoiNgayDangKy(r.TimeStartLap)),
-                            title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
+                            //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
                             end: new Date(DoiNgayDangKy(r.TimeEndLap)),
                             editable: edit2,
                             value : time,
@@ -260,7 +263,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 id:  r.BienSoXe+"_Lap"  ,
                                 group: r.KyThuatVienLap,
                                 start: new Date(DoiNgayDangKy(r.TimeStartLap)),
-                                title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
+                               // title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
                                 end: new Date(DoiNgayDangKy(r.TimeEndLap)),
                                 editable: edit2,
                                 value : time,
@@ -281,7 +284,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             editable: edit3,
                             subgroup: group,
                             value : time,
-                            title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienNen,
+                            //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienNen,
                             content: r.BienSoXe + "_Nền" 
                         });}
                         if(r.HTNen!=="Okie"){
@@ -294,7 +297,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 editable: edit3,
                                 subgroup: group,
                                 value : time,
-                                title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienNen,
+                               // title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienNen,
                                 content: r.BienSoXe + "_Nền" 
                             });}
 
@@ -312,7 +315,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             editable: edit4,
                             subgroup: group,
                             value : time,
-                            title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienSon,
+                            //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienSon,
                             content: r.BienSoXe +"_Sơn"
                         });}
                         if(r.HTSon!=="Okie"){
@@ -325,7 +328,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 editable: edit4,
                                 subgroup: group,
                                 value : time,
-                                title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienSon,
+                               // title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienSon,
                                 content: r.BienSoXe +"_Sơn"
                             });}
                     }
@@ -342,7 +345,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             editable: edit5,
                             subgroup: group,
                             value : time,
-                            title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienPass,
+                            //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienPass,
                             content: r.BienSoXe +"_Pass"
                         }); }  
                         if(r.HTPass!=="Okie"){
@@ -355,7 +358,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 editable: edit5,
                                 subgroup: group,
                                 value : time,
-                                title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienPass,
+                               // title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienPass,
                                 content: r.BienSoXe +"_Pass"
                             }); }         
                     }
