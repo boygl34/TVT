@@ -142,7 +142,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
  function loadData () {
             items.clear()
             var dataArray0 =   useCaher
-            var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn")})
+            var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="08 Chờ Giao Xe")})
             var dataArray2= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC")})
             dataArray2 = dataArray2.sort(function(r){return r.TDKetThucTiepKhach})
             var NgayHoanThanh=new Date().setHours(8)
