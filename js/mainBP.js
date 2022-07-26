@@ -31,10 +31,12 @@ function ajaxRequest(params) {
 function SetTrangThai(){
   var table = document.getElementById('table-TimXe');
   for(var i = 1; i < table.rows.length; i++){
-    
     if(table.rows[i].cells[4].innerHTML=="Đang SC"){table.rows[i].setAttribute("class","DangSuaChua")}
     if(table.rows[i].cells[4].innerHTML=="Chờ SC"){table.rows[i].setAttribute("class","ChoSuaChua")}
     if(table.rows[i].cells[4].innerHTML=="Dừng SC"){table.rows[i].setAttribute("class","DungSuaChua")}
+    var hengiao= DoiNgayDangKy(table.rows[i].cells[5].innerHTML).valueOf()
+    var ketthuc= DoiNgayDangKy(table.rows[i].cells[6].innerHTML).valueOf()
+    if(ketthuc>hengiao){table.rows[i].cells[12].innerHTML="Trễ Giờ"}
   }
   }
 
