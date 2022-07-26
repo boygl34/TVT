@@ -6,7 +6,7 @@ var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
 setInterval(function (){getData(urlTX)},60000);
 getData(urlTX)
 
- BANGTIENDO(localStorage.getItem("BangTD"))
+ 
 function getData(url){
   fetch(url)
   .then(response => response.json())
@@ -16,7 +16,7 @@ function getData(url){
     dataTableTimXe()
   } );
 }
-
+BANGTIENDO(localStorage.getItem("BangTD"))
 function postData(data,url,methor){
     fetch(url, {
     method: methor, // or 'PUT'
@@ -995,7 +995,9 @@ var list = document.getElementById('CoVanFilter');
     }
 }
  nhonsonDropDown()
+
 function nhonsonDropDown(values) { 
+  
   var values = NhomSon	
 var list = document.getElementById('NhomSonDK');   
   for (var i = 0; i < values.length; i++) {
