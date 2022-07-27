@@ -17,6 +17,7 @@ function getData(url){
     //dataTableTimXe()
   } );
 }
+
 function ajaxRequest(params) {
   var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
   setInterval(function (){$.get(urlTX + '?' + $.param(params.data))
@@ -24,13 +25,14 @@ function ajaxRequest(params) {
       var res= res.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn")})
     params.success(res)
     SetTrangThai()
-  })},5000);
+  })},3000);
   
 }
 
 function SetTrangThai(){
   var table = document.getElementById('table-TimXe');
-  for(var i = 1; i < table.rows.length; i++){
+
+  for(var i=0;i<=table.rows.length;i++){
     if(table.rows[i].cells[4].innerHTML=="Đang SC"){table.rows[i].setAttribute("class","DangSuaChua")}
     if(table.rows[i].cells[4].innerHTML=="Chờ SC"){table.rows[i].setAttribute("class","ChoSuaChua")}
     if(table.rows[i].cells[4].innerHTML=="Dừng SC"){table.rows[i].setAttribute("class","DungSuaChua")}
