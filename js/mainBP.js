@@ -94,6 +94,7 @@ var dataArrayDung= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng 
     ],
     
 });
+console.log(useCaher)
     //dataTableTimXe()
   } );
 } 
@@ -261,7 +262,9 @@ function changvalue(){
       if(ojb[a].BienSoXe == BienSoXe.value){
       
         $("#biensods").html(ojb[a].BienSoXe+" "+ojb[a].CongDoanDongSon+ " "+ojb[a].TrangThaiDongSon)
-        if(ojb[a].TDHenGiaoXe){ $("#alert").html("<div class='alert alert-success'>Ngày Giao Xe : "+datevalue(DoiNgayDangKy(ojb[a].TDHenGiaoXe)).replace("T"," ")+"</div>") }
+        if(ojb[a].TDHenGiaoXe){ $("#alert").html("<div class='alert alert-success'>Ngày Giao Xe : "+DoiNgayDangKy(ojb[a].TDHenGiaoXe)+"</div>");
+      console.log(ojb[a].TDHenGiaoXe)
+      }
       if(ojb[a].MaSo){	document.getElementById("MaSo").value = ojb[a].MaSo} 
       if(ojb[a].NhomSon){document.getElementById("NhomSon").value =ojb[a].NhomSon}
       if(ojb[a].KieuXe){document.getElementById("KieuXe").value =ojb[a].KieuXe}
