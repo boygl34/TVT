@@ -13,89 +13,8 @@ function getData(url){
   .then(data =>{
     useCaher=data
     loadData ()
-    var dataArray1= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn")})
-    
-    for (var a in dataArray1) {
-      dataArray1[a].TDHenGiaoXe = Doingay( DoiNgayDangKy(dataArray1[a].TDHenGiaoXe))
-      dataArray1[a].TDKetThucSX = Doingay( DoiNgayDangKy(dataArray1[a].TDKetThucSX))
-    }
-    var dataArrayDangSC= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Đang SC")})
-    $('#table-TimXe').DataTable({
-      data: dataArrayDangSC,
-      paging: false,
-      destroy: true,
-      ordering:  true,
-      info:false,
-      searching: false,
-      createdRow: function( row, data, dataIndex ) {
-       if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
-       if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
-       if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
-      
-       
-      },
-      columns: [
-          { data: 'BienSoXe',"defaultContent": "" },
-          { data: 'CoVanDichVu',"defaultContent": ""  },
-          { data: 'NhomSon',"defaultContent": ""  },
-          { data: 'CongDoanDongSon',"defaultContent": ""  },
-          { data: 'TrangThaiDongSon',"defaultContent": ""  },
-          { data: 'TDHenGiaoXe',"defaultContent": ""  },
-          { data: 'TDKetThucSX' ,"defaultContent": "" },
-          
-      ],
-      
-  });
-  var dataArrayChoSC= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Chờ SC")})
-  $('#table-ChoSC').DataTable({
-    data: dataArrayChoSC,
-    paging: false,
-    destroy: true,
-    info:false,
-    searching: false,
-    createdRow: function( row, data, dataIndex ) {
-     if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
-     if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
-     if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
-    },
-    columns: [
-        { data: 'BienSoXe',"defaultContent": "" },
-        { data: 'CoVanDichVu',"defaultContent": ""  },
-        { data: 'NhomSon',"defaultContent": ""  },
-        { data: 'CongDoanDongSon',"defaultContent": ""  },
-        { data: 'TrangThaiDongSon',"defaultContent": ""  },
-        { data: 'TDHenGiaoXe',"defaultContent": ""  },
-        { data: 'TDKetThucSX' ,"defaultContent": "" },
-        
-    ],
-    
-});
-var dataArrayDung= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Dừng SC")})
-  $('#table-Dung').DataTable({
-    data: dataArrayDung,
-    paging: false,
-    destroy: true,
-    info:false,
-    searching: false,
-    createdRow: function( row, data, dataIndex ) {
-     if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
-     if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
-     if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
-    },
-    columns: [
-        { data: 'BienSoXe',"defaultContent": "" },
-        { data: 'CoVanDichVu',"defaultContent": ""  },
-        { data: 'NhomSon',"defaultContent": ""  },
-        { data: 'CongDoanDongSon',"defaultContent": ""  },
-        { data: 'TrangThaiDongSon',"defaultContent": ""  },
-        { data: 'TDHenGiaoXe',"defaultContent": ""  },
-        { data: 'TDKetThucSX' ,"defaultContent": "" },
-        
-    ],
-    
-});
-console.log(useCaher)
-    //dataTableTimXe()
+    console.log(useCaher)
+    dataTableTimXe(data)
   } );
 } 
 
@@ -104,19 +23,7 @@ console.log(useCaher)
 
         
 
-          function SetTrangThai(){
-  var table = document.getElementById('table-TimXe');
-
-  for(var i=0;i<=150;i++){
-    table.rows[i].setAttribute("class","")
-    if(table.rows[i].cells[4].innerHTML=="Đang SC"){table.rows[i].setAttribute("class","DangSuaChua")}
-    if(table.rows[i].cells[4].innerHTML=="Chờ SC"){table.rows[i].setAttribute("class","ChoSuaChua")}
-    if(table.rows[i].cells[4].innerHTML=="Dừng SC"){table.rows[i].setAttribute("class","DungSuaChua")}
-    var hengiao= DoiNgayDangKy(table.rows[i].cells[5].innerHTML).valueOf()
-    var ketthuc= DoiNgayDangKy(table.rows[i].cells[6].innerHTML).valueOf()
-    if(ketthuc>hengiao){table.rows[i].cells[12].innerHTML="Trễ Giờ"}
-  }
-  }
+ 
 
 
 BANGTIENDO(localStorage.getItem("BangTD"))
@@ -164,96 +71,90 @@ for(var a in ojb){
 
 
 
-function dataTableTimXe(){  
-    var dataArray0 =   useCaher
-  var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Đang SC")})
-  var dataArray2= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC"&&r.CongDoanDongSon!=="Chờ SC")})
-  var dataArray3= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Dừng SC")})
-  var dataArray4= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC"&&r.CongDoanDongSon==="Chờ SC")})
-  var dataArray5= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ Giao"&&r.CongDoanDongSon==="QC")})
-   var dataArray= dataArray1.concat(dataArray2);dataArray.sort()
-       dataArray=dataArray.concat(dataArray3);
-       dataArray=dataArray.concat(dataArray4);
-       dataArray=dataArray.concat(dataArray5);
-   if(document.getElementById("NhomFilter").value==="Đồng"){
-    dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Đang SC"&&r.CongDoanDongSon==="Đồng")});
-    dataArray2= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Đang SC"&&r.CongDoanDongSon==="Lắp Ráp")});
-    dataArray3= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC"&&r.CongDoanDongSon==="Lắp Ráp")});
-    dataArray4= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Dừng SC"&&r.CongDoanDongSon==="Đồng")});
-    dataArray5= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Dừng SC"&&r.CongDoanDongSon==="Lắp Ráp")});
-    dataArray6= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC"&&r.CongDoanDongSon==="Chờ SC")});
-  dataArray= dataArray1.concat(dataArray2);
-  dataArray= dataArray.concat(dataArray3);
-  dataArray= dataArray.concat(dataArray4);
-  dataArray= dataArray.concat(dataArray5);
-  dataArray= dataArray.concat(dataArray6);
-   }
-   dataArray.sort(function(a, b) {return (a.TrangThaiXuong.toLowerCase() > b.TrangThaiXuong.toLowerCase() ? 1 : -1);})
-    var tbodyTim = document.getElementById('table-body-Tim-xe')
-     var BienSolisst = document.getElementById('BienSoXeList'); 
-     BienSolisst.innerHTML=""
-    tbodyTim.innerHTML=""
-    var option = document.createElement("option");
+function dataTableTimXe(value){  
+  let dataArray0=value
+  let dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn")})
+    
+  // for (var a in dataArray1) {
+  //   dataArray1[a].TDHenGiaoXe = Doingay( DoiNgayDangKy(dataArray1[a].TDHenGiaoXe))
+  //   dataArray1[a].TDKetThucSX = Doingay( DoiNgayDangKy(dataArray1[a].TDKetThucSX))
+  // }
+  let dataArrayDangSC= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Đang SC")})
+  $('#table-TimXe').DataTable({
+    data: dataArrayDangSC,
+    paging: false,
+    destroy: true,
+    ordering:  true,
+    info:false,
+    searching: false,
+    createdRow: function( row, data, dataIndex,cells ) {
+     if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
+     if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
+     if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
+     $('td', row).eq(5).innerHTML='highlight'
+ 
   
-    option.value ="";
-    option.text = "";
-    BienSolisst.appendChild(option);
-      dataArray.forEach(function(r){
-       
-  var option = document.createElement("option");
+    },
+    columns: [
+        { data: 'BienSoXe',"defaultContent": "" },
+        { data: 'CoVanDichVu',"defaultContent": ""  },
+        { data: 'NhomSon',"defaultContent": ""  },
+        { data: 'CongDoanDongSon',"defaultContent": ""  },
+        { data: 'TrangThaiDongSon',"defaultContent": ""  },
+        { data: 'TDHenGiaoXe',"defaultContent": ""  },
+        { data: 'TDKetThucSX' ,"defaultContent": "" },
+        
+    ],
+    
+});
+let dataArrayChoSC= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Chờ SC")})
+$('#table-ChoSC').DataTable({
+  data: dataArrayChoSC,
+  paging: false,
+  destroy: true,
+  info:false,
+  searching: false,
+  createdRow: function( row, data, dataIndex ) {
+   if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
+   if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
+   if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
+  },
+  columns: [
+      { data: 'BienSoXe',"defaultContent": "" },
+      { data: 'CoVanDichVu',"defaultContent": ""  },
+      { data: 'NhomSon',"defaultContent": ""  },
+      { data: 'CongDoanDongSon',"defaultContent": ""  },
+      { data: 'TrangThaiDongSon',"defaultContent": ""  },
+      { data: 'TDHenGiaoXe',"defaultContent": ""  },
+      { data: 'TDKetThucSX' ,"defaultContent": "" },
+      
+  ],
   
-      option.value =r.BienSoXe;
-      option.text = r.BienSoXe;
-      BienSolisst.appendChild(option);
-          var tbodyTim = document.getElementById('table-body-Tim-xe')
-          var row = document.createElement("tr"); 
-          var ColRating = document.createElement("td");
-          var ColBS = document.createElement("td");
-          var ColCV = document.createElement("td");
-          var ColKTV = document.createElement("td");
-          var ColNhomSon = document.createElement("td");
-          var ColNR = document.createElement("td");
-          var ColTienDo = document.createElement("td");
-          var ColTGTX = document.createElement("td");
-          var ColNgayGiao = document.createElement("td");
-          var ColNgayKT = document.createElement("td");
-          //ColMS.innerHTML = r.MaSo;
-          ColBS.textContent = r.BienSoXe;
-         var timeGT= Math. round((new Date().valueOf()-new Date(DoiNgayDangKy( r.TDKetThucTiepKhach)).valueOf())/(60*1000*60*24)*10)/10
-         // ColTGTX.textContent=timeGT
-          ColNgayGiao.textContent = ngayGiohen(DoiNgayDangKy( r.TDHenGiaoXe))
-          if(r.TDKetThucSX){ColNgayKT.textContent = ngayGiohen(DoiNgayDangKy( r.TDKetThucSX))}else{ColNgayKT.textContent=""}
-          ColCV.textContent = r.CoVanDichVu;
-          ColNhomSon.textContent = r.NhomSon;
-          ColKTV.textContent = "";
-           if(new Date(DoiNgayDangKy( r.TDKetThucSX)).valueOf()>new Date(DoiNgayDangKy(r.TDHenGiaoXe)).valueOf()){  ColTGTX.textContent ="["+timeGT+"] " ;}else{ ColTGTX.textContent = timeGT}
-          if(r.CongDoanDongSon=="Đồng"){ColKTV.textContent = r.KyThuatVienDong;}
-          if(r.CongDoanDongSon=="Nền"){ColKTV.textContent = r.KyThuatVienNen;}
-          if(r.CongDoanDongSon=="Sơn"){ColKTV.textContent = r.KyThuatVienSon;}
-          if(r.CongDoanDongSon=="Pass"){ColKTV.textContent = r.KyThuatVienPass;}
-          if(r.CongDoanDongSon=="Lắp Ráp"){ColKTV.textContent = r.KyThuatVienLap;}
-          ColRating.innerHTML = Chenraiting(r.BienSoXe)
-          ColTienDo.innerHTML = chentimeline(r.BienSoXe)
-          if(r.CongDoanDongSon=="QC"){ColRating.innerHTML = '<i class="fa fa-star  fa-1x fa-fw BigStar" aria-hidden="true"></i>'}
-          if(r.TrangThaiDongSon=="Đang SC"){row.setAttribute('class', 'DangSuaChua');}
-          if(r.TrangThaiDongSon=="Chờ SC"&&r.CongDoanDongSon!="Chờ SC"){row.setAttribute('class', 'ChoSuaChua');}
-          if(r.TrangThaiDongSon=="Dừng SC"){row.setAttribute('class', 'DungSuaChua');}
-          if(r.CongDoanDongSon=="Chờ SC"){row.setAttribute('class', 'ChuaSuaChua');}
-         // row.appendChild(ColMS); 
-            row.appendChild(ColBS);
-            row.appendChild(ColCV); 
-            row.appendChild(ColNhomSon);
-            row.appendChild(ColKTV);
-            row.appendChild(ColTGTX);
-            row.appendChild(ColNgayGiao);
-            row.appendChild(ColNgayKT);
-            row.appendChild(ColTienDo);
-            row.appendChild(ColRating);
-            tbodyTim.appendChild(row)
-          
-          if(document.getElementById("NhomFilter").value){ myFunctionNhom()}else if(document.getElementById("CoVanFilter").value){myFunctionCoVan()}else if(document.getElementById("selection").value){myFunctionBienSo()}
-           sortTable()
-      })
+});
+let dataArrayDung= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Dừng SC")})
+$('#table-Dung').DataTable({
+  data: dataArrayDung,
+  paging: false,
+  destroy: true,
+  info:false,
+  searching: false,
+  createdRow: function( row, data, dataIndex ) {
+   if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
+   if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
+   if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
+  },
+  columns: [
+      { data: 'BienSoXe',"defaultContent": "" },
+      { data: 'CoVanDichVu',"defaultContent": ""  },
+      { data: 'NhomSon',"defaultContent": ""  },
+      { data: 'CongDoanDongSon',"defaultContent": ""  },
+      { data: 'TrangThaiDongSon',"defaultContent": ""  },
+      { data: 'TDHenGiaoXe',"defaultContent": ""  },
+      { data: 'TDKetThucSX' ,"defaultContent": "" },
+      
+  ],
+  
+});
 }
 function changvalue(){
     $("#alert").html("<div class='alert alert-success'>Hello!!</div>")
@@ -262,7 +163,7 @@ function changvalue(){
       if(ojb[a].BienSoXe == BienSoXe.value){
       
         $("#biensods").html(ojb[a].BienSoXe+" "+ojb[a].CongDoanDongSon+ " "+ojb[a].TrangThaiDongSon)
-        if(ojb[a].TDHenGiaoXe){ $("#alert").html("<div class='alert alert-success'>Ngày Giao Xe : "+DoiNgayDangKy(ojb[a].TDHenGiaoXe)+"</div>");
+        if(ojb[a].TDHenGiaoXe){ $("#alert").html("<div class='alert alert-success'>Ngày Giao Xe : "+ ojb[a].TDHenGiaoXe +"</div>");
       console.log(ojb[a].TDHenGiaoXe)
       }
       if(ojb[a].MaSo){	document.getElementById("MaSo").value = ojb[a].MaSo} 
