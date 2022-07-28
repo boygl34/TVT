@@ -139,17 +139,26 @@ var timeline = new vis.Timeline(container, items,groups, options);
  function loadData () {
             items.clear()
             var dataArray0 =   useCaher
-            var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="08 Chờ Giao Xe")})
+            var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.CongDoanDongSon!=="QC"&&r.TrangThaiDongSon!=="Chờ Giao")})
             var dataArray2= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiXuong!=="00 Có Hẹn"&&r.TrangThaiDongSon==="Chờ SC")})
             dataArray2 = dataArray2.sort(function(r){return r.TDKetThucTiepKhach})
-
            if($('#selection').val()!=="") { dataArray1= dataArray0.filter(function(r){return (r.BienSoXe===$('#selection').val())});
            console.log(dataArray1)
         }
+        var BienSolisst = document.getElementById('BienSoXeList'); 
+        BienSolisst.innerHTML=""
+       var option = document.createElement("option");
+       option.value ="";
+       option.text = "";
+       BienSolisst.appendChild(option);
             var NgayHoanThanh=new Date().setHours(8)
             var hoanthanh = document.getElementById("checkbox-3").checked
          try{   
             dataArray2.forEach(function(r){
+                var option = document.createElement("option");
+                    option.value =r.BienSoXe;
+                    option.text = r.BienSoXe;
+                    BienSolisst.appendChild(option);
                 if(r.HTDong==null&&r.HTLap==null&&r.HTSon==null&&r.HTNen==null&&r.HTPass==null){
                 let values = (NgayHoanThanh.valueOf()-new Date(DoiNgayDangKy(r.TDKetThucTiepKhach)).valueOf())/(new Date(DoiNgayDangKy(r.TDHenGiaoXe)))-new Date(DoiNgayDangKy(r.TDKetThucTiepKhach))
                 items.add({      
