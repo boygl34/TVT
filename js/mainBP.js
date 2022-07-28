@@ -32,7 +32,8 @@ function ajaxRequest(params) {
 function SetTrangThai(){
   var table = document.getElementById('table-TimXe');
 
-  for(var i=0;i<=table.rows.length;i++){
+  for(var i=0;i<=150;i++){
+    table.rows[i].setAttribute("class","")
     if(table.rows[i].cells[4].innerHTML=="Đang SC"){table.rows[i].setAttribute("class","DangSuaChua")}
     if(table.rows[i].cells[4].innerHTML=="Chờ SC"){table.rows[i].setAttribute("class","ChoSuaChua")}
     if(table.rows[i].cells[4].innerHTML=="Dừng SC"){table.rows[i].setAttribute("class","DungSuaChua")}
@@ -1199,7 +1200,7 @@ DSDK.onchange =function(){
                 }
   $("#alertDK").html("<div class='alert alert-warning '>Đang Đăng Ký</div>") 
 
-   document.getElementById("selection").value = $('#BienSoDK').val()
+ 
 
   if(checkID(MaSoNew)) {postData(json2,urlTX+"/"+checkID(MaSoNew),"PATCH") }else{postData(json2,urlTX,"POST")}
               }catch(erros){ alert(erros)
