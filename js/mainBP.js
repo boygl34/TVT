@@ -16,15 +16,17 @@ function getData(url){
     var dataArray1= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn")})
     
     for (var a in dataArray1) {
-      console.log(dataArray1[a].TDHenGiaoXe)
       dataArray1[a].TDHenGiaoXe = Doingay( DoiNgayDangKy(dataArray1[a].TDHenGiaoXe))
       dataArray1[a].TDKetThucSX = Doingay( DoiNgayDangKy(dataArray1[a].TDKetThucSX))
     }
-
+    var dataArrayDangSC= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Đang SC")})
     $('#table-TimXe').DataTable({
-      data: dataArray1,
+      data: dataArrayDangSC,
       paging: false,
       destroy: true,
+      ordering:  true,
+      info:false,
+      searching: false,
       createdRow: function( row, data, dataIndex ) {
        if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
        if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
@@ -44,6 +46,54 @@ function getData(url){
       ],
       
   });
+  var dataArrayChoSC= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Chờ SC")})
+  $('#table-ChoSC').DataTable({
+    data: dataArrayChoSC,
+    paging: false,
+    destroy: true,
+    info:false,
+    searching: false,
+    createdRow: function( row, data, dataIndex ) {
+     if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
+     if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
+     if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
+    },
+    columns: [
+        { data: 'BienSoXe',"defaultContent": "" },
+        { data: 'CoVanDichVu',"defaultContent": ""  },
+        { data: 'NhomSon',"defaultContent": ""  },
+        { data: 'CongDoanDongSon',"defaultContent": ""  },
+        { data: 'TrangThaiDongSon',"defaultContent": ""  },
+        { data: 'TDHenGiaoXe',"defaultContent": ""  },
+        { data: 'TDKetThucSX' ,"defaultContent": "" },
+        
+    ],
+    
+});
+var dataArrayDung= data.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TrangThaiDongSon=="Dừng SC")})
+  $('#table-Dung').DataTable({
+    data: dataArrayDung,
+    paging: false,
+    destroy: true,
+    info:false,
+    searching: false,
+    createdRow: function( row, data, dataIndex ) {
+     if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
+     if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
+     if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
+    },
+    columns: [
+        { data: 'BienSoXe',"defaultContent": "" },
+        { data: 'CoVanDichVu',"defaultContent": ""  },
+        { data: 'NhomSon',"defaultContent": ""  },
+        { data: 'CongDoanDongSon',"defaultContent": ""  },
+        { data: 'TrangThaiDongSon',"defaultContent": ""  },
+        { data: 'TDHenGiaoXe',"defaultContent": ""  },
+        { data: 'TDKetThucSX' ,"defaultContent": "" },
+        
+    ],
+    
+});
     //dataTableTimXe()
   } );
 } 
@@ -982,7 +1032,7 @@ function KieuXeChange(){
 }
 
 function clickTableTiepNhan(){
-    var table = document.getElementById('table-TimXe');
+    var table = document.getElementById('table-TimXe')||document.getElementById('table-ChoSC');
     for(var i = 1; i < table.rows.length; i++){
       table.rows[i].onclick = function(){
         $("#buttonSCC").html('')
