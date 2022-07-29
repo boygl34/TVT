@@ -204,7 +204,7 @@ function BaoCao(){
         { data: 'TrangThaiDongSon',"defaultContent": ""  },
         { data: 'TDHenGiaoXe',"defaultContent": ""  },
         { data: 'TDKetThucSX' ,"defaultContent": "" },
-        
+        { data: 'GhiChu' ,"defaultContent": "" },
     ],
     
 });
