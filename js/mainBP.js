@@ -91,8 +91,8 @@ function dataTableTimXe(value){
      if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
      if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
      if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
-     $('td', row).eq(5).innerHTML='highlight'
- 
+     $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
+     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
   
     },
     columns: [
@@ -114,10 +114,12 @@ $('#table-ChoSC').DataTable({
   destroy: true,
   info:false,
   searching: false,
-  createdRow: function( row, data, dataIndex ) {
+  createdRow: function( row, data, dataIndex,cells ) {
    if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
    if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
    if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
+   $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
+     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
   },
   columns: [
       { data: 'BienSoXe',"defaultContent": "" },
@@ -138,10 +140,12 @@ $('#table-Dung').DataTable({
   destroy: true,
   info:false,
   searching: false,
-  createdRow: function( row, data, dataIndex ) {
+  createdRow: function( row, data, dataIndex,cells ) {
    if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
    if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
    if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
+   $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
+     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
   },
   columns: [
       { data: 'BienSoXe',"defaultContent": "" },
@@ -156,6 +160,8 @@ $('#table-Dung').DataTable({
   
 });
 }
+
+
 function changvalue(){
     $("#alert").html("<div class='alert alert-success'>Hello!!</div>")
    var ojb =  useCaher
@@ -679,14 +685,22 @@ function StartDong(){
      
  }
  function DungCongviecBP(){
-    var json2 = {
+  var result = prompt("Lý do dừng:", "");
+
+  if(result != null)  {
+      var json2 = {
+                    GhiChu:result,
                    TrangThaiXuong: "05 Dừng Công Việc",
                    TimeStopBP: TimesClick() ,
                    TrangThaiDongSon :"Dừng SC",
                  }
                 
    $("#alert").html("<div class='alert alert-warning '>Đang Dừng CV</div>")
-   postData(json2,urlTX+"/"+checkID($("#MaSo").val()),"PATCH")   
+   postData(json2,urlTX+"/"+checkID($("#MaSo").val()),"PATCH")  
+  }
+
+
+     
     
  }
  function LuuKeHoach(){
