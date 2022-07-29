@@ -332,6 +332,7 @@ function CongDoanDongSon(congdoan,trangthai){
         if(trangthai=="Đang SC"&&congdoan=="QC"){ $("#ButEnd").html('<button type="button"id="bnt-ChoGiaoXe" class="btn btn-success" onclick="KetThucQC()">Kết Thúc QC</button>')}
 
         if(trangthai=="Dừng SC"&&congdoan=="Đồng"){ $("#ButEnd").html('<button  type="button" class="btn btn-primary me-2" onclick="StartDong()">Bắt Đầu Đồng!</button>&nbsp &nbsp <button  type="button" class="btn btn-primary me-2" onclick="WaitQC()">Chờ QC!</button>')}
+        if(trangthai=="Dừng SC"&&congdoan=="Lắp Ráp"){ $("#ButEnd").html('<button  type="button" class="btn btn-primary me-2" onclick="StartLap()">Bắt Đầu Lắp!</button>&nbsp &nbsp <button  type="button" class="btn btn-primary me-2" onclick="WaitQC()">Chờ QC!</button>')}
         if(trangthai=="Dừng SC"&&congdoan=="Nền"){ $("#ButEnd").html('<button  type="button" class="btn btn-primary me-2" onclick="StartNen()">Bắt Đầu Nền!</button>')}
         if(trangthai=="Dừng SC"&&congdoan=="Sơn"){ $("#ButEnd").html('<button  type="button" class="btn btn-primary me-2" onclick="StartSon()">Bắt Đầu Sơn!</button>')}
         if(trangthai=="Dừng SC"&&congdoan=="Pass"){ $("#ButEnd").html('<button  type="button" class="btn btn-primary me-2" onclick="StartPass()">Bắt Đầu Pass!</button>&nbsp &nbsp <button  type="button" class="btn btn-primary me-2" onclick="WaitQC()">Chờ QC!</button>')}
@@ -882,11 +883,7 @@ function StartDong(){
       var json2 = {"TimeEndLap"  :TimesClick($('#NgayKTSC').val()) }
       postData(json2,urlTX+"/"+checkID($("#MaSo").val()),"PATCH") }
  }
- 
-       
- 
- 
- 
+
    function GioKetThucBP(){
     var homnay=new Date()
      homnay = new Date (homnay*1+7*60*60*1000)
@@ -951,7 +948,7 @@ function KieuXeChange(){
 }
 
 function clickTableTiepNhan(){
-    var table = document.getElementById('table-TimXe')||document.getElementById('table-ChoSC');
+    var table = document.getElementById('table-TimXe');
     for(var i = 1; i < table.rows.length; i++){
       table.rows[i].onclick = function(){
         $("#buttonSCC").html('')
@@ -963,6 +960,32 @@ function clickTableTiepNhan(){
     }
     }
     }
+    function clickTableDung(){
+      var table = document.getElementById('table-Dung');
+      for(var i = 1; i < table.rows.length; i++){
+        table.rows[i].onclick = function(){
+          $("#buttonSCC").html('')
+          document.getElementById('FormDS').reset()
+         $('#ModalDongSon').modal('show')
+          document.getElementById("BienSoXe").value=this.cells[0].innerHTML
+          changvalue()
+          timeSuaChua()
+      }
+      }
+      }
+      function clickTableCho(){
+        var table = document.getElementById('table-ChoSC');
+        for(var i = 1; i < table.rows.length; i++){
+          table.rows[i].onclick = function(){
+            $("#buttonSCC").html('')
+            document.getElementById('FormDS').reset()
+           $('#ModalDongSon').modal('show')
+            document.getElementById("BienSoXe").value=this.cells[0].innerHTML
+            changvalue()
+            timeSuaChua()
+        }
+        }
+        }       
 function TimesClick(data){
   if(data){var  use=new Date(data);}else{var  use=new Date()}
     var useinfo = {}
