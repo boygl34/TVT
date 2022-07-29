@@ -145,7 +145,7 @@ $('#table-Dung').DataTable({
    if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
    if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
    $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
-     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
+     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TimeStopBP)))
   },
   columns: [
       { data: 'BienSoXe',"defaultContent": "" },
@@ -154,7 +154,8 @@ $('#table-Dung').DataTable({
       { data: 'CongDoanDongSon',"defaultContent": ""  },
       { data: 'TrangThaiDongSon',"defaultContent": ""  },
       { data: 'TDHenGiaoXe',"defaultContent": ""  },
-      { data: 'TDKetThucSX' ,"defaultContent": "" },
+      { data: 'TimeStopBP',"defaultContent": ""  },
+      { data: 'GhiChu' ,"defaultContent": "" },
       
   ],
   
