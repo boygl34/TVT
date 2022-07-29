@@ -129,8 +129,9 @@ select:valid {
      <div class="card pmd-card"style="background-color:black">   
       <div class="pmd-tabs">
           <ul class="nav nav-tabs" role="tablist">
-              <li class="nav-item"><a class="nav-link " href="#TienDo" aria-controls="home" role="tab" data-toggle="tab">Danh Sách</a></li>
-              <li class="nav-item"><a class="nav-link active" href="#Timeline" aria-controls="about" role="tab" data-toggle="tab"ondblclick="loadData ()">Tiến Độ</a></li>
+              <li class="nav-item"><a class="nav-link " href="#BaoCaoXeGiao" aria-controls="about" role="tab" data-toggle="tab">Báo Cáo</a></li>
+              <li class="nav-item"><a class="nav-link " href="#TienDo" aria-controls="about" role="tab" data-toggle="tab">Danh Sách</a></li>
+              <li class="nav-item"><a class="nav-link active" href="#Timeline" aria-controls="home" role="tab" data-toggle="tab"ondblclick="loadData ()">Tiến Độ</a></li>
               <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: pink" id="HideChoSC" disabled>Chờ SC</a></li>
               <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: greenyellow" disabled>Đang SC</a></li>
               <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: red" disabled>Dừng SC</a></li>
@@ -145,6 +146,34 @@ select:valid {
             </ul>
       </div>
        <div class="tab-content">
+        <div role="tabpanel" class="tab-pane " id="BaoCaoXeGiao">
+          <table id="table-BaoCao" class="display" style="width:100%"  >
+            <div class="form-row">
+                <div class=" col-6" >
+                  <label for="regular1" class="control-label" style="color:white">Ngày Bắt Đầu SC</label>
+                  <input type="date" required class="form-control"id="NgayGiaoXeBC" onchange="BaoCao()" >
+                  
+                </div>
+                
+                <div class="custom-control custom-checkbox checkbox-xl">
+                  <input type="checkbox" class="custom-control-input" id="TreHen"  onchange="BaoCao()">
+                  <label class="custom-control-label" for="TreHen"style="color:white">Xe Trễ</label>
+                </div>
+           </div>
+            <thead>
+                <tr>
+                    <th>Biển Số</th>
+                    <th>Cố Vấn</th>
+                    <th>Nhóm Sơn</th>
+                    <th>Công Đoạn</th>
+                    <th>Trạng Thái</th>
+                    <th>Ngày Giao</th>
+                    <th>Giờ KT</th>
+                </tr>
+            </thead>
+           
+        </table>
+       </div> 
           <div role="tabpanel" class="tab-pane " id="TienDo"> 
             <table id="table-Dung" class="display" style="width:100%"ondblclick="clickTableDung()" >
               <thead>
@@ -454,6 +483,20 @@ function checkdangnhap() {
   })
   }
 }
+var today = new Date();
+var dd = today.getDate();
+var mm = today.getMonth()+1; //January is 0!
+var yyyy = today.getFullYear();
+ if(dd<10){
+        dd='0'+dd
+    } 
+    if(mm<10){
+        mm='0'+mm
+    } 
+
+today = yyyy+'-'+mm+'-'+dd;
+document.getElementById("NgayGiaoXeBC").setAttribute("min", today);
+document.getElementById("NgayGiaoXeBC").value=today
 function checkPhanQuyen(){
   var PhanQuyen =  localStorage.getItem("PhanQuyen");
   if(PhanQuyen=="KTVBP"){ document.getElementById("mySidebar").innerHTML =  '<a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'}

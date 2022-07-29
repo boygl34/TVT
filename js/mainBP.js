@@ -13,8 +13,8 @@ function getData(url){
   .then(data =>{
     useCaher=data
     loadData ()
-    console.log(useCaher)
     dataTableTimXe(data)
+    BaoCao(data)
   } );
 } 
 
@@ -160,8 +160,55 @@ $('#table-Dung').DataTable({
   ],
   
 });
-}
 
+}
+function BaoCao(){
+
+  let dataArray0=useCaher
+ 
+  let dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhDongSon==="Đồng Sơn"&&r.TDHenGiaoXe)})
+  var checktrehen = document.getElementById("TreHen").checked
+  var ngaygiaoxebc = new Date(document.getElementById("NgayGiaoXeBC").value)
+  var homnay=new Date()
+  let dataArrayDangSC= dataArray1.filter(function(r){
+    var daygx=DoiNgayDangKy(r.TDHenGiaoXe).getDate()
+    var monthgx = DoiNgayDangKy(r.TDHenGiaoXe).getMonth()
+    var yeargx = DoiNgayDangKy(r.TDHenGiaoXe).getYear()
+    return (r.LoaiHinhDongSon==="Đồng Sơn"&&daygx==ngaygiaoxebc.getDate()&&monthgx==ngaygiaoxebc.getMonth()&&yeargx==ngaygiaoxebc.getYear())})
+    if(checktrehen){
+     dataArrayDangSC= dataArray1.filter(function(r){
+      var daygx=DoiNgayDangKy(r.TDHenGiaoXe).valueOf()
+      
+      return (r.LoaiHinhDongSon==="Đồng Sơn"&&daygx<homnay.valueOf())})  
+     }
+      $('#table-BaoCao').DataTable({
+    data: dataArrayDangSC,
+    paging: false,
+    destroy: true,
+    ordering:  true,
+    info:false,
+    searching: false,
+    createdRow: function( row, data, dataIndex,cells ) {
+     if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
+     if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
+     if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
+     $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
+     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
+  
+    },
+    columns: [
+        { data: 'BienSoXe',"defaultContent": "" },
+        { data: 'CoVanDichVu',"defaultContent": ""  },
+        { data: 'NhomSon',"defaultContent": ""  },
+        { data: 'CongDoanDongSon',"defaultContent": ""  },
+        { data: 'TrangThaiDongSon',"defaultContent": ""  },
+        { data: 'TDHenGiaoXe',"defaultContent": ""  },
+        { data: 'TDKetThucSX' ,"defaultContent": "" },
+        
+    ],
+    
+});
+}
 
 function changvalue(){
     $("#alert").html("<div class='alert alert-success'>Hello!!</div>")
