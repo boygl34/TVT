@@ -266,7 +266,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                         if(starttime.getDay()==0){starttime =  new Date(DoiNgayDangKy(r.TimeStartLap)*1+24*60*60*1000)
                             endtime =  new Date(DoiNgayDangKy(r.TimeEndLap)*1+24*60*60*1000)
                         }
-                            if(endtime.getHours()>17){endtime = new Date(DoiNgayDangKy(r.TimeEndLap)*1+15*60*60*1000)}
+                            if(endtime.getHours()>=17){endtime = new Date(DoiNgayDangKy(r.TimeEndLap)*1+15*60*60*1000)}
                         items.add({
                             className: "orange",
                             id:  r.BienSoXe+"_Lap"  ,
@@ -286,7 +286,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             if(starttime.getDay()==0){starttime =  new Date(DoiNgayDangKy(r.TimeStartLap)*1+24*60*60*1000)
                               endtime =  new Date(DoiNgayDangKy(r.TimeEndLap)*1+24*60*60*1000)
                             }
-                            if(endtime.getHours()>17){endtime = new Date(DoiNgayDangKy(r.TimeEndLap)*1+15*60*60*1000)}
+                            if(endtime.getHours()>=17){endtime = new Date(DoiNgayDangKy(r.TimeEndLap)*1+15*60*60*1000)}
                             items.add({
                                 className: mau2,
                                 id:  r.BienSoXe+"_Lap"  ,
@@ -309,7 +309,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                         if(starttime.getDay()==0){starttime =  new Date(DoiNgayDangKy(r.TimeStartNen)*1+24*60*60*1000)
                             endtime =  new Date(DoiNgayDangKy(r.TimeEndNen)*1+24*60*60*1000)
                         }
-                            if(endtime.getHours()>17){endtime = new Date(DoiNgayDangKy(r.TimeEndNen)*1+15*60*60*1000)}
+                            if(endtime.getHours()>=17){endtime = new Date(DoiNgayDangKy(r.TimeEndNen)*1+15*60*60*1000)}
                         items.add({
                             className: "orange",
                             id:  r.BienSoXe+"_Nen"  ,
@@ -328,7 +328,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                         if(starttime.getDay()==0){starttime =  new Date(DoiNgayDangKy(r.TimeStartNen)*1+24*60*60*1000)
                             endtime =  new Date(DoiNgayDangKy(r.TimeEndNen)*1+24*60*60*1000)
                         }
-                            if(endtime.getHours()>17){endtime = new Date(DoiNgayDangKy(r.TimeEndNen)*1+15*60*60*1000)}
+                            if(endtime.getHours()>=17){endtime = new Date(DoiNgayDangKy(r.TimeEndNen)*1+15*60*60*1000)}
                             items.add({
                                 className: mau3,
                                 id:  r.BienSoXe+"_Nen"  ,
@@ -352,7 +352,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             if(starttime.getDay()==0){starttime =  new Date(DoiNgayDangKy(r.TimeStartPaint)*1+24*60*60*1000)
                                 endtime =  new Date(DoiNgayDangKy(r.TimeEndPaint)*1+24*60*60*1000)
                             }
-                            if(endtime.getHours()>17){endtime = new Date(DoiNgayDangKy(r.TimeEndPaint)*1+15*60*60*1000)}
+                            if(endtime.getHours()>=17){endtime = new Date(DoiNgayDangKy(r.TimeEndPaint)*1+15*60*60*1000)}
                         items.add({
                             className: "orange",
                             id:  r.BienSoXe+"_Paint"  ,
@@ -371,7 +371,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             if(starttime.getDay()==0){starttime =  new Date(DoiNgayDangKy(r.TimeStartPaint)*1+24*60*60*1000)
                                 endtime =  new Date(DoiNgayDangKy(r.TimeEndPaint)*1+24*60*60*1000)
                             }
-                            if(endtime.getHours()>17){endtime = new Date(DoiNgayDangKy(r.TimeEndPaint)*1+15*60*60*1000)}
+                            if(endtime.getHours()>=17){endtime = new Date(DoiNgayDangKy(r.TimeEndPaint)*1+15*60*60*1000)}
                             items.add({
                                 className: mau4,
                                 id:  r.BienSoXe+"_Paint"  ,
@@ -394,7 +394,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             if(starttime.getDay()==0){starttime =  new Date(DoiNgayDangKy(r.TimeStartPass)*1+24*60*60*1000)
                                 endtime =  new Date(DoiNgayDangKy(r.TimeEndPass)*1+24*60*60*1000)
                             }
-                            if(endtime.getHours()>17){endtime = new Date(DoiNgayDangKy(r.TimeEndPass)*1+15*60*60*1000)}
+                            if(endtime.getHours()>=17){endtime = new Date(DoiNgayDangKy(r.TimeEndPass)*1+15*60*60*1000)}
                         items.add({
                             className: "orange",
                             id:  r.BienSoXe+"_Pass"  ,
@@ -413,7 +413,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             if(starttime.getDay()==0){starttime =  new Date(DoiNgayDangKy(r.TimeStartPass)*1+24*60*60*1000)
                                 endtime =  new Date(DoiNgayDangKy(r.TimeEndPass)*1+24*60*60*1000)
                             }
-                            if(endtime.getHours()>17){endtime = new Date(DoiNgayDangKy(r.TimeEndPass)*1+15*60*60*1000)}
+                            if(endtime.getHours()>=17){endtime = new Date(DoiNgayDangKy(r.TimeEndPass)*1+15*60*60*1000)}
                             items.add({
                                 className: mau5,
                                 id:  r.BienSoXe+"_Pass"  ,
