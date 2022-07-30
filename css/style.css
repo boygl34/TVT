@@ -121,6 +121,12 @@ background-color: red;
     position: relative;
   }
 }
+@media only screen and (max-width: 1200px) {
+  .vis-panel>.vis-content {
+    font-size: 8px;
+    position: relative;
+  }
+}
 
 
  .vis-item.orange {
