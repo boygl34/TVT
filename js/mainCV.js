@@ -286,10 +286,9 @@ function dataTableTiepNhan(){
         var ojb =  useCaher 
       for(var a in ojb){
         if(ojb[a].BienSoXe == $("#BienSoXe").val()){
-           if(ojb.LoaiHinhSuaChua){}else{if($('#LoaiHinh').val()){json2["TrangThaiSCC"]="Chờ SC"}else{json2["TrangThaiSCC"]=""}}
-          if(ojb.LoaiHinhDongSon){}else{if($('#LoaiHinhBP').val()){json2["CongDoanDongSon"]="Chờ SC";
-          json2["TrangThaiDongSon"]="Chờ SC";}else{json2["CongDoanDongSon"]="";
-           json2["TrangThaiDongSon"]=""}}
+           if(ojb[a].LoaiHinhSuaChua){}else{if($('#LoaiHinh').val()){json2["TrangThaiSCC"]="Chờ SC"}}
+          if(ojb[a].LoaiHinhDongSon){}else{if($('#LoaiHinhBP').val()){json2["CongDoanDongSon"]="Chờ SC";
+          json2["TrangThaiDongSon"]="Chờ SC";}}
         }
 
       }
