@@ -203,6 +203,7 @@ body {font-family: "Roboto", sans-serif}
 
 <script>
  checkdangnhap()
+ checkPhanQuyen()
 function checkdangnhap() {
   var urluser = "https://big-road-newsstand.glitch.me/User/"
   var password = localStorage.getItem("Password")
@@ -216,11 +217,13 @@ function checkdangnhap() {
       document.getElementById("TrangDangNhap").hidden=false;
       loadData ()
       document.getElementById("name").innerHTML =  localStorage.getItem("userName")}else{ 
-        document.getElementById("TrangDangNhap").hidden=true  
+      document.getElementById("TrangDangNhap").hidden=true  
+      
       }
   })
   }
 }
+
 // Open and close the sidebar on medium and small screens
 function w3_open() {
   document.getElementById("mySidebar").style.display = "block";

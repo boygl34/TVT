@@ -120,13 +120,15 @@ background-color: red;
     font-size: 8px;
     position: relative;
   }
-}
-@media only screen and (max-width: 1200px) {
-  .vis-panel>.vis-content {
-    font-size: 8px;
-    position: relative;
+  .vis-item {
+    border-color: #F991A3;
+    font-family: Arial, sans-serif;
+    background-color: pink;
+    font-size: 7pt;
+    
   }
 }
+
 
 
  .vis-item.orange {

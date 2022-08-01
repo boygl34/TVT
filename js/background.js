@@ -27,7 +27,16 @@ function Doingay2(use){
     var ThoiGian = Gio+":"+Phut +" Thứ "+Thu +" ngày "+Ngay+"/"+Thang+" "
     return ThoiGian
   }
-   
+  checkPhanQuyen()
+  function checkPhanQuyen(){
+    var PhanQuyen =  localStorage.getItem("PhanQuyen");
+    document.getElementById("mySidebar").innerHTML ='<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="main.html">Toyota TVT</a>'
+    document.getElementById("mySidebar").innerHTML += '<a class="w3-bar-item w3-button w3-teal" href="Body.html" id="name">Home</a>'
+    if(PhanQuyen=="KTVBP"){ document.getElementById("mySidebar").innerHTML +=  '<a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'}
+    if(PhanQuyen=="SALE"){ document.getElementById("mySidebar").innerHTML +=  '<a class="w3-bar-item w3-button"  href="DatHen.html">Đặt Hẹn</a>'}
+    
+  }
+
 function DoiNgayDangKy(ngayhen){
   var aa
   if(ngayhen){

@@ -399,7 +399,7 @@ function DangNhap(){
         document.getElementById("TrangDangNhap").hidden=true
         document.getElementById("BaoCao").hidden=false
         document.getElementById("name").innerHTML = "WellCome!! "+ localStorage.getItem("userName")
-        checkPhanQuyen()
+        
       }
      else{
         document.getElementById("TrangDangNhap").hidden=false
@@ -410,10 +410,12 @@ function DangNhap(){
     alert(error)
     });
   }
-function checkPhanQuyen(){
+  checkPhanQuyen()
+  function checkPhanQuyen(){
   var PhanQuyen =  localStorage.getItem("PhanQuyen");
-  if(PhanQuyen=="KTVBP"){ document.getElementById("mySidebar").innerHTML =  '<a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'}
-  //if(PhanQuyen=="KTVBP"){ document.getElementById("mySidebar").innerHTML =  '<a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'}
+  if(PhanQuyen=="KTVBP"){ document.getElementById("mySidebar").innerHTML =  
+  '<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="main.html">Toyota TVT</a><a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'}
+  if(PhanQuyen=="SALE"){ document.getElementById("mySidebar").innerHTML =  '<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="main.html">Toyota TVT</a><a class="w3-bar-item w3-button"  href="DatHen.html">Đặt Hẹn</a>'}
 }
 
 // Open and close the sidebar on medium and small screens
