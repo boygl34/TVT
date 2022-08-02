@@ -389,6 +389,7 @@ function DangNhap(){
   .then(response => response.json())
   .then(data =>{  
     if(password==data.Password){
+      checkPhanQuyen()
         localStorage.setItem("userName",data.useName)
         localStorage.setItem("Password",data.Password)
         localStorage.setItem("id",data.id)
