@@ -33,7 +33,13 @@ function Doingay2(use){
     if(PhanQuyen=="KTVBP"){ 
       document.getElementById("mySidebar").innerHTML ='<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="main.html">Toyota TVT</a>'
     document.getElementById("mySidebar").innerHTML += '<a class="w3-bar-item w3-button w3-teal" href="Body.html" id="name">Home</a>'
-      document.getElementById("mySidebar").innerHTML +=  '<a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'}
+      document.getElementById("mySidebar").innerHTML +=  '<a class="w3-bar-item w3-button"  href="Body.html">Đồng Sơn</a>'
+      document.getElementById("mySidebar").innerHTML +=' <a class="w3-bar-item w3-button" ><select required class="form-control"  id="LOAIBANGTD" onchange=" BANGTIENDO(this.value)" ><option value="Xưởng">Xưởng</option><option value="Đồng">Đồng</option><option value="Thiên">Thiên</option><option value="Đình">Đình</option><option value="Pass">Pass</option></select> </a>'
+  
+    
+    
+    
+    }
     if(PhanQuyen=="SALE"){
       document.getElementById("mySidebar").innerHTML ='<a class="w3-bar-item w3-button w3-border-bottom w3-large" href="main.html">Toyota TVT</a>'
     document.getElementById("mySidebar").innerHTML += '<a class="w3-bar-item w3-button w3-teal" href="Body.html" id="name">Home</a>'
