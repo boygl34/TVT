@@ -96,6 +96,7 @@ getData(urlTX)
    .then(data =>{
      useCaher=data
      showData ()
+     alert("okie1")
    } );
  }
     
@@ -105,6 +106,7 @@ getData(urlTX)
         var dataArrayhen= dataArray.filter(function(r){return ((r.TrangThaiXuong==="00 Có Hẹn"))})
    dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(a.ThoiGianHen)).valueOf()> new Date(DoiNgayDangKy(b.ThoiGianHen)).valueOf() ? 1 : -1);})  
   var tbodyhen = document.getElementById('table-body-hen')
+  alert("okie2")
      tbodyhen.innerHTML=""
    dataArrayhen.forEach(function(r){
        var row = document.createElement("tr"); 
