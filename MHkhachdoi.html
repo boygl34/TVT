@@ -70,10 +70,8 @@ getData(urlTX)
  setInterval(function (){getData(urlTX)},30000);
   //DanhSachCoVan();
  function getData(url){
-   fetch(url)
-   .then(response => response.json())
-   .then(data =>{
-     useCaher=data
+  $.get(url, function(ketqua) {
+     useCaher=ketqua
      showData ()
    } );
  }
