@@ -97,13 +97,11 @@ getData(urlTX)
   //DanhSachCoVan();
  function getData(url){
   try{
-   fetch(url)
-   .then(response => response.json())
-   .then(data =>{
-     useCaher=data
-     showData ()
-
-   } );}catch(eros){ alert(eros)}
+    $.get(url, function(ketqua) {
+      useCaher=ketqua
+      showData ()
+			});
+   }catch(eros){ alert(eros)}
  }
     
        function showData(){
