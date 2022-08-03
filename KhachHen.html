@@ -84,6 +84,7 @@
 
 
     <script>
+      
         var useCaher
  var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
  var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
@@ -91,13 +92,14 @@ getData(urlTX)
  setInterval(function (){getData(urlTX)},30000);
   //DanhSachCoVan();
  function getData(url){
+  try{
    fetch(url)
    .then(response => response.json())
    .then(data =>{
      useCaher=data
      showData ()
      alert("okie1")
-   } );
+   } );}catch(eros){ alert(eros)}
  }
     
        function showData(){
