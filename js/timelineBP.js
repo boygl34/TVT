@@ -11,8 +11,8 @@ var NhomSon=["Đình","Thiên"]
 var NhomCV=["Toàn","Tài","Rôn","Mẫn","Sang","Vinh","Triêng","Lộc","Sang"]
 var KTVDongSon=["Châu","Trường","Phúc","Trương","Quang","Định","Đình","Thành","Lưu","Thiên","Dũng","Lực","Tú"]
 var chieudaichip
-var kytu1 ="💖"
-var kytu2="😈"
+var kytu1 ="😆"
+var kytu2="😡"
 groups.add({
     id: "Chờ SC",
     content: "Chờ SC",
