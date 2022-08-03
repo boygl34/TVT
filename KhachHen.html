@@ -99,7 +99,8 @@ getData(urlTX)
    } );
  }
     
-       function showData(use){
+       function showData(){
+        try{
        var dataArray=useCaher
         var dataArrayhen= dataArray.filter(function(r){return ((r.TrangThaiXuong==="00 Có Hẹn"))})
    dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(a.ThoiGianHen)).valueOf()> new Date(DoiNgayDangKy(b.ThoiGianHen)).valueOf() ? 1 : -1);})  
@@ -133,6 +134,10 @@ getData(urlTX)
          })
          
                 $("#tieude").html("THÔNG TIN KHÁCH HẸN "+new Date().toLocaleTimeString().slice(0,5))
+
+        }catch(eros){
+          alert(eros)
+        }
              }
             
            

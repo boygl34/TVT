@@ -78,12 +78,12 @@ getData(urlTX)
    } );
  }
     
-       function showData(use){
+       function showData(){
+        try{
         var dataArray =  useCaher
   var dataArray0= dataArray.filter(function(r){return r.KhachHangDoi==="Khách Đợi"})
   var dataArray0= dataArray0.filter(function(r){return r.TrangThaiXuong!=="09 Đã Giao Xe"})
   dataArray0.sort(function(a, b) {return (a.TrangThaiXuong.toLowerCase() < b.TrangThaiXuong.toLowerCase() ? 1 : -1);})
-  console.log(dataArray0)
    var tbodyTim = document.getElementById('table-body')
    tbodyTim.innerHTML=""
        dataArray0.forEach(function(r){
@@ -122,7 +122,10 @@ getData(urlTX)
                                
         tbodyTim.appendChild(row)  
       })
-                $("#tieude").html("THÔNG TIN KHÁCH CHỜ "+new Date().toLocaleTimeString().slice(0,5))
+                $("#tieude").html("THÔNG TIN KHÁCH CHỜ "+new Date().toLocaleTimeString().slice(0,5))}
+                catch (eros){
+                  alert(eros)
+                }
              }
             
            
