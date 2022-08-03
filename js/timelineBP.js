@@ -54,9 +54,9 @@ var options = {
                 onUpdate: function (item) {
                         var BienSo = item.content.slice(0,item.content.indexOf("_"))
                         var CongDoan = item.content.slice(item.content.indexOf("_")+1,item.content.length-1)
-                        if(item.content.indexOf(kytu1)>0){CongDoan = item.content.slice(item.content.indexOf("_")+1,item.content.length-4)}
-                        if(item.content.indexOf(kytu2)>0){CongDoan = item.content.slice(item.content.indexOf("_")+1,item.content.length-4)}
-                        alert(CongDoan)
+                        if(item.content.indexOf(kytu1)>0){CongDoan = item.content.slice(item.content.indexOf("_")+1,item.content.length-3)}
+                        if(item.content.indexOf(kytu2)>0){CongDoan = item.content.slice(item.content.indexOf("_")+1,item.content.length-3)}
+                        //alert(CongDoan)
                         $("#buttonSCC").html('')
                         document.getElementById('FormDS').reset()
                         $('#ModalDongSon').modal('show')
