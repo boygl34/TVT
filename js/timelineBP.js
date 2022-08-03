@@ -11,6 +11,8 @@ var NhomSon=["Đình","Thiên"]
 var NhomCV=["Toàn","Tài","Rôn","Mẫn","Sang","Vinh","Triêng","Lộc","Sang"]
 var KTVDongSon=["Châu","Trường","Phúc","Trương","Quang","Định","Đình","Thành","Lưu","Thiên","Dũng","Lực","Tú"]
 var chieudaichip
+var kytu1 ="💖"
+var kytu2="😈"
 groups.add({
     id: "Chờ SC",
     content: "Chờ SC",
@@ -52,13 +54,15 @@ var options = {
                 onUpdate: function (item) {
                         var BienSo = item.content.slice(0,item.content.indexOf("_"))
                         var CongDoan = item.content.slice(item.content.indexOf("_")+1)
+                        if(item.content.indexOf(kytu1)>0){CongDoan = item.content.slice(item.content.indexOf("_")+1,item.content.length-3)}
+                        if(item.content.indexOf(kytu2)>0){CongDoan = item.content.slice(item.content.indexOf("_")+1,item.content.length-3)}
                         $("#buttonSCC").html('')
                         document.getElementById('FormDS').reset()
                         $('#ModalDongSon').modal('show')
                         document.getElementById("BienSoXe").value=BienSo
                         changvalue()
                         chieudaichip=item.end-item.start
-                        console.log(chieudaichip)
+                        
                         document.getElementById("CongDoanDongSon").value=CongDoan
                         ChangCongDoan(CongDoan)
                         var ojb =  useCaher
@@ -214,8 +218,10 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             if(r.CongDoanDongSon=="Pass"){
                             if(r.TrangThaiDongSon=="Đang SC"){ mau5="green"}
                             if(r.TrangThaiDongSon=="Dừng SC"){ mau5="red"}
-                        }else{mau5=mau}  
-
+                        }else{mau5=mau} 
+                         var GiaoTN=""
+                      if(new Date(DoiNgayDangKy(r.TDHenGiaoXe)).getDate()== new Date().getDate()){GiaoTN=kytu1}
+                      if(new Date(DoiNgayDangKy(r.TDHenGiaoXe)).valueOf()< new Date().valueOf()){GiaoTN=kytu2}
                       if(hoanthanh&&r.HTDong=="Okie"){
                         var starttime =  new Date(DoiNgayDangKy(r.TimeStartBody))
                         var endtime = new Date(DoiNgayDangKy(r.TimeEndBody))
@@ -233,7 +239,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             value:time,
                             subgroup: group,
                             //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
-                            content: r.BienSoXe +"_Đồng",
+                            content: r.BienSoXe +"_Đồng "+GiaoTN,
                         });}
                         if(r.HTDong!=="Okie"){
                             var starttime =  new Date(DoiNgayDangKy(r.TimeStartBody))
@@ -252,7 +258,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 value:time,
                                 subgroup: group,
                                 //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.NhomSon,
-                                content: r.BienSoXe +"_Đồng",
+                                content: r.BienSoXe +"_Đồng " +GiaoTN,
                             });} 
 
                     }  
@@ -277,7 +283,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             editable: edit2,
                             value : time,
                             subgroup: group,
-                            content: r.BienSoXe +"_Lắp Ráp"
+                            content: r.BienSoXe +"_Lắp Ráp "+GiaoTN
                         }); }
                         if(r.HTLap!=="Okie"){
                             var endtime = new Date(DoiNgayDangKy(r.TimeEndLap))
@@ -297,7 +303,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 editable: edit2,
                                 value : time,
                                 subgroup: group,
-                                content: r.BienSoXe +"_Lắp Ráp"
+                                content: r.BienSoXe +"_Lắp Ráp " +GiaoTN
                             }); }
                     } 
                     if(r.TimeStartNen&&r.TimeEndNen){
@@ -320,7 +326,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             subgroup: group,
                             value : time,
                             //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienNen,
-                            content: r.BienSoXe + "_Nền" 
+                            content: r.BienSoXe + "_Nền " +GiaoTN
                         });}
                         if(r.HTNen!=="Okie"){
                             var starttime =  new Date(DoiNgayDangKy(r.TimeStartNen))
@@ -339,7 +345,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 subgroup: group,
                                 value : time,
                                // title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienNen,
-                                content: r.BienSoXe + "_Nền" 
+                                content: r.BienSoXe + "_Nền "+GiaoTN 
                             });}
 
                     }
@@ -363,7 +369,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             subgroup: group,
                             value : time,
                             //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienSon,
-                            content: r.BienSoXe +"_Sơn"
+                            content: r.BienSoXe +"_Sơn "+GiaoTN
                         });}
                         if(r.HTSon!=="Okie"){
                             var endtime = new Date(DoiNgayDangKy(r.TimeEndPaint))
@@ -382,7 +388,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 subgroup: group,
                                 value : time,
                                // title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienSon,
-                                content: r.BienSoXe +"_Sơn"
+                                content: r.BienSoXe +"_Sơn "+GiaoTN
                             });}
                     }
                     if(r.TimeStartPass&&r.TimeEndPass){  
@@ -405,7 +411,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                             subgroup: group,
                             value : time,
                             //title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienPass,
-                            content: r.BienSoXe +"_Pass"
+                            content: r.BienSoXe +"_Pass " +GiaoTN
                         }); }  
                         if(r.HTPass!=="Okie"){
                             var endtime = new Date(DoiNgayDangKy(r.TimeEndPass))
@@ -424,7 +430,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
                                 subgroup: group,
                                 value : time,
                                // title:r.BienSoXe+" "+r.CoVanDichVu+" " +r.KyThuatVienPass,
-                                content: r.BienSoXe +"_Pass"
+                                content: r.BienSoXe +"_Pass "+GiaoTN
                             }); }         
                     }
             }
