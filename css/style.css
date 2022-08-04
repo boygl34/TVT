@@ -130,16 +130,16 @@ background-color: red;
     
   }
 }
-@media only screen and (min-width: 1600px) {
+@media only screen and (min-width: 2600px) {
   .vis-panel>.vis-content {
-    font-size: 10px;
+    font-size: 13px;
     position: relative;
   }
   .vis-item {
     border-color: #F991A3;
     font-family: Arial, sans-serif;
     background-color: pink;
-    font-size: 17pt;
+    font-size: 13pt;
     
   }
 }
