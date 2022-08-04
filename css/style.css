@@ -1,9 +1,5 @@
 
-.vis-today{
-background-color:  #363945;
-border-color: red;
-color: white;
-}
+
 
    .vis-item.green {
  background-color: greenyellow;
@@ -53,12 +49,13 @@ color: white;
    box-sizing: border-box;
 }
    .vis-timeline {
-     border: 2px solid black;
+     border: 1px solid;
      font-family:  purisa, 'comic sans', cursive;
-     font-size: 10pt;
+     font-size: 7pt;
      background-color:  #363945;
+     
      font-weight: bold;
-     color :white;
+     color :whitesmoke;
    }
    .vis-item {
      border-color: #F991A3;
@@ -68,21 +65,23 @@ color: white;
      box-shadow: 5px 5px 20px rgba(128,128,128, 0.5);
    }
 .vis-item.green.vis-selected  {
-         background-color: #9e9b78;
+         background-color: #7f3b88;
+         color: #00ff00 ;
          border-color: #9d9b95;
          z-index: 2;
          }
 .vis-item.orange.vis-selected  {
-         background-color: #9e9b78;
-         border-color: #9d9b95;
-         z-index: 2;
+  background-color: #7f3b88;
+  color: #00ff00 ;
+  border-color: #9d9b95;
+  z-index: 2;
          }
   
-.vis-selected  {
- background-color: red;
- border-color: green;
- font-weight: bold;
-  color: white;
+         .vis-item.vis-selected  {
+  background-color: #7f3b88;
+  color: #00ff00 ;
+  border-color: #9d9b95;
+  z-index: 2;
 }
    .vis-item.green {
  background-color: greenyellow;
@@ -107,10 +106,12 @@ background-color: red;
 .vis-h12{
   background-color: rgb(240, 221, 240);
 } 
-.vis-h12{
-  background-color: rgb(240, 221, 240);
-}  
-.vis-today{background-color: rgb(65, 88, 85)}
+
+.vis-today{
+  background-color: rgb(65, 88, 85);
+  border-color: rgb(65, 88, 85);
+  border-collapse: collapse;
+}
 .vis-item.magenta {
  background-color: magenta;
  border-color: purple;
