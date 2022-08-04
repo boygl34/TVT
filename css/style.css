@@ -53,7 +53,7 @@
      font-family:  purisa, 'comic sans', cursive;
      font-size: 7pt;
      background-color:  #363945;
-     
+
      font-weight: bold;
      color :whitesmoke;
    }
@@ -127,6 +127,19 @@ background-color: red;
     font-family: Arial, sans-serif;
     background-color: pink;
     font-size: 7pt;
+    
+  }
+}
+@media only screen and (min-width: 1600px) {
+  .vis-panel>.vis-content {
+    font-size: 10px;
+    position: relative;
+  }
+  .vis-item {
+    border-color: #F991A3;
+    font-family: Arial, sans-serif;
+    background-color: pink;
+    font-size: 17pt;
     
   }
 }
