@@ -110,6 +110,7 @@ background-color: red;
 .vis-h12{
   background-color: rgb(240, 221, 240);
 }  
+.vis-today{background-color: rgb(65, 88, 85)}
 .vis-item.magenta {
  background-color: magenta;
  border-color: purple;
