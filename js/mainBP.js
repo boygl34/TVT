@@ -216,7 +216,7 @@ function changvalue(){
       for(var a in ojb){
       if(ojb[a].BienSoXe == BienSoXe.value){
       
-        $("#biensods").html(ojb[a].BienSoXe+" "+ojb[a].CongDoanDongSon+ " "+ojb[a].TrangThaiDongSon)
+        $("#biensods").html(ojb[a].BienSoXe+" "+ojb[a].CoVanDichVu+" "+ojb[a].CongDoanDongSon+ " "+ojb[a].TrangThaiDongSon)
         if(ojb[a].TDHenGiaoXe){ $("#alert").html("<div class='alert alert-success'>Ngày Giao Xe : "+ ojb[a].TDHenGiaoXe +"</div>");
       console.log(ojb[a].TDHenGiaoXe)
       }
