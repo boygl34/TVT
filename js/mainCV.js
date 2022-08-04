@@ -253,7 +253,6 @@ function dataTableTiepNhan(){
                   dataType: "json",
                   data: data
                   });
-
                   var data2= data
                   delete data2.id
                   postData(data2,urlDG,"POST")
@@ -263,7 +262,7 @@ function dataTableTiepNhan(){
           console.error('Error:', error);
           });
  }catch(error) {
-  alert("Lỗi : "+error)
+  console.log("Lỗi : "+error)
 }
   }
 
