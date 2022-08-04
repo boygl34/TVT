@@ -12,6 +12,7 @@ var NhomKTV =["EM","Bạo","Hoan"]
 var KTVBao=["Bạo","Hiếu","Duy","Phước","Huy"]
 var KTVHoan=["Hoan","Lâm","Tâm","Tân","Sơn"]
 var KTVEM=["Sáng","Thiên","Vinh","Khoa","Đ Anh","Hiển","Cường","Trí"]
+var ListXe=["Camry","Inova","Fortuner","Altis","Altis Cross","Veloz","Wigo","Land Cruiser","Land Prado","Hilander","Rav4","Vios","Rush","Avanza","Raize","Lexus"]
 function Doingay2(use){
     use=new Date(use)
     var Thu = use.getDay()+1

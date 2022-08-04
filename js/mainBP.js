@@ -91,13 +91,14 @@ function dataTableTimXe(value){
      if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
      if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
      if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
-     $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
-     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
+     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
+     $(cells[7]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
   
     },
     columns: [
         { data: 'BienSoXe',"defaultContent": "" },
         { data: 'CoVanDichVu',"defaultContent": ""  },
+        { data: 'KieuXe',"defaultContent": ""  },
         { data: 'NhomSon',"defaultContent": ""  },
         { data: 'CongDoanDongSon',"defaultContent": ""  },
         { data: 'TrangThaiDongSon',"defaultContent": ""  },
@@ -118,12 +119,13 @@ $('#table-ChoSC').DataTable({
    if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
    if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
    if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
-   $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
-     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
+   $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
+     $(cells[7]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
   },
   columns: [
       { data: 'BienSoXe',"defaultContent": "" },
       { data: 'CoVanDichVu',"defaultContent": ""  },
+      { data: 'KieuXe',"defaultContent": ""  },
       { data: 'NhomSon',"defaultContent": ""  },
       { data: 'CongDoanDongSon',"defaultContent": ""  },
       { data: 'TrangThaiDongSon',"defaultContent": ""  },
@@ -144,12 +146,13 @@ $('#table-Dung').DataTable({
    if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
    if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
    if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
-   $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
-     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TimeStopBP)))
+   $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
+     $(cells[7]).html(Doingay(DoiNgayDangKy(data.TimeStopBP)))
   },
   columns: [
       { data: 'BienSoXe',"defaultContent": "" },
       { data: 'CoVanDichVu',"defaultContent": ""  },
+      { data: 'KieuXe',"defaultContent": ""  },
       { data: 'NhomSon',"defaultContent": ""  },
       { data: 'CongDoanDongSon',"defaultContent": ""  },
       { data: 'TrangThaiDongSon',"defaultContent": ""  },
@@ -199,6 +202,7 @@ function BaoCao(){
     columns: [
         { data: 'BienSoXe',"defaultContent": "" },
         { data: 'CoVanDichVu',"defaultContent": ""  },
+        { data: 'KieuXe',"defaultContent": ""  },
         { data: 'NhomSon',"defaultContent": ""  },
         { data: 'CongDoanDongSon',"defaultContent": ""  },
         { data: 'TrangThaiDongSon',"defaultContent": ""  },
@@ -1104,9 +1108,10 @@ var list = document.getElementById('NhomSonDK');
   }
   
 }
-
+KieuXeDropDown(ListXe)
 function KieuXeDropDown(values){
-var list = document.getElementById('KieuXe');   
+  
+var list = document.getElementById('listKieuXe');   
     for (var i = 0; i < values.length; i++) {
       var option = document.createElement("option");
       option.value = values[i];
