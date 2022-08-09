@@ -195,8 +195,8 @@ function BaoCao(){
      if ( data.TrangThaiDongSon == "Đang SC" ) {$(row).addClass( 'DangSuaChua' );}
      if ( data.TrangThaiDongSon == "Chờ SC" ) {$(row).addClass( 'ChoSuaChua' );} 
      if ( data.TrangThaiDongSon == "Dừng SC" ) {$(row).addClass( 'DungSuaChua' );} 
-     $(cells[5]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
-     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
+     $(cells[6]).html(Doingay(DoiNgayDangKy(data.TDHenGiaoXe)))
+     $(cells[7]).html(Doingay(DoiNgayDangKy(data.TDKetThucSX)))
   
     },
     columns: [
