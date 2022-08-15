@@ -51,6 +51,7 @@ var options = {
                 onMove: function (item) {
                         let text = "Thay Đổi kế hoạch xe "+item.content.slice(0,item.content.indexOf("_"));  
                         if (confirm(text) == true) { capnhatthoigian(item)} else {loadData()};},
+
                 onUpdate: function (item) {
                         var BienSo = item.content.slice(0,item.content.indexOf("_"))
                         var CongDoan = item.content.slice(item.content.indexOf("_")+1,item.content.length-1)
@@ -685,3 +686,83 @@ if(BangTD=="Pass"){
 
 timeline.redraw()
  }
+
+ timeline.on('contextmenu', function (props) {
+  
+  
+    if (document.getElementById(
+        "contextMenu").style.display == "block")
+        hideMenu();
+    else {
+        var menu = document
+            .getElementById("contextMenu")
+        menu.style.display = 'block';
+        menu.style.left = props.pageX + "px";
+        menu.style.top = props.pageY + "px";
+    }
+    $("#TTHuyChip").val(props.item)
+    $("#TTHuyChip").html(props.item)
+   // huyChipcongdoan(props.item)
+    
+  props.event.preventDefault();
+  });
+  function huyChipcongdoan(item){
+    item=$("#TTHuyChip").val()
+    var BienSo = item.slice(0,item.indexOf("_"))
+    var CongDoan = item.slice(item.indexOf("_")+1,item.length)
+    var ojb =  useCaher
+      for(var a in ojb){
+      if(ojb[a].BienSoXe == BienSo){
+        if(CongDoan=="Dong"){
+            delete ojb[a].TimeStartBody;
+            delete ojb[a].TimeEndBody;
+            delete ojb[a].KyThuatVienDong;
+            delete ojb[a].HTDong;
+           }
+           if(CongDoan=="Nen"){
+            delete ojb[a].TimeStartNen;
+            delete ojb[a].TimeEndNen;
+            delete ojb[a].KyThuatVienNen;
+            delete ojb[a].HTNen;
+           }
+           if(CongDoan=="Lap"){
+            delete ojb[a].TimeStartLap;
+            delete ojb[a].TimeEndLap;
+            delete ojb[a].KyThuatVienLap;
+            delete ojb[a].HTLap;
+           }
+           if(CongDoan=="Paint"){
+            delete ojb[a].TimeEndPaint;
+            delete ojb[a].TimeStartPaint;
+            delete ojb[a].KyThuatVienSon;
+            delete ojb[a].HTSon;
+           }
+           if(CongDoan=="Pass"){
+            delete ojb[a].TimeEndPass;
+            delete ojb[a].TimeStartPass;
+            delete ojb[a].KyThuatVienPass;
+            delete ojb[a].HTPass;
+           }
+
+try{
+    let text = "Bạn muốn Xóa Chíp Tiếp Độ: "+BienSo+"\n Công Đoạn : "+CongDoan;  
+  if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoiBP") { 
+         alert(urlTX+"/"+ojb[a].id)
+           $.ajax({
+            url:urlTX+"/"+ojb[a].id,
+            type:'PUT',
+            data:ojb[a],
+              success: function(data){
+              console.log(data)
+              loadData()
+            }
+          })
+        }else{alert("Bạn không Thể xóa chíp")}
+        }catch(eros){alert(eros)}
+
+      }
+    
+    }
+    
+  }
+    

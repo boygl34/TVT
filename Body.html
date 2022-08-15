@@ -463,6 +463,56 @@ select:valid {
         </form>        
       </div>
 
+      <div id="contextMenu" class="context-menu" 
+        style="display:none">
+        <ul>
+            <li><button id="TTHuyChip" onclick="huyChipcongdoan()">Element-1</button></li>
+        </ul>
+    </div>
+    <style type="text/css">
+      .context-menu {
+          position: absolute;
+          z-index: 20;
+          display: flex;
+          text-align: center;
+          background: lightgray;
+          border: 1px solid black;
+      }
+
+      .context-menu ul {
+          padding: 0px;
+          margin: 0px;
+          min-width: 150px;
+          list-style: none;
+      }
+
+      .context-menu ul li {
+          padding-bottom: 7px;
+          padding-top: 7px;
+          border: 1px solid black;
+      }
+
+      .context-menu ul li a {
+          text-decoration: none;
+          color: black;
+      }
+
+      .context-menu ul li:hover {
+          background: darkgray;
+      }
+  </style>
+    <script>
+        document.onclick = hideMenu;
+        
+  
+        function hideMenu() {
+            document.getElementById(
+                "contextMenu").style.display = "none"
+        }
+  
+       
+    </script>
+
 <script src="js/timelineBP.js"></script>
 	<script src="js/background.js"></script>
 	<script src="js/popper.js"></script>
