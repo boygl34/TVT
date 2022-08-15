@@ -701,7 +701,7 @@ timeline.redraw()
         menu.style.top = props.pageY + "px";
     }
     $("#TTHuyChip").val(props.item)
-    $("#TTHuyChip").html(props.item)
+   // $("#TTHuyChip").html(props.item)
    // huyChipcongdoan(props.item)
     
   props.event.preventDefault();
@@ -765,4 +765,10 @@ try{
     }
     
   }
-    
+    function TimXe(item){
+        item=$("#TTHuyChip").val()
+    var BienSo = item.slice(0,item.indexOf("_"))
+        document.getElementById("selection").value = BienSo
+        loadData()
+
+    }

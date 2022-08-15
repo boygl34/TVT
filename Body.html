@@ -466,7 +466,9 @@ select:valid {
       <div id="contextMenu" class="context-menu" 
         style="display:none">
         <ul>
-            <li><button id="TTHuyChip" onclick="huyChipcongdoan()">Element-1</button></li>
+            <li><button id="TTHuyChip" class="btn btn-danger" onclick="huyChipcongdoan()">Xóa Chíp</button></li>
+            <li><button id="TimXe" onclick="TimXe()"  class="btn btn-success">Tìm Xe</button></li>
+            <li><button onclick="loadData()"  class="btn btn-success">Làm Mới!!</button></li>
         </ul>
     </div>
     <style type="text/css">
@@ -506,8 +508,9 @@ select:valid {
         
   
         function hideMenu() {
-            document.getElementById(
-                "contextMenu").style.display = "none"
+          document.getElementById("selection").value = ""
+            document.getElementById("contextMenu").style.display = "none"
+
         }
   
        
