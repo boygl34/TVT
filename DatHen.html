@@ -40,7 +40,7 @@ body {font-family: "Roboto", sans-serif}
             '<option ></option>'
         </select> 
       </div> 
-      <a class="w3-bar-item w3-button" href="#">Link</a>
+      <button type="button" class="btn btn-primary" onclick="BaoCaoClick()">Báo Cáo</button>
       <a class="w3-bar-item w3-button" href="#">Link</a>
     </div>
   </div>
@@ -61,11 +61,17 @@ body {font-family: "Roboto", sans-serif}
 
   
     
-    <div> <a>Sáng</a> <div  id="mytimeline"></div>
+    <div id="iddathen"> <a>Sáng</a> <div  id="mytimeline"></div>
      <a>Chiều</a>
     <div  id="mytimeline2"></div></div>
 
-
+    <div id="BaoCaoHen" class="carousel slide" data-ride="carousel" style="display:none">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTs4_i1zL1Cj-K2ygdVWTScRzqZs_9ZvsxUAeHwl-YcfLW7ErToqoZ3zr39zpjBT-R9kSf0YMUtWeeJ/pubhtml?gid=484205955&amp;single=true&amp;widget=true&amp;headers=false"style="width: 100%;height: 700px;"></iframe>
+        </div>
+      </div>
+    </div>
 <!--INCLUDE Modal-->
 <div class="modal fade" id="ModalSCC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
@@ -179,8 +185,12 @@ body {font-family: "Roboto", sans-serif}
     <a href="sms:0973502207?&amp;body=Nội dung cong viev" class="col-sm-7">Click để Nhắn Tin</a>
     </div> 
   </div>
+
+
   </div>
+
 </div>
+
 
 
 <script src="js/background.js"></script>
@@ -198,12 +208,17 @@ body {font-family: "Roboto", sans-serif}
 <footer class="w3-container w3-theme" style="padding:32px">
   <p>Footer information goes here</p>
 </footer>
-     
+
 
 
 <script>
  checkdangnhap()
  checkPhanQuyen()
+function BaoCaoClick(){
+  $("#BaoCaoHen").toggle();
+  $("#iddathen").toggle();
+  
+}
 function checkdangnhap() {
   var urluser = "https://big-road-newsstand.glitch.me/User/"
   var password = localStorage.getItem("Password")
