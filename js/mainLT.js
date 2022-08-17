@@ -450,3 +450,22 @@ function getValueALL(){
       var ThoiGian = Ngay+"/"+Thang+" "+Gio+":"+Phut
       return ThoiGian
    }
+   setInterval(canhBao,60000)
+   canhBao()
+   function canhBao(){
+    $("#alert").html("")
+    for(let a in NhomCV){
+      $.get("https://big-road-newsstand.glitch.me/Setting/"+NhomCV[a], function(ketqua) {
+       if(ketqua.TrangThai=="DungTN"){
+          var alert = '<div class="alert alert-warning alert-dismissible fade show"  role="alert"style="z-index: 20;">'+
+          '<strong>'+NhomCV[a]+'! </strong>'+"<br>Dừng Tiếp nhận từ : "+ketqua.ThoiGianDung+"<br>Lý Do :"+ketqua.LyDo+
+          '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+          '<span aria-hidden="true">&times;</span>'+
+          '</button></div>'
+          $("#alert").html($("#alert").html()+alert)
+   } ;
+ 
+    })
+    
+  
+  }  }
