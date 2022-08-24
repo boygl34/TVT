@@ -80,7 +80,8 @@ function showData(use){
             var row = document.createElement("tr"); 
             var tbodyTim = document.getElementById('table-body-Tim-xe')
             var ColNgayVao = document.createElement("td");
-                ColNgayVao.innerHTML = r.TDGapLeTan.slice(0,5)
+            if(r.TDGapLeTan){ColNgayVao.innerHTML = r.TDGapLeTan.slice(0,5)}else{ColNgayVao.innerHTML=""}
+                
                 row.appendChild(ColNgayVao);
             var ColBienSo = document.createElement("td")
                 ColBienSo.innerHTML = r.BienSoXe
