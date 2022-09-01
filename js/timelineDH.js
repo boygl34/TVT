@@ -121,7 +121,9 @@ function loadData () {//Load du lieu cho time line co
     if(r.LoaiHinhSuaChua=="FIR"){r.LoaiHinhSuaChua="SCC"}
     if(r.LoaiHinhSuaChua=="EM60"){r.LoaiHinhSuaChua="EM"}
     if(r.LoaiHinhSuaChua=="SCC"){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
+    if((r.NoiDungHen.toUpperCase()).indexOf("VIP")>=0){Kytu="💶"}
     if((r.NoiDungHen.toUpperCase()).indexOf("BD40K")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
+
     if((r.NoiDungHen.toUpperCase()).indexOf("BD80K")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
     if((r.NoiDungHen.toUpperCase()).indexOf("LEXUS")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
     if(r.KhachHangHen=="Hẹn Vãn Lai"&&r.TrangThaiXuong=="00 Có Hẹn"){PhanLoai="[VL] "+Doingay(DoiNgayDangKy( r.TDXacNhanHen))}
