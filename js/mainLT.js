@@ -236,7 +236,7 @@ function getValueALL(){
           if(r.TrangThaiHen=="Đến Trễ"){ BienSo.innerHTML = "[T] "+r.BienSoXe}
           if(r.TrangThaiHen=="Đến Sớm"){ BienSo.innerHTML = "[S] "+r.BienSoXe}
           if(r.TrangThaiHen=="Không Đúng Hẹn"){ BienSo.innerHTML = "[h] "+r.BienSoXe}
-          if((r.NoiDungHen.toUpperCase()).indexOf("VIP")>=0){BienSo.innerHTML = "[V] "+r.BienSoXe}      
+          if(r.NoiDungHen&&(r.NoiDungHen.toUpperCase()).indexOf("VIP")>=0){BienSo.innerHTML = "[V] "+r.BienSoXe}      
                 row.appendChild(BienSo);
         var SoThe = document.createElement("td");
                 SoThe.innerHTML = r.SoThe
