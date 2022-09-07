@@ -1,5 +1,5 @@
 var NhomTN=["Có Hẹn","Tiếp Nhận"]
-var NhomCV=["Toàn","Tài","Rôn","Mẫn","Sang","Vinh","Triêng","Lộc","Hiệp"]
+var NhomCV=["Toàn","Tài","Rôn","Mẫn","Sang","Vinh","Triêng","Lộc","Hiệp","None"]
 var NhomDH=["EM","SCC","Đồng Sơn","Báo Giá BH"]
 var KTVDong=["Châu","Trường","Phúc","Trương","Quang","Định"]
 var KTVSonDinh=["Đình","Thành","Lưu","Hùng","Lâm","Duy","Tài"]
