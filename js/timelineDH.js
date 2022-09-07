@@ -13,7 +13,7 @@
   // }
 
   groups.add({id: NhomDH[0],
-    content: "<br><br><br><br><br><br><br>"+NhomDH[0]+"<br><br><br><br><br><br><br><br>",
+    content: "<br><br><br><br><br><br>"+NhomDH[0]+"<br><br><br><br><br><br><br>",
     className: NhomDH[0]
   })
   groups.add({id: NhomDH[1],
