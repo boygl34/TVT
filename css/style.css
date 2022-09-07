@@ -47,7 +47,7 @@
    width: 100%;
    color: white;
    box-sizing: border-box;
-}
+   }
    .vis-timeline {
      border: 1px solid;
      font-family:  purisa, 'comic sans', cursive;
@@ -89,6 +89,7 @@
  font-weight: bold;
   color: black;
 }
+
 
 .vis-item.red {
 background-color: red;
@@ -184,4 +185,8 @@ textarea:valid {
    overflow: hidden;
    box-sizing: border-box;
    white-space: nowrap;
+}
+.vis.css .vis-label .vis-inner{
+  min-height: 300px;
+ 
 }

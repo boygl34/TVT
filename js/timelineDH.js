@@ -3,7 +3,35 @@
     var groups = new vis.DataSet();
     var items = new vis.DataSet();
     var newitems = new vis.DataSet();
-    for(a in NhomDH){groups.add({id: NhomDH[a],content: NhomDH[a]})}
+
+  //   for(a in NhomDH){
+  //     groups.add({id: NhomDH[a],
+  //       content: NhomDH[a],
+  //       className: NhomDH[a]
+  //     })
+    
+  // }
+
+  groups.add({id: NhomDH[0],
+    content: "<br><br><br><br><br><br><br>"+NhomDH[0]+"<br><br><br><br><br><br><br><br>",
+    className: NhomDH[0]
+  })
+  groups.add({id: NhomDH[1],
+    content: "<br><br><br>"+NhomDH[1]+"<br><br><br><br>",
+    className: NhomDH[1]
+  })
+
+  groups.add({id: NhomDH[2],
+    content: "<br><br>"+NhomDH[2]+"<br><br>",
+    className: NhomDH[2]
+  })
+
+  groups.add({id: NhomDH[3],
+    content: "<br><br>"+NhomDH[3]+"<br><br>",
+    className: NhomDH[3]
+  })
+
+
     var option2={
       start:(new Date( (new Date()).valueOf())).setHours(12),
       end: (new Date( (new Date()).valueOf())).setHours(17),
