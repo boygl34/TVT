@@ -148,6 +148,8 @@ body {font-family: "Roboto", sans-serif}
     <a class="w3-bar-item w3-button" onclick="myAccordion('demo')" href="javascript:void(0)">Tính Năng <i class="fa fa-caret-down"></i></a>
     <div id="demo" class="w3-hide">
       <a class="w3-bar-item w3-button" href="LichCV.html">Lịch CV</a>
+      <a class="w3-bar-item w3-button" >
+        <button type="button"id="bnt-DangKyshow" onclick="DKruaXe()" class="btn btn-success" >Đăng Ký RXe</button> </a>
     </div>
   </div>
 </nav>
@@ -206,12 +208,14 @@ body {font-family: "Roboto", sans-serif}
                 var buttonkd = document.getElementById("KhachRX")
                 if(buttonkd.value=="Rửa Xe"){
                   buttonkd.value = "Không Rửa";
+                  document.getElementById("divruaxe").style.display = "none";
                   buttonkd.innerHTML = "Không Rửa";
                   buttonkd.removeAttribute("class","btn-primary");
                   buttonkd.setAttribute("class"," btn btn-success")
                 }
                 else{
                   buttonkd.value = "Rửa Xe";
+                  document.getElementById("divruaxe").style.display = "block";
                   buttonkd.innerHTML = "Rửa Xe";
                   buttonkd.removeAttribute("class","btn-success");
                   buttonkd.setAttribute("class","btn btn-primary")}
@@ -251,6 +255,14 @@ body {font-family: "Roboto", sans-serif}
             </div>
 
             </div>
+            <div class="form-row"> 
+              <div class="form-group col-md-8" id="divruaxe" >
+              <label for="NgayGiaoXe">Thời Điểm Rửa Xe</label>
+              <input type="text"  data-date-format="dd/mm/yyyy" class="form-control Ngay2" id="NgayRuaXe" name="NgayRuaXe" required>
+  
+              </div>
+  
+              </div>
             <div class="form-row">
             <div id="NutNhan">
             </div>&emsp;

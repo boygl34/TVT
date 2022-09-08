@@ -331,11 +331,13 @@ function dataTableTiepNhan(){
                 if(data.KhachRuaXe=="Rửa Xe"){
                   buttonkd.value = "Rửa Xe";
                   buttonkd.innerHTML = "Rửa Xe";
+                  document.getElementById("divruaxe").style.display = "block";
                   buttonkd.removeAttribute("class","btn-primary");
                   buttonkd.setAttribute("class"," btn btn-success")
                 }
                 else{
                   buttonkd.value = "Không Rửa";
+                  document.getElementById("divruaxe").style.display = "none";
                   buttonkd.innerHTML = "Không Rửa";
                   buttonkd.removeAttribute("class","btn-primary");
                   buttonkd.setAttribute("class","btn btn-success")}
@@ -411,3 +413,48 @@ function dataTableTiepNhan(){
       '</button></div>'
      $("#alert").html($("#alert").html()+alert)
     }
+
+    function DKruaXe(){
+  
+      var MaSoNew =TaoMaSo()+$('#BienSoXe').val()
+      if(checkBienSo($('#BienSoXe').val())){
+          var json2 = {
+              MaSo:MaSoNew,
+              CoVanDichVu: localStorage.getItem("Ten"),
+              BienSoXe:$('#BienSoXe').val(),
+              TDKetThucTiepKhach: TimesClick(),
+              LoaiHinhSuaChua: $('#LoaiHinh').val(),
+              LoaiHinhDongSon: $('#LoaiHinhBP').val(),
+              TrangThaiXuong: "06 Chờ Rửa Xe",
+              KhachHangDoi  :$('#KhachDoi').val() ,
+              KhachRuaXe  :$('#KhachRX').val()  ,
+              TDHenGiaoXe :$('#NgayGiaoXe').val(),
+              TimeEndGJ:$('#NgayRuaXe').val()
+            }
+          console.log(json2)  
+            postData(json2,urlTX,"POST")
+       }else{alert("Xe Trong Xưởng")}
+    }
+
+    function TaoMaSo(){
+      var  use=new Date();
+       var useinfo = {}
+       var Thang =use.getMonth()+1;
+       var Ngay = use.getDate();
+       var Nam = use.getFullYear();var Gio = use.getHours();
+       var Phut = use.getMinutes();
+       if (Thang<10){Thang="0"+Thang};
+       if (Ngay<10){Ngay="0"+Ngay};
+       if (Gio<10){Gio="0"+Gio};
+        if (Phut<10){Phut="0"+Phut};useinfo.ThoiGian = Ngay+"/"+Thang+" "+Gio+":"+Phut;
+        var MaSo = "TVT"+Nam+Thang+Ngay+"_"
+        return MaSo;
+       }
+       function checkBienSo(MaSo){
+        var ojb =  useCaher
+        var Chechresule=true
+        for(var a in ojb){
+          if(ojb[a].BienSoXe == MaSo){Chechresule=false }
+        }
+          return Chechresule
+        }

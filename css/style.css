@@ -186,7 +186,3 @@ textarea:valid {
    box-sizing: border-box;
    white-space: nowrap;
 }
-.vis.css .vis-label .vis-inner{
-  min-height: 300px;
- 
-}
