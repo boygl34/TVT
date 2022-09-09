@@ -1,7 +1,7 @@
 var useCaher,useCaher2={}
 var emailnhanvienhen = "quipham@toyotavungtau.com";
-var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
-var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
+var urlTX = "https://deciduous-pentagonal-powder.glitch.me/XeTrongXuong"
+var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
 var TenCoVan = localStorage.getItem("Ten")
 var PhanQuyen = localStorage.getItem("PhanQuyen")
 
@@ -415,6 +415,9 @@ function dataTableTiepNhan(){
     }
 
     function DKruaXe(){
+      if($('#LoaiHinh').val() ==""&&$('#LoaiHinhBP').val()==""){alert ("chưa Có Loại Hình");return false}
+    if( $('#NgayGiaoXe').val() ==""){alert ("chưa Có Ngày Giao Xe");return false}
+    if( $('#NgayRuaXe').val() ==""){alert ("chưa Có Ngày Giò Rửa xe");return false}
   
       var MaSoNew =TaoMaSo()+$('#BienSoXe').val()
       if(checkBienSo($('#BienSoXe').val())){
