@@ -130,8 +130,15 @@ function dataTableTiepNhan(){
             if(r.TrangThaiXuong=="03 Đang Tiếp Nhận"){
                 var time = Math.round((new Date()- new Date(DoiNgayDangKy(r.TDBDTiepKhach)) )/(60*1000)*1)/1
                 ColTime.innerHTML=time +" P"
-                if(time>30){canhBao("Tiếp Nhận","Bạn Tiếp nhận xe "+r.BienSoXe+" quá lâu "+time+"Phút")}
+                if(time>30){canhBao("Tiếp Nhận","Bạn Tiếp nhận xe "+r.BienSoXe+" quá lâu "+time+"Phút","danger")}
             }
+            if(r.TrangThaiXuong=="07 Đang Rửa Xe"){
+              canhBao("Rửa Xe","Bạn Có Xe "+r.BienSoXe+" Đang Rửa ","success")
+          }
+          if(r.TrangThaiXuong=="08 Chờ Giao Xe"){
+            canhBao("Giao Xe","Bạn có xe "+r.BienSoXe+" Đang Chờ Giao","primary")
+        }
+
             if(r.TrangThaiXuong=="05 Đang Sửa Chữa"||r.TrangThaiXuong=="04 Đã Tiếp Nhận"||r.TrangThaiXuong=="08 Chờ Giao Xe"){ColTime.innerHTML=Doingay(DoiNgayDangKy(r.TDHenGiaoXe) )}
             row.appendChild(ColBS);
             if(CoVan==""){row.appendChild(ColCV);}else{row.appendChild(ColTKH); }
@@ -405,8 +412,8 @@ function dataTableTiepNhan(){
       }}
     }
 
-    function canhBao(tieude,noidung){
-      var alert = '<div class="alert alert-warning alert-dismissible fade show"  role="alert">'+
+    function canhBao(tieude,noidung,canhbao){
+      var alert = '<div class="alert alert-'+canhbao+' alert-dismissible fade show"  role="alert">'+
       '<strong>'+tieude+'! </strong>'+noidung+
       '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
       '<span aria-hidden="true">&times;</span>'+
