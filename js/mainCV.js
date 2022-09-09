@@ -468,7 +468,8 @@ function dataTableTiepNhan(){
             if(ojb[a].BienSoXe == $("#BienSoXe").val()){
                if(ojb[a].TrangThaiXuong=="08 Chờ Giao Xe"){
                  var json2 = {
-                TrangThaiXuong: "06 Chờ Rửa Xe",
+                KhachRuaXe:"Rửa Xe",
+                TrangThaiXuong: "06 Chờ Rửa Xe"
               }
             postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
             }else{ alert("khong the dang dy")}
