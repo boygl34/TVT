@@ -236,7 +236,7 @@ function getValueALL(){
         canhBao2("Rửa Xe",r.CoVanDichVu+" Có Xe "+r.BienSoXe+" Đang Rửa ","success")
     }
     if(r.TrangThaiXuong=="08 Chờ Giao Xe"){
-      canhBao2("Giao Xe",r.CoVanDichVu+" có xe "+r.BienSoXe+" Đang Chờ Giao","danger")
+      canhBao2("Giao Xe",r.CoVanDichVu+" Có Xe "+r.BienSoXe+" Đang Chờ Giao","danger")
   }
 
 
