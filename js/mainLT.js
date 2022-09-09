@@ -221,6 +221,29 @@ function getValueALL(){
     function showData(){
            // tieude.innerHTML = "Cố Vấn "+ Doingay()
     var dataArray =  useCaher
+    var dataArraycb= dataArray.filter(function(r){return r.KhachHangDoi==="Khách Đợi"})
+    dataArraycb= dataArraycb.filter(function(r){return r.TrangThaiXuong!=="09 Đã Giao Xe"&&r.TDHenGiaoXe})
+    var ngaygiaoxebc = new Date()
+    dataArraycb= dataArraycb.filter(function(r){
+
+      var daygx=DoiNgayDangKy(r.TDHenGiaoXe).getDate()
+      var monthgx = DoiNgayDangKy(r.TDHenGiaoXe).getMonth()
+      var yeargx = DoiNgayDangKy(r.TDHenGiaoXe).getYear()
+      return (daygx==ngaygiaoxebc.getDate()&&monthgx==ngaygiaoxebc.getMonth()&&yeargx==ngaygiaoxebc.getYear())})
+
+      dataArraycb.forEach(function(r){
+      if(r.TrangThaiXuong=="07 Đang Rửa Xe"){
+        canhBao2("Rửa Xe",r.CoVanDichVu+" Có Xe "+r.BienSoXe+" Đang Rửa ","success")
+    }
+    if(r.TrangThaiXuong=="08 Chờ Giao Xe"){
+      canhBao2("Giao Xe",r.CoVanDichVu+" có xe "+r.BienSoXe+" Đang Chờ Giao","danger")
+  }
+
+
+    })
+
+
+
     var dataArray0= dataArray.filter(function(r){return ((r.TrangThaiXuong==="02 Chờ Tiếp Nhận"||r.TrangThaiXuong==="02 Chuẩn Bị Tiếp"||r.TrangThaiXuong==="03 Đang Tiếp Nhận"))})
     
    dataArray0=  dataArray0.sort(function(a, b) {return (new Date(DoiNgayDangKy(a.ThoiGianHen)).valueOf()> new Date(DoiNgayDangKy(b.ThoiGianHen)).valueOf() ? 1 : -1);}) 
@@ -455,6 +478,7 @@ function getValueALL(){
    function canhBao(){
     $("#alert").html("")
     for(let a in NhomCV){
+      try{
       $.get("https://big-road-newsstand.glitch.me/Setting/"+NhomCV[a], function(ketqua) {
        if(ketqua.TrangThai=="DungTN"){
           var alert = '<div class="alert alert-warning alert-dismissible fade show"  role="alert"style="z-index: 20;">'+
@@ -466,6 +490,14 @@ function getValueALL(){
    } ;
  
     })
-    
+    }catch{}
   
   }  }
+  function canhBao2(tieude,noidung,canhbao){
+    var alert = '<div class="alert alert-'+canhbao+' alert-dismissible fade show"  role="alert">'+
+    '<strong>'+tieude+'! </strong>'+noidung+
+    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">'+
+    '<span aria-hidden="true">&times;</span>'+
+    '</button></div>'
+   $("#alert").html($("#alert").html()+alert)
+  }
