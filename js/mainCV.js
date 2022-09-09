@@ -318,12 +318,12 @@ function dataTableTiepNhan(){
                   buttonkd.value = "Khách Đợi";
                   buttonkd.innerHTML = "Khách Đợi";
                   buttonkd.removeAttribute("class","btn-primary");
-                  buttonkd.setAttribute("class"," btn btn-success")
+                  buttonkd.setAttribute("class"," btn btn-danger")
                 }
                 else{
                   buttonkd.value = "Không Đợi";
                   buttonkd.innerHTML = "Không Đợi";
-                  buttonkd.removeAttribute("class","btn-success");
+                  buttonkd.removeAttribute("class","btn-danger");
                   buttonkd.setAttribute("class","btn btn-primary")}
          }  
       if(data.KhachRuaXe){

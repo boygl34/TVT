@@ -188,7 +188,7 @@ body {font-family: "Roboto", sans-serif}
             
             </div>	
             <div class="form-group col-md-6">
-              <button type="button" class="btn btn-primary" id = "KhachDoi"  value="Khách Đợi" onclick="Khachdoi()">Khách Đợi</button>
+              <button type="button" class="btn btn-danger" id = "KhachDoi"  value="Khách Đợi" onclick="Khachdoi()">Khách Đợi</button>
             </div>
             </div>  
             <script>
@@ -197,14 +197,14 @@ body {font-family: "Roboto", sans-serif}
                 if(buttonkd.value=="Khách Đợi"){
                   buttonkd.value = "Không Đợi";
                   buttonkd.innerHTML = "Không Đợi";
-                  buttonkd.removeAttribute("class","btn-primary");
+                  buttonkd.removeAttribute("class","btn-danger");
                   buttonkd.setAttribute("class"," btn btn-success")
                 }
                 else{
                   buttonkd.value = "Khách Đợi";
                   buttonkd.innerHTML = "Khách Đợi";
                   buttonkd.removeAttribute("class","btn-success");
-                  buttonkd.setAttribute("class","btn btn-primary")}
+                  buttonkd.setAttribute("class","btn btn-danger")}
                }
                function KhachRua(){
                 var buttonkd = document.getElementById("KhachRX")
