@@ -1,7 +1,7 @@
 var useCaher,useCaher2={}
 var emailnhanvienhen = "quipham@toyotavungtau.com";
-var urlTX = "https://fluffy-iris-selenium.glitch.me/XeTrongXuong"
-var urlDG = "https://fluffy-iris-selenium.glitch.me/XeDaGiao"
+var urlTX = "https://deciduous-pentagonal-powder.glitch.me/XeTrongXuong"
+var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
 
 //getData(urlTX).then(DanhSachCoVan()).then(loadData ())
 setInterval(function (){getData(urlTX)},60000);
