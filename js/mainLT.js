@@ -222,7 +222,7 @@ function getValueALL(){
            // tieude.innerHTML = "Cố Vấn "+ Doingay()
     var dataArray =  useCaher
     var dataArraycb= dataArray.filter(function(r){return r.KhachHangDoi==="Khách Đợi"})
-    dataArraycb= dataArraycb.filter(function(r){return r.TrangThaiXuong!=="09 Đã Giao Xe"&&r.TDHenGiaoXe})
+    dataArraycb= dataArraycb.filter(function(r){return r.TrangThaiXuong!=="09 Đã Giao Xe"&&r.TDHenGiaoXe&&r.CoVanDichVu==localStorage.getItem("Ten")})
     var ngaygiaoxebc = new Date()
     dataArraycb= dataArraycb.filter(function(r){
 
@@ -230,18 +230,16 @@ function getValueALL(){
       var monthgx = DoiNgayDangKy(r.TDHenGiaoXe).getMonth()
       var yeargx = DoiNgayDangKy(r.TDHenGiaoXe).getYear()
       return (daygx==ngaygiaoxebc.getDate()&&monthgx==ngaygiaoxebc.getMonth()&&yeargx==ngaygiaoxebc.getYear())})
-
-      dataArraycb.forEach(function(r){
-      if(r.TrangThaiXuong=="07 Đang Rửa Xe"){
-        canhBao2("Rửa Xe",r.CoVanDichVu+" Có Xe "+r.BienSoXe+" Đang Rửa ","success")
-    }
-    if(r.TrangThaiXuong=="08 Chờ Giao Xe"){
-      canhBao2("Giao Xe",r.CoVanDichVu+" Có Xe "+r.BienSoXe+" Đang Chờ Giao","danger")
-  }
-
-
-    })
-
+      if( localStorage.getItem("PhanQuyen")!="LeTan"){
+          dataArraycb.forEach(function(r){
+          if(r.TrangThaiXuong=="07 Đang Rửa Xe"){
+          canhBao2("Rửa Xe",r.CoVanDichVu+" Có Xe "+r.BienSoXe+" Đang Rửa ","success")
+          }
+          if(r.TrangThaiXuong=="08 Chờ Giao Xe"){
+          canhBao2("Giao Xe",r.CoVanDichVu+" Có Xe "+r.BienSoXe+" Đang Chờ Giao","danger")
+          }
+          })
+}
 
 
     var dataArray0= dataArray.filter(function(r){return ((r.TrangThaiXuong==="02 Chờ Tiếp Nhận"||r.TrangThaiXuong==="02 Chuẩn Bị Tiếp"||r.TrangThaiXuong==="03 Đang Tiếp Nhận"))})
