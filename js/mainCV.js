@@ -125,7 +125,7 @@ function dataTableTiepNhan(){
             if(r.TrangThaiXuong=="02 Chờ Tiếp Nhận"||r.TrangThaiXuong=="02 Chuẩn Bị Tiếp"){
               var time = Math.round((new Date()- new Date(DoiNgayDangKy(r.TDGapLeTan)) )/(60*1000)*1)/1
               ColTime.innerHTML= time +" P"
-              if(time>15){canhBao("Chờ Tiếp Nhận","Bạn có xe "+r.BienSoXe+"chờ tiếp "+time+"Phút")}
+              if(time>15){canhBao("Chờ Tiếp Nhận","Bạn có xe "+r.BienSoXe+"chờ tiếp "+time+"Phút","danger")}
             }
             if(r.TrangThaiXuong=="03 Đang Tiếp Nhận"){
                 var time = Math.round((new Date()- new Date(DoiNgayDangKy(r.TDBDTiepKhach)) )/(60*1000)*1)/1
