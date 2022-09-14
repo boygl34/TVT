@@ -227,8 +227,31 @@ function showData(use){
                 }
         $("#mesenge").html('<div class="alert alert-warning" role="alert">Đang Dừng CV!</div>')
         postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+        $('#ModalSCC').modal('hide')
+        $('#RuaXeModal').modal('show')
   }
   
+  function Khongruaxe(){
+    var json2 = {
+      TrangThaiXuong:"08 Chờ Giao Xe",
+      KhachRuaXe: "Không Rửa"
+      }
+      setTimeout($('#RuaXeModal').modal('hide'), 3000);
+    postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+    }
+    
+    function Coruaxe(){
+      var json2 = {
+        TrangThaiXuong:"06 Chờ Rửa Xe",
+        KhachRuaXe: "Rửa Xe"
+        }
+      postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+      setTimeout($('#RuaXeModal').modal('hide'), 3000);
+   
+    }
+  
+  
+
   
 
   
