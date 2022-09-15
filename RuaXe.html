@@ -139,7 +139,7 @@ function checkID(MaSo){
        
        function showData(use){
          var dataArray =  useCaher
-         var dataArray0= dataArray.filter(function(r){return r.KhachRuaXe==="Rửa Xe"&&r.TDHenGiaoXe})
+         var dataArray0= dataArray.filter(function(r){return r.KhachRuaXe==="Rửa Xe"&&r.TDHenGiaoXe&&r.LoaiHinhDongSon!=="Báo Giá BH"})
          var ngaygiaoxebc = new Date()
     var dataArray0= dataArray0.filter(function(r){
         var daygx=DoiNgayDangKy(r.TDHenGiaoXe).getDate()
@@ -177,7 +177,7 @@ function checkID(MaSo){
                      ColKhachDoi.innerHTML = r.KhachHangDoi}else{ColKhachDoi.innerHTML=""}
                      row.appendChild(ColKhachDoi); 
                  var ColTrangThai= document.createElement("td");
-                     ColTrangThai.innerHTML = r.TrangThaiXuong
+                     ColTrangThai.innerHTML = r.LoaiHinhSuaChua+" "+r.TrangThaiXuong
                      
                      row.appendChild(ColTrangThai);  
                  var ColKTSC= document.createElement("td");
