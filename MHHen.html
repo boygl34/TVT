@@ -35,14 +35,19 @@
 
  laydulieu()
 function laydulieu(){ 
+  var watcherId
       $.ajax({
-      url:urlTX,
+      url:urlDG,
       type:'GET',
       success: function(data){
           data.sort((a,b) => b.id - a.id)
           watcherId = data[0].id ;
-          useCaher=data;
-          $.ajax({
+ $.ajax({
+            url:urlTX,
+            type:'GET',
+              success: function(data3){
+              useCaher=data3
+              $.ajax({
             url:urlDG+"?id_gte="+(watcherId-400)+"&id_lte="+(watcherId),
             type:'GET',
               success: function(data2){
@@ -50,8 +55,16 @@ function laydulieu(){
               loadData()
             }
           })
+            }
+          })
+
           }
-      });
+      });  
+      
+
+   
+
+
 }
 // getData(urlTX)
 // getData2(urlhen)
