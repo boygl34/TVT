@@ -170,6 +170,7 @@ function showData(use){
   
   function clickTableTiepNhan(){
       var table = document.getElementById('data-table');
+      $("#mesenge").html('<div class="alert alert-warning" role="alert">WellCome!</div>')
       for(var i = 1; i < table.rows.length; i++){
         table.rows[i].onclick = function(){
           $("#buttonSCC").html('')
@@ -188,6 +189,14 @@ function showData(use){
   function KhoangSCChang(){
     var json2 = {
         KhoangSuaChua: $('#KhoangSuaChua').val()
+      }
+    postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
+ 
+  }
+
+  function CoVanChange(){
+    var json2 = {
+      CoVanDichVu: $('#CoVanDichVu').val()
       }
     postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
  
@@ -269,6 +278,7 @@ function showData(use){
     if(document.getElementById("KyThuatVien1").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert"> Chưa Có Tên KTV!</div>');return false}
     if(document.getElementById("GioKetThucSC").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert">Chưa Có Thời Gian Sữa Chữa!</div>'); return false}
     if(document.getElementById("KhoangSuaChua").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert"> Chưa Có Khoang Làm Việc!</div>');return false}
+    if(document.getElementById("CoVanDichVu").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert"> Chưa Có Cố Vấn!</div>');return false}
         var json2 = {
 
           TimeStartGJ: TimesClick(),
@@ -407,7 +417,17 @@ function showData(use){
         option.text = values[i];
         list.appendChild(option);
       }
-  }  
+  } 
+  CoVanlist(NhomCV)
+  function CoVanlist(values) { 	
+    var list = document.getElementById('CoVanDichVu');   
+     for (var i = 0; i < values.length; i++) {
+       var option = document.createElement("option");
+       option.value = values[i];
+       option.text = values[i];
+       list.appendChild(option);
+     }
+ }  
   function GioKetThucSCC(){
      var homnay=new Date()
       homnay = new Date (homnay*1+7*60*60*1000)
@@ -450,7 +470,7 @@ function showData(use){
       if(ojb[a].MaSo){	document.getElementById("MaSo").value = ojb[a].MaSo}
       if(ojb[a].TrangThaiXuong){document.getElementById("TrangThai").value = ojb[a].TrangThaiXuong} 
       if(ojb[a].NhomKTV){document.getElementById("NhomKTV").value = ojb[a].NhomKTV;changeNhom()}  
-
+      if(ojb[a].CoVanDichVu){document.getElementById("CoVanDichVu").value = ojb[a].CoVanDichVu}
       if(ojb[a].KhoangSuaChua){document.getElementById("KhoangSuaChua").value =ojb[a].KhoangSuaChua}
       if(ojb[a].TimeStartGJ){document.getElementById("GioBatDauSCC").value =TimesClick(DoiNgayDangKy(ojb[a].TimeStartGJ))} 
       if(ojb[a].TimeEndGJ){document.getElementById("GioKetThucSC").value =TimesClick(DoiNgayDangKy(ojb[a].TimeEndGJ))}

@@ -291,7 +291,7 @@ section .noi-dung .form .icon-dang-nhap li{
           <div id="mesenge"><div class='alert alert-success'>WellCome!!</div></div>
           
           <div class="form-row">
-              <div class="form-group col-6"style="display:">
+              <div class="form-group col-6"style="display:none">
                 <label for="MaSo">Mã Số</label>
                 <input required class="form-control"  id="MaSo"  name="MaSo" disabled>
               </div> 
@@ -299,6 +299,13 @@ section .noi-dung .form .icon-dang-nhap li{
                 <label for="KhoangSuaChua">Biển Số Xe</label>
                 <input required class="form-control"  id="BienSoXe"  name="BienSoXe" disabled>
               </div> 
+              <div class="form-group col-6">
+                <label for="CoVanDichVu">Cố Vấn</label>
+                <select required class="form-control"  id="CoVanDichVu"  name="CoVanDichVu" onchange="CoVanChange()" >
+                  <option></option>
+                </select>
+
+              </div>
           </div> 
           <div class="form-row">
               <div class="form-group col-6">
@@ -366,6 +373,9 @@ section .noi-dung .form .icon-dang-nhap li{
                   </select>
                 </div>
                 <datalist id="listTenNhanVien">
+                  <option></option>
+                </datalist>
+                <datalist id="listCoVan">
                   <option></option>
                 </datalist>
               </div>
