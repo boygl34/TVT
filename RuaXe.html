@@ -141,12 +141,12 @@ function checkID(MaSo){
          var dataArray =  useCaher
          var dataArray0= dataArray.filter(function(r){return r.KhachRuaXe==="Rửa Xe"&&r.TDHenGiaoXe&&r.LoaiHinhDongSon!=="Báo Giá BH"})
          var ngaygiaoxebc = new Date()
-    var dataArray0= dataArray0.filter(function(r){
-        var daygx=DoiNgayDangKy(r.TDHenGiaoXe).getDate()
-        var monthgx = DoiNgayDangKy(r.TDHenGiaoXe).getMonth()
-        var yeargx = DoiNgayDangKy(r.TDHenGiaoXe).getYear()
+    // var dataArray0= dataArray0.filter(function(r){
+    //     var daygx=DoiNgayDangKy(r.TDHenGiaoXe).getDate()
+    //     var monthgx = DoiNgayDangKy(r.TDHenGiaoXe).getMonth()
+    //     var yeargx = DoiNgayDangKy(r.TDHenGiaoXe).getYear()
         
-    return (daygx>=ngaygiaoxebc.getDate()&&monthgx==ngaygiaoxebc.getMonth()&&yeargx==ngaygiaoxebc.getYear())})
+    // return (daygx>=ngaygiaoxebc.getDate()&&monthgx==ngaygiaoxebc.getMonth()&&yeargx==ngaygiaoxebc.getYear())})
 
          dataArray0= dataArray0.filter(function(r){return r.TrangThaiXuong!=="08 Chờ Giao Xe"})
          dataArray0.sort(function(a, b) {return (a.TrangThaiXuong.toLowerCase() < b.TrangThaiXuong.toLowerCase() ? 1 : -1);})
