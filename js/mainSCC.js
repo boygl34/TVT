@@ -235,9 +235,18 @@ function showData(use){
                 BaiDauXe:"Rửa Xe"
                 }
         $("#mesenge").html('<div class="alert alert-warning" role="alert">Đang Dừng CV!</div>')
+          $('#ModalSCC').modal('hide')
+        var ojb =  useCaher 
+        for(var a in ojb){
+        if(ojb[a].MaSo ==  document.getElementById("MaSo").value){   
+          
+          if(ojb[a].KhachRuaXe){}else{$('#DKRUAXetitle').html(ojb[a].BienSoXe);$('#RuaXeModal').modal('show');}
+          
+        }
+      }
         postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
-        $('#ModalSCC').modal('hide')
-        $('#RuaXeModal').modal('show')
+      
+        
   }
   
   function Khongruaxe(){
@@ -296,7 +305,7 @@ function showData(use){
       for(var a in ojb){
       if(ojb[a].MaSo ==  document.getElementById("MaSo").value){   
         if(ojb[a].TDKetThucTiepKhach){   }else{json2["TDKetThucTiepKhach"]=TimesClick();}
-        if(ojb[a].KhachRuaXe){}else{$('#RuaXeModal').modal('show')}
+        if(ojb[a].KhachRuaXe){}else{$('#DKRUAXetitle').html(ojb[a].BienSoXe);$('#RuaXeModal').modal('show');}
         if(ojb[a].TDHenGiaoXe){   }else{json2["TDHenGiaoXe"]=TimesClick(new Date(1000 * 60 * 29 + (new Date(DoiNgayDangKy($('#GioKetThucSC').val()))).valueOf()));}
       }
     }
@@ -320,7 +329,13 @@ function showData(use){
           KyThuatVien2  :$('#KyThuatVien2').val() ,
           NhomKTV:$('#NhomKTV').val(),
         }
-  console.log()
+        var ojb =  useCaher 
+        for(var a in ojb){
+        if(ojb[a].MaSo ==  document.getElementById("MaSo").value){   
+          if(ojb[a].KhachRuaXe){}else{$('#DKRUAXetitle').html(ojb[a].BienSoXe);$('#RuaXeModal').modal('show');}
+        }
+      }
+
   $("#mesenge").html('<div class="alert alert-warning" role="alert">Đang Cập Nhật!</div>')
   postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
     
