@@ -20,13 +20,19 @@
 
     
     .DangRuaXe{
-        font-size: 24px;
+        
    color: #00ff00;
    vertical-align: middle;
-   background-color:rgb(82, 81, 36);
+   
 }  
+.ChoGiaoXe{
+        
+        color: #cca703;
+        vertical-align: middle;
+       
+     }
    .ChoRuaXe{
-    font-size: 24px;
+   
     color: #ff6d01;
     vertical-align: middle;
    }
@@ -72,9 +78,9 @@
         <h1 id="tieude" style="color: WHITE;text-align: center;"></h1>
             
         
-        <div class="row "style="color:white;border: 1px solid black" id="TongKetTT">
+       <h2 style="text-align: center;"> <div class="row "style="color:white;border: 1px solid black" id="TongKetTT"></div></h2>
         
-          </div>
+          
          
 
 
@@ -148,9 +154,9 @@ getData(urlTX)
             if(r.TrangThaiXuong=="04 Đã Tiếp Nhận"){TrangThai.innerHTML="Chờ SC";CSC=CSC+1}
             if(r.TrangThaiXuong=="05 Dừng Công Việc"){TrangThai.innerHTML="Dừng CV";DCV=DCV+1}
             if(r.TrangThaiXuong=="05 Đang Sửa Chữa"){TrangThai.innerHTML="Đang SC";DSC=DSC+1}
-            if(r.TrangThaiXuong=="06 Chờ Rửa Xe"){TrangThai.innerHTML="Chờ RX";CRX=CRX+1}
-            if(r.TrangThaiXuong=="07 Đang Rửa Xe"){TrangThai.innerHTML="Đang RX";DRX=DRX+1}
-            if(r.TrangThaiXuong=="08 Chờ Giao Xe"){TrangThai.innerHTML="Chờ GX";CGX=CGX+1}
+            if(r.TrangThaiXuong=="06 Chờ Rửa Xe"){TrangThai.innerHTML="Chờ RX";CRX=CRX+1;row.setAttribute('class', 'ChoRuaXe')}
+            if(r.TrangThaiXuong=="07 Đang Rửa Xe"){TrangThai.innerHTML="Đang RX";DRX=DRX+1;row.setAttribute('class', 'DangRuaXe')}
+            if(r.TrangThaiXuong=="08 Chờ Giao Xe"){TrangThai.innerHTML="Chờ GX";CGX=CGX+1;row.setAttribute('class', 'ChoGiaoXe')}
 
             row.appendChild(TrangThai); 
   
@@ -187,7 +193,7 @@ getData(urlTX)
             +'<div class=" themed-grid-col"><span class="border border-secondary ChoRuaXe">'+DCV+' Dừng CV</span></div>&ensp;'   
             +'<div class=" themed-grid-col"><span class="border border-secondary ChoRuaXe">'+CRX+' Chờ RX</span></div>&ensp;' 
             +'<div class=" themed-grid-col"><span class="border border-secondary DangRuaXe">'+DRX+' Đang RX</span></div>&ensp;'
-            +'<div class="themed-grid-col"><span class="border border-secondary ChoRuaXe">'+CGX+' Chờ Giao</span></div>'  
+            +'<div class="themed-grid-col"><span class="border border-secondary ChoRuaXe">'+CGX+' Chờ Giao</span>'  
                 
                 )
 
