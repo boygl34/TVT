@@ -95,6 +95,7 @@
                       <!-- TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION ABOVE -->
             <thead style="background-color:#1155cc;font-size: 18px;">
                                 <tr style="font-size:8px">
+                                  <th  style=" width: 1%;"></th>
                                   <th style=" width: 10%;">Biển Số</th>
                                   <th style=" width: 10%;">Trạng Thái</th>
                                   <th  style=" width: 5%;"  >Cố Vấn</th>
@@ -143,9 +144,11 @@ getData(urlTX)
    dataArrayhen.forEach(function(r){
            XTX=XTX+1
        var row = document.createElement("tr"); 
-       
+      var none= document.createElement("tr"); 
+      row.appendChild(none);
         var BienSo = document.createElement("td");
-                BienSo.innerHTML = r.BienSoXe
+        if(r.KhachHangHen){BienSo.innerHTML ="[H] "+ r.BienSoXe}else{BienSo.innerHTML = r.BienSoXe}
+               
                 row.appendChild(BienSo);
         var TrangThai = document.createElement("td");
             if(r.TrangThaiXuong){TrangThai.innerHTML = r.TrangThaiXuong}else{TrangThai.innerHTML =""}
