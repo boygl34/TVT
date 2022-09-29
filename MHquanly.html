@@ -126,9 +126,12 @@ getData(urlTX)
         try{
        var dataArray=useCaher
         var dataArrayhen= dataArray.filter(function(r){return ((r.TrangThaiXuong!=="00 Có Hẹn"&&r.LoaiHinhDongSon!=="Báo Giá BH"&&r.LoaiHinhSuaChua!=="Báo Giá SCC"))})
-        dataArrayhen.sort(function(a, b) {return (a.TrangThaiXuong> b.TrangThaiXuong ? 1 : -1);})
-        dataArrayhen=  dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(a.ThoiGianHen)).valueOf()> new Date(DoiNgayDangKy(b.ThoiGianHen)).valueOf() ? 1 : -1);})  
-  var tbodyhen = document.getElementById('table-body-hen')
+        
+        
+       
+        dataArrayhen.sort(function(a, b) {return (new Date(DoiNgayDangKy(a.TDHenGiaoXe)).valueOf()< new Date(DoiNgayDangKy(b.TDHenGiaoXe)).valueOf() ? 1 : -1);})  
+        dataArrayhen.sort(function(a, b) {return (a.TrangThaiXuong< b.TrangThaiXuong ? 1 : -1);})
+        var tbodyhen = document.getElementById('table-body-hen')
      tbodyhen.innerHTML=""
      var GXTR=0,CTN=0,DTN=0,CSC=0,DSC=0,DCV=0,CRX=0,DRX=0,CGX=0,XTX=0
    dataArrayhen.forEach(function(r){
