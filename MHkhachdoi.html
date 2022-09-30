@@ -46,14 +46,14 @@
                 <tr >
                   
                     <th style=" width:20%;">Biển Số</th>
-                    <th style=" width:30%;">Khách Hàng</th>
-                    <th style=" width: 7%;">Cố Vấn</th>
-                    <th style=" width:5%;">LH</th>
-                    <th style=" width:5%;">Rửa Xe</th>
-                    <th>KTSC</th>
-                    <th >GHGX</th>
+                    
+                    <th >Cố Vấn</th>
+                    <th>Đặt Hẹn</th>
+                    <th >Rửa Xe</th>
+                    
+                    <th >Giờ Giao Xe</th>
                     <th >Trạng Thái</th>
-                    <th ></th>
+                    
                    
                   </tr>
                               </thead>
@@ -102,33 +102,42 @@ getData(urlTX)
               row.appendChild(ColBienSo);
           var ColTenKH = document.createElement("td");
               ColTenKH.innerHTML = r.TenKH
-              row.appendChild(ColTenKH);    
+             // row.appendChild(ColTenKH);    
           var ColCoVan = document.createElement("td");
               ColCoVan.innerHTML = r.CoVanDichVu
               row.appendChild(ColCoVan);  
-              var ColLH = document.createElement("td");
-              ColLH.innerHTML = r.LoaiHinhSuaChua
-              row.appendChild(ColLH);  
+              var ColHen = document.createElement("td");
+              if(r.KhachHangHen){ColHen.innerHTML = "Có Hẹn"}
+              
+             row.appendChild(ColHen);  
           var ColKhachRX= document.createElement("td");
-              if(r.KhachRuaXe=="Rửa Xe"){
-              ColKhachRX.innerHTML = "RX"}else{ColKhachRX.innerHTML=""}
-              row.appendChild(ColKhachRX); 
+              
+             
           var ColKTSC= document.createElement("td");
           if(r.TimeEndGJ){
               ColKTSC.innerHTML = Doingay(DoiNgayDangKy(r.TimeEndGJ))}
-              row.appendChild(ColKTSC);  
-          if(r.TDHenGiaoXe){   
+             // row.appendChild(ColKTSC);  
+             if(r.KhachRuaXe=="Rửa Xe"){ColKhachRX.innerHTML = "Có Rửa"}
+          var ColTrangThai= document.createElement("td");
+          if(r.TrangThaiXuong=="08 Chờ Giao Xe"){
+            if(r.KhachRuaXe=="Rửa Xe"){ColKhachRX.innerHTML = "Đã Rửa"}
+            ColTrangThai.innerHTML = "Chờ Giao Xe";row.setAttribute('class', 'ChoGiaoXe')}
+          if(r.TrangThaiXuong=="07 Đang Rửa Xe"){ColTrangThai.innerHTML = "Chờ Giao Xe";
+          ColKhachRX.innerHTML = "Đang Rửa";
+          row.setAttribute('class', 'DangRuaXe')} 
+          if(r.TrangThaiXuong=="06 Chờ Rửa Xe"){ColTrangThai.innerHTML = "Đang Sửa Chữa";
+          ColKhachRX.innerHTML = "Chờ Rửa";
+
+          ;row.setAttribute('class', 'ChoRuaXe')}
+          if(r.TrangThaiXuong=="05 Đang Sửa Chữa"){ColTrangThai.innerHTML = "Đang Sửa Chữa"} 
+          if(r.TrangThaiXuong=="04 Đã Tiếp Nhận"){ColTrangThai.innerHTML = "Chờ SC"}       
+             
+               row.appendChild(ColKhachRX); 
+                if(r.TDHenGiaoXe){   
           var ColGiaoXe= document.createElement("td");
               ColGiaoXe.innerHTML = Doingay(DoiNgayDangKy(r.TDHenGiaoXe))
               row.appendChild(ColGiaoXe);}
-          var ColTrangThai= document.createElement("td");
-          if(r.TrangThaiXuong=="08 Chờ Giao Xe"){ColTrangThai.innerHTML = "H Thành";row.setAttribute('class', 'ChoGiaoXe')}
-          if(r.TrangThaiXuong=="07 Đang Rửa Xe"){ColTrangThai.innerHTML = "Đang RX";row.setAttribute('class', 'DangRuaXe')} 
-          if(r.TrangThaiXuong=="06 Chờ Rửa Xe"){ColTrangThai.innerHTML = "Chờ RX";;row.setAttribute('class', 'ChoRuaXe')}
-          if(r.TrangThaiXuong=="05 Đang Sửa Chữa"){ColTrangThai.innerHTML = "Đang SC"} 
-          if(r.TrangThaiXuong=="04 Đã Tiếp Nhận"){ColTrangThai.innerHTML = "Chờ SC"}       
-              row.appendChild(ColTrangThai);
-                               
+                row.appendChild(ColTrangThai);                 
         tbodyTim.appendChild(row)  
       })
                 $("#tieude").html("THÔNG TIN KHÁCH CHỜ "+new Date().toLocaleTimeString().slice(0,5))}
