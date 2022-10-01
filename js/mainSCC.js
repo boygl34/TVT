@@ -305,6 +305,7 @@ function showData(use){
       for(var a in ojb){
       if(ojb[a].MaSo ==  document.getElementById("MaSo").value){   
         if(ojb[a].TDKetThucTiepKhach){   }else{json2["TDKetThucTiepKhach"]=TimesClick();}
+        if(ojb[a].KhachHangDoi){   }else{json2["KhachHangDoi"]="Khách Đợi"}
         if(ojb[a].KhachRuaXe){}else{$('#DKRUAXetitle').html(ojb[a].BienSoXe);$('#RuaXeModal').modal('hide');$('#RuaXeModal').modal('show')}
         if(ojb[a].TDHenGiaoXe){   }else{json2["TDHenGiaoXe"]=TimesClick(new Date(1000 * 60 * 29 + (new Date(DoiNgayDangKy($('#GioKetThucSC').val()))).valueOf()));}
       }

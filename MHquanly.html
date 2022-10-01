@@ -96,13 +96,14 @@
             <thead style="background-color:#1155cc;font-size: 18px;">
                                 <tr style="font-size:8px">
                                   <th  style=" width: 1%;"></th>
-                                  <th style=" width: 10%;">Biển Số</th>
-                                  <th style=" width: 10%;">Trạng Thái</th>
-                                  <th  style=" width: 5%;"  >Cố Vấn</th>
-                                  <th  style=" width: 5%;"  >LH GJ</th>
-                                  <th  style=" width: 5%;"  >LH BP</th>
+                                  <th >Biển Số</th>
+                                  <th >Trạng Thái</th>
+                                  <th  >Cố Vấn</th>
+                                  <th>KH Chờ</th>
+                                  <th  >LH GJ</th>
+                                  <th  >LH BP</th>
                                   
-                                  <th  style=" width: 5%;"  >TimeGX</th>
+                                  <th   >TimeGX</th>
                                   
                                 </tr>
                               </thead>
@@ -165,7 +166,11 @@ getData(urlTX)
   
         var CoVan = document.createElement("td");
                  if(r.CoVanDichVu){ CoVan.innerHTML = r.CoVanDichVu}else{CoVan.innerHTML =""}
-                row.appendChild(CoVan);        
+                row.appendChild(CoVan); 
+        var khachcho = document.createElement("td");
+          if(r.KhachHangDoi=="Khách Đợi"){ khachcho.innerHTML ="Có"}else{CoVan.innerHTML =""}
+        row.appendChild(khachcho);        
+                
         var LHGJ = document.createElement("td");
                  if(r.LoaiHinhSuaChua){ LHGJ.innerHTML = r.LoaiHinhSuaChua}else{LHGJ.innerHTML =""}
                 row.appendChild(LHGJ);
@@ -189,7 +194,7 @@ getData(urlTX)
          
                 $("#tieude").html(XTX+" Xe Trong Xưởng "+new Date().toLocaleTimeString().slice(0,5))
                 $("#TongKetTT").html(
-            '<div class=" themed-grid-col"><span class="border border-primary DangRuaXe">'+CTN+' Chờ TN</span></div>&nbsp; '
+            '&nbsp;&nbsp;<div class=" themed-grid-col"><span class="border border-primary DangRuaXe">'+CTN+' Chờ TN</span></div>&nbsp; '
             +'<div class=" themed-grid-col"><span class="border border-secondary DangRuaXe">'+DTN+' Đang TN</span></div>&ensp;'
             +'<div class=" themed-grid-col"><span class="border border-secondary ChoRuaXe">'+CSC+' Chờ SC</span></div>&ensp;'
             +'<div class=" themed-grid-col"><span class="border border-secondary DangRuaXe ">'+DSC+' Đang SC</span></div>&ensp;'  
