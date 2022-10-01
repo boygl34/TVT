@@ -165,10 +165,10 @@ getData(urlTX)
             row.appendChild(TrangThai); 
   
         var CoVan = document.createElement("td");
-                 if(r.CoVanDichVu){ CoVan.innerHTML = r.CoVanDichVu}else{CoVan.innerHTML =""}
+                  CoVan.innerHTML = r.CoVanDichVu
                 row.appendChild(CoVan); 
         var khachcho = document.createElement("td");
-          if(r.KhachHangDoi=="Khách Đợi"){ khachcho.innerHTML ="Có"}else{CoVan.innerHTML =""}
+          if(r.KhachHangDoi=="Khách Đợi"){ khachcho.innerHTML ="Có"}else{khachcho.innerHTML =""}
         row.appendChild(khachcho);        
                 
         var LHGJ = document.createElement("td");
