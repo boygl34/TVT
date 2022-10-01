@@ -9,9 +9,9 @@ var NhomSon=["Đình","Thiên"]
 var KTVDongSon=["Châu","Trường","Phúc","Trương","Quang","Định","Đình","Thành","Lưu","Hùng","Lâm","Duy","Tài","Thiên","Dũng","Lực","Tú","Chương","Đồng","Quốc","Lưu"]
 var KhoangSC =["EM 01","EM 02","EM 03","EM 04","SCC 05","SCC 06","SCC 07","SCC 08","SCC 09","SCC 10","4 Trụ","K Ngoài"]
 var NhomKTV =["EM","Bạo","Hoan"]
-var KTVBao=["Bạo","Hiếu","Duy","Phước","Huy"]
-var KTVHoan=["Hoan","Lâm","Tâm","Tân","Sơn"]
-var KTVEM=["Sáng","Thiên","Vinh","Khoa","Đ Anh","Hiển","Cường","Trí"]
+var KTVBao=["Bạo","Hiếu","Duy","Phước","Huy","Tân","Thiên"]
+var KTVHoan=["Hoan","Lâm","Tâm","Sơn"]
+var KTVEM=["Sáng","Hưng","Vinh","Khoa","Đ Anh","Hiển","Cường","Trí"]
 var ListXe=["Camry","Inova","Fortuner","Altis","Altis Cross","Veloz","Wigo","Land Cruiser","Land Prado","Hilander","Rav4","Vios","Rush","Avanza","Raize","Lexus"]
 function Doingay2(use){
     use=new Date(use)
