@@ -95,15 +95,11 @@ html {
 
     var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false  })
       scanner.addListener('scan',function(content){
-      
-        scanner.stop()
-       
-       
+        scanner.stop() 
      $.get(url+"MayRaVaoVo", function(ketqua) {
-     alert(ketqua.TenThietBi)
-      setchecksheet(ketqua)
-     
-   } );
+        alert(ketqua.id)
+        setchecksheet(ketqua)
+     });
  
     });
     function showScan(){ 
@@ -127,7 +123,7 @@ html {
                 '<div class="card">'+
                     '<img src="images/'+ketqua.id+'.jpg" alt="Jane" style="width:100%">'+
                     '<div class="container">'+
-                        '<h2>J'+ketqua.id+'</h2>'+
+                        '<h2>'+ketqua.id+'</h2>'+
                         '<p class="title">CEO & Founder</p>'+
                         '<p>Some text that describes me lorem ipsum ipsum lorem.</p>'+
                         '<p>example@example.com</p>'+
