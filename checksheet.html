@@ -118,21 +118,35 @@ html {
              });
     }
     function setchecksheet(ketqua){
-
+console.log(ketqua)
         $("#Checkshet").html(
             //'<div class="column">'+
                 '<div class="card">'+
                     '<img src="images/'+ketqua.id+'.jpg" alt="Jane" style="width:100%">'+
                     '<div class="container">'+
-                        '<h2>'+ketqua.id+'</h2>'+
-                        '<p class="title">CEO & Founder</p>'+
-                        '<p>Some text that describes me lorem ipsum ipsum lorem.</p>'+
-                        '<p>example@example.com</p>'+
+                        '<h2>'+ketqua.TenThietBi+'</h2>'+
+                        set5s(ketqua.tieuchuan5s)+
+                        setBasic(ketqua.Basic)+
                         '<p><button class="button">Contact</button></p>'+
                     '</div>'+
                 //'</div>'+
             '</div>')
   document.getElementById("Checkshet").style.display = "block";
+    }
+    function set5s(value){     
+    var cac5s ='<p class="title">5S</p>'
+    for(a in value){
+     cac5s +='<p>'+value[a]+'</p>'
+      }
+      return cac5s
+    }
+
+    function setBasic(value){     
+    var Basic ='<p class="title">Basic</p>'
+    for(a in value){
+      Basic +='<p>'+value[a]+'</p>'
+      }
+      return Basic
     }
 </script>
 </html>
