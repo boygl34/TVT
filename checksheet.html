@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <style>
 html {
   box-sizing: border-box;
@@ -71,34 +72,12 @@ html {
 
 <br>
 
-<div class="row ">
-  <div class="column">
-    <div class="card">
-      <img src="images/bg.jpg" alt="Jane" style="width:100%">
-      <div class="container">
-        <h2>Jane Doe</h2>
-        <p class="title">CEO & Founder</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
-    </div>
-  </div>
+<div class="row" id="Checkshet" style="display: none;">
+  
 
 
   
-  <div class="column">
-    <div class="card">
-      <img src="images/team1.jpg" alt="John" style="width:100%">
-      <div class="container">
-        <h2>John Doe</h2>
-        <p class="title">Designer</p>
-        <p>Some text that describes me lorem ipsum ipsum lorem.</p>
-        <p>example@example.com</p>
-        <p><button class="button">Contact</button></p>
-      </div>
-    </div>
-  </div>
+  
 </div>
 
 
@@ -120,7 +99,7 @@ html {
     Instascan.Camera.getCameras().then(function (cameras) {
                  if (cameras.length > 0) {
                      scanner.start(cameras[0]);
-                     load2.hidden =true
+                     //load2.hidden =true
                  }
                  else {
             alert('No Back camera found!');       
@@ -128,6 +107,23 @@ html {
              }).catch (function (e) {
                 console.error('No cameras found.');
              });
+    }
+    function setchecksheet(){
+
+        $("#Checkshet").html(
+            '<div class="column">'+
+    '<div class="card">'+
+      '<img src="images/bg.jpg" alt="Jane" style="width:100%">'+
+      '<div class="container">'+
+        '<h2>Jane Doe</h2>'+
+        '<p class="title">CEO & Founder</p>'+
+        '<p>Some text that describes me lorem ipsum ipsum lorem.</p>'+
+        '<p>example@example.com</p>'+
+        '<p><button class="button">Contact</button></p>'+
+      '</div>'+
+    '</div>'+
+  '</div>')
+  document.getElementById("Checkshet").style.display = "block";
     }
 </script>
 </html>
