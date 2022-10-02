@@ -96,14 +96,15 @@ html {
     var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false  })
       scanner.addListener('scan',function(content){
         scanner.stop() 
-     $.get(url+"MayRaVaoVo", function(ketqua) {
+     $.get(url+content, function(ketqua) {
+      document.getElementById("preview").style.display = "none"
         alert(ketqua.id)
         setchecksheet(ketqua)
      });
  
     });
     function showScan(){ 
-    Scanvideo.hidden=false
+      document.getElementById("preview").style.display = "block"
     Instascan.Camera.getCameras().then(function (cameras) {
                  if (cameras.length > 0) {
                      scanner.start(cameras[0]);
@@ -119,7 +120,7 @@ html {
     function setchecksheet(ketqua){
 
         $("#Checkshet").html(
-            '<div class="column">'+
+            //'<div class="column">'+
                 '<div class="card">'+
                     '<img src="images/'+ketqua.id+'.jpg" alt="Jane" style="width:100%">'+
                     '<div class="container">'+
@@ -129,7 +130,7 @@ html {
                         '<p>example@example.com</p>'+
                         '<p><button class="button">Contact</button></p>'+
                     '</div>'+
-                '</div>'+
+                //'</div>'+
             '</div>')
   document.getElementById("Checkshet").style.display = "block";
     }
