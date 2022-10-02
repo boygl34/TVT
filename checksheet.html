@@ -99,12 +99,14 @@ html {
      $.get(url+content, function(ketqua) {
       document.getElementById("preview").style.display = "none"
         alert(ketqua.id)
-        setchecksheet(ketqua)
+        if(ketqua.PhanLoai=="ThietBiDungChung"){setthietbidungchung(ketqua)}
+        if(ketqua.PhanLoai=="KhuVucDungChung"){setkhuvucdungchung(ketqua)}
      });
  
     });
     function showScan(){ 
       document.getElementById("preview").style.display = "block"
+      document.getElementById("Checkshet").style.display = "none";
     Instascan.Camera.getCameras().then(function (cameras) {
                  if (cameras.length > 0) {
                      scanner.start(cameras[0]);
@@ -117,22 +119,43 @@ html {
                 console.error('No cameras found.');
              });
     }
-    function setchecksheet(ketqua){
-console.log(ketqua)
-        $("#Checkshet").html(
-            //'<div class="column">'+
-                '<div class="card">'+
-                    '<img src="images/'+ketqua.id+'.jpg" alt="Jane" style="width:100%">'+
-                    '<div class="container">'+
-                        '<h2>'+ketqua.TenThietBi+'</h2>'+
-                        set5s(ketqua.tieuchuan5s)+
-                        setBasic(ketqua.Basic)+
-                        '<p><button class="button">Contact</button></p>'+
-                    '</div>'+
-                //'</div>'+
-            '</div>')
-  document.getElementById("Checkshet").style.display = "block";
+    function setkhuvucdungchung(ketqua){
+            $("#Checkshet").html(
+                //'<div class="column">'+
+                    '<div class="card">'+
+                        '<img src="images/'+ketqua.id+'.jpg" alt="'+ketqua.id+'" style="width:100%">'+
+                        '<div class="container">'+
+                            '<h2>'+ketqua.TenThietBi+'</h2>'+
+                            '<p><button class="button">Contact</button></p>'+
+                        '</div>'+
+                    //'</div>'+
+                '</div>')
+      document.getElementById("Checkshet").style.display = "block";
     }
+
+
+
+
+
+
+
+
+    function setthietbidungchung(ketqua){
+            $("#Checkshet").html(
+                //'<div class="column">'+
+                    '<div class="card">'+
+                        '<img src="images/'+ketqua.id+'.jpg" alt="'+ketqua.id+'" style="width:100%">'+
+                        '<div class="container">'+
+                            '<h2>'+ketqua.TenThietBi+'</h2>'+
+                            set5s(ketqua.tieuchuan5s)+
+                            setBasic(ketqua.Basic)+
+                            '<p><button class="button">Contact</button></p>'+
+                        '</div>'+
+                    //'</div>'+
+                '</div>')
+      document.getElementById("Checkshet").style.display = "block";
+    }
+
     function set5s(value){     
     var cac5s ='<p class="title">5S</p>'
     for(a in value){
