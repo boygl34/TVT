@@ -59,26 +59,28 @@ html {
 .button:hover {
   background-color: #555;
 }
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
 
 </style>
 </head>
 <body>
     <div class="container">
-    <div id="Scanvideo" >
-                  
-        <video id="preview" playsinline="true" class="center" width= "50%"></video>
-      </div>
+        <div id="Scanvideo" > 
+            <button class="button"onclick="showScan()">Scan</button>     
+            <video id="preview" playsinline="true" class="center" ></video>
+            <div class="row" id="Checkshet" style="display: none;">
+            </div>
+        </div>
 </div>
 
-<br>
-
-<div class="row" id="Checkshet" style="display: none;">
-  
 
 
-  
-  
-</div>
+
 
 
 
@@ -86,14 +88,23 @@ html {
 <script src="js/intascan.js"></script>
 <script src="js/intascan.min.js"></script>
 <script>
-     showScan()
+     
+   var url = "https://big-road-newsstand.glitch.me/CheckSheet/"
+
+
 
     var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false  })
       scanner.addListener('scan',function(content){
       alert("koie")
         scanner.stop()
-        setchecksheet()
+       
+       
+     $.get(url+"MayRaVaoVo", function(ketqua) {
      
+      setchecksheet(ketqua)
+     
+   } );
+ 
     });
     function showScan(){ 
     Scanvideo.hidden=false
@@ -109,21 +120,21 @@ html {
                 console.error('No cameras found.');
              });
     }
-    function setchecksheet(){
+    function setchecksheet(ketqua){
 
         $("#Checkshet").html(
             '<div class="column">'+
-    '<div class="card">'+
-      '<img src="images/bg.jpg" alt="Jane" style="width:100%">'+
-      '<div class="container">'+
-        '<h2>Jane Doe</h2>'+
-        '<p class="title">CEO & Founder</p>'+
-        '<p>Some text that describes me lorem ipsum ipsum lorem.</p>'+
-        '<p>example@example.com</p>'+
-        '<p><button class="button">Contact</button></p>'+
-      '</div>'+
-    '</div>'+
-  '</div>')
+                '<div class="card">'+
+                    '<img src="images/'+ketqua.TenThietBi+'.jpg" alt="Jane" style="width:100%">'+
+                    '<div class="container">'+
+                        '<h2>J'+ketqua.TenThietBi+'</h2>'+
+                        '<p class="title">CEO & Founder</p>'+
+                        '<p>Some text that describes me lorem ipsum ipsum lorem.</p>'+
+                        '<p>example@example.com</p>'+
+                        '<p><button class="button">Contact</button></p>'+
+                    '</div>'+
+                '</div>'+
+            '</div>')
   document.getElementById("Checkshet").style.display = "block";
     }
 </script>
