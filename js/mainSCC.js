@@ -251,7 +251,6 @@ function showData(use){
   
   function Khongruaxe(){
     var json2 = {
-      TrangThaiXuong:"08 Chờ Giao Xe",
       KhachRuaXe: "Không Rửa"
       }
       setTimeout($('#RuaXeModal').modal('hide'), 3000);
@@ -260,7 +259,6 @@ function showData(use){
     
     function Coruaxe(){
       var json2 = {
-        TrangThaiXuong:"06 Chờ Rửa Xe",
         KhachRuaXe: "Rửa Xe"
         }
       postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH")
