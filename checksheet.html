@@ -137,13 +137,14 @@ html {
 
     function set5sKhuVuc(value){     
     var cac5s ='<p class="title">5S</p>'
-    
+    alert(value)
     for(a in value){
       alert(value[a].TenThietBi)
-     cac5s +='<p>'+value[a].TenThietBi+'</p>'
+     
      
      for(b in value[a].tieuchuan5s){
-      cac5s +='<p>'+value[a].tieuchuan5s[b]+'</p>'
+      cac5s +='<p>'+value[a][b].TenThietBi+'</p>'
+      cac5s +='<p>'+value[a][b].tieuchuan5s+'</p>'
      }
       }
       return cac5s
