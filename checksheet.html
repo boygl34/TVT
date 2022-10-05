@@ -71,7 +71,7 @@ html {
 <body>
     <div class="container">
         <div id="Scanvideo" > 
-            <button class="button"onclick="showScan()">Scan</button>     
+            <button class="button"onclick="test()">Scan</button>     
             <video id="preview" playsinline="true" class="center" ></video>
             <div class="row" id="Checkshet" style="display: none;">
             </div>
@@ -104,6 +104,15 @@ html {
      });
  
     });
+
+    function test(){
+      $.get(url+"KhoangEM1", function(ketqua) {
+        document.getElementById("preview").style.display = "none"
+        
+        if(ketqua.PhanLoai=="ThietBiDungChung"){setthietbidungchung(ketqua)}
+        if(ketqua.PhanLoai=="KhuVucDungChung"){setkhuvucdungchung(ketqua)}
+     });
+    }
     function showScan(){ 
       document.getElementById("preview").style.display = "block"
       document.getElementById("Checkshet").style.display = "none";
@@ -137,14 +146,13 @@ html {
 
     function set5sKhuVuc(value){     
     var cac5s ='<p class="title">5S</p>'
-    alert(value)
+   
     for(a in value){
-      alert(value[a].TenThietBi)
-     
-     
-     for(b in value[a].tieuchuan5s){
-      cac5s +='<p>'+value[a][b].TenThietBi+'</p>'
-      cac5s +='<p>'+value[a][b].tieuchuan5s+'</p>'
+     var value2 = value[a] 
+     for(b in value2){
+      cac5s +='<p class="title">'+value2[b].TenThietBi+'</p>'
+      for (c in value2[b].tieuchuan5s){
+      cac5s +='<p>'+value2[b].tieuchuan5s[c]+'</p>'}
      }
       }
       return cac5s
