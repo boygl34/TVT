@@ -178,7 +178,7 @@ getData(urlTX)
                 row.appendChild(LHGJ);
         var LHBP = document.createElement("td");
                  if(r.LoaiHinhDongSon){
-                  if(r.TrangThaiDongSon=="Chờ SC"){LHBP.innerHTML ="[X] "+ r.LoaiHinhDongSon}else{
+                  if(r.TrangThaiDongSon=="Chờ SC"&&r.CongDoanDongSon=="Chờ SC"){LHBP.innerHTML ="[X] "+ r.LoaiHinhDongSon}else{
                   LHBP.innerHTML = r.LoaiHinhDongSon}}else{LHBP.innerHTML =""}
                 row.appendChild(LHBP); 
         var TimeCD = document.createElement("td");
