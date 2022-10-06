@@ -172,10 +172,14 @@ getData(urlTX)
         row.appendChild(khachcho);        
                 
         var LHGJ = document.createElement("td");
-                 if(r.LoaiHinhSuaChua){ LHGJ.innerHTML = r.LoaiHinhSuaChua}else{LHGJ.innerHTML =""}
+                 if(r.LoaiHinhSuaChua){
+                  if(r.TrangThaiSCC=="Chờ SC"){ LHGJ.innerHTML = "[X] "+r.LoaiHinhSuaChua}else{
+                  LHGJ.innerHTML = r.LoaiHinhSuaChua}}else{LHGJ.innerHTML =""}
                 row.appendChild(LHGJ);
         var LHBP = document.createElement("td");
-                 if(r.LoaiHinhDongSon){ LHBP.innerHTML = r.LoaiHinhDongSon}else{LHBP.innerHTML =""}
+                 if(r.LoaiHinhDongSon){
+                  if(r.TrangThaiDongSon=="Chờ SC"){LHBP.innerHTML ="[X] "+ r.LoaiHinhDongSon}else{
+                  LHBP.innerHTML = r.LoaiHinhDongSon}}else{LHBP.innerHTML =""}
                 row.appendChild(LHBP); 
         var TimeCD = document.createElement("td");
         TimeCD.innerHTML=""
