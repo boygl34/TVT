@@ -3,6 +3,8 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<link rel="stylesheet" href="css/style.css">
+
 <style>
 html {
   box-sizing: border-box;
@@ -100,7 +102,7 @@ html {
         document.getElementById("preview").style.display = "none"
         
         if(ketqua.PhanLoai=="ThietBiDungChung"){setthietbidungchung(ketqua)}
-        if(ketqua.PhanLoai=="KhuVucDungChung"){setkhuvucdungchung(ketqua)}
+        if(ketqua.PhanLoai=="Khu Vực Dùng Chung"){setkhuvucdungchung(ketqua)}
      });
  
     });
@@ -109,8 +111,8 @@ html {
       $.get(url+"KhoangEM1", function(ketqua) {
         document.getElementById("preview").style.display = "none"
         
-        if(ketqua.PhanLoai=="ThietBiDungChung"){setthietbidungchung(ketqua)}
-        if(ketqua.PhanLoai=="KhuVucDungChung"){setkhuvucdungchung(ketqua)}
+        if(ketqua.PhanLoai=="Thiết Bị Dùng Chung"){setthietbidungchung(ketqua)}
+        if(ketqua.PhanLoai=="Khu Vực Dùng Chung"){setkhuvucdungchung(ketqua)}
      });
     }
     function showScan(){ 
@@ -134,9 +136,12 @@ html {
                     '<div class="card">'+
                         '<img src="images/'+ketqua.id+'.jpg" alt="'+ketqua.id+'" style="width:100%">'+
                         '<div class="container">'+
-                            '<h2>'+ketqua.TenKhuVuc+'</h2>'+
+                            '<h2 id="TenThietBi">'+ketqua.TenKhuVuc+'</h2>'+
+                            '<h3 id="PhanLoai">'+ketqua.PhanLoai+'</h3>'+
                             set5sKhuVuc(ketqua.TrangThietBi)+
-                            '<p><button class="button">Contact</button></p>'+
+                            '<label class="custom-control-label" for="checkbox-hen">Ghi Chú Bất Thường</label>'+
+                            ' <input id="GhiChu" type="text" class="custom-control-input" >'+
+                            '<p><button class="button" onclick="writeData()">Check Sheet!!</button></p>'+
                             
                         '</div>'+
                     //'</div>'+
@@ -174,10 +179,13 @@ html {
                     '<div class="card">'+
                         '<img src="images/'+ketqua.id+'.jpg" alt="'+ketqua.id+'" style="width:100%">'+
                         '<div class="container">'+
-                            '<h2>'+ketqua.TenThietBi+'</h2>'+
+                            '<h2 id="TenThietBi">'+ketqua.TenThietBi+'</h2>'+
+                            '<h3 id="PhanLoai">'+ketqua.PhanLoai+'</h3>'+
                             set5s(ketqua.tieuchuan5s)+
                             setBasic(ketqua.Basic)+
-                            '<p><button class="button">Contact</button></p>'+
+                            '<label class="custom-control-label" for="checkbox-hen">Ghi Chú Bất Thường</label>'+
+                            ' <input id="GhiChu" type="text" class="custom-control-input" >'+
+                            '<p><button class="button" onclick="writeData()">Check Sheet!!</button></p>'+
                         '</div>'+
                     //'</div>'+
                 '</div>')
@@ -199,5 +207,40 @@ html {
       }
       return Basic
     }
+
+function writeData(){
+  var data = {
+    GhiChu:$('#GhiChu').val(),
+    PhanLoai: $('#PhanLoai').html(),
+    KTVCheck: localStorage.getItem("userName"),
+    NgayCheckSheet:TimesClick(),
+    TenThietBi:$('#TenThietBi').html()
+                     }
+
+  $.ajax({
+          url: "https://script.google.com/macros/s/AKfycbxUuJW8nbiKkrZwtM30l6PE-T-gU4QzbgnmdDgp-hbX6-fEnANwZjU4Z_Ae9ZkURCK1/exec",
+          method: "GET",
+          mode: 'no-cors',
+          credentials: 'omit', 
+          referrerPolicy: 'no-referrer',
+          dataType: "json",
+          data: data
+                      }) 
+}
+
+function TimesClick(data){
+                    if(data){var  use=new Date(data);}else{var  use=new Date()}
+                      var useinfo = {}
+                      var Thang =use.getMonth()+1;
+                      var Ngay = use.getDate();
+                      var Nam = use.getFullYear();var Gio = use.getHours();
+                      var Phut = use.getMinutes();
+                      if (Thang<10){Thang="0"+Thang};
+                      if (Ngay<10){Ngay="0"+Ngay};
+                      if (Gio<10){Gio="0"+Gio};
+                      if (Phut<10){Phut="0"+Phut}
+                  return Ngay+"/"+Thang+"/"+Nam+" "+Gio+":"+Phut+":00"
+                  } 
+
 </script>
 </html>
