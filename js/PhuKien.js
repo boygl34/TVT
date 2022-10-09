@@ -32,12 +32,26 @@ function showData(data){
          var BienSo = document.createElement("td");
              BienSo.innerHTML = r.BienSoXe 
              row.appendChild(BienSo);
-                              
-       tbodyTim.appendChild(row)  
+          var trangthai=document.createElement("td");
+          trangthai.innerHTML='<select required class="form-control" id="TrangThai'+r.BienSoXe+'"   >'+
+          '<option value="Xưởng">Xưởng</option>'+
+          '<option value="Đồng">Đồng</option>'+
+          '<option value="Thiên">Thiên</option>'+
+          '<option value="Đình">Đình</option>'+
+          '<option value="Pass">Pass</option>'  +
+          '</select>' 
+            
+          row.appendChild(trangthai);  
+                 
+         tbodyTim.appendChild(row) 
+         document.getElementById("TrangThai"+r.BienSoXe).value = "Đồng"
        
      })
-var table = $('#TablePhuKien').tableToJSON(); // Convert the table into a javascript object
- 
+     
+    }
+function Click(){
+var table = $('#Table').tableToJSON(); // Convert the table into a javascript object
+
   alert(JSON.stringify(table));
 
 }
