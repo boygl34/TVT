@@ -71,9 +71,7 @@
 <body>
     <div class="container">
         <div id="Scanvideo" > 
-          <div class="spinner-border" role="status" id="loading"style="display: none;">
-            <span class="sr-only">Loading...</span>
-          </div>
+         
             <button class="button"onclick="showScan()">Scan</button> 
                
             <video id="preview" playsinline="true" class="center" ></video>
@@ -98,8 +96,9 @@
 
 
     var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false  })
+    
       scanner.addListener('scan',function(content){
-        //document.getElementById("loading").style.display = "block"
+       
         scanner.stop() 
         
         try{
