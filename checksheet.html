@@ -42,11 +42,9 @@
   color: grey;
 }
 
-.button {
+.btn {
   border: none;
   outline: 0;
-  display: inline-block;
-  padding: 8px;
   color: white;
   background-color: #000;
   text-align: center;
@@ -72,7 +70,7 @@
           <div class="spinner-border" role="status" style="display: none;"id="Loading">
             <span class="sr-only">Loading...</span>
           </div>
-            <button class="button"onclick="showScan()">Scan</button>     
+            <button  class="btn btn-primary" onclick="showScan()">Scan</button>     
             <video id="preview" playsinline="true" class="center" ></video>
             <div class="row" id="Checkshet" style="display: none;">
             </div>
@@ -136,7 +134,7 @@
                             set5sKhuVuc(ketqua.TrangThietBi)+
                             '<label class="custom-control-label" for="checkbox-hen">Ghi Chú Bất Thường</label>'+
                             ' <input id="GhiChu" type="text" class="custom-control-input" >'+
-                            '<p><button class="button" onclick="writeData()">Check Sheet!!</button></p>'+
+                            '<p><button class="btn" onclick="writeData()">Check Sheet!!</button></p>'+
                             
                         '</div>'+
                     //'</div>'+
@@ -180,7 +178,7 @@
                             setBasic(ketqua.Basic)+
                             '<label class="custom-control-label" for="checkbox-hen">Ghi Chú Bất Thường</label>'+
                             ' <input id="GhiChu" type="text" class="custom-control-input" >'+
-                            '<p><button class="button" onclick="writeData()">Check Sheet!!</button></p>'+
+                            '<p><button class="btn" onclick="writeData()">Check Sheet!!</button></p>'+
                         '</div>'+
                     //'</div>'+
                 '</div>')
