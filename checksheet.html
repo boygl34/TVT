@@ -70,7 +70,7 @@
 <body>
     <div class="container">
         <div id="Scanvideo" > 
-            <button class="button"onclick="test()">Scan</button>     
+            <button class="button"onclick="showScan()">Scan</button>     
             <video id="preview" playsinline="true" class="center" ></video>
             <div class="row" id="Checkshet" style="display: none;">
             </div>
@@ -84,6 +84,7 @@
 
 
 </body>
+
 <script src="js/intascan.js"></script>
 <script src="js/intascan.min.js"></script>
 <script>
@@ -95,23 +96,21 @@
     var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false  })
       scanner.addListener('scan',function(content){
         scanner.stop() 
-     $.get(url+content, function(ketqua) {
-        document.getElementById("preview").style.display = "none"
-        
-        if(ketqua.PhanLoai=="ThietBiDungChung"){setthietbidungchung(ketqua)}
-        if(ketqua.PhanLoai=="Khu Vực Dùng Chung"){setkhuvucdungchung(ketqua)}
-     });
- 
+        try{
+            $.get(url+content, function(ketqua) {
+                document.getElementById("preview").style.display = "none"
+                
+                if(ketqua.PhanLoai=="ThietBiDungChung"){setthietbidungchung(ketqua)}
+                if(ketqua.PhanLoai=="Khu Vực Dùng Chung"){setkhuvucdungchung(ketqua)}
+            });
+        }catch(error) {
+                    alert("Lỗi : "+error)
+                  }
     });
 
-    function test(){
-      $.get(url+"KhoangEM1", function(ketqua) {
-        document.getElementById("preview").style.display = "none"
-        
-        if(ketqua.PhanLoai=="Thiết Bị Dùng Chung"){setthietbidungchung(ketqua)}
-        if(ketqua.PhanLoai=="Khu Vực Dùng Chung"){setkhuvucdungchung(ketqua)}
-     });
-    }
+
+
+
     function showScan(){ 
       document.getElementById("preview").style.display = "block"
       document.getElementById("Checkshet").style.display = "none";

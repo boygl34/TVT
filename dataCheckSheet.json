@@ -1,0 +1,44 @@
+{"CheckSheet":[{
+  "id": "MayRaVaoVo",
+  "PhanLoai":"Thiết Bị Dùng Chung",
+  "TenThietBi": "Máy Ra Vào Lốp",
+  "tieuchuan5s": ["1. Phân loại các vật dụng cần thiết và không cần thiết, loại bỏ các vật không cần thiết",
+                  "2. Sắp xếp các vật dụng cần thiết tại vị trí dễ thấy, dễ lấy, gọn gàng; cố định vị trí",
+                  "3. Duy trì vệ sinh sạch sẽ, đảm bảo vật dụng để đúng quy định, loại bỏ nguyên nhân gây bẩn"
+                 ],
+  "Basic": ["- Không có vật dụng không liên quan để ở máy ra vào lốp",
+            "- Các vật dụng liên quan đầy đủ, đúng vị trí",
+            "- Vệ sinh toàn bộ máy (Mặt Bàn, Cần ra vào lốp, Khay đựng van)",
+            "- Vệ sinh, chùi sàn, thay giẻ lau, tắt màn hình vào mỗi cuối ngày"] 
+},
+{
+  "id": "MayCanBangDong",
+  "PhanLoai":"Thiết Bị Dùng Chung",
+  "TenThietBi": "Máy Cân Bằng Động",
+  "tieuchuan5s": ["1. Phân loại các vật dụng cần thiết và không cần thiết, loại bỏ các vật không cần thiết",
+                  "2. Sắp xếp các vật dụng cần thiết tại vị trí dễ thấy, dễ lấy, gọn gàng; cố định vị trí",
+                  "3. Duy trì vệ sinh sạch sẽ, đảm bảo vật dụng để đúng quy định, loại bỏ nguyên nhân gây bẩn"
+                 ],
+  "Basic": ["- Không có vật dụng không liên quan để ở máy cân bằng động",
+            "- Các vật dụng liên quan đầy đủ, đúng vị trí",
+            "- Vệ sinh toàn bộ máy (đèn, máy tính, thân máy, khay chì,)",
+            "- Vệ sinh, chùi sàn, thay giẻ lau, tắt màn hình vào mỗi cuối ngày"] 
+},
+  {"id": "KhoangEM1",
+  "PhanLoai":"Khu Vực Dùng Chung",
+  "TenKhuVuc": "Khoang EM 01",
+  "TrangThietBi": {
+                  "Thietbi1":[{"TenThietBi":"Nền Xưởng, Tường","tieuchuan5s":["Vệ Sinh Sạch Sẽ"]}],
+                  "Thietbi2":[{"TenThietBi":"Càu Nâng","tieuchuan5s":["Vệ Sinh Sạch Sẽ","Kiểm Tra Hoạt Động"]}],
+                  "Thietbi3":[{"TenThietBi":"Xe Đồ Nghề","tieuchuan5s":["Vệ Sinh Sạch Sẽ","Ngăn nắp, Đầy Đủ, Đúng Vị Trí"]}],
+                 "Thietbi4":[{"TenThietBi":"Reel Điện","tieuchuan5s":["Vệ Sinh Sạch Sẽ","Kiểm tra hoạt động"]}],
+                  "Thietbi5":[{"TenThietBi":"Reel Hơi","tieuchuan5s":["Vệ Sinh Sạch Sẽ","Kiểm tra hoạt động"]}],
+                  "Thietbi6":[{"TenThietBi":"Quạt Gió","tieuchuan5s":["Vệ Sinh Sạch Sẽ","Kiểm tra hoạt động"]}]
+                  },
+  "Basic": ["- Không có vật dụng không liên quan để ở máy cân bằng động",
+            "- Các vật dụng liên quan đầy đủ, đúng vị trí",
+            "- Vệ sinh toàn bộ máy (đèn, máy tính, thân máy, khay chì,)",
+            "- Vệ sinh, chùi sàn, thay giẻ lau, tắt màn hình vào mỗi cuối ngày"] 
+}
+]
+}
