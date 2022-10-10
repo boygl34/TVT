@@ -132,8 +132,11 @@
                             '<h2 id="TenThietBi">'+ketqua.TenKhuVuc+'</h2>'+
                             '<h3 id="PhanLoai">'+ketqua.PhanLoai+'</h3>'+
                             set5sKhuVuc(ketqua.TrangThietBi)+
-                            '<label class="custom-control-label" for="checkbox-hen">Ghi Chú Bất Thường</label>'+
-                            ' <input id="GhiChu" type="text" class="custom-control-input" >'+
+                            '<div class="form-group">'+ 
+                            '<label for="exampleInputEmail1">Email address</label>'+
+                            '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
+                            '<small id="emailHelp" class="form-text text-muted"Ghi Chú các bất thường trong Khu vực</small>'+
+                            '</div>'+
                             '<p><button class="btn" onclick="writeData()">Check Sheet!!</button></p>'+
                             
                         '</div>'+
@@ -176,8 +179,11 @@
                             '<h3 id="PhanLoai">'+ketqua.PhanLoai+'</h3>'+
                             set5s(ketqua.tieuchuan5s)+
                             setBasic(ketqua.Basic)+
-                            '<label class="custom-control-label" for="checkbox-hen">Ghi Chú Bất Thường</label>'+
-                            ' <input id="GhiChu" type="text" class="custom-control-input" >'+
+                            '<div class="form-group">'+ 
+                            '<label for="exampleInputEmail1">Email address</label>'+
+                            '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
+                            '<small id="emailHelp" class="form-text text-muted"Ghi Chú các bất thường của máy</small>'+
+                            '</div>'+
                             '<p><button class="btn" onclick="writeData()">Check Sheet!!</button></p>'+
                         '</div>'+
                     //'</div>'+
