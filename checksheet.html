@@ -99,7 +99,7 @@
     var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false  })
       scanner.addListener('scan',function(content){
         scanner.stop() 
-        document.getElementById("Loading").style.display = "block"
+       // document.getElementById("Loading").style.display = "block"
      $.get(url+content, function(ketqua) {
         document.getElementById("preview").style.display = "none"
         
