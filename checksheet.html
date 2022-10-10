@@ -152,11 +152,10 @@
      var value2 = value[a] 
      for(b in value2){
       //cac5s +='<p class="title">'+"+ "+value2[b].TenThietBi+'</p>'
-      cac5s +=  '<div class="custom-control custom-checkbox checkbox-xl">'+
+      cac5s +=  '<div class="input-group-text">'+
               '<label class="custom-control-label" for="checkbox-hen">'+ value2[b].TenThietBi +'</label>'+
-              ' <input type="checkbox" class="custom-control-input" >'+
-            '</div>'
-
+              '<input type="checkbox" aria-label="Checkbox for following text input">'+
+              '</div>'
 
       for (c in value2[b].tieuchuan5s){
       cac5s +='<p>&nbsp;&nbsp;&nbsp;-'+value2[b].tieuchuan5s[c]+'</p>'}
