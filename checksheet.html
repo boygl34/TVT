@@ -99,7 +99,7 @@
 
     var scanner = new Instascan.Scanner({ video: document.getElementById('preview'), mirror: false  })
       scanner.addListener('scan',function(content){
-        document.getElementById("loading").style.display = "block"
+        //document.getElementById("loading").style.display = "block"
         scanner.stop() 
         
         try{
@@ -108,7 +108,7 @@
                 
                 if(ketqua.PhanLoai=="ThietBiDungChung"){setthietbidungchung(ketqua)}
                 if(ketqua.PhanLoai=="Khu Vực Dùng Chung"){setkhuvucdungchung(ketqua)}
-                document.getElementById("loading").style.display = "none"
+                //document.getElementById("loading").style.display = "none"
             });
         }catch(error) {
                     alert("Lỗi : "+error)
