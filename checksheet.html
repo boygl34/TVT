@@ -209,6 +209,8 @@
     }
 
 function writeData(){
+  var checkbook=$('.custom-control-input').val()
+  alert(checkbook)
   var data = {
     GhiChu:$('#GhiChu').val(),
     PhanLoai: $('#PhanLoai').html(),
@@ -227,7 +229,7 @@ function writeData(){
           data: data
       }).done(function() {
         $("#Checkshet").html("")                   
-      alert( "success" );
+      alert( "Thanks!!" );
   }) 
 
 }
