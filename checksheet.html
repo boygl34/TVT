@@ -134,8 +134,9 @@
                             set5sKhuVuc(ketqua.TrangThietBi)+
                             '<div class="form-group">'+ 
                             '<label for="exampleInputEmail1">Ghi Chú</label>'+
-                            '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
                             '<small id="emailHelp" class="form-text text-muted">Ghi Chú các bất thường trong Khu vực</small>'+
+                            '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
+                            
                             '</div>'+
                             '<p><button class="btn" onclick="writeData()">Check Sheet!!</button></p>'+
                             
@@ -181,8 +182,8 @@
                             setBasic(ketqua.Basic)+
                             '<div class="form-group">'+ 
                             '<label for="exampleInputEmail1">Ghi Chú</label>'+
-                            '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
                             '<small id="emailHelp" class="form-text text-muted">Ghi Chú các bất thường của máy</small>'+
+                            '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
                             '</div>'+
                             '<p><button class="btn" onclick="writeData()">Check Sheet!!</button></p>'+
                         '</div>'+
@@ -224,7 +225,11 @@ function writeData(){
           referrerPolicy: 'no-referrer',
           dataType: "json",
           data: data
-                      }) 
+      }).done(function() {
+        $("#Checkshet").html("")                   
+      alert( "success" );
+  }) 
+
 }
 
 function TimesClick(data){
