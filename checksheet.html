@@ -139,7 +139,7 @@
                             '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
                             
                             '</div>'+
-                            '<p><button class="btn" id="checksheetbnt" onclick="writeData()">Check Sheet!!</button></p>'+
+                            '<p><button class="btn" id="bnt" onclick="writeData()">Check Sheet!!</button></p>'+
                             
                         '</div>'+
                     //'</div>'+
@@ -154,7 +154,7 @@
      for(b in value2){
       //cac5s +='<p class="title">'+"+ "+value2[b].TenThietBi+'</p>'
       cac5s +=  '<div class="form-group form-check">'+
-       '<input type="checkbox" class="form-check-input" id="exampleCheck'+b+'">'+ 
+       '<input type="checkbox" class="form-check-input checkbox" id="exampleCheck'+b+'">'+ 
       '<label class=" title form-check-label-lg" for="exampleCheck'+b+'" >'+ value2[b].TenThietBi +'</label>'+  
       '</div>'
       
@@ -167,15 +167,14 @@
     }
 
 
-$(document).ready(function(){
-  $("#checksheetbnt").hide()
-  $(".form-check-input").change(function(){
-   var a = true
-      $('.form-check-input').each(function () {
-      if(this.checked){a=true}else{a = false}
-      });
-alert(a)
-if(a){ $("#checksheetbnt").show()}else{$("#checksheetbnt").hide()}
+    $(document).ready(function(){
+  $(".checkbox").change(function(){
+   var a
+ $('.checkbox').each(function () {
+ if(this.checked){a=true}else{a = false}
+ });
+
+if(a){ $('#bnt').show()}else{$('#bnt').hide()}
 
 
   });
