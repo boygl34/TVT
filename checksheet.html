@@ -40,6 +40,7 @@
 
 .title {
   color: grey;
+  border: 2;
 }
 
 .btn {
@@ -138,7 +139,7 @@
                             '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
                             
                             '</div>'+
-                            '<p><button class="btn" onclick="writeData()">Check Sheet!!</button></p>'+
+                            '<p><button class="btn" id="checksheetbnt" onclick="writeData()">Check Sheet!!</button></p>'+
                             
                         '</div>'+
                     //'</div>'+
@@ -153,9 +154,9 @@
      for(b in value2){
       //cac5s +='<p class="title">'+"+ "+value2[b].TenThietBi+'</p>'
       cac5s +=  '<div class="form-group form-check">'+
-    '<input type="checkbox" class="form-check-input-lg" id="exampleCheck1">'+
-    '<label class=" title form-check-label-lg" for="exampleCheck1" >'+ value2[b].TenThietBi +'</label>'+
-  '</div>'
+      '<label class=" title form-check-label-lg" for="exampleCheck1" >'+ value2[b].TenThietBi +'</label>'+  
+      '<input type="checkbox" class="form-check-input" id="exampleCheck1">'+
+      '</div>'
       
 
       for (c in value2[b].tieuchuan5s){
@@ -166,6 +167,18 @@
     }
 
 
+$(document).ready(function(){
+  $(".form-check-input").change(function(){
+   var a = true
+      $('.form-check-input').each(function () {
+      if(this.checked){a=true}else{a = false}
+      });
+
+if(a){ $("#checksheetbnt").show()}else{$("#checksheetbnt").hide()}
+
+
+  });
+});
 
 
 
