@@ -154,8 +154,8 @@
      for(b in value2){
       //cac5s +='<p class="title">'+"+ "+value2[b].TenThietBi+'</p>'
       cac5s +=  '<div class="form-group form-check">'+
-      '<label class=" title form-check-label-lg" for="exampleCheck1" >'+ value2[b].TenThietBi +'</label>'+  
-      '<input type="checkbox" class="form-check-input" id="exampleCheck1">'+
+       '<input type="checkbox" class="form-check-input" id="exampleCheck'+b+'">'+ 
+      '<label class=" title form-check-label-lg" for="exampleCheck'+b+'" >'+ value2[b].TenThietBi +'</label>'+  
       '</div>'
       
 
@@ -168,6 +168,7 @@
 
 
 $(document).ready(function(){
+  $("#checksheetbnt").hide()
   $(".form-check-input").change(function(){
    var a = true
       $('.form-check-input').each(function () {
