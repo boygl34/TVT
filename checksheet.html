@@ -6,18 +6,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 <link rel="stylesheet" href="css/style.css">
 <script>
-  $(document).ready(function(){
-    $(":checkbox").change(function(){
-     var a
-   $(':checkbox').each(function () {
-   if(this.checked){a=true}else{a = false}
-   });
   
-  if(a){ $('#bnt').show()}else{$('#bnt').hide()}
-  
-  
-    });
-  });
   </script>
 <style>
 
@@ -121,7 +110,7 @@
  
     });
 
-    
+
     function test(){
       document.getElementById("Loading").style.display = "block"
      $.get(url+"KhoangBeMat01", function(ketqua) {
@@ -238,8 +227,7 @@
     }
 
 function writeData(){
-  var checkbook=$('.custom-control-input').val()
-  alert(checkbook)
+  if(checklist()){
   var data = {
     GhiChu:$('#GhiChu').val(),
     PhanLoai: $('#PhanLoai').html(),
@@ -261,6 +249,15 @@ function writeData(){
       alert( "Thanks!!" );
   }) 
 
+}else{ alert("Check các hạng mục")}
+}
+
+function checklist(){
+  var a
+ $(':checkbox').each(function () {
+   if(this.checked){a=true}else{a = false;return a}
+   });
+return a
 }
 
 function TimesClick(data){
