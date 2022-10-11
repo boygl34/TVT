@@ -203,7 +203,7 @@
                             '<small id="emailHelp" class="form-text text-muted">Ghi Chú các bất thường của máy</small>'+
                             '<input type="text" class="form-control" id="GhiChu" aria-describedby="emailHelp">'+
                             '</div>'+
-                            '<p><button class="btn" onclick="writeData()">Check Sheet!!</button></p>'+
+                            '<p><button class="btn" id="bnt" onclick="writeData()">Check Sheet!!</button></p>'+
                         '</div>'+
                     //'</div>'+
                 '</div>')
@@ -231,6 +231,7 @@
 
 function writeData(){
   if(checklist()){
+    document.getElementById("bnt").style.display = "none";
   var data = {
     GhiChu:$('#GhiChu').val(),
     PhanLoai: $('#PhanLoai').html(),
