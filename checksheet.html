@@ -221,7 +221,10 @@
     function setBasic(value){     
     var Basic ='<p class="title">Basic</p>'
     for(a in value){
-      Basic +='<p>'+value[a]+'</p>'
+      Basic +=  '<div class="form-group form-check">'+
+       '<input type="checkbox" class="form-check-input">'+ 
+      '<label class=" title form-check-label-lg" >'+ value[a] +'</label>'+  
+      '</div>'
       }
       return Basic
     }
