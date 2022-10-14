@@ -140,7 +140,7 @@ function dataTableTiepNhan(){
             canhBao("Giao Xe","Bạn có xe "+r.BienSoXe+" Đang Chờ Giao","primary")
         }
 
-            if(r.TrangThaiXuong=="05 Đang Sửa Chữa"||r.TrangThaiXuong=="07 Đang Rửa Xe"||r.TrangThaiXuong=="04 Đã Tiếp Nhận"||r.TrangThaiXuong=="08 Chờ Giao Xe"){ColTime.innerHTML=Doingay(DoiNgayDangKy(r.TDHenGiaoXe) )}
+            if(r.TrangThaiXuong=="05 Đang Sửa Chữa"||r.TrangThaiXuong=="06 Chờ Rửa Xe"||r.TrangThaiXuong=="07 Đang Rửa Xe"||r.TrangThaiXuong=="04 Đã Tiếp Nhận"||r.TrangThaiXuong=="08 Chờ Giao Xe"){ColTime.innerHTML=Doingay(DoiNgayDangKy(r.TDHenGiaoXe) )}
             row.appendChild(ColBS);
             if(CoVan==""){row.appendChild(ColCV);}else{row.appendChild(ColTKH); }
             row.appendChild(ColCD); 
