@@ -186,7 +186,25 @@ section .noi-dung .form .icon-dang-nhap li{
   padding-top: 10px;
   padding-left: 10px;
 }
+li.item {
+        list-style: none;
+        width: 100%;
+        color: #1A1A1A;
+        background-color: #D5DDF6;
+        border: 1px solid #97B0F8;
+        border-radius: 2px;
+        margin-bottom: 5px;
+        padding: 5px 12px;
+        padding-left: 10px;
+    }
 
+    li.item:before {
+        content: "≣";
+        font-family: Arial, sans-serif;
+        display: inline-block;
+        font-size: inherit;
+        cursor: move;
+    }
 </style>
 <body>
   <div id="navibar" >
@@ -260,7 +278,7 @@ section .noi-dung .form .icon-dang-nhap li{
                           <th style=" width: 10%;">Khoang SC</th>
                           <th  style=" width: 5%;"  >KTV</th>
                           <th  style=" width: 5%;"  >KTV2</th>
-                          <th  style=" width: 5%;"  >Rữa Xe</th>
+                          <th  style=" width: 5%;"  >Rửa Xe</th>
                           <th >Tiến Độ</th>
                           <th style=" width: 5%;" >Giờ Giao</th>
                         </tr>
@@ -271,8 +289,17 @@ section .noi-dung .form .icon-dang-nhap li{
             </div> 
      </div> 
       <div role="tabpanel" class="tab-pane active" id="Timeline">
-         <div  id="mytimeline"></div>
+        <div class="row">
+       
+          <div style="width: 7%;" >
+            <ul class="items" id="XeChoSuaChua">
+              
+              
+          </ul>
+        </div>
+         <div style="width: 93%;"id="mytimeline" ondragover="event.preventDefault()" ondrop="onDrop(event)"></div>
       </div> 
+    
    </div>
  </div>
 

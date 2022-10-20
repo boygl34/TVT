@@ -21,7 +21,7 @@ var options = {
       
       
   },
-
+  
    
    
     orientation: 'top',
@@ -51,6 +51,12 @@ var options = {
  
 var timeline = new vis.Timeline(container, items,groups, options);
 
+timeline.on('drop', function (props) {
+  alert('Right click!');
+  props.event.preventDefault();
+});
+
+
   function loadData () {
         items.clear();
         var dataArray0 =   useCaher
@@ -58,7 +64,7 @@ var timeline = new vis.Timeline(container, items,groups, options);
         for (var a=0;a<dataArray1.length;a++){
           var hoanthanh = document.getElementById("checkbox-3").checked
         r=dataArray1[a]
-        var khoang ,mau
+        var khoang ,mau=""
         if(r.LoaiHinhSuaChua=="SCC"){khoang=2}else{khoang=1}
         if(r.TrangThaiSCC=="Đang SC"){mau="green"}
         if(r.TrangThaiSCC=="Dừng SC"){mau="red"}
@@ -67,6 +73,8 @@ var timeline = new vis.Timeline(container, items,groups, options);
         var start = new Date(DoiNgayDangKy(r.TimeStartGJ));
         var end = new Date(DoiNgayDangKy(r.TimeEndGJ));
         var endRX = new Date(DoiNgayDangKy(r.TimeEndGJ).valueOf()+15*60*1000)
+        var timeNow=new Date()
+        if((new Date(DoiNgayDangKy(r.TimeEndGJ))).valueOf()<timeNow.valueOf()){mau="magenta"}
         if(hoanthanh&&r.TrangThaiSCC=="Đã SC"&&r.TimeStartGJ){
           items.add({
             className: mau,
