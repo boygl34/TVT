@@ -156,8 +156,19 @@ function showData(use){
 
 
       function additembienso(value,MaSo,trangthai,tthen){
-        $("#XeChoSuaChua").html($("#XeChoSuaChua").html()+'<li draggable="true"  ondragend="handleDragStart(event)"class="item '+trangthai+' '+tthen+'" value="'+MaSo+'">'+value+'</li>')
+        $("#XeChoSuaChua").html($("#XeChoSuaChua").html()+'<li draggable="true"  ondrag="showtime(event)" ondragend="handleDragStart(event)" class="item '+trangthai+' '+tthen+'" value="'+MaSo+'">'+value+'</li>')
       }
+      function showtime(event){
+        var dragSrcEl2 = event.target;
+        event.dataTransfer.effectAllowed = 'move';
+        var timelineProperties = timeline.getEventProperties(event);
+      var menu = document.getElementById("contextMenu2")
+              menu.style.display = 'block';
+              menu.style.left = timelineProperties.pageX + "px";
+              menu.style.top = (timelineProperties.pageY+25) + "px";
+              $("#ThoiGian").html(TimesClick(timelineProperties.time)+"<br>"+timelineProperties.group)
+      }
+
 
       function handleDragStart(event) {
         var dragSrcEl = event.target;
@@ -166,6 +177,7 @@ function showData(use){
         var maso = event.target.attributes.value.textContent
         let text = "Chạy Chip Tiến Độ Xe "+dragSrcEl.innerHTML;
         var KTV1="None",KTV2="None",NhomSC="None"
+        document.getElementById("contextMenu2").style.display = 'none';
         if(timelineProperties.group=="EM 01"){NhomSC="EM";KTV1="Vinh";KTV2="Hưng"}
         if(timelineProperties.group=="EM 02"){NhomSC="EM";KTV1="Đ Anh";KTV2="Khoa"}
         if(timelineProperties.group=="EM 03"){NhomSC="EM";KTV1="Hiển";KTV2="Cường"}
@@ -176,7 +188,7 @@ function showData(use){
         if(timelineProperties.group=="SCC 08"){NhomSC="Hoan";KTV1="Lâm";KTV2=""}
         if(timelineProperties.group=="SCC 09"){NhomSC="Hoan";KTV1="Sơn";KTV2=""}
         if(timelineProperties.group=="SCC 10"){NhomSC="Hoan";KTV1="Thiên";KTV2=""}
-
+        
         if (confirm(text) == true) {
             var json2 = {
               TimeStartGJ: TimesClick(new Date(timelineProperties.time)),
