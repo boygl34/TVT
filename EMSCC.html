@@ -314,7 +314,9 @@ li.item {
               
           </ul>
         </div>
-         <div style="width: 90%;"id="mytimeline" ondragover="event.preventDefault()" ondrop="onDrop(event)"></div>
+         <div style="width: 90%;">
+         <div id="mytimeline" ondragover="event.preventDefault()" ondrop="onDrop(event)"></div>
+        </div>
       </div> 
     
    </div>
@@ -467,14 +469,7 @@ li.item {
   </div>
 </div>
 
-<div id="contextMenu" class="context-menu" 
-        style="display:none">
-        <ul>
-            <li><button id="TTHuyChip" class="btn btn-danger" onclick="huyChipcongdoan()">Xóa Chíp</button></li>
-            <li><button id="TimXe" onclick="TimXe()"  class="btn btn-success">Tìm Xe</button></li>
-            <li><button onclick="loadData()"  class="btn btn-success">Làm Mới!!</button></li>
-        </ul>
-    </div>
+
     <style type="text/css">
       .context-menu {
           position: absolute;
@@ -488,13 +483,13 @@ li.item {
       .context-menu ul {
           padding: 0px;
           margin: 0px;
-          min-width: 150px;
+          min-width: 80px;
           list-style: none;
       }
 
       .context-menu ul li {
-          padding-bottom: 7px;
-          padding-top: 7px;
+          padding-bottom: 2px;
+          padding-top: 2px;
           border: 1px solid black;
       }
 
@@ -508,6 +503,14 @@ li.item {
       }
   </style>
 
+</div>
+<div id="contextMenu" class="context-menu" style="display:none">
+  <ul>
+      <li><a   onclick="BatDauSC()">Bắt Đầu</a></li>
+      <li><a id="TimXe" onclick="KetThuc()"  >Kết Thúc</a></li>
+      <li><a id="TimXe" onclick="DungCongViecGJ()"  >Dừng CV</a></li>
+      <li><a id="TTHuyChip" onclick="huyChip()" >Xoá Chíp</a></li>
+  </ul>
 </div>
 <footer class="w3-container w3-theme" style="padding:32px">
 </footer>

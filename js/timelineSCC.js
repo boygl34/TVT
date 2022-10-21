@@ -51,23 +51,63 @@ var timeline = new vis.Timeline(container, items,groups, options);
 
 
 
-// timeline.on('contextmenu', function (props) {
+timeline.on('contextmenu', function (props) {
   
   
-//   if (document.getElementById("contextMenu").style.display == "block")
-//       { document.getElementById("contextMenu").style.display = "none"
-//       }else {
-//       var menu = document.getElementById("contextMenu")
-//       menu.style.display = 'block';
-//       menu.style.left = props.pageX + "px";
-//       menu.style.top = props.pageY + "px";
-//   }
-//   $("#TTHuyChip").val(props.item)
-//  // $("#TTHuyChip").html(props.item)
-//  // huyChipcongdoan(props.item)
+  if (document.getElementById("contextMenu").style.display == "block")
+      { document.getElementById("contextMenu").style.display = "none"
+      }else {
+      var menu = document.getElementById("contextMenu")
+      menu.style.display = 'block';
+      menu.style.left = props.pageX + "px";
+      menu.style.top = props.pageY + "px";
+  }
+  var ojb =  useCaher
+    for(var a in ojb){
+    if(ojb[a].MaSo == props.item){
+      document.getElementById("BienSoXe").value=ojb[a].BienSoXe
+      changvalue();
+      timeSuaChua() 
+    }}
+  $("#TTHuyChip").val(props.item)
+
+ // $("#TTHuyChip").html(props.item)
+ // huyChipcongdoan(props.item)
   
-// props.event.preventDefault();
-// });
+props.event.preventDefault();
+});
+function huyChip(item){
+  item=$("#TTHuyChip").val()
+  var ojb =  useCaher
+    for(var a in ojb){
+    if(ojb[a].MaSo == item){
+          delete ojb[a].NhomKTV;
+          delete ojb[a].KyThuatVien1;
+          delete ojb[a].KyThuatVien2;
+          delete ojb[a].TimeStartGJ;
+          delete ojb[a].TimeEndGJ;
+          ojb[a].TrangThaiSCC="Chờ SC";
+try{
+  let text = "Bạn muốn Xóa Chíp Tiếp Độ: "+ojb[a].BienSoXe 
+if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoiBP") { 
+       alert(urlTX+"/"+ojb[a].id)
+         $.ajax({
+          url:urlTX+"/"+ojb[a].id,
+          type:'PUT',
+          data:ojb[a],
+            success: function(data){
+            loadData()
+          }
+        })
+      }else{alert("Bạn không Thể xóa chíp")}
+      }catch(eros){alert(eros)}
+
+    }
+  
+  }
+  
+}
+
 
   function loadData () {
         items.clear();
