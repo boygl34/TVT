@@ -50,10 +50,11 @@ var options = {
 var timeline = new vis.Timeline(container, items,groups, options);
 
 
-
+timeline.on('click', function (props) {document.getElementById("contextMenu").style.display = "none"})
 timeline.on('contextmenu', function (props) {
-  
-  
+  $("#biensomenu").html("")
+  document.getElementById('FormSCC').reset()
+  if(props.item){
   if (document.getElementById("contextMenu").style.display == "block")
       { document.getElementById("contextMenu").style.display = "none"
       }else {
@@ -66,16 +67,16 @@ timeline.on('contextmenu', function (props) {
     for(var a in ojb){
     if(ojb[a].MaSo == props.item){
       document.getElementById("BienSoXe").value=ojb[a].BienSoXe
+      $("#biensomenu").html(ojb[a].BienSoXe)
       changvalue();
       timeSuaChua() 
     }}
-  $("#TTHuyChip").val(props.item)
-
- // $("#TTHuyChip").html(props.item)
- // huyChipcongdoan(props.item)
-  
+  $("#TTHuyChip").val(props.item)}
 props.event.preventDefault();
 });
+
+
+
 function huyChip(item){
   item=$("#TTHuyChip").val()
   var ojb =  useCaher
