@@ -165,7 +165,7 @@ function showData(use){
         var timelineProperties = timeline.getEventProperties(event);
         var maso = event.target.attributes.value.textContent
         let text = "Chạy Chip Tiến Độ Xe "+dragSrcEl.innerHTML;
-        var KTV1,KTV2,NhomSC
+        var KTV1="None",KTV2="None",NhomSC="None"
         if(timelineProperties.group=="EM 01"){NhomSC="EM";KTV1="Vinh";KTV2="Hưng"}
         if(timelineProperties.group=="EM 02"){NhomSC="EM";KTV1="Đ Anh";KTV2="Khoa"}
         if(timelineProperties.group=="EM 03"){NhomSC="EM";KTV1="Hiển";KTV2="Cường"}
@@ -186,7 +186,7 @@ function showData(use){
               TimeEndGJ: TimesClick(new Date(1000 * 60 * 60 + (new Date(timelineProperties.time)).valueOf())),
               KyThuatVien1  :KTV1 ,
               KyThuatVien2  :KTV2 ,
-              NhomKTV:"none"
+              NhomKTV:NhomSC
             }
         
      
