@@ -165,7 +165,11 @@ function showData(use){
         var timelineProperties = timeline.getEventProperties(event);
         var maso = event.target.attributes.value.textContent
         let text = "Chạy Chip Tiến Độ Xe "+dragSrcEl.innerHTML;
-
+        var KTV1,KTV2
+        if(timelineProperties.group=="EM 01"){KTV1="Vinh";KTV2="Hưng"}
+        if(timelineProperties.group=="EM 02"){KTV1="Đ Anh";KTV2="Khoa"}
+        if(timelineProperties.group=="EM 03"){KTV1="Hiển";KTV2="Cường"}
+        if(timelineProperties.group=="EM 04"){KTV1="Trí";KTV2=""}
         if (confirm(text) == true) {
             var json2 = {
               TimeStartGJ: TimesClick(new Date(timelineProperties.time)),
@@ -173,8 +177,8 @@ function showData(use){
               TrangThaiXuong: "04 Đã Tiếp Nhận",
               KhoangSuaChua: timelineProperties.group ,
               TimeEndGJ: TimesClick(new Date(1000 * 60 * 60 + (new Date(timelineProperties.time)).valueOf())),
-              KyThuatVien1  :"none" ,
-              KyThuatVien2  :"none" ,
+              KyThuatVien1  :KTV1 ,
+              KyThuatVien2  :KTV2 ,
               NhomKTV:"none"
             }
         
