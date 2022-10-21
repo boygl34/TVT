@@ -687,6 +687,7 @@ if(BangTD=="Pass"){
 timeline.redraw()
  }
 
+
  timeline.on('contextmenu', function (props) {
   
   
@@ -706,6 +707,8 @@ timeline.redraw()
     
   props.event.preventDefault();
   });
+
+  
   function huyChipcongdoan(item){
     item=$("#TTHuyChip").val()
     var BienSo = item.slice(0,item.indexOf("_"))

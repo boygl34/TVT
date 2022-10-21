@@ -17,9 +17,7 @@ var options = {
      $('#ModalSCC').modal('show')
       document.getElementById("BienSoXe").value=BienSo
       changvalue()
-      timeSuaChua()
-      
-      
+      timeSuaChua() 
   },
   
    
@@ -51,11 +49,25 @@ var options = {
  
 var timeline = new vis.Timeline(container, items,groups, options);
 
-timeline.on('drop', function (props) {
-  alert('Right click!');
-  props.event.preventDefault();
-});
 
+
+// timeline.on('contextmenu', function (props) {
+  
+  
+//   if (document.getElementById("contextMenu").style.display == "block")
+//       { document.getElementById("contextMenu").style.display = "none"
+//       }else {
+//       var menu = document.getElementById("contextMenu")
+//       menu.style.display = 'block';
+//       menu.style.left = props.pageX + "px";
+//       menu.style.top = props.pageY + "px";
+//   }
+//   $("#TTHuyChip").val(props.item)
+//  // $("#TTHuyChip").html(props.item)
+//  // huyChipcongdoan(props.item)
+  
+// props.event.preventDefault();
+// });
 
   function loadData () {
         items.clear();
@@ -82,6 +94,7 @@ timeline.on('drop', function (props) {
             group: r.KhoangSuaChua,
             start: start,
             end: end,
+            title:r.CoVanDichVu,
             content: r.BienSoXe +" "+r.KyThuatVien1
             })
         }
@@ -92,6 +105,7 @@ timeline.on('drop', function (props) {
         group: r.KhoangSuaChua,
         start: start,
         end: end,
+        title:r.CoVanDichVu,
         content: r.BienSoXe +" "+r.KyThuatVien1
         });   }
         if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"&&r.TimeEndGJ){
@@ -103,6 +117,7 @@ timeline.on('drop', function (props) {
             group: "Rửa Xe",
             start: end,
             end: endRX,
+            
             content: r.BienSoXe +" "+r.CoVanDichVu
             });
 

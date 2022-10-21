@@ -190,14 +190,38 @@ li.item {
         list-style: none;
         width: 100%;
         color: #1A1A1A;
-        background-color: #D5DDF6;
         border: 1px solid #97B0F8;
         border-radius: 2px;
         margin-bottom: 5px;
         padding: 5px 12px;
         padding-left: 10px;
+        font-size: medium;
     }
-
+    li.item.ChuaSuaChua {
+       background:#ffc107 ;
+    }
+    li.item.DangSuaChua {
+       background:greenyellow ;
+    }
+    li.item.ChoSuaChua {
+       background:magenta ;
+    }
+    li.item.DungGio:before {
+        content: "[Đ]";
+        font-family: Arial, sans-serif;
+        display: inline-block;
+        font-size: inherit;
+        cursor: move;
+    }
+    li.item.DenSom:before {
+        content: "[S]";
+        font-family: Arial, sans-serif;
+        display: inline-block;
+        font-size: inherit;
+        cursor: move;
+    }
+  
+  
 </style>
 <body>
   <div id="navibar" >
@@ -238,10 +262,10 @@ li.item {
         <ul class="nav nav-tabs" role="tablist">
             <li class="nav-item"><a class="nav-link " href="#TienDo" aria-controls="home" role="tab" data-toggle="tab">Tiến Độ</a></li>
             <li class="nav-item"><a class="nav-link active" href="#Timeline" aria-controls="about" role="tab" data-toggle="tab"ondblclick="redraw ()">Timeline</a></li>
-            <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: #ffc107" disabled>Chờ SC</a></li>
-              <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: greenyellow" disabled>Đang SC</a></li>
-              <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: red" disabled>Dừng SC</a></li>
-              <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: magenta" disabled>Đã SC</a></li>
+            <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: #ffc107" disabled>Chờ</a></li>
+              <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: greenyellow" disabled>Đang</a></li>
+              <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: red" disabled>Dừng</a></li>
+              <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: magenta" disabled>Đã</a></li>
               <li class="nav-item" disabled><a class="nav-link "   style="color:black;background-color: blue" disabled>Xe Hẹn</a></li>
               
             <li class="nav-item"><div class="custom-control custom-checkbox checkbox-xl">
@@ -284,13 +308,13 @@ li.item {
       <div role="tabpanel" class="tab-pane active" id="Timeline">
         <div class="row">
        
-          <div style="width: 7%;" >
+          <div style="width: 10%;" >
             <ul class="items" id="XeChoSuaChua">
               
               
           </ul>
         </div>
-         <div style="width: 93%;"id="mytimeline" ondragover="event.preventDefault()" ondrop="onDrop(event)"></div>
+         <div style="width: 90%;"id="mytimeline" ondragover="event.preventDefault()" ondrop="onDrop(event)"></div>
       </div> 
     
    </div>
@@ -442,6 +466,47 @@ li.item {
     </div>
   </div>
 </div>
+
+<div id="contextMenu" class="context-menu" 
+        style="display:none">
+        <ul>
+            <li><button id="TTHuyChip" class="btn btn-danger" onclick="huyChipcongdoan()">Xóa Chíp</button></li>
+            <li><button id="TimXe" onclick="TimXe()"  class="btn btn-success">Tìm Xe</button></li>
+            <li><button onclick="loadData()"  class="btn btn-success">Làm Mới!!</button></li>
+        </ul>
+    </div>
+    <style type="text/css">
+      .context-menu {
+          position: absolute;
+          z-index: 20;
+          display: flex;
+          text-align: center;
+          background: lightgray;
+          border: 1px solid black;
+      }
+
+      .context-menu ul {
+          padding: 0px;
+          margin: 0px;
+          min-width: 150px;
+          list-style: none;
+      }
+
+      .context-menu ul li {
+          padding-bottom: 7px;
+          padding-top: 7px;
+          border: 1px solid black;
+      }
+
+      .context-menu ul li a {
+          text-decoration: none;
+          color: black;
+      }
+
+      .context-menu ul li:hover {
+          background: darkgray;
+      }
+  </style>
 
 </div>
 <footer class="w3-container w3-theme" style="padding:32px">

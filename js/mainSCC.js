@@ -90,22 +90,31 @@ function showData(use){
                 ColCoVan.innerHTML = r.CoVanDichVu
                 row.appendChild(ColCoVan);
             var ColTrangThai = document.createElement("td")
+            var tthen=""
+            if(r.TrangThaiHen=="Đúng Giờ"){
+             tthen = "DungGio"
+              }
+            if(r.TrangThaiHen=="Đến Sớm"){
+              tthen = "DenSom"
+              }
+            
+
             var div = ""
                 if( r.TrangThaiXuong=="05 Đang Sửa Chữa"){div ="Đang SC" ;
                         row.setAttribute('class', 'DangSuaChua')}
                 if( r.TrangThaiXuong=="04 Đã Tiếp Nhận"){div ="Đã TN";
                 row.setAttribute('class', 'ChuaSuaChua');
-                //additembienso(r.BienSoXe,r.MaSo)
+                additembienso(r.BienSoXe,r.MaSo,"ChuaSuaChua",tthen)
               }
                 if (r.TrangThaiXuong =='03 Đang Tiếp Nhận') { div="Đang TN";row.setAttribute('class', 'ChoSuaChua');
-                //additembienso(r.BienSoXe,r.MaSo)
+                additembienso(r.BienSoXe,r.MaSo,"DangSuaChua",tthen)
               }
                 if (r.TrangThaiXuong =='02 Chờ Tiếp Nhận'||r.TrangThaiXuong =='02 Chuẩn Bị Tiếp') {
                    div="Chờ TN";row.setAttribute('class', 'ChoSuaChua');
-                  // additembienso(r.BienSoXe,r.MaSo)
+                  additembienso(r.BienSoXe,r.MaSo,"ChoSuaChua",tthen)
                   }
                  if (r.TrangThaiXuong =='05 Dừng Công Việc') { div='Dừng CV';row.setAttribute('class', 'DungCongViec')}
-                 if (r.TrangThaiSCC =='Chờ SC') { additembienso(r.BienSoXe,r.MaSo)}
+                 //if (r.TrangThaiSCC =='Chờ SC') { additembienso(r.BienSoXe,r.MaSo)}
                 ColTrangThai.innerHTML = div
                 row.appendChild(ColTrangThai);
             var ColKhoang = document.createElement("td")
@@ -146,31 +155,31 @@ function showData(use){
 
 
 
-      function additembienso(value,MaSo){
-        $("#XeChoSuaChua").html($("#XeChoSuaChua").html()+'<li draggable="true"  ondragend="handleDragStart(event)"class="item" value="'+MaSo+'">'+value+'</li>')
+      function additembienso(value,MaSo,trangthai,tthen){
+        $("#XeChoSuaChua").html($("#XeChoSuaChua").html()+'<li draggable="true"  ondragend="handleDragStart(event)"class="item '+trangthai+' '+tthen+'" value="'+MaSo+'">'+value+'</li>')
       }
 
       function handleDragStart(event) {
         var dragSrcEl = event.target;
         event.dataTransfer.effectAllowed = 'move';
         var timelineProperties = timeline.getEventProperties(event);
-        
         var maso = event.target.attributes.value.textContent
-        
-        var json2 = {
+        let text = "Chạy Chip Tiến Độ Xe "+dragSrcEl.innerHTML;
 
-          TimeStartGJ: TimesClick(new Date(timelineProperties.time)),
-          TrangThaiSCC:"Chờ SC",
-          TrangThaiXuong: "04 Đã Tiếp Nhận",
-          KhoangSuaChua: timelineProperties.group ,
-          TimeEndGJ: TimesClick(new Date(1000 * 60 * 60 + (new Date(timelineProperties.time)).valueOf())),
-          KyThuatVien1  :"none" ,
-          KyThuatVien2  :"none" ,
-          NhomKTV:"none"
-        }
+        if (confirm(text) == true) {
+            var json2 = {
+              TimeStartGJ: TimesClick(new Date(timelineProperties.time)),
+              TrangThaiSCC:"Chờ SC",
+              TrangThaiXuong: "04 Đã Tiếp Nhận",
+              KhoangSuaChua: timelineProperties.group ,
+              TimeEndGJ: TimesClick(new Date(1000 * 60 * 60 + (new Date(timelineProperties.time)).valueOf())),
+              KyThuatVien1  :"none" ,
+              KyThuatVien2  :"none" ,
+              NhomKTV:"none"
+            }
         
      
-postData(json2,urlTX+"/"+checkID(maso),"PATCH")
+postData(json2,urlTX+"/"+checkID(maso),"PATCH")}
 
     }
     
