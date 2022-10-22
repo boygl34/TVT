@@ -1,9 +1,177 @@
+<!DOCTYPE html>
+<html>
 
+<head>
+  
+	<base target="_top">
+	<!--INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES-->
+  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+	<link rel="stylesheet" type="text/css"
+		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.js"></script>
+        <link rel="stylesheet" type="text/css"	href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.21.0/vis.min.css">
+        <style>
+        .vis-labelset .vis-label {
+            position: relative;
+            left: 0;
+            top: 0;
+            width: 100%;
+            color: white;
+            box-sizing: border-box;
+            }
+            .vis-timeline {
+              border: 1px solid;
+              font-family:  purisa, 'comic sans', cursive;
+              font-size: 7pt;
+              background-color:  #363945;
+         
+              font-weight: bold;
+              color :whitesmoke;
+            }
+            .vis-item {
+              border-color: #F991A3;
+              text-decoration-line: line-through;
+              font-family: Arial, sans-serif;
+              background-color: pink;
+              font-size: 30pt;
+              box-shadow: 5px 5px 20px rgba(128,128,128, 0.5);
+            }
+           
+         .vis-item.green.vis-selected  {
+                  background-color: #7f3b88;
+                  color: #00ff00 ;
+                  border-color: #9d9b95;
+                  z-index: 2;
+                  }
+         .vis-item.orange.vis-selected  {
+           background-color: #7f3b88;
+           color: #00ff00 ;
+           border-color: #9d9b95;
+           z-index: 2;
+                  }
+           
+                  .vis-item.vis-selected  {
+           background-color: #7f3b88;
+           color: #00ff00 ;
+           border-color: #9d9b95;
+           z-index: 2;
+         }
+            .vis-item.green {
+          background-color: greenyellow;
+          border-color: green;
+          font-weight: bold;
+           color: black;
+         }
+         
+         
+         .vis-item.red {
+         background-color: red;
+          border-color: darkred;
+          color: white;
+          }
+          .vis-sunday{
+           background-color: rgba(255, 0, 0, 0.281);
+          }
+          .vis-item.blue {
+           background-color: rgb(25, 0, 255);
+            border-color: darkred;
+            color: white;
+            }
+            .vis-panel>.vis-content {
+    font-size: 40px;
+    position: relative;
+  }
+         
+         .vis-today{
+           background-color: rgb(65, 88, 85);
+           border-color: rgb(65, 88, 85);
+           border-collapse: collapse;
+         }
+         .vis-h12{
+           background-color: rgb(240, 221, 240);
+         } 
+         .vis-item.magenta {
+          background-color: magenta;
+          border-color: purple;
+          color: white;
+         }
+         .vis-time-axis .vis-text {
+   position: absolute;
+   color: white;
+   padding: 3px;
+   overflow: hidden;
+   box-sizing: border-box;
+   white-space: nowrap;
+}
+         
+          .vis-item.orange {
+          background-color: #ffd966;
+          border-color: orange;
+          color: black;
+          font-weight: bold;
+         }</style>
+</head>
+
+<body style="background-color:black;">
+    <h1 id="tieude" style="color: WHITE;text-align: center;"></h1>
+   
+    <div> <div  id="mytimeline"></div></div>
+    
+    </div>    
+
+    <script>
+        var useCaher,useCaher2,useCaher3
+ var urlTX = "https://deciduous-pentagonal-powder.glitch.me/XeTrongXuong"
+ var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
+ var urlhen = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao?KhachHangHen=Khách Hẹn"
+ var urlhenvl = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao?KhachHangHen=Hẹn Vãn Lai"
+var useCaher
+ laydulieu()
+function laydulieu(){ 
+  var watcherId
+  fetch(urlTX)
+  .then(response => response.json())
+  .then(data =>{
+    useCaher=data
+   
+    loadData()
+  } );
+
+   
+
+
+}
+// getData(urlTX)
+// getData2(urlhen)
+  setInterval(laydulieu,30000);
+  //DanhSachCoVan();
+
+
+  var NhomTN=["Có Hẹn","Tiếp Nhận"]
+var NhomCV=["Toàn","Tài","Rôn","Mẫn","Sang","Vinh","Triêng","Lộc","Hiệp","None"]
+var NhomDH=["EM","SCC","Đồng Sơn","Báo Giá BH"]
+var KTVDong=["Châu","Trường","Phúc","Trương","Quang","Định"]
+var KTVSonDinh=["Đình","Thành","Lưu","Hùng","Lâm","Duy","Tài"]
+var KTVSonThien=["Thiên","Dũng","Lực","Tú","Chương","Đồng","Quốc","Lưu"]
+var PhongSon=["Phòng Sơn 1","Phòng Sơn 2","Phòng Sơn 3"]
+var NhomSon=["Đình","Thiên"]
+var KTVDongSon=["Châu","Trường","Phúc","Trương","Quang","Định","Đình","Thành","Lưu","Hùng","Lâm","Duy","Tài","Thiên","Dũng","Lực","Tú","Chương","Đồng","Quốc","Lưu"]
+var KhoangSC =["EM 01","EM 02","EM 03","EM 04","SCC 05","SCC 06","SCC 07","SCC 08","SCC 09","SCC 10","4 Trụ","K Ngoài"]
+var NhomKTV =["EM","Bạo","Hoan"]
+var KTVBao=["Bạo","Hiếu","Duy","Phước","Huy","Tân"]
+var KTVHoan=["Hoan","Lâm","Tâm","Sơn","Thiên"]
+var KTVEM=["Sáng","Hưng","Vinh","Khoa","Đ Anh","Hiển","Cường","Trí"]
+var ListXe=["Camry","Inova","Fortuner","Altis","Altis Cross","Veloz","Wigo","Land Cruiser","Land Prado","Hilander","Rav4","Vios","Rush","Avanza","Raize","Lexus"]
 
 
 var items = new vis.DataSet();
 var container = document.getElementById('mytimeline');
 var options = {
+    align:"auto",
+    width: '100%',
+    timeAxis: {scale: 'minute', step: 15},
     hiddenDates: [{start: '2017-03-05 00:00:00',end: '2017-03-06 00:00:00',repeat: 'weekly'},
     { start: '2017-03-04 17:00:00',end: '2017-03-05 08:00:00',repeat: 'daily'}],
      onMove: function (item) {
@@ -26,7 +194,7 @@ var options = {
     
     orientation: 'top',
     start:(new Date( (new Date()).valueOf())).setHours(6),
-    end: (new Date( (new Date()).valueOf())).setHours(17),
+     end: (new Date( (new Date()).valueOf())).setHours(17),
     editable: true,
     autoResize:false,
     margin: {
@@ -121,12 +289,12 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
 }
 
 
-  function loadData () {
+function loadData () {
         items.clear();
         var dataArray0 =   useCaher
         var dataArray1= dataArray0.filter(function(r){return (r.LoaiHinhSuaChua==="EM"||r.LoaiHinhSuaChua==="SCC"||r.LoaiHinhSuaChua==="EM60")})
         for (var a=0;a<dataArray1.length;a++){
-          var hoanthanh = document.getElementById("checkbox-3").checked
+          
         r=dataArray1[a]
         var khoang ,mau="", edit1= {
           add: false,         // add new items by double tapping
@@ -142,21 +310,11 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
         if(r.TrangThaiSCC=="Đã SC"){mau="magenta"}
         var start = new Date(DoiNgayDangKy(r.TimeStartGJ));
         var end = new Date(DoiNgayDangKy(r.TimeEndGJ));
-        var endRX = new Date(DoiNgayDangKy(r.TimeEndGJ).valueOf()+15*60*1000)
+        if(r.TimeEndGJ){
+        var endRX = new Date(DoiNgayDangKy(r.TimeEndGJ).valueOf()+15*60*1000)}
         var timeNow=new Date()
         if((new Date(DoiNgayDangKy(r.TimeEndGJ))).valueOf()<timeNow.valueOf()){mau="magenta"}
-        if(hoanthanh&&r.TrangThaiSCC=="Đã SC"&&r.TimeStartGJ){
-          items.add({
-            className: mau,
-            id:  r.MaSo  ,
-            group: r.KhoangSuaChua,
-            start: start,
-            end: end,
-            editable: edit1,
-            //title:r.CoVanDichVu,
-            content: r.BienSoXe +" "+r.KyThuatVien1
-            })
-        }
+      
         if(r.TrangThaiSCC!="Đã SC"&&r.TimeStartGJ){
         items.add({
         className: mau,
@@ -166,8 +324,10 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
         end: end,
         editable: edit1,
         //title:r.CoVanDichVu,
-        content: r.BienSoXe +" "+r.KyThuatVien1
+        content: r.BienSoXe 
         });   }
+
+
         if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"&&r.TimeEndGJ){
           var classname2 ="orange"
   if(r.TrangThaiXuong=="07 Đang Rửa Xe"){classname2="green"}
@@ -178,34 +338,11 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
             start: end,
             end: endRX,
             editable: edit1,
-            content: r.BienSoXe +" "+r.CoVanDichVu
+            content: r.BienSoXe 
             });
 
         } 
-        if(r.ThoiGianHen&& document.getElementById("checkbox-hen").checked){
-          if(r.TimeStartGJ){}else{
-          var start =DoiNgayDangKy(r.ThoiGianHen)
-          var end
-         
-          if(r.LoaiHinhSuaChua=="EM"||r.LoaiHinhSuaChua=="EM60"){  end=  new Date(1000 * 60 * 29 + (new Date(start)).valueOf())}
-          if(r.LoaiHinhSuaChua=="SCC"||r.LoaiHinhSuaChua=="FIR"){  end=  new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
-          if((r.NoiDungHen.toUpperCase()).indexOf("BD40K")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
-    if((r.NoiDungHen.toUpperCase()).indexOf("BD80K")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
-    if((r.NoiDungHen.toUpperCase()).indexOf("LEXUS")>=0){end = new Date(1000 * 60 * 59 + (new Date(start)).valueOf())}
-          var classnamehen ="blue"
-            if(r.TDGapLeTan){classnamehen="orange"}
-          items.add({
-            className: classnamehen,
-            id:  r.BienSoXe+"_Hen"  ,
-            group: r.KhoangSuaChua,
-            start:  start ,
-            end: end,
-            editable: edit1,
-            content: r.BienSoXe +" [H]",
-            title:r.BienSoXe+"<br>"+r.NoiDungHen+"<br>"+r.NguoiDatHen,
-            });
-          }
-        } 
+        
         timeline.redraw()
 }
 }
@@ -213,6 +350,20 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
 function redraw(){
   timeline.redraw()
 }
+function DoiNgayDangKy(ngayhen){
+  var aa
+  if(ngayhen){
+    var Thang =ngayhen.slice(3,5)
+    var Ngay = ngayhen.slice(0,2)
+    var Nam = ngayhen.slice(6,10)
+    var Gio = ngayhen.slice(11,13)
+    var Phut = ngayhen.slice(14,16)
+    var ThoiGianMoi = Nam+"-"+Thang+"-"+Ngay+"T"+Gio+":"+Phut+":00Z"
+     var aa= new Date(ThoiGianMoi)
+     aa= new Date(aa-7*60*60*1000)}
+     return aa ;
+    }
+  
 function capnhatthoigian(item){
   	var ojb =  useCaher
     var KTV1="None",KTV2="None",NhomSC="None"
@@ -243,9 +394,15 @@ var json2 = {
 
     
 
+       </script>
+     
+     
+     
+    
+     
+    
+    
+     
+</body>
 
-
-
-
-
-
+</html>
