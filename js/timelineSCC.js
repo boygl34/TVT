@@ -21,7 +21,7 @@ var options = {
   },
   
    
-   
+    
     orientation: 'top',
     start: new Date(),
     end: new Date(1000 * 60 * 60 * 24 + (new Date()).valueOf()),
@@ -118,7 +118,13 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
         for (var a=0;a<dataArray1.length;a++){
           var hoanthanh = document.getElementById("checkbox-3").checked
         r=dataArray1[a]
-        var khoang ,mau=""
+        var khoang ,mau="", edit1= {
+          add: false,         // add new items by double tapping
+          updateTime: true,  // drag items horizontally
+          updateGroup: true, // drag items from one group to another
+          remove: false,       // delete an item by tapping the delete button top right
+          overrideItems: true  // allow these options to override item.editable
+          }
         if(r.LoaiHinhSuaChua=="SCC"){khoang=2}else{khoang=1}
         if(r.TrangThaiSCC=="Đang SC"){mau="green"}
         if(r.TrangThaiSCC=="Dừng SC"){mau="red"}
@@ -136,7 +142,8 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
             group: r.KhoangSuaChua,
             start: start,
             end: end,
-            title:r.CoVanDichVu,
+            editable: edit1,
+            //title:r.CoVanDichVu,
             content: r.BienSoXe +" "+r.KyThuatVien1
             })
         }
@@ -147,7 +154,8 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
         group: r.KhoangSuaChua,
         start: start,
         end: end,
-        title:r.CoVanDichVu,
+        editable: edit1,
+        //title:r.CoVanDichVu,
         content: r.BienSoXe +" "+r.KyThuatVien1
         });   }
         if(r.KhachRuaXe=="Rửa Xe"&&r.TrangThaiXuong!="08 Chờ Giao Xe"&&r.TimeEndGJ){
@@ -159,7 +167,7 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
             group: "Rửa Xe",
             start: end,
             end: endRX,
-            
+            editable: edit1,
             content: r.BienSoXe +" "+r.CoVanDichVu
             });
 
@@ -182,6 +190,7 @@ if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") {
             group: r.KhoangSuaChua,
             start:  start ,
             end: end,
+            editable: edit1,
             content: r.BienSoXe +" [H]",
             title:r.BienSoXe+"<br>"+r.NoiDungHen+"<br>"+r.NguoiDatHen,
             });
