@@ -189,7 +189,7 @@ function showData(use){
         if(timelineProperties.group=="SCC 09"){NhomSC="Hoan";KTV1="Sơn";KTV2=""}
         if(timelineProperties.group=="SCC 10"){NhomSC="Hoan";KTV1="Thiên";KTV2=""}
         
-        if (confirm(text) == true) {
+        //if (confirm(text) == true) {
             var json2 = {
               TimeStartGJ: TimesClick(new Date(timelineProperties.time)),
               TrangThaiSCC:"Chờ SC",
@@ -202,7 +202,8 @@ function showData(use){
             }
         
      
-postData(json2,urlTX+"/"+checkID(maso),"PATCH")}
+postData(json2,urlTX+"/"+checkID(maso),"PATCH")
+//}
 
     }
     
