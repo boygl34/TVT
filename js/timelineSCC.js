@@ -74,7 +74,9 @@ timeline.on('contextmenu', function (props) {
       var end = new Date(DoiNgayDangKy(ojb[a].TimeEndGJ));
 
       var chiudaichip = end-start
+      
       $("#ChieuDaiChip").val(chiudaichip)
+    
       $("#biensomenu").html(ojb[a].BienSoXe)
       changvalue();
       timeSuaChua() 
