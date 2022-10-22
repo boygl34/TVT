@@ -399,7 +399,7 @@ postData(json2,urlTX+"/"+checkID(maso),"PATCH")
     if(document.getElementById("KyThuatVien1").value==""){alert("Chưa Có KTV");return false}
     
 
-    var GioKetThucChip = new Date( new Date()+$('#ChieuDaiChip').val())
+    var GioKetThucChip = new Date($("#ChieuDaiChip").val()*1 + (new Date()).valueOf());
     var json2 = {
 
           TimeStartGJ: TimesClick(),
