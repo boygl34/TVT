@@ -88,9 +88,10 @@ function huyChip(item){
           delete ojb[a].TimeStartGJ;
           delete ojb[a].TimeEndGJ;
           ojb[a].TrangThaiSCC="Chờ SC";
+          ojb[a].TrangThaiXuong="04 Đã Tiếp Nhận";
 try{
   let text = "Bạn muốn Xóa Chíp Tiếp Độ: "+ojb[a].BienSoXe 
-if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoiBP") { 
+if (confirm(text) == true&&localStorage.getItem("PhanQuyen")=="DieuPhoi") { 
        alert(urlTX+"/"+ojb[a].id)
          $.ajax({
           url:urlTX+"/"+ojb[a].id,
