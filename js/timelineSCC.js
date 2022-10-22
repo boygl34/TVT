@@ -26,9 +26,9 @@ var options = {
     start: new Date(),
     end: new Date(1000 * 60 * 60 * 24 + (new Date()).valueOf()),
     editable: true,
-   
+    autoResize:false,
     margin: {
-      item: 1,  // distance between items
+      item: 0,  // distance between items
       axis: 1 ,  // distance between items and the time axis
       },
  stack: true,
@@ -205,12 +205,25 @@ function redraw(){
 }
 function capnhatthoigian(item){
   	var ojb =  useCaher
-    var MaSonew
+    var KTV1="None",KTV2="None",NhomSC="None"
+        if(item.group=="EM 01"){NhomSC="EM";KTV1="Vinh";KTV2="Hưng"}
+        if(item.group=="EM 02"){NhomSC="EM";KTV1="Đ Anh";KTV2="Khoa"}
+        if(item.group=="EM 03"){NhomSC="EM";KTV1="Hiển";KTV2="Cường"}
+        if(item.group=="EM 04"){NhomSC="EM";KTV1="Trí";KTV2=""}
+        if(item.group=="SCC 05"){NhomSC="Bạo";KTV1="Phước";KTV2=""}
+        if(item.group=="SCC 06"){NhomSC="Bạo";KTV1="Hiếu";KTV2=""}
+        if(item.group=="SCC 07"){NhomSC="Bạo";KTV1="Duy";KTV2=""}
+        if(item.group=="SCC 08"){NhomSC="Hoan";KTV1="Lâm";KTV2=""}
+        if(item.group=="SCC 09"){NhomSC="Hoan";KTV1="Sơn";KTV2=""}
+        if(item.group=="SCC 10"){NhomSC="Hoan";KTV1="Thiên";KTV2=""}
 
 var json2 = {
         TimeStartGJ:TimesClick(item.start),
         TimeEndGJ: TimesClick(item.end),
         KhoangSuaChua:item.group,
+        KyThuatVien1  :KTV1 ,
+        KyThuatVien2  :KTV2 ,
+        NhomKTV:NhomSC
       }
       postData(json2,urlTX+"/"+checkID(item.id),"PATCH")
 
