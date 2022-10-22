@@ -15,6 +15,8 @@ var options = {
       $("#buttonSCC").html('')
       document.getElementById('FormSCC').reset()
      $('#ModalSCC').modal('show')
+      var chiudaichip = item.end-item.start
+      $("#ChieuDaiChip").val(chiudaichip)
       document.getElementById("BienSoXe").value=BienSo
       changvalue()
       timeSuaChua() 
@@ -55,6 +57,7 @@ timeline.on('contextmenu', function (props) {
   $("#biensomenu").html("")
   document.getElementById('FormSCC').reset()
   if(props.item){
+    console.log(props)
   if (document.getElementById("contextMenu").style.display == "block")
       { document.getElementById("contextMenu").style.display = "none"
       }else {
@@ -66,7 +69,12 @@ timeline.on('contextmenu', function (props) {
   var ojb =  useCaher
     for(var a in ojb){
     if(ojb[a].MaSo == props.item){
-      document.getElementById("BienSoXe").value=ojb[a].BienSoXe
+      document.getElementById("BienSoXe").value=ojb[a].BienSoXe;
+      var start = new Date(DoiNgayDangKy(ojb[a].TimeStartGJ));
+      var end = new Date(DoiNgayDangKy(ojb[a].TimeEndGJ));
+
+      var chiudaichip = end-start
+      $("#ChieuDaiChip").val(chiudaichip)
       $("#biensomenu").html(ojb[a].BienSoXe)
       changvalue();
       timeSuaChua() 

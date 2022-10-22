@@ -366,13 +366,47 @@ postData(json2,urlTX+"/"+checkID(maso),"PATCH")
     if(document.getElementById("GioKetThucSC").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert">Chưa Có Thời Gian Sữa Chữa!</div>'); return false}
     if(document.getElementById("KhoangSuaChua").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert"> Chưa Có Khoang Làm Việc!</div>');return false}
     if(document.getElementById("CoVanDichVu").value==""){$("#mesenge").html('<div class="alert alert-danger" role="alert"> Chưa Có Cố Vấn!</div>');return false}
-        var json2 = {
+        
+    
+    var json2 = {
 
           TimeStartGJ: TimesClick(),
           TrangThaiSCC:"Đang SC",
           TrangThaiXuong: "05 Đang Sửa Chữa",
           KhoangSuaChua: $('#KhoangSuaChua').val() ,
           TimeEndGJ: $('#GioKetThucSC').val(),
+          KyThuatVien1  :$('#KyThuatVien1').val() ,
+          KyThuatVien2  :$('#KyThuatVien2').val() ,
+          NhomKTV:$('#NhomKTV').val(),
+          BaiDauXe :$('#KhoangSuaChua').val(),
+        }
+ 
+  var ojb =  useCaher 
+      for(var a in ojb){
+      if(ojb[a].MaSo ==  document.getElementById("MaSo").value){   
+        if(ojb[a].TDKetThucTiepKhach){   }else{json2["TDKetThucTiepKhach"]=TimesClick();}
+        if(ojb[a].KhachHangDoi){   }else{json2["KhachHangDoi"]="Khách Đợi"}
+        if(ojb[a].KhachRuaXe){}else{$('#DKRUAXetitle').html(ojb[a].BienSoXe);$('#RuaXeModal').modal('hide');$('#RuaXeModal').modal('show')}
+        if(ojb[a].TDHenGiaoXe){   }else{json2["TDHenGiaoXe"]=TimesClick(new Date(1000 * 60 * 29 + (new Date(DoiNgayDangKy($('#GioKetThucSC').val()))).valueOf()));}
+      }
+    }
+  
+  $("#mesenge").html('<div class="alert alert-warning" role="alert">Đang Cập Nhật!</div>')
+  postData(json2,urlTX+"/"+checkID($(MaSo).val()),"PATCH") 
+  }
+
+  function BatDauSC2(){
+    if(document.getElementById("KyThuatVien1").value==""){alert("Chưa Có KTV");return false}
+    
+
+    var GioKetThucChip = new Date( new Date()+$('#ChieuDaiChip').val())
+    var json2 = {
+
+          TimeStartGJ: TimesClick(),
+          TrangThaiSCC:"Đang SC",
+          TrangThaiXuong: "05 Đang Sửa Chữa",
+          KhoangSuaChua: $('#KhoangSuaChua').val() ,
+          TimeEndGJ: TimesClick(GioKetThucChip),
           KyThuatVien1  :$('#KyThuatVien1').val() ,
           KyThuatVien2  :$('#KyThuatVien2').val() ,
           NhomKTV:$('#NhomKTV').val(),
@@ -555,6 +589,7 @@ postData(json2,urlTX+"/"+checkID(maso),"PATCH")
       document.getElementById("inputThoiGianSCC").value = time/(60*60*1000)
       document.getElementById("rangerThoiGianSCC").value = time/(60*60*1000)
       }
+
   function changvalue(){
       var ojb =  useCaher
    
