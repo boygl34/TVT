@@ -103,15 +103,15 @@ function showData(use){
                 if( r.TrangThaiXuong=="05 Đang Sửa Chữa"){div ="Đang SC" ;
                         row.setAttribute('class', 'DangSuaChua')}
                 if( r.TrangThaiXuong=="04 Đã Tiếp Nhận"){div ="Đã TN";
-                row.setAttribute('class', 'ChuaSuaChua');
-                additembienso(r.BienSoXe,r.MaSo,"ChuaSuaChua",tthen,r.LoaiHinhSuaChua)
+                row.setAttribute('class', 'ChoSuaChua');
+                additembienso(r.BienSoXe,r.MaSo,"ChoSuaChua",tthen,r.LoaiHinhSuaChua)
               }
                 if (r.TrangThaiXuong =='03 Đang Tiếp Nhận') { div="Đang TN";row.setAttribute('class', 'ChoSuaChua');
                 additembienso(r.BienSoXe,r.MaSo,"DangSuaChua",tthen,r.LoaiHinhSuaChua)
               }
                 if (r.TrangThaiXuong =='02 Chờ Tiếp Nhận'||r.TrangThaiXuong =='02 Chuẩn Bị Tiếp') {
                    div="Chờ TN";row.setAttribute('class', 'ChoSuaChua');
-                  additembienso(r.BienSoXe,r.MaSo,"ChoSuaChua",tthen,r.LoaiHinhSuaChua)
+                  additembienso(r.BienSoXe,r.MaSo,"ChuaSuaChua",tthen,r.LoaiHinhSuaChua)
                   }
                  if (r.TrangThaiXuong =='05 Dừng Công Việc') { div='Dừng CV';row.setAttribute('class', 'DungCongViec')}
                  //if (r.TrangThaiSCC =='Chờ SC') { additembienso(r.BienSoXe,r.MaSo)}
