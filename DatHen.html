@@ -135,13 +135,20 @@ body {font-family: "Roboto", sans-serif}
             </div> 
          </div>
          <div class="form-row">
-            <div class="form-group col-6"style="display">
+            <div class="form-group col-4"style="display">
                 <label for="GioBatDauSCC">Tên KH </label>
                 <input required type="text" class="form-control" id="TenKH"  >
               </div>
-              <div class="form-group col-6"style="display">
+              <div class="form-group col-4"style="display">
                 <label for="GioBatDauSCC">Số Điện Thoại</label>
                 <input required  type="tel" class="form-control"  id="SoDT"  >
+              </div>
+              <div class="form-group col-4"style="display">
+                <label for="">Khu Vực</label>
+                <select required  type="tel" class="form-control"  id="KhuVuc" onchange="ChangKhuVuc()"  >
+                  <option></option>
+                  </select>
+
               </div>
 
          </div>
