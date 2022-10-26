@@ -41,7 +41,9 @@ body {font-family: "Roboto", sans-serif}
         </select> 
       </div> 
       <button type="button" class="btn btn-primary" onclick="BaoCaoClick()">Báo Cáo</button>
-      <a class="w3-bar-item w3-button" href="#">Link</a>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaltrathongtin">
+        Tra Cứu
+      </button>
     </div>
   </div>
 </nav>
@@ -58,13 +60,14 @@ body {font-family: "Roboto", sans-serif}
 </header>
 <div class="w3-container"id="TrangDangNhap" style="padding:20px;height: 500px;">
   <div id="alert" style="position: absolute; top: 10px; right: 10px;"></div>
-
-  
-    
-    <div id="iddathen"> <a>Sáng</a> <div  id="mytimeline"></div>
-     <a>Chiều</a>
-    <div  id="mytimeline2"></div></div>
-
+    <div id="iddathen"></div>
+      <a>Sáng</a> 
+      <div  id="mytimeline"></div>
+      <a>Chiều</a>
+      <div  id="mytimeline2"></div>
+     <footer class="w3-container w3-theme" style="padding:32px">
+  <p>Footer information goes here</p>
+</footer>
     <div id="BaoCaoHen" class="carousel slide" data-ride="carousel" style="display:none">
       <div class="carousel-inner">
         <div class="carousel-item active">
@@ -72,132 +75,160 @@ body {font-family: "Roboto", sans-serif}
         </div>
       </div>
     </div>
+   </div>
+ 
+
 <!--INCLUDE Modal-->
 <div class="modal fade" id="ModalSCC" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog" role="document">
   <div class="modal-content">
-    <div class="modal-header">
-      <h5 class="modal-title" >Đăng Ký Đặt Hẹn</h5><h5 style="float: right" id="biensoscc"></h5>
-      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    
-    <div class="modal-body">
-      <form id="FormSCC" autocomplete="off">
-        <div id="mesenge"><div class='alert alert-success'>WellCome!!</div></div>
-        <div class="form-group col-6"style="display:none">
-              <label for="MaSo">Mã Số</label>
-              <input required class="form-control"  id="MaSo"   name="MaSo" disabled>
-            </div> 
-        <div class="form-row">
-        
-            <div class="form-group col-6">
-              <label for="KhoangSuaChua">Biển Số Xe</label>
-              <input required class="form-control"  id="BienSoXe"  name="BienSoXe" onchange="changvalueBS()"onkeyup="this.value = suabienso(this.value)">
-            </div>
-             <div class="form-group col-6">
-              <label for="KhoangSuaChua">Cố Vấn</label>
-              <select required class="form-control"  id="CoVanDichVu" onchange=" CoVanDuocDatHen(this.value)" >
-                  '<option ></option>'
-              </select> 
-            </div> 
-        </div>
-        <div class="form-row">
-            
-            <div class="form-group col-6">
-              <label for="TrangThai">Trạng Thái</label>
-              <input required class="form-control"  id="TrangThaiXuong" disabled name="TrangThaiXuong">
-            </div> 
-            <div class="form-group col-6"style="display">
-                <label for="GioBatDauSCC">Ngày Giờ Hẹn</label>
-                <input required type="text" class="form-control Ngay" id="ThoiGianHen" onchange="DanhSachCoVan2()" >
-              </div>
-        </div> 
-         <div class="form-row">
-            <div class="form-group col-6">
-              <label for="LoaiHinhSuaChua">Loại Hình GJ</label>
-              <select required class="form-control"  id="LoaiHinhSuaChua"onchange = "checkloaihinhGJ()" >
-                  '<option value=""></option>'
-                  '<option value="EM">BDưỡng</option>'
-                  '<option value="SCC">Sửa chữa chung</option>'
-                  '<option value="EM60">BD1K, 5K,10K,20K</option>'
-                  '<option value="FIR"> Khiếu nại Sữa Chữa Lại </option>'
-              </select> 
-            </div> 
-            <div class="form-group col-6">
-              <label for="LoaiHinhDongSon">Loại Hình Đồng Sơn</label>
-              <select required class="form-control"  id="LoaiHinhDongSon" onchange = "checkloaihinhDS()">
-                  '<option value=""></option>'
-                  '<option value="Đồng Sơn">Đồng Sơn</option>'
-                  '<option value="Báo Giá BH">BG Bảo Hiểm</option>'
-              </select> 
-            </div> 
-         </div>
-         <div class="form-row">
-            <div class="form-group col-4"style="display">
-                <label for="GioBatDauSCC">Tên KH </label>
-                <input required type="text" class="form-control" id="TenKH"  >
-              </div>
-              <div class="form-group col-4"style="display">
-                <label for="GioBatDauSCC">Số Điện Thoại</label>
-                <input required  type="tel" class="form-control"  id="SoDT"  >
-              </div>
-              <div class="form-group col-4"style="display">
-                <label for="">Khu Vực</label>
-                <select required  type="tel" class="form-control"  id="KhuVuc" onchange="ChangKhuVuc()"  >
-                  <option></option>
-                  </select>
+      <div class="modal-header">
+        <h5 class="modal-title" >Đăng Ký Đặt Hẹn</h5><h5 style="float: right" id="biensoscc"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
 
+      <div class="modal-body">
+        <form id="FormSCC" autocomplete="off">
+          <div id="mesenge"><div class='alert alert-success'>WellCome!!</div></div>
+          <div class="form-group col-6"style="display:none">
+                <lsabel for="MaSo">Mã Số</label>
+                <input required class="form-control"  id="MaSo"   name="MaSo" disabled>
+              </div> 
+          <div class="form-row">
+          
+              <div class="form-group col-6">
+                <label for="KhoangSuaChua">Biển Số Xe</label>
+                <input required class="form-control"  id="BienSoXe"  name="BienSoXe" onchange="changvalueBS()"onkeyup="this.value = suabienso(this.value)">
               </div>
-
-         </div>
-         <div class="form-row">
-         <div class="form-group col-7" >
-              <label for="KhoangSuaChua">Email Hẹn</label>
-              <input required class="form-control" type="email" id="NguoiDatHen"   >
-            </div>
-         
-         <div class="form-group col-5">
-              <label for="LoaiHinhDongSon">Trạng Thái Hẹn</label>
-              <select required class="form-control"  id="TrangThaiHen" onchange="XacNhanHen()">
-                  '<option value=""></option>'
-                  '<option value="Xác Nhận Hẹn">Xác Nhận Hẹn</option>'
-                  <option value="Xác Nhận 30P">Xác Nhận 30P</option>'
-              </select> 
-            </div>
-         </div>
-      <div class="form-row">
-            <div class="form-group col-12"style="display">
-                <label for="GioBatDauSCC">Nội Dung Hẹn</label>
-                <textarea required type="text" class="form-control" id="NoiDungHen"  >
-                </textarea>
-              </div>
-         </div>
-            <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
-              <div class="btn-group mr-2 col-6" role="group" aria-label="First group" id="buttonDK">
-              </div>
-                <div class="btn-group col-4" role="group" aria-label="Third group" id="buttonSCC">
-              </div>
+                <div class="form-group col-6">
+                <label for="KhoangSuaChua">Cố Vấn</label>
+                <select required class="form-control"  id="CoVanDichVu" onchange=" CoVanDuocDatHen(this.value)" >
+                    '<option ></option>'
+                </select> 
+              </div> 
           </div>
-      </form>       
-    </div>
-  <div class="row modal-footer">
-    <div id="email">
-    </div>
-    <div id="CuocGoi">
-      <a href="tel:0973502207" class="col-sm-7">Click để Gọi</a>
-    </div>
-    <div id="NhanTin">
-    <a href="sms:0973502207?&amp;body=Nội dung cong viev" class="col-sm-7">Click để Nhắn Tin</a>
-    </div> 
-  </div>
+          <div class="form-row">
+              
+              <div class="form-group col-6">
+                <label for="TrangThai">Trạng Thái</label>
+                <input required class="form-control"  id="TrangThaiXuong" disabled name="TrangThaiXuong">
+              </div> 
+              <div class="form-group col-6"style="display">
+                  <label for="GioBatDauSCC">Ngày Giờ Hẹn</label>
+                  <input required type="text" class="form-control Ngay" id="ThoiGianHen" onchange="DanhSachCoVan2()" >
+                </div>
+          </div> 
+            <div class="form-row">
+              <div class="form-group col-6">
+                <label for="LoaiHinhSuaChua">Loại Hình GJ</label>
+                <select required class="form-control"  id="LoaiHinhSuaChua"onchange = "checkloaihinhGJ()" >
+                    '<option value=""></option>'
+                    '<option value="EM">BDưỡng</option>'
+                    '<option value="SCC">Sửa chữa chung</option>'
+                    '<option value="EM60">BD1K, 5K,10K,20K</option>'
+                    '<option value="FIR"> Khiếu nại Sữa Chữa Lại </option>'
+                </select> 
+              </div> 
+              <div class="form-group col-6">
+                <label for="LoaiHinhDongSon">Loại Hình Đồng Sơn</label>
+                <select required class="form-control"  id="LoaiHinhDongSon" onchange = "checkloaihinhDS()">
+                    '<option value=""></option>'
+                    '<option value="Đồng Sơn">Đồng Sơn</option>'
+                    '<option value="Báo Giá BH">BG Bảo Hiểm</option>'
+                </select> 
+              </div> 
+            </div>
+            <div class="form-row">
+              <div class="form-group col-4"style="display">
+                  <label for="GioBatDauSCC">Tên KH </label>
+                  <input required type="text" class="form-control" id="TenKH"  >
+                </div>
+                <div class="form-group col-4"style="display">
+                  <label for="GioBatDauSCC">Số Điện Thoại</label>
+                  <input required  type="tel" class="form-control"  id="SoDT"  >
+                </div>
+                <div class="form-group col-4"style="display">
+                  <label for="">Khu Vực</label>
+                  <select required  type="tel" class="form-control"  id="KhuVuc" onchange="ChangKhuVuc()"  >
+                    <option></option>
+                    </select>
+
+                </div>
+
+            </div>
+            <div class="form-row">
+            <div class="form-group col-7" >
+                <label for="KhoangSuaChua">Email Hẹn</label>
+                <input required class="form-control" type="email" id="NguoiDatHen"   >
+              </div>
+            
+            <div class="form-group col-5">
+                <label for="LoaiHinhDongSon">Trạng Thái Hẹn</label>
+                <select required class="form-control"  id="TrangThaiHen" onchange="XacNhanHen()">
+                    '<option value=""></option>'
+                    '<option value="Xác Nhận Hẹn">Xác Nhận Hẹn</option>'
+                    <option value="Xác Nhận 30P">Xác Nhận 30P</option>'
+                </select> 
+              </div>
+            </div>
+        <div class="form-row">
+              <div class="form-group col-12"style="display">
+                  <label for="GioBatDauSCC">Nội Dung Hẹn</label>
+                  <textarea required type="text" class="form-control" id="NoiDungHen"  >
+                  </textarea>
+                </div>
+        </div>    
+              <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2 col-6" role="group" aria-label="First group" id="buttonDK"></div>
+                
+                  <div class="btn-group col-4" role="group" aria-label="Third group" id="buttonSCC"></div>
+                
+            </div> 
+            <div class="row modal-footer">
+                <div id="email"></div>
+                <div id="CuocGoi">
+                <a href="tel:0973502207" class="col-sm-7">Click để Gọi</a>
+                </div>
+                <div id="NhanTin">
+                <a href="sms:0973502207?&amp;body=Nội dung cong viev" class="col-sm-7">Click để Nhắn Tin</a>
+                </div> 
+
+            </div>
+     </form>
+      
 
 
   </div>
+</div>
+</div>
 
 </div>
 
+
+
+<div class="modal fade" id="modaltrathongtin" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <label for="KhoangSuaChua"></label>
+              <input required class="form-control" type="email"onChange="tracuuthongtin()" id="BienSoXeTra" onkeyup="this.value = suabienso(this.value)" >
+              <div id="thongtintracuu"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 <script src="js/background.js"></script>
@@ -212,9 +243,6 @@ body {font-family: "Roboto", sans-serif}
 
 
 </div>
-<footer class="w3-container w3-theme" style="padding:32px">
-  <p>Footer information goes here</p>
-</footer>
 
 
 

@@ -401,4 +401,24 @@ postData(json2,urlTX+"/"+checkID(MaSo),"PATCH")
     // $("#email").html(EMail)
    }
  
- 
+ function tracuuthongtin(){
+  var url = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao?BienSoXe="+$("#BienSoXeTra").val()
+  
+  $.get(url, function(ketqua) {
+   
+    for(var i in ketqua){
+
+      
+       var vaue= Object.values(ketqua[i])
+       var Key = Object.keys(ketqua[i])
+       for(c in Key){
+
+        var a = '<p>'+ Key[c] +" : "+vaue[c] +"</p>"
+        $("#thongtintracuu").html( $("#thongtintracuu").html()+a)
+       }
+        
+      
+
+    }
+    });
+ }
