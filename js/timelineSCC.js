@@ -10,14 +10,8 @@ var container = document.getElementById('mytimeline');
 var options = {
     hiddenDates: [{start: '2017-03-05 00:00:00',end: '2017-03-06 00:00:00',repeat: 'weekly'},
     { start: '2017-03-04 17:00:00',end: '2017-03-05 08:00:00',repeat: 'daily'}],
-    //  onMoving:function (item) {
-    //   if(item){
-    //     document.getElementById("contextMenu2").style.display = 'block';
-    //   $("#ThoiGian").html(TimesClick(item.end))
-    //   }
-      
-              
-    //           },
+  
+  
      onMove: function (item) {
     let text = "Thay Đổi kế hoạch xe "+item.content;
     if(item){
@@ -67,15 +61,15 @@ var options = {
   var timeline = new vis.Timeline(container, items,groups, options);
 
 
-
-timeline.on('mouseUp', function (properties) {
-  console.log(properties)
-  document.getElementById("contextMenu2").style.display = 'block';
+  $('#mytimeline').mouseleave(function(){
+    document.getElementById("contextMenu2").style.display = 'none';
+});
+timeline.on('mouseOver', function (properties) {
+  document.getElementById("contextMenu2").style.display = 'none';
   
 })
 
 timeline.on('mouseMove', function (properties) {
-  console.log(properties)
  // if(properties.item!==null){
   var menu = document.getElementById("contextMenu2")
   menu.style.display = 'block';
