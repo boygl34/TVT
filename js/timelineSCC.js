@@ -3,13 +3,28 @@
 
 var items = new vis.DataSet();
 var container = document.getElementById('mytimeline');
+
+
+
+
 var options = {
     hiddenDates: [{start: '2017-03-05 00:00:00',end: '2017-03-06 00:00:00',repeat: 'weekly'},
     { start: '2017-03-04 17:00:00',end: '2017-03-05 08:00:00',repeat: 'daily'}],
+    //  onMoving:function (item) {
+    //   if(item){
+    //     document.getElementById("contextMenu2").style.display = 'block';
+    //   $("#ThoiGian").html(TimesClick(item.end))
+    //   }
+      
+              
+    //           },
      onMove: function (item) {
     let text = "Thay Đổi kế hoạch xe "+item.content;
-    if (confirm(text) == true) { capnhatthoigian(item)} else {loadData()};},
-
+    if(item){
+      capnhatthoigian(item)}
+   // if (confirm(text) == true) {capnhatthoigian(item) } else {loadData()};
+  },
+    
     onUpdate: function (item) {
       var BienSo = item.content.slice(0,item.content.indexOf(" "))
       $("#buttonSCC").html('')
@@ -30,8 +45,8 @@ var options = {
     editable: true,
     autoResize:false,
     margin: {
-      item: 0,  // distance between items
-      axis: 1 ,  // distance between items and the time axis
+      item: 1,  // distance between items
+      axis: 5 ,  // distance between items and the time axis
       },
  stack: true,
     };
@@ -49,7 +64,22 @@ var options = {
       content: "Rửa Xe" 
   })
  
-var timeline = new vis.Timeline(container, items,groups, options);
+  var timeline = new vis.Timeline(container, items,groups, options);
+
+
+
+timeline.on('mouseUp', function (properties) {
+  
+  document.getElementById("contextMenu2").style.display = 'block';
+  
+})
+
+timeline.on('mouseMove', function (properties) {
+  var menu = document.getElementById("contextMenu2")
+  menu.style.left = properties.pageX + "px";
+  menu.style.top =(properties.pageY+30 ) + "px";
+  $("#ThoiGian").html(TimesClick(properties.time))
+})
 
 
 timeline.on('click', function (props) {document.getElementById("contextMenu").style.display = "none"})
