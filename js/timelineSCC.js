@@ -38,7 +38,7 @@ var options = {
   },
   
    
-    
+  timeAxis: {scale: 'minute', step: 30},
     orientation: 'top',
     start:(new Date( (new Date()).valueOf())).setHours(6),
     end: (new Date( (new Date()).valueOf())).setHours(17),
@@ -76,13 +76,13 @@ timeline.on('mouseUp', function (properties) {
 
 timeline.on('mouseMove', function (properties) {
   console.log(properties)
-  if(properties.item!==null){
+ // if(properties.item!==null){
   var menu = document.getElementById("contextMenu2")
   menu.style.display = 'block';
   menu.style.left = properties.pageX + "px";
   menu.style.top =(properties.pageY+30 ) + "px";
   $("#ThoiGian").html(TimesClick(properties.time))
-  }else{document.getElementById("contextMenu2").style.display = 'none'}
+  //}else{document.getElementById("contextMenu2").style.display = 'none'}
 })
 
 
