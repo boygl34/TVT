@@ -12,7 +12,7 @@ var NhomKTV =["EM","Bạo","Hoan"]
 var KTVBao=["Bạo","Hiếu","Duy","Phước","Huy","Tân"]
 var KTVHoan=["Hoan","Lâm","Tâm","Sơn","Thiên"]
 var KTVEM=["Sáng","Hưng","Vinh","Khoa","Đ Anh","Hiển","Cường","Trí"]
-var KhuVucVT=["Vũng Tàu","Long Điền","Bà Rịa","Đất Đỏ","Châu Đức","Long Thành","KV Khác"]
+var KhuVucVT=["Bà Rịa","Vũng Tàu","Long Điền","Phú Mỹ","Đất Đỏ","Châu Đức","Xuyên Mộc","Côn Đảo","KV Khác"]
 var ListXe=["Camry","Inova","Fortuner","Altis","Altis Cross","Veloz","Wigo","Land Cruiser","Land Prado","Hilander","Rav4","Vios","Rush","Avanza","Raize","Lexus"]
 function Doingay2(use){
     use=new Date(use)
