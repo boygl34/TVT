@@ -100,7 +100,7 @@
             <th>Biển Số</th>
             <th>Số Thẻ</th>
             <th>Tên KH</th>
-            <th>Giờ H</th>
+            <!-- <th>Giờ H</th> -->
             <th>LH GJ</th>
 
             <th>Cố Vấn</th>
@@ -158,9 +158,9 @@
         var TenKH = document.createElement("td");
         TenKH.innerHTML = r.TenKhachHang
         row.appendChild(TenKH);
-        var GioHen = document.createElement("td");
-        if (r.ThoiGianHen) { GioHen.innerHTML = Doingay(DoiNgayDangKy(r.ThoiGianHen)) } else { GioHen.innerHTML = "" }
-        row.appendChild(GioHen);
+        // var GioHen = document.createElement("td");
+        // if (r.ThoiGianHen) { GioHen.innerHTML = Doingay(DoiNgayDangKy(r.ThoiGianHen)) } else { GioHen.innerHTML = "" }
+        // row.appendChild(GioHen);
         var LHGJ = document.createElement("td");
         if (r.LoaiHinhSuaChua) { LHGJ.innerHTML = r.LoaiHinhSuaChua } else { LHGJ.innerHTML = "" }
         row.appendChild(LHGJ);
