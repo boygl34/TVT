@@ -2,199 +2,214 @@
 <html>
 
 <head>
-  
-	<base target="_top">
-	<!--INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES-->
-  <meta name="apple-mobile-web-app-capable" content="yes" /> 
+
+  <base target="_top">
+  <!--INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES-->
+  <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-	<link rel="stylesheet" type="text/css"
-		href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>\<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 
-  
+
   <style>
+    .DangRuaXe {
+      color: #00ff00;
+    }
 
-       
-.DangRuaXe{
-   color: #00ff00;
-}  
-    .ChoGiaoXe{
-   color: #00ff00;
-}  
-   .ChoRuaXe{
-    color: #ff6d01;
-   }
-    #tablehen   td {
-   font-size: 35px;
-  vertical-align: middle;
-  text-align: left  ;
-   border: 1px solid black;
-  border-bottom: 1px solid blue;
-  margin: auto;
-}
-  
+    .ChoGiaoXe {
+      color: #00ff00;
+    }
+
+    .ChoRuaXe {
+      color: #ff6d01;
+    }
+
+    #tablehen td {
+      font-size: 35px;
+      vertical-align: middle;
+      text-align: left;
+      border: 1px solid black;
+      border-bottom: 1px solid blue;
+      margin: auto;
+    }
   </style>
 </head>
 
 <body style="background-color:black;">
-  
-   <h1 id="tieude" style="color: WHITE;text-align: center;"></h1>
-    <div id="dataTableHen" class="table-responsive" >
-        <table id="tablehen" disabled onclick = "clickTableTiepNhanHen()"class=" table table-dark  table-sm table-hover  row-border"style="font-weight:bold;text-align:center-left;vertical-align: middle ;width:100%;background-color:black">
-                      <!-- TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION ABOVE -->
-            <thead style="background-color:#1155cc;font-size: 18px;">
-                <tr >
-                  
-                    <th style=" width:20%;">Biển Số</th>
-                    <th >Cố Vấn</th>
-                    <th>Đặt Hẹn</th>
-                    <th >Rửa Xe</th>
-                    <th >Giờ Giao Xe</th>
-                    <th >Trạng Thái</th>
-                    
-                   
-                  </tr>
-                              </thead>
-                              <tbody id="table-body" disabled >
-                              </tbody>
-            </table>
-    </div>
+
+  <h1 id="tieude" style="color: WHITE;text-align: center;"></h1>
+  <div id="dataTableHen" class="table-responsive">
+    <table id="tablehen" disabled onclick="clickTableTiepNhanHen()"
+      class=" table table-dark  table-sm table-hover  row-border"
+      style="font-weight:bold;text-align:center-left;vertical-align: middle ;width:100%;background-color:black">
+      <!-- TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION ABOVE -->
+      <thead style="background-color:#1155cc;font-size: 18px;">
+        <tr>
+
+          <th style=" width:20%;">Biển Số</th>
+          <th>Cố Vấn</th>
+          <th>Đặt Hẹn</th>
+          <th>Rửa Xe</th>
+          <th>Giờ Giao Xe</th>
+          <th>Trạng Thái</th>
 
 
-    <script>
-        var useCaher
- var urlTX = "https://deciduous-pentagonal-powder.glitch.me/XeTrongXuong"
- var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
-getData(urlTX)
- setInterval(function (){getData(urlTX)},30000);
-  //DanhSachCoVan();
- function getData(url){
-  $.get(url, function(ketqua) {
-     useCaher=ketqua
-     showData ()
-   } );
- }
-    
-       function showData(){
-        try{
-        var dataArray =  useCaher
-  var dataArray0= dataArray.filter(function(r){return r.KhachHangDoi==="Khách Đợi"})
-   dataArray0= dataArray0.filter(function(r){return r.TrangThaiXuong!=="09 Đã Giao Xe"&&r.TDHenGiaoXe})
-   var ngaygiaoxebc = new Date()
-    dataArray0= dataArray0.filter(function(r){
+        </tr>
+      </thead>
+      <tbody id="table-body" disabled>
+      </tbody>
+    </table>
+  </div>
 
-    var daygx=DoiNgayDangKy(r.TDHenGiaoXe).getDate()
-    var monthgx = DoiNgayDangKy(r.TDHenGiaoXe).getMonth()
-    var yeargx = DoiNgayDangKy(r.TDHenGiaoXe).getYear()
-    return (daygx==ngaygiaoxebc.getDate()&&monthgx==ngaygiaoxebc.getMonth()&&yeargx==ngaygiaoxebc.getYear())})
-  dataArray0.sort(function(a, b) {return (a.TrangThaiXuong.toLowerCase() < b.TrangThaiXuong.toLowerCase() ? 1 : -1);})
-   var tbodyTim = document.getElementById('table-body')
-   tbodyTim.innerHTML=""
-       dataArray0.forEach(function(r){
 
-          var row = document.createElement("tr"); 
+  <script>
+    var useCaher
+    var urlTX = "https://serveriotvt2.glitch.me/MangHinh"
+    var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
+    getData(urlTX)
+    setInterval(function () { getData(urlTX) }, 30000);
+    //DanhSachCoVan();
+    function getData(url) {
+      $.get(url, function (ketqua) {
+        useCaher = ketqua.TrongXuong
+        console.log(ketqua);
+        showData()
+      });
+    }
+
+    function showData() {
+      try {
+        var dataArray = useCaher
+        var dataArray0 = dataArray.filter(function (r) { return r.KhachDoi })
+        dataArray0 = dataArray0.filter(function (r) { return r.TrangThaiXuong !== "Đã Giao Xe" && r.NgayHenGiaoXe })
+        var ngaygiaoxebc = new Date()
+        dataArray0 = dataArray0.filter(function (r) {
+
+          var daygx = new Date(r.NgayHenGiaoXe).getDate()
+          var monthgx = new Date(r.NgayHenGiaoXe).getMonth()
+          var yeargx = new Date(r.NgayHenGiaoXe).getYear()
+          return (daygx == ngaygiaoxebc.getDate() && monthgx == ngaygiaoxebc.getMonth() && yeargx == ngaygiaoxebc.getYear())
+        })
+        dataArray0.sort(function (a, b) { return (a.TrangThaiXuong.toLowerCase() > b.TrangThaiXuong.toLowerCase() ? 1 : -1); })
+        var tbodyTim = document.getElementById('table-body')
+        tbodyTim.innerHTML = ""
+        dataArray0.forEach(function (r) {
+
+          var row = document.createElement("tr");
           var tbodyTim = document.getElementById('table-body')
 
           var ColBienSo = document.createElement("td");
-              ColBienSo.innerHTML = r.BienSoXe
-              row.appendChild(ColBienSo);
+          ColBienSo.innerHTML = r.BienSoXe
+          row.appendChild(ColBienSo);
           var ColTenKH = document.createElement("td");
-              ColTenKH.innerHTML = r.TenKH
-             // row.appendChild(ColTenKH);    
+          ColTenKH.innerHTML = r.TenKH
+          // row.appendChild(ColTenKH);    
           var ColCoVan = document.createElement("td");
-              ColCoVan.innerHTML = r.CoVanDichVu
-              row.appendChild(ColCoVan);  
-              var ColHen = document.createElement("td");
-              if(r.KhachHangHen){ColHen.innerHTML = "Có Hẹn"}
-              
-             row.appendChild(ColHen);  
-          var ColKhachRX= document.createElement("td");
-              
-             
-          var ColKTSC= document.createElement("td");
-          if(r.TimeEndGJ){
-              ColKTSC.innerHTML = Doingay(DoiNgayDangKy(r.TimeEndGJ))}
-             // row.appendChild(ColKTSC);  
-             if(r.KhachRuaXe=="Rửa Xe"){ColKhachRX.innerHTML = "Có Rửa"}
-          var ColTrangThai= document.createElement("td");
-          if(r.TrangThaiXuong=="08 Chờ Giao Xe"){
-            if(r.KhachRuaXe=="Rửa Xe"){ColKhachRX.innerHTML = "Đã Rửa"}
-            ColTrangThai.innerHTML = "Chờ Giao Xe";row.setAttribute('class', 'ChoGiaoXe')}
-          if(r.TrangThaiXuong=="07 Đang Rửa Xe"){ColTrangThai.innerHTML = "Chờ Giao Xe";
-          ColKhachRX.innerHTML = "Đang Rửa";
-          row.setAttribute('class', 'DangRuaXe')} 
-          if(r.TrangThaiXuong=="06 Chờ Rửa Xe"){ColTrangThai.innerHTML = "Đang Sửa Chữa";
-          ColKhachRX.innerHTML = "Chờ Rửa";
+          ColCoVan.innerHTML = r.CoVanDichVu.slice(r.CoVanDichVu.lastIndexOf(" "))
+          row.appendChild(ColCoVan);
+          var ColHen = document.createElement("td");
+          if (r.ThoiDiemDatHen) { ColHen.innerHTML = "Có Hẹn" }
+          row.appendChild(ColHen);
+          var ColKhachRX = document.createElement("td");
 
-          ;row.setAttribute('class', 'ChoRuaXe')}
-          if(r.TrangThaiXuong=="05 Đang Sửa Chữa"){ColTrangThai.innerHTML = "Đang Sửa Chữa"} 
-          if(r.TrangThaiXuong=="04 Đã Tiếp Nhận"){ColTrangThai.innerHTML = "Chờ SC"}       
-             
-               row.appendChild(ColKhachRX); 
-                if(r.TDHenGiaoXe){   
-          var ColGiaoXe= document.createElement("td");
-              ColGiaoXe.innerHTML = Doingay(DoiNgayDangKy(r.TDHenGiaoXe))
-              row.appendChild(ColGiaoXe);}
-                row.appendChild(ColTrangThai);                 
-        tbodyTim.appendChild(row)  
-      })
-                $("#tieude").html("THÔNG TIN KHÁCH CHỜ "+new Date().toLocaleTimeString().slice(0,5))}
-                catch (eros){
-                  alert(eros)
-                }
-             }
-            
+
+          var ColKTSC = document.createElement("td");
+          if (r.NgayHenGiaoXe) {
+            ColKTSC.innerHTML = moment(r.NgayHenGiaoXe).format('HH:mm')
+          }
            
-       
+          if (r.RuaXe) { ColKhachRX.innerHTML = "Có Rửa" }
+          var ColTrangThai = document.createElement("td");
+          if (r.TrangThaiXuong == "Chờ Giao Xe") {
+            if (r.RuaXe) { ColKhachRX.innerHTML = "Đã Rửa" }
+            ColTrangThai.innerHTML = "Chờ Giao Xe"; row.setAttribute('class', 'ChoGiaoXe')
+          }
+          if (r.TrangThaiXuong == "Đang Rửa Xe") {
+            ColTrangThai.innerHTML = "Chờ Giao Xe";
+            ColKhachRX.innerHTML = "Đang Rửa";
+            row.setAttribute('class', 'DangRuaXe')
+          }
+          if (r.TrangThaiXuong == "Chờ Rửa Xe") {
+            ColTrangThai.innerHTML = "Đang Sửa Chữa";
+            ColKhachRX.innerHTML = "Chờ Rửa";
 
-       function DoiNgayDangKy(ngayhen){
-            var aa
-            if(ngayhen){
-                var Thang =ngayhen.slice(3,5)
-                var Ngay = ngayhen.slice(0,2)
-                var Nam = ngayhen.slice(6,10)
-                var Gio = ngayhen.slice(11,13)
-                var Phut = ngayhen.slice(14,16)
-                var ThoiGianMoi = Nam+"-"+Thang+"-"+Ngay+"T"+Gio+":"+Phut+":00Z"
-                var aa= new Date(ThoiGianMoi)
-                aa= new Date(aa-7*60*60*1000)}
-                return aa ;
+            ; row.setAttribute('class', 'ChoRuaXe')
+          }
+          if (r.TrangThaiXuong == "Đang Sửa Chữa") { ColTrangThai.innerHTML = "Đang Sửa Chữa" }
+          if (r.TrangThaiXuong == "Đã Tiếp Nhận") { ColTrangThai.innerHTML = "Chờ SC" }
+
+          row.appendChild(ColKhachRX);
+           row.appendChild(ColKTSC);
+          if (r.TDHenGiaoXe) {
+            var ColGiaoXe = document.createElement("td");
+            ColGiaoXe.innerHTML = Doingay(DoiNgayDangKy(r.TDHenGiaoXe))
+            row.appendChild(ColGiaoXe);
+          }
+          row.appendChild(ColTrangThai);
+          tbodyTim.appendChild(row)
+        })
+        $("#tieude").html("THÔNG TIN KHÁCH CHỜ " + moment().format("HH:mm"))
+      }
+      catch (eros) {
+        alert(eros)
+      }
     }
-       
-         
-       function Doingay(use){
-       use=new Date(use)
-       var Thang =use.getMonth()+1
-       var Ngay = use.getDate()
-       var Nam = use.getFullYear()
-       var Gio = use.getHours()
-       var Phut = use.getMinutes()
-       if (Thang<10){Thang="0"+Thang}
-       if (Ngay<10){Ngay="0"+Ngay}
-       if (Gio<10){Gio="0"+Gio}
-       if (Phut<10){Phut="0"+Phut}
-       var ThoiGian =Gio+":"+Phut
-       
-       return ThoiGian}
 
-       function TimesClick(data){
-         if(data){var  use=new Date(data);}else{var  use=new Date()}
-           var useinfo = {}
-           var Thang =use.getMonth()+1;
-           var Ngay = use.getDate();
-           var Nam = use.getFullYear();var Gio = use.getHours();
-           var Phut = use.getMinutes();
-           if (Thang<10){Thang="0"+Thang};
-           if (Ngay<10){Ngay="0"+Ngay};
-           if (Gio<10){Gio="0"+Gio};
-            if (Phut<10){Phut="0"+Phut}
-       return Ngay+"/"+Thang+"/"+Nam+" "+Gio+":"+Phut+":00"
-       }
-       
-       </script>
-     
-     
-     
+
+
+
+    function DoiNgayDangKy(ngayhen) {
+      var aa
+      if (ngayhen) {
+        var Thang = ngayhen.slice(3, 5)
+        var Ngay = ngayhen.slice(0, 2)
+        var Nam = ngayhen.slice(6, 10)
+        var Gio = ngayhen.slice(11, 13)
+        var Phut = ngayhen.slice(14, 16)
+        var ThoiGianMoi = Nam + "-" + Thang + "-" + Ngay + "T" + Gio + ":" + Phut + ":00Z"
+        var aa = new Date(ThoiGianMoi)
+        aa = new Date(aa - 7 * 60 * 60 * 1000)
+      }
+      return aa;
+    }
+
+
+    function Doingay(use) {
+      use = new Date(use)
+      var Thang = use.getMonth() + 1
+      var Ngay = use.getDate()
+      var Nam = use.getFullYear()
+      var Gio = use.getHours()
+      var Phut = use.getMinutes()
+      if (Thang < 10) { Thang = "0" + Thang }
+      if (Ngay < 10) { Ngay = "0" + Ngay }
+      if (Gio < 10) { Gio = "0" + Gio }
+      if (Phut < 10) { Phut = "0" + Phut }
+      var ThoiGian = Gio + ":" + Phut
+
+      return ThoiGian
+    }
+
+    function TimesClick(data) {
+      if (data) { var use = new Date(data); } else { var use = new Date() }
+      var useinfo = {}
+      var Thang = use.getMonth() + 1;
+      var Ngay = use.getDate();
+      var Nam = use.getFullYear(); var Gio = use.getHours();
+      var Phut = use.getMinutes();
+      if (Thang < 10) { Thang = "0" + Thang };
+      if (Ngay < 10) { Ngay = "0" + Ngay };
+      if (Gio < 10) { Gio = "0" + Gio };
+      if (Phut < 10) { Phut = "0" + Phut }
+      return Ngay + "/" + Thang + "/" + Nam + " " + Gio + ":" + Phut + ":00"
+    }
+
+  </script>
+
+
+
 
 </body>
 
