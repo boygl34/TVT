@@ -7,8 +7,10 @@
   <!--INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES-->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js" integrity="sha512-CryKbMe7sjSCDPl18jtJI5DR5jtkUWxPXWaLCst6QjH8wxDexfRJic2WRmRXmstr2Y8SxDDWuBO6CQC6IE4KTA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>\<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment-with-locales.min.js" integrity="sha512-42PE0rd+wZ2hNXftlM78BSehIGzezNeQuzihiBCvUEB3CVxHvsShF86wBWwQORNxNINlBPuq7rG4WWhNiTVHFg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>\
+  
+  
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
 
@@ -74,7 +76,7 @@
     function getData(url) {
       $.get(url, function (ketqua) {
         useCaher = ketqua.TrongXuong
-        console.log(ketqua);
+      
         showData()
       });
     }
@@ -117,7 +119,7 @@
 
           var ColKTSC = document.createElement("td");
           if (r.NgayHenGiaoXe) {
-            ColKTSC.innerHTML = moment(r.NgayHenGiaoXe).format('HH:mm')
+            ColKTSC.innerHTML = Doingay(r.NgayHenGiaoXe)
           }
            
           if (r.RuaXe) { ColKhachRX.innerHTML = "Có Rửa" }
@@ -150,7 +152,7 @@
           row.appendChild(ColTrangThai);
           tbodyTim.appendChild(row)
         })
-        $("#tieude").html("THÔNG TIN KHÁCH CHỜ " + moment().format("HH:mm"))
+        $("#tieude").html("THÔNG TIN KHÁCH CHỜ " + Doingay(new Date()))
       }
       catch (eros) {
         alert(eros)
