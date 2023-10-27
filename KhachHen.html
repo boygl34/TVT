@@ -22,7 +22,7 @@
     }
 
     .ChoRuaXe {
-      color: #ff6d01;
+      color: #ffeada;
     }
 
     #tablehen td {
@@ -78,11 +78,10 @@
         <tr style="font-size:8px">
           <th style=" width: 5%;">Giờ Hẹn</th>
           <th style=" width: 10%;">Biển Số</th>
-          <th style=" width: 15%;">Tên KH</th>
-          <th style=" width: 5%;">Cố Vấn</th>
+          <th style=" width: 10%;">Tên KH</th>
+          <th style=" width: 10%;">Cố Vấn</th>
           <th style=" width: 5%;">LH GJ</th>
-          <th style=" width: 5%;">LH BP</th>
-
+          
 
         </tr>
       </thead>
@@ -95,7 +94,7 @@
   <script>
 
     var useCaher
-    var urlTX = "https://deciduous-pentagonal-powder.glitch.me/XeTrongXuong"
+    var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
     var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
     getData(urlTX)
     setInterval(function () { getData(urlTX) }, 30000);
@@ -110,40 +109,39 @@
     }
 
     function showData() {
+    
       try {
         var dataArray = useCaher
-        var dataArrayhen = dataArray.filter(function (r) { return ((r.TrangThaiXuong === "00 Có Hẹn")) })
-        dataArrayhen = dataArrayhen.sort(function (a, b) { return (new Date(DoiNgayDangKy(a.ThoiGianHen)).valueOf() > new Date(DoiNgayDangKy(b.ThoiGianHen)).valueOf() ? 1 : -1); })
+        var dataArrayhen = dataArray.filter(function (r) { return ((r.TrangThaiXuong === "Có Hẹn")) })
+        dataArrayhen = dataArrayhen.sort(function (a, b) { return (new Date(a.ThoiDiemDatHen).valueOf() > new Date(b.ThoiDiemDatHen).valueOf() ? 1 : -1); })
         var tbodyhen = document.getElementById('table-body-hen')
-
+  console.log(dataArrayhen);
         tbodyhen.innerHTML = ""
         dataArrayhen.forEach(function (r) {
           var row = document.createElement("tr");
           var GioHen = document.createElement("td");
-          if (r.ThoiGianHen) { GioHen.innerHTML = Doingay(DoiNgayDangKy(r.ThoiGianHen)) } else { GioHen.innerHTML = "" }
+          if (r.ThoiDiemDatHen) { GioHen.innerHTML = Doingay(r.ThoiDiemDatHen) } else { GioHen.innerHTML = "" }
           row.appendChild(GioHen);
           var BienSo = document.createElement("td");
           BienSo.innerHTML = r.BienSoXe
           row.appendChild(BienSo);
           var TenKH = document.createElement("td");
-          TenKH.innerHTML = r.TenKH
+          TenKH.innerHTML = r.TenKhachHang
           row.appendChild(TenKH);
           var CoVan = document.createElement("td");
           if (r.CoVanDichVu) { CoVan.innerHTML = r.CoVanDichVu } else { CoVan.innerHTML = "" }
           row.appendChild(CoVan);
           var LHGJ = document.createElement("td");
-          if (r.LoaiHinhSuaChua) { LHGJ.innerHTML = r.LoaiHinhSuaChua } else { LHGJ.innerHTML = "" }
+          if (r.LoaiHinhHen) { LHGJ.innerHTML = r.LoaiHinhHen } else { LHGJ.innerHTML = "" }
           row.appendChild(LHGJ);
-          var LHBP = document.createElement("td");
-          if (r.LoaiHinhDongSon) { LHBP.innerHTML = r.LoaiHinhDongSon } else { LHBP.innerHTML = "" }
-          row.appendChild(LHBP);
+          
 
-          if (new Date(DoiNgayDangKy(r.ThoiGianHen)).getDate() == (new Date().getDate()) && r.ThoiGianHen) {
+          if (new Date(r.ThoiDiemDatHen).getDate() == (new Date().getDate()) && r.ThoiDiemDatHen) {
             row.setAttribute('class', 'ChoRuaXe')
 
           }
-          var a = (r.NoiDungHen.toUpperCase()).indexOf("VIP")
-          if (a > 0) { row.setAttribute('class', 'DangRuaXe') }
+         
+          if (r.UuTien.includes("1K") > 0) { row.setAttribute('class', 'DangRuaXe') }
 
 
           tbodyhen.appendChild(row)
