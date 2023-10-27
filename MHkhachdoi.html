@@ -68,14 +68,14 @@
 
   <script>
     var useCaher
-    var urlTX = "https://serveriotvt2.glitch.me/MangHinh"
+    var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
     var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
     getData(urlTX)
     setInterval(function () { getData(urlTX) }, 60000);
     //DanhSachCoVan();
     function getData(url) {
       $.get(url, function (ketqua) {
-        useCaher = ketqua.TrongXuong
+        useCaher = ketqua
       
         showData()
       });

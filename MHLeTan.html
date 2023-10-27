@@ -119,7 +119,7 @@
   <script>
 
     var useCaher
-    var urlTX = "https://serveriotvt2.glitch.me/MangHinh"
+    var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
 
     setInterval(function () { getData(urlTX) }, 20000);
     getData(urlTX)
@@ -130,7 +130,7 @@
         .then(response => response.json())
         .then(data => {
           console.log(data);
-          useCaher = data.TrongXuong
+          useCaher = data
           showData()
         });
     }
