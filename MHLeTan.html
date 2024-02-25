@@ -11,7 +11,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
 
-
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <!-- See JavaScript.html file -->
   <style>
     #dataTable td:nth-child(10) {
@@ -36,7 +36,7 @@
       width: 5%;
     }
 
-    #dataTable td:nth-child(9) {
+    #dataTable td:nth-child(8) {
       font-size: 10px;
       color: black;
       width: 2%;
@@ -53,7 +53,7 @@
     }
 
     .SapTiepNhan {
-      color: #ff6d01;
+      color: white;
     }
 
     .ChoTiepNhan {
@@ -120,67 +120,69 @@
 
     var useCaher
     var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
-
-    setInterval(function () { getData(urlTX) }, 20000);
-    getData(urlTX)
+    var urls= "http://localhost:3000/api/data"
+    setInterval(function () { getData(urls) }, 20000);
+    getData(urls)
 
 
     function getData(url) {
-      fetch(url)
-        .then(response => response.json())
-        .then(data => {
-          console.log(data);
-          useCaher = data
-          showData()
-        });
+      $.get(url, function (ketqua) {
+        ketqua= JSON.parse(ketqua)
+
+console.log(ketqua)
+        useCaher = ketqua
+      
+        showData()
+      });
     }
+
     function showData() {
       // tieude.innerHTML = "Cố Vấn "+ Doingay()
       var dataArray = useCaher
-      var dataArray0 = dataArray.filter(function (r) { return ((r.TrangThaiXuong === "Chờ Tiếp Nhận" || r.TrangThaiXuong === "Chuẩn Bị Tiếp")) })
-      dataArray0 = dataArray0.sort(function (a, b) { return (a.ThoiDiemGapLeTan.toLowerCase() < b.ThoiDiemGapLeTan.toLowerCase() ? 1 : -1); })
-      dataArray0 = dataArray0.sort(function (a, b) { return (a.TrangThaiXuong.toLowerCase() < b.TrangThaiXuong.toLowerCase() ? 1 : -1); })
+      var dataArray0 = dataArray.filter(function (r) { return ((r["Trạng Thái Xưởng"] === "Chờ Tiếp Nhận" )) })
+      dataArray0 = dataArray0.sort(function (a, b) { return (a['Thời Điểm Gặp Lễ Tân'].toLowerCase() < b['Thời Điểm Gặp Lễ Tân'].toLowerCase() ? 1 : -1); })
+      dataArray0 = dataArray0.sort(function (a, b) { return (a['Trạng Thái Xưởng'].toLowerCase() < b["Trạng Thái Xưởng"].toLowerCase() ? 1 : -1); })
       var tbodyTim = document.getElementById('table-body-Tim-xe')
       tbodyTim.innerHTML = ""
 
       dataArray0.forEach(function (r) {
         var row = document.createElement("tr");
         var BienSo = document.createElement("td");
-        BienSo.innerHTML = r.BienSoXe
-        if (r.TrangThaiHen == "Đúng Hẹn") { BienSo.innerHTML = "[H] " + r.BienSoXe }
-        if (r.TrangThaiHen == "Trễ Hẹn") { BienSo.innerHTML = "[T] " + r.BienSoXe }
-        if (r.TrangThaiHen == "Đến Sớm") { BienSo.innerHTML = "[S] " + r.BienSoXe }
-        if (r.TrangThaiHen == "Không Đúng Hẹn") { BienSo.innerHTML = "[h] " + r.BienSoXe }
-        if (r.NoiDungHen && (r.NoiDungHen.toUpperCase()).indexOf("VIP") >= 0) { BienSo.innerHTML = "[V] " + r.BienSoXe }
+        BienSo.innerHTML = r['Biển Số Xe']
+        if (r['Trạng Thái Hẹn']== "Đúng Hẹn") { BienSo.innerHTML = "[H] " + r['Biển Số Xe'] }
+        if (r['Trạng Thái Hẹn'] == "Trễ Hẹn") { BienSo.innerHTML = "[T] " + r['Biển Số Xe'] }
+        if (r['Trạng Thái Hẹn'] == "Đến Sớm") { BienSo.innerHTML = "[S] " + r['Biển Số Xe'] }
+        if (r['Trạng Thái Hẹn'] == "Không Đúng Hẹn") { BienSo.innerHTML = "[h] " +r['Biển Số Xe'] }
+        if (r['Ưu Tiên'] && (r['Ưu Tiên'].incluses>= 0)) { BienSo.innerHTML = "[V] " + r['Biển Số Xe'] }
         row.appendChild(BienSo);
         var SoThe = document.createElement("td");
-        SoThe.innerHTML = r.SoThe
+        SoThe.innerHTML = r["Số Thẻ"]
         row.appendChild(SoThe);
         var TenKH = document.createElement("td");
-        TenKH.innerHTML = r.TenKhachHang
+        TenKH.innerHTML = r["Tên Khách Hàng"]
         row.appendChild(TenKH);
         var TenKH = document.createElement("td");
-        TenKH.innerHTML = r.ThoiDiemDatHen ? Doingay(r.ThoiDiemDatHen) : ""
+        TenKH.innerHTML = r["Ngày Giờ Hẹn"] ? Doingay(r["Ngày Giờ Hẹn"]) : ""
         row.appendChild(TenKH);
         // var GioHen = document.createElement("td");
         // if (r.ThoiGianHen) { GioHen.innerHTML = Doingay(DoiNgayDangKy(r.ThoiGianHen)) } else { GioHen.innerHTML = "" }
         // row.appendChild(GioHen);
         var LHGJ = document.createElement("td");
-        if (r.LoaiHinhSuaChua) { LHGJ.innerHTML = r.LoaiHinhSuaChua } else { LHGJ.innerHTML = "" }
+        if (r["Loại Hình Sửa Chữa"]) { LHGJ.innerHTML = r['Loại Hình Sửa Chữa'] } else { LHGJ.innerHTML = "" }
         row.appendChild(LHGJ);
 
         var CoVan = document.createElement("td");
-        if (r.CoVanDichVu) { CoVan.innerHTML = r.CoVanDichVu } else { CoVan.innerHTML = "" }
+        if (r['Cố Vấn Dịch Vụ']) { CoVan.innerHTML = r['Cố Vấn Dịch Vụ'] } else { CoVan.innerHTML = "" }
         row.appendChild(CoVan);
         var trangtx = document.createElement("td");
-        if (r.TrangThaiXuong == "Chờ Tiếp Nhận") { trangtx.innerHTML = "Chờ Tiếp Nhận"; row.setAttribute('class', 'SapTiepNhan') }
-        else if (r.TrangThaiXuong == "Chuẩn Bị Tiếp") { trangtx.innerHTML = "Chuẩn Bị Tiếp"; row.setAttribute('class', 'DangTiepNhan') }
+        if (r['Trạng Thái Xưởng'] == "Chờ Tiếp Nhận") { trangtx.innerHTML = "Chờ Tiếp Nhận"; row.setAttribute('class', 'SapTiepNhan') }
+        else if (r['Trạng Thái Xưởng'] == "Chuẩn Bị Tiếp") { trangtx.innerHTML = "Chuẩn Bị Tiếp"; row.setAttribute('class', 'DangTiepNhan') }
         else { trangtx.innerHTML = "" }
         row.appendChild(trangtx);
         var TGCHO = document.createElement("td");
         var TG
-        if (r.TrangThaiXuong == "Chờ Tiếp Nhận") { TG = Math.round((new Date().valueOf() - new Date(r.ThoiDiemGapLeTan).valueOf()) / (60 * 1000) * 1) / 1 }
-        if (r.TrangThaiXuong == "Chuẩn Bị Tiếp") { TG = Math.round((new Date().valueOf() - new Date(r.ThoiDiemGapLeTan).valueOf()) / (60 * 1000) * 1) / 1 }
+        if (r["Trạng Thái Xưởng"] == "Chờ Tiếp Nhận") { TG = Math.round((new Date().valueOf() - new Date(r['Thời Điểm Gặp Lễ Tân']).valueOf()) / (60 * 1000) * 1) / 1 }
+        if (r['Trạng Thái Xưởng'] == "Chuẩn Bị Tiếp") { TG = Math.round((new Date().valueOf() - new Date(r["Thời Điểm Gặp Lễ Tân"]).valueOf()) / (60 * 1000) * 1) / 1 }
         TGCHO.innerHTML = TG
         if (TG < 10) { TGCHO.setAttribute('class', 'Lever1') }
         if (TG >= 10 && TG < 20) { TGCHO.setAttribute('class', 'Lever2') }
