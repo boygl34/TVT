@@ -11,7 +11,7 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
 
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <!-- See JavaScript.html file -->
   <style>
     #dataTable td:nth-child(10) {
@@ -126,16 +126,26 @@
 
 
     function getData(url) {
-
-      fetch(urls)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-    useCaher = data
+      axios.get(urls, {
+    params: {
+      ID: 12345
+    }
+  })
+  .then(function (response) {
+     console.log(response);
+    useCaher = response.data
     showData()
-  }
-  )
-  .catch(error => console.error('Error:', error));
+   
+  })
+  //   fetch(urls)
+  // .then(response => response.json())
+  // .then(data => {
+  //   console.log(data)
+  //   useCaher = data
+  //   showData()
+  // }
+  // )
+  // .catch(error => console.error('Error:', error));
 
 
 //       $.get(url, function (ketqua) {
