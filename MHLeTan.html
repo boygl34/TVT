@@ -126,14 +126,26 @@
 
 
     function getData(url) {
-      $.get(url, function (ketqua) {
-        ketqua= JSON.parse(ketqua)
 
-console.log(ketqua)
-        useCaher = ketqua
+      fetch(urls)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    useCaher = data
+    showData()
+  }
+  )
+  .catch(error => console.error('Error:', error));
+
+
+//       $.get(url, function (ketqua) {
+//         ketqua= JSON.parse(ketqua)
+
+// console.log(ketqua)
+//         useCaher = ketqua
       
-        showData()
-      });
+//         showData()
+//       });
     }
 
     function showData() {
