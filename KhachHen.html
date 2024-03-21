@@ -10,7 +10,7 @@
   <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
   <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <link rel="stylesheet" type="text/css"
     href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
@@ -94,45 +94,50 @@
   <script>
 
     var useCaher
-    var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
-    var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
+    var urlTX = "https://dichvutvt.meteorapp.com/api/data"
+  
     getData(urlTX)
     setInterval(function () { getData(urlTX) }, 30000);
     //DanhSachCoVan();
     function getData(url) {
-      try {
-        $.get(url, function (ketqua) {
-          useCaher = ketqua
-          showData()
-        });
-      } catch (eros) { alert(eros) }
+      axios.get(url, {
+    params: {
+      ID: 12345
     }
+  })
+  .then(function (response) {
+    
+    useCaher = response.data
+    console.log(useCaher);
+    showData()
+   
+  })}
 
     function showData() {
     
       try {
         var dataArray = useCaher
-        var dataArrayhen = dataArray.filter(function (r) { return ((r.TrangThaiXuong === "Có Hẹn")) })
-        dataArrayhen = dataArrayhen.sort(function (a, b) { return (new Date(a.ThoiDiemDatHen).valueOf() > new Date(b.ThoiDiemDatHen).valueOf() ? 1 : -1); })
+        var dataArrayhen = dataArray.filter(function (r) { return ((r["Trạng Thái Xưởng"] === "Có Hẹn"&&r["Trạng Thái Hẹn"]!="Hủy Hẹn")) })
+        dataArrayhen = dataArrayhen.sort(function (a, b) { return (new Date(a["Ngày Giờ Hẹn"]).valueOf() > new Date(b["Ngày Giờ Hẹn"]).valueOf() ? 1 : -1); })
         var tbodyhen = document.getElementById('table-body-hen')
   console.log(dataArrayhen);
         tbodyhen.innerHTML = ""
         dataArrayhen.forEach(function (r) {
           var row = document.createElement("tr");
           var GioHen = document.createElement("td");
-          if (r.ThoiDiemDatHen) { GioHen.innerHTML = Doingay(r.ThoiDiemDatHen) } else { GioHen.innerHTML = "" }
+          if (r['Ngày Giờ Hẹn']) { GioHen.innerHTML = Doingay(r["Ngày Giờ Hẹn"]) } else { GioHen.innerHTML = "" }
           row.appendChild(GioHen);
           var BienSo = document.createElement("td");
-          BienSo.innerHTML = r.BienSoXe
+          BienSo.innerHTML = r['Biển Số Xe']
           row.appendChild(BienSo);
           var TenKH = document.createElement("td");
-          TenKH.innerHTML = r.TenKhachHang
+          TenKH.innerHTML = r["Tên Khách Hàng"]
           row.appendChild(TenKH);
           var CoVan = document.createElement("td");
-          if (r.CoVanDichVu) { CoVan.innerHTML = r.CoVanDichVu } else { CoVan.innerHTML = "" }
+          if (r["Cố Vấn Dịch Vụ"]) { CoVan.innerHTML = r["Cố Vấn Dịch Vụ"] } else { CoVan.innerHTML = "" }
           row.appendChild(CoVan);
           var LHGJ = document.createElement("td");
-          if (r.LoaiHinhHen) { LHGJ.innerHTML = r.LoaiHinhHen } else { LHGJ.innerHTML = "" }
+          if (r["Loại Hình Hẹn"]) { LHGJ.innerHTML = r['Loại Hình Hẹn'] } else { LHGJ.innerHTML = "" }
           row.appendChild(LHGJ);
           
 
@@ -141,7 +146,7 @@
 
           }
          
-          if (r.UuTien.includes("1K") > 0) { row.setAttribute('class', 'DangRuaXe') }
+          if (r["Ưu Tiên"]&&r["Ưu Tiên"].includes("1K") > 0) { row.setAttribute('class', 'DangRuaXe') }
 
 
           tbodyhen.appendChild(row)
