@@ -64,39 +64,45 @@
     </table>
   </div>
 
-
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
     var useCaher
-    var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
-    var urls= "http://localhost:3000/MangHinh"
-    var urlDG = "https://deciduous-pentagonal-powder.glitch.me/XeDaGiao"
-    getData(urls)
-    setInterval(function () { getData(urls) }, 60000);
+   
+    var urlTX = "https://dichvutvt.meteorapp.com/api/data"
+  
+    getData(urlTX)
+    setInterval(function () { getData(urlTX) }, 30000);
     //DanhSachCoVan();
     function getData(url) {
-      $.get(url, function (ketqua) {
-
-console.log(ketqua)
-        useCaher = ketqua
-      
-        showData()
-      });
+      axios.get(url, {
+    params: {
+      ID: 12345
     }
+  })
+  .then(function (response) {
+    
+    useCaher = response.data
+    showData()
+   
+  })}
+
 
     function showData() {
       try {
         var dataArray = useCaher
-        var dataArray0 = dataArray.filter(function (r) { return r.KhachDoi })
-        dataArray0 = dataArray0.filter(function (r) { return r.TrangThaiXuong !== "Đã Giao Xe" && r.NgayHenGiaoXe })
+        var dataArray0 = dataArray.filter(function (r) { return r["Khách Chờ"] })
+        console.log(useCaher);
+        dataArray0 = dataArray0.filter(function (r) { return r['Trạng Thái Xưởng'] !== "Đã Giao Xe" && r['Ngày Hẹn Giao Xe'] })
         var ngaygiaoxebc = new Date()
+        console.log(dataArray0);
         dataArray0 = dataArray0.filter(function (r) {
 
-          var daygx = new Date(r.NgayHenGiaoXe).getDate()
-          var monthgx = new Date(r.NgayHenGiaoXe).getMonth()
-          var yeargx = new Date(r.NgayHenGiaoXe).getYear()
+          var daygx = new Date(r['Ngày Hẹn Giao Xe']).getDate()
+          var monthgx = new Date(r['Ngày Hẹn Giao Xe']).getMonth()
+          var yeargx = new Date(r['Ngày Hẹn Giao Xe']).getYear()
           return (daygx == ngaygiaoxebc.getDate() && monthgx == ngaygiaoxebc.getMonth() && yeargx == ngaygiaoxebc.getYear())
         })
-        dataArray0.sort(function (a, b) { return (a.TrangThaiXuong.toLowerCase() > b.TrangThaiXuong.toLowerCase() ? 1 : -1); })
+        dataArray0.sort(function (a, b) { return (a['Trạng Thái Xưởng'].toLowerCase() > b['Trạng Thái Xưởng'].toLowerCase() ? 1 : -1); })
         var tbodyTim = document.getElementById('table-body')
         tbodyTim.innerHTML = ""
         dataArray0.forEach(function (r) {
@@ -105,44 +111,44 @@ console.log(ketqua)
           var tbodyTim = document.getElementById('table-body')
 
           var ColBienSo = document.createElement("td");
-          ColBienSo.innerHTML = r.BienSoXe
+          ColBienSo.innerHTML = r['Biển Số Xe']
           row.appendChild(ColBienSo);
           var ColTenKH = document.createElement("td");
-          ColTenKH.innerHTML = r.TenKH
+          ColTenKH.innerHTML = r["Khách Hàng"]
           // row.appendChild(ColTenKH);    
           var ColCoVan = document.createElement("td");
-          ColCoVan.innerHTML = r.CoVanDichVu.slice(r.CoVanDichVu.lastIndexOf(" "))
+          ColCoVan.innerHTML = r["Cố Vấn Dịch Vụ"].slice(r['Cố Vấn Dịch Vụ'].lastIndexOf(" "))
           row.appendChild(ColCoVan);
           var ColHen = document.createElement("td");
-          if (r.ThoiDiemDatHen) { ColHen.innerHTML = "Có Hẹn" }
+          if (r['Ngày Đặt Hẹn']) { ColHen.innerHTML = "Có Hẹn" }
           row.appendChild(ColHen);
           var ColKhachRX = document.createElement("td");
 
 
           var ColKTSC = document.createElement("td");
-          if (r.NgayHenGiaoXe) {
-            ColKTSC.innerHTML = Doingay(r.NgayHenGiaoXe)
+          if (r['Ngày Hẹn Giao Xe']) {
+            ColKTSC.innerHTML = Doingay(r['Ngày Hẹn Giao Xe'])
           }
            
-          if (r.RuaXe) { ColKhachRX.innerHTML = "Có Rửa" }
+          if (r['Rửa Xe']) { ColKhachRX.innerHTML = "Có Rửa" }
           var ColTrangThai = document.createElement("td");
-          if (r.TrangThaiXuong == "Chờ Giao Xe") {
+          if (r['Trạng Thái Xưởng'] == "Chờ Giao Xe") {
             if (r.RuaXe) { ColKhachRX.innerHTML = "Đã Rửa" }
             ColTrangThai.innerHTML = "Chờ Giao Xe"; row.setAttribute('class', 'ChoGiaoXe')
           }
-          if (r.TrangThaiXuong == "Đang Rửa Xe") {
+          if (r['Trạng Thái Xưởng'] == "Đang Rửa Xe") {
             ColTrangThai.innerHTML = "Chờ Giao Xe";
             ColKhachRX.innerHTML = "Đang Rửa";
             row.setAttribute('class', 'DangRuaXe')
           }
-          if (r.TrangThaiXuong == "Chờ Rửa Xe") {
+          if (r['Trạng Thái Xưởng'] == "Chờ Rửa Xe") {
             ColTrangThai.innerHTML = "Đang Sửa Chữa";
             ColKhachRX.innerHTML = "Chờ Rửa";
 
             ; row.setAttribute('class', 'ChoRuaXe')
           }
-          if (r.TrangThaiXuong == "Đang Sửa Chữa") { ColTrangThai.innerHTML = "Đang Sửa Chữa" }
-          if (r.TrangThaiXuong == "Đã Tiếp Nhận") { ColTrangThai.innerHTML = "Chờ SC" }
+          if (r['Trạng Thái Xưởng'] == "Đang Sửa Chữa") { ColTrangThai.innerHTML = "Đang Sửa Chữa" }
+          if (r['Trạng Thái Xưởng'] == "Đã Tiếp Nhận") { ColTrangThai.innerHTML = "Chờ SC" }
 
           row.appendChild(ColKhachRX);
            row.appendChild(ColKTSC);
@@ -154,7 +160,7 @@ console.log(ketqua)
           row.appendChild(ColTrangThai);
           tbodyTim.appendChild(row)
         })
-        $("#tieude").html("THÔNG TIN KHÁCH CHỜ " + Doingay(new Date()))
+        $("#tieude").html("THÔNG TIN XE KHÁCH ĐỢI " + Doingay(new Date()))
       }
       catch (eros) {
         alert(eros)
