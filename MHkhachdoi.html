@@ -74,18 +74,23 @@
     setInterval(function () { getData(urlTX) }, 30000);
     //DanhSachCoVan();
     function getData(url) {
-      axios.get(url, {
-    params: {
-      ID: 12345
-    }
-  })
-  .then(function (response) {
+    fetch(url
     
-    useCaher = response.data
-    showData()
-   
-  })}
-
+    )
+    .then(function(response) {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(function(data) {
+        useCaher = data;
+        showData();
+    })
+    .catch(function(error) {
+        console.error('There was a problem with your fetch operation:', error);
+    });
+}
 
     function showData() {
       try {
