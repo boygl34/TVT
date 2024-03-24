@@ -119,18 +119,14 @@
   <script>
 
     var useCaher
-    var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
-    var urls= "https://dichvutvt.meteorapp.com/api/data"
-    setInterval(function () { getData(urls) }, 20000);
-    getData(urls)
+    //var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
+    var urlTX= "https://apimonggobd.glitch.me/TrongXuong"
+    setInterval(function () { getData(urlTX) }, 20000);
+    getData(urlTX)
 
 
     function getData(url) {
-      axios.get(urls, {
-    params: {
-      ID: 12345
-    }
-  })
+      axios.get(url)
   .then(function (response) {
      console.log(response);
     useCaher = response.data
