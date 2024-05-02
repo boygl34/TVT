@@ -100,18 +100,17 @@
     setInterval(function () { getData(urlTX) }, 30000);
     //DanhSachCoVan();
     function getData(url) {
-      axios.get(url, {
-    params: {
-      ID: 12345
-    }
-  })
-  .then(function (response) {
-    
-    useCaher = response.data
-    console.log(useCaher);
+      fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    useCaher = data
     showData()
-   
-  })}
+  }
+  )
+  .catch(error => console.error('Error:', error));
+
+}
 
     function showData() {
     
@@ -131,10 +130,13 @@
           BienSo.innerHTML = r['Biển Số Xe']
           row.appendChild(BienSo);
           var TenKH = document.createElement("td");
-          TenKH.innerHTML = r["Tên Khách Hàng"]
+          TenKH.innerHTML = r["Tên Khách Hàng"].toUpperCase()
           row.appendChild(TenKH);
           var CoVan = document.createElement("td");
-          if (r["Cố Vấn Dịch Vụ"]) { CoVan.innerHTML = r["Cố Vấn Dịch Vụ"] } else { CoVan.innerHTML = "" }
+          if (r["Cố Vấn Dịch Vụ"]) { CoVan.innerHTML =
+            r["Cố Vấn Dịch Vụ"].lastIndexOf(" ")>-1?r["Cố Vấn Dịch Vụ"].slice( r["Cố Vấn Dịch Vụ"].lastIndexOf(" ")):r["Cố Vấn Dịch Vụ"]
+     
+        } else { CoVan.innerHTML = "" }
           row.appendChild(CoVan);
           var LHGJ = document.createElement("td");
           if (r["Loại Hình Hẹn"]) { LHGJ.innerHTML = r['Loại Hình Hẹn'] } else { LHGJ.innerHTML = "" }
