@@ -126,22 +126,22 @@
 
 
     function getData(url) {
-      axios.get(url)
-  .then(function (response) {
-     console.log(response);
-    useCaher = response.data
-    showData()
-   
-  })
-  //   fetch(urls)
-  // .then(response => response.json())
-  // .then(data => {
-  //   console.log(data)
-  //   useCaher = data
+  //     axios.get(url)
+  // .then(function (response) {
+  //    console.log(response);
+  //   useCaher = response.data
   //   showData()
-  // }
-  // )
-  // .catch(error => console.error('Error:', error));
+   
+  // })
+    fetch(url)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    useCaher = data
+    showData()
+  }
+  )
+  .catch(error => console.error('Error:', error));
 
 
 //       $.get(url, function (ketqua) {
