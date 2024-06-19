@@ -130,7 +130,7 @@
           BienSo.innerHTML = r['Biển Số Xe']
           row.appendChild(BienSo);
           var TenKH = document.createElement("td");
-          TenKH.innerHTML = r["Tên Khách Hàng"].toUpperCase()
+          TenKH.innerHTML = r["Tên Khách Hàng"]?r["Tên Khách Hàng"].toUpperCase():""
           row.appendChild(TenKH);
           var CoVan = document.createElement("td");
           if (r["Cố Vấn Dịch Vụ"]) { CoVan.innerHTML =
