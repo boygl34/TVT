@@ -238,11 +238,15 @@
   <script>
 
     var useCaher
-    //var urlTX = "https://serveriotvt3.glitch.me/TrongXuong"
+    // Bắt lỗi toàn cục trên trình duyệt TV
+    window.onerror = function(msg, url, line, col, error) {
+      alert("Lỗi JS: " + msg + "\nDòng: " + line);
+      return false;
+    };
+
     var urlTX= "https://dichvutvt.us.galaxycloud.app/api/data"
     setInterval(function () { getData(urlTX) }, 40000);
     getData(urlTX)
-
 
     function getData(url) {
       var xhttp = new XMLHttpRequest();
@@ -251,16 +255,18 @@
           if (this.status == 200) {
             try {
               var data = JSON.parse(this.responseText);
-              console.log(data);
               useCaher = data;
               showData();
             } catch (error) {
-              console.error('Lỗi parse JSON:', error);
+              alert('Lỗi parse JSON: ' + error);
             }
           } else {
-            console.error('Lỗi request:', this.status);
+            alert('Lỗi request mạng: HTTP ' + this.status);
           }
         }
+      };
+      xhttp.onerror = function() {
+        alert("Lỗi kết nối đến máy chủ (CORS hoặc mất mạng)");
       };
       xhttp.open("GET", url, true);
       xhttp.send();
