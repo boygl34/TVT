@@ -3,118 +3,237 @@
 
 <head>
   <base target="_top">
-
-  <!--INCLUDE REQUIRED EXTERNAL JAVASCRIPT AND CSS LIBRARIES-->
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css"
-    href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap4.min.css">
-
+  
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+  
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <!-- See JavaScript.html file -->
+
   <style>
-    #dataTable td:nth-child(10) {
-      font-size: 0.5px;
+    :root {
+      --bg-color: #0b0f19;
+      --panel-bg: rgba(20, 25, 40, 0.7);
+      --text-main: #f0f4f8;
+      --text-muted: #9ba4b5;
+      --danger-pulse: rgba(239, 68, 68, 0.5);
     }
 
-    #dataTable td:nth-child(1) {
-      font-size: 35px;
-      text-align: left;
+    * {
+      font-family: 'Outfit', sans-serif !important;
+    }
+
+    body {
+      background: var(--bg-color);
+      background-image: radial-gradient(circle at 50% -20%, #1e293b 0%, #0b0f19 70%);
+      color: var(--text-main);
+      margin: 0;
+      padding: 15px 15px;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    h3 {
+      font-size: 36px;
+      font-weight: 800;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 10px;
+      margin-bottom: 25px;
+      background: linear-gradient(90deg, #60a5fa, #a78bfa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0px 4px 15px rgba(96, 165, 250, 0.3);
+    }
+
+    .table-container {
+      background: var(--panel-bg);
+      border-radius: 16px;
+      padding: 5px 2px 2px 2px;
+      box-shadow: 0 10px 5px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin: 0 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0 8px;
+    }
+
+    thead th {
+      background: transparent !important;
+      color: var(--text-muted);
+      font-size: 14px !important;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      padding: 0 2px 2px 2px;
+      border: none !important;
+    }
+
+    tbody tr {
+      background: rgba(255, 255, 255, 0.04);
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    tbody tr:hover {
+      transform: translateY(-1px) scale(1.002);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    tbody td {
+      padding: 12px 10px;
+      border: none !important;
+      vertical-align: middle;
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    /* Column Alignments */
+    th:nth-child(1), td:nth-child(1) { text-align: left !important; padding-left: 20px !important; }
+    th:nth-child(3), td:nth-child(3) { text-align: left !important; }
+    th:nth-child(5), td:nth-child(5) { text-align: left !important; }
+    
+    th:nth-child(2), td:nth-child(2),
+    th:nth-child(4), td:nth-child(4),
+    th:nth-child(6), td:nth-child(6),
+    th:nth-child(7), td:nth-child(7),
+    th:nth-child(8), td:nth-child(8) {
+      text-align: center !important;
+    }
+
+    /* Biển Số */
+    tbody td:nth-child(1) {
+      font-size: 32px;
+      font-weight: 800;
+      color: #ffffff;
       width: 25%;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
     }
 
-    #dataTable td:nth-child(2) {
-      font-size: 20px;
-      width: 7%;
+    /* Số Thẻ */
+    tbody td:nth-child(2) {
+      color: #60a5fa;
+      font-size: 24px;
+      font-weight: 800;
     }
 
-
-    #dataTable td:nth-child(4) {
-      font-size: 20px;
+    /* Khách Hàng */
+    tbody td:nth-child(3) {
       text-align: left;
-      width: 5%;
+      font-size: 20px;
+      max-width: 200px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    /* Loại Hình */
+    tbody td:nth-child(5) {
+      font-size: 18px;
+      color: #ffffff;
     }
 
-    #dataTable td:nth-child(8) {
-      font-size: 10px;
-      color: black;
-      width: 2%;
+    /* Giờ Hẹn & Cố Vấn */
+    tbody td:nth-child(4), tbody td:nth-child(6) {
+      color: #e2e8f0;
     }
 
-    table.dataTable thead {
-      background-color: #1155cc;
-      font-size: 15px;
-    }
-
-
-    .DangTiepNhan {
+    /* Trạng Thái Xưởng colors */
+    .DangTiepNhan td:nth-child(7) {
       color: #00ff00;
+      font-weight: 800;
+    }
+    .SapTiepNhan td:nth-child(7) {
+      color: #ffffff;
+    }
+    .ChoTiepNhan td:nth-child(7) {
+      color: #38bdf8;
     }
 
-    .SapTiepNhan {
-      color: white;
+    /* Thời gian chờ Badges (Lever) */
+    .Lever1, .Lever2, .Lever3, .Lever4 {
+      display: inline-block;
+      min-width: 60px;
+      text-align: center;
+      border-radius: 8px;
+      padding: 4px 12px;
+      font-weight: 800;
     }
-
-    .ChoTiepNhan {
-      color: #3deedf;
-    }
-
-    .Lever4 {
-      background-color: red;
-    }
-
-    .Lever3 {
-      background-color: pink;
-    }
-
-    .CanhBao {
-      font-size: 55px;
+    .Lever1 {
+      color: #00ff00;
+      background: rgba(0, 255, 0, 0.15);
     }
 
     .Lever2 {
-      background-color: yellow;
+      color: #ffcc00;
+      background: rgba(255, 204, 0, 0.15);
     }
 
-    .Lever1 {
-      background-color: #00ff00;
+    .Lever3 {
+      color: #ff66b2;
+      background: rgba(255, 102, 178, 0.15);
     }
 
-    #dataTable td {
-      height: 50px;
-      vertical-align: middle;
-
-      font-size: 15.5px;
+    .Lever4 {
+      color: #ff3333;
+      background: rgba(255, 51, 51, 0.15);
+      animation: pulse 1.5s infinite;
+      font-size: 24px;
     }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0 0 var(--danger-pulse); }
+      70% { box-shadow: 0 0 0 15px rgba(239, 68, 68, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
+    }
+
+    /* Rounded corners for table rows */
+    tbody td:first-child {
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+    tbody td:last-child {
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+    }
+
+    /* Overrides for bootstrap */
+    .table { margin-bottom: 0; }
+    .table th, .table td { border-top: none; }
   </style>
 </head>
 
-<body style="font-weight:bold;text-align:center;vertical-align: middle ;width:100%;background-color:black">
-  <h3 style="color:white">THÔNG TIN TIẾP NHẬN DỊCH VỤ</h3>
+<body>
+  <h3>THÔNG TIN TIẾP NHẬN DỊCH VỤ</h3>
   <div class="container-fluid">
-    <div id="dataTable" class="table">
-      <table id="data-table" onclick="clickTableTiepNhan()" class=" table table-dark  table-sm table-hover  row-border"
-        style="font-weight:bold;text-align:center;vertical-align: middle ;width:100%;background-color:black">
-        <!-- TABLE DATA IS ADDED BY THE showData() JAVASCRIPT FUNCTION ABOVE -->
-        <thead style="background-color:#1155cc;font-size: 15px">
-          <tr style="font-size:8px">
+    <div class="table-container">
+      <table id="data-table" onclick="clickTableTiepNhan()" class="table">
+        <thead>
+          <tr>
             <th>Biển Số</th>
             <th>Số Thẻ</th>
             <th>Tên KH</th>
-            <th>Giờ H</th>
-            <th>LH GJ</th>
-
+            <th>Giờ Hẹn</th>
+            <th>Loại Hình</th>
             <th>Cố Vấn</th>
             <th>Trạng Thái</th>
-            <th>TG</th>
-
+            <th>TG Chờ</th>
           </tr>
         </thead>
-        <tbody id="table-body-Tim-xe" style="font-size:14px">
+        <tbody id="table-body-Tim-xe">
         </tbody>
       </table>
     </div>
-    <br><!-- See DataTable.html File -->
   </div>
   <script>
 
@@ -126,32 +245,25 @@
 
 
     function getData(url) {
-  //     axios.get(url)
-  // .then(function (response) {
-  //    console.log(response);
-  //   useCaher = response.data
-  //   showData()
-   
-  // })
-    fetch(url)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-    useCaher = data
-    showData()
-  }
-  )
-  .catch(error => console.error('Error:', error));
-
-
-//       $.get(url, function (ketqua) {
-//         ketqua= JSON.parse(ketqua)
-
-// console.log(ketqua)
-//         useCaher = ketqua
-      
-//         showData()
-//       });
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+          if (this.status == 200) {
+            try {
+              var data = JSON.parse(this.responseText);
+              console.log(data);
+              useCaher = data;
+              showData();
+            } catch (error) {
+              console.error('Lỗi parse JSON:', error);
+            }
+          } else {
+            console.error('Lỗi request:', this.status);
+          }
+        }
+      };
+      xhttp.open("GET", url, true);
+      xhttp.send();
     }
 
     function showData() {
