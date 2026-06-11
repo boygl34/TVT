@@ -119,6 +119,8 @@
       width: 25%;
       letter-spacing: 1px;
       text-shadow: 0 2px 5px rgba(255, 255, 255, 0.2);
+      line-height: 1;
+      padding-top: 18px !important;
     }
 
     /* Số Thẻ */
@@ -275,7 +277,7 @@
     setInterval(function () { getData(urlTX) }, 40000);
     getData(urlTX)
 
-    function getData(url) {
+    function getData(url, isFallback) {
       var xhttp = new XMLHttpRequest();
       // Thêm cache buster để tránh tivi cache lại request cũ
       var finalUrl = url + (url.indexOf('?') !== -1 ? '&' : '?') + 't=' + new Date().getTime();
@@ -294,14 +296,25 @@
               showError('Lỗi parse JSON: ' + error.message);
             }
           } else if (this.status !== 0 || !this.responseURL) { 
-            // Bỏ qua lỗi status 0 nếu là do đang huỷ request
-            showError('Lỗi request mạng: HTTP ' + this.status + '<br><small>Có thể do Tivi mất mạng hoặc sai giờ (lỗi chứng chỉ SSL).</small>');
+            // Nếu bị lỗi mạng hoặc CORS và chưa dùng proxy, thử lại qua proxy
+            if (!isFallback) {
+              var proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://dichvutvt.us.galaxycloud.app/api/data");
+              showError('Lỗi kết nối trực tiếp, đang thử kết nối qua máy chủ trung gian (Proxy)...');
+              getData(proxyUrl, true);
+            } else {
+              showError('Lỗi request mạng: HTTP ' + this.status + '<br><small>Tivi đang chặn request, thử kiểm tra lại mạng hoặc chứng chỉ SSL.</small>');
+            }
           }
         }
       };
       
       xhttp.onerror = function() {
-        showError("Lỗi kết nối đến máy chủ (CORS, mất mạng, hoặc Tivi bị sai giờ hệ thống).");
+        if (!isFallback) {
+          var proxyUrl = "https://api.allorigins.win/raw?url=" + encodeURIComponent("https://dichvutvt.us.galaxycloud.app/api/data");
+          getData(proxyUrl, true);
+        } else {
+          showError("Lỗi kết nối đến máy chủ (CORS, mất mạng, hoặc Tivi chặn kết nối).");
+        }
       };
       
       xhttp.ontimeout = function() {
