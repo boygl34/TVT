@@ -238,9 +238,35 @@
   <script>
 
     var useCaher
+    // Hiển thị lỗi trên màn hình thay vì dùng alert (tránh bị treo tivi)
+    function showError(message) {
+      console.error(message);
+      var errorDiv = document.getElementById('error-toast');
+      if (!errorDiv) {
+        errorDiv = document.createElement('div');
+        errorDiv.id = 'error-toast';
+        errorDiv.style.position = 'fixed';
+        errorDiv.style.bottom = '20px';
+        errorDiv.style.right = '20px';
+        errorDiv.style.backgroundColor = 'rgba(239, 68, 68, 0.9)';
+        errorDiv.style.color = 'white';
+        errorDiv.style.padding = '15px 20px';
+        errorDiv.style.borderRadius = '8px';
+        errorDiv.style.zIndex = '9999';
+        errorDiv.style.fontSize = '16px';
+        errorDiv.style.boxShadow = '0 4px 6px rgba(0,0,0,0.3)';
+        document.body.appendChild(errorDiv);
+      }
+      errorDiv.innerHTML = message;
+      errorDiv.style.display = 'block';
+      setTimeout(function() {
+        errorDiv.style.display = 'none';
+      }, 10000); // Ẩn sau 10 giây
+    }
+
     // Bắt lỗi toàn cục trên trình duyệt TV
     window.onerror = function(msg, url, line, col, error) {
-      alert("Lỗi JS: " + msg + "\nDòng: " + line);
+      showError("Lỗi JS: " + msg + " (Dòng: " + line + ")");
       return false;
     };
 
@@ -250,6 +276,9 @@
 
     function getData(url) {
       var xhttp = new XMLHttpRequest();
+      // Thêm cache buster để tránh tivi cache lại request cũ
+      var finalUrl = url + (url.indexOf('?') !== -1 ? '&' : '?') + 't=' + new Date().getTime();
+      
       xhttp.onreadystatechange = function() {
         if (this.readyState == 4) {
           if (this.status == 200) {
@@ -257,18 +286,29 @@
               var data = JSON.parse(this.responseText);
               useCaher = data;
               showData();
+              // Ẩn lỗi nếu lấy dữ liệu thành công
+              var errorDiv = document.getElementById('error-toast');
+              if (errorDiv) errorDiv.style.display = 'none';
             } catch (error) {
-              alert('Lỗi parse JSON: ' + error);
+              showError('Lỗi parse JSON: ' + error.message);
             }
-          } else {
-            alert('Lỗi request mạng: HTTP ' + this.status);
+          } else if (this.status !== 0 || !this.responseURL) { 
+            // Bỏ qua lỗi status 0 nếu là do đang huỷ request
+            showError('Lỗi request mạng: HTTP ' + this.status + '<br><small>Có thể do Tivi mất mạng hoặc sai giờ (lỗi chứng chỉ SSL).</small>');
           }
         }
       };
+      
       xhttp.onerror = function() {
-        alert("Lỗi kết nối đến máy chủ (CORS hoặc mất mạng)");
+        showError("Lỗi kết nối đến máy chủ (CORS, mất mạng, hoặc Tivi bị sai giờ hệ thống).");
       };
-      xhttp.open("GET", url, true);
+      
+      xhttp.ontimeout = function() {
+        showError("Lỗi request mạng: Hết thời gian chờ (Timeout).");
+      };
+      
+      xhttp.open("GET", finalUrl, true);
+      xhttp.timeout = 15000; // Timeout 15 giây
       xhttp.send();
     }
 
